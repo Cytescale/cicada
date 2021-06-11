@@ -89,7 +89,7 @@ margin-right: 4px;
      margin-left: 5%;
      height: auto;
      padding: 0;
-      margin-top: var(--margin-top);
+      margin-top: 12px;
 }
 
 .dash-search-cont{
@@ -123,7 +123,7 @@ margin-right: 4px;
      font-family: Poppins;
      font-style: normal;
      font-weight: bold;
-     font-size: 15px;
+     font-size: 14px;
      color: #fff;
      margin-left: 8px;
 }
@@ -171,6 +171,7 @@ margin-right: 4px;
 .dash-links-cont-link-botom-crt-butt{
 flex: 1;
 margin: 4px;
+font-family: poppins;
 border-radius: 100px;
 height: 42px;
 background: #11E4D1;
@@ -181,8 +182,47 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), -6px -6px 20px #384148, 0px 0px 10p
 }
 .dash-links-cont-link-botom-show-butt{
      flex: 1;
+     font-family: poppins;
      font-size: 14px;
      border-radius: 100px;
      color: #fff;
      margin: 4px;
+}
+
+.insight-main-cont{
+     width: 90%;
+     margin-left: 5%;
+     height: 200px;overflow: hidden;
+     position: relative;
+     margin-top: 12px;
+}
+.insight-bottom-main-cont{
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 42px;
+     display: inline-flex;
+     background: #34414D;
+     width: 90%;
+     margin-left: 5%;
+     padding: 0px;
+     overflow: hidden;
+     margin-bottom: 12px;
+     border-radius: 100px;
+}
+.insight-bottom-butt{
+     flex: 1;
+     height: 100%;
+     border-style: none;
+     outline: none;
+     color: #fff;
+     font-family: poppins;
+     font-weight: 700;
+     background-color: rgba(0, 0, 0, 0);
+
+}
+.insigh-selec{
+     background-color: var(--warning);
+     color: #000;
 }

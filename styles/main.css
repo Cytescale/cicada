@@ -117,6 +117,8 @@ background-color: red;
 .app-content-main-cont{
      width: 100%;
      height: 100%;
+     padding-bottom: 56px;
+     min-height: 100vh;
      background: linear-gradient(174.15deg, #2E363F 0%, #2A2F35 100%);
 
 }
@@ -127,6 +129,7 @@ background-color: red;
      position: fixed;
      top: 0;
      left: 0;
+     z-index: 999999;
      right: 0;
      align-items: center;
      background-color: var(--sec-dark);
@@ -163,4 +166,66 @@ padding: 32px;
      position: absolute;
      right: 0;
      margin-right: var(--margin);
+}
+.app-tit-main-cont{
+     padding-left: var(--margin);
+     margin-top: var(--margin-top);     
+     font-family: Poppins;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 13px;
+     color: #636F7C;
+}
+.app-ender-line-main-cont{
+     font-size: 14px;
+     letter-spacing: 1px;
+     font-family: poppins;
+     font-weight: 700;
+     margin: var(--margin);
+     margin-top: 72px;
+     color: #fff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.app-bottom-main-cont{
+     width: 100%;
+     height: 62px;
+     display: inline-flex;
+     align-items: center;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background-color: var(--sec-dark);
+     z-index: 999;
+}
+
+.app-bottom-fader-main-cont{
+     width: 100%;
+     height: 62px;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     margin-bottom: 62px;
+     z-index: 9999;
+     background: linear-gradient(180deg, rgba(39, 45, 52, 0) 0%, #272D33 100%);
+}
+.app-bottom-butt-main-cont{
+     background-color: rgba(0, 0, 0, 0);
+     border-style: none;
+     outline: none;
+}
+.app-bottom-butt-main-cont-ico{
+     width: 20px;
+     height: 20px;
+
+}
+.app-bottom-butt-main-outer-cont{
+     flex: 1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }

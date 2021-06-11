@@ -38,8 +38,59 @@ export default class Dash extends React.Component {
      renderLinkTable(){
           return(
                <div className='app-input-class-raised dash-links-cont'>
-                    <input className='app-input-class dash-search-cont' placeholder='Search link'>
-                    </input>
+                    <div className='dash-links-cont-serch-cont'>
+                    <input className='app-input-class dash-search-cont' placeholder='Search link'/>
+                    </div>
+                    <div className='dash-links-cont-link-cont'>
+                         <div className='dash-links-cont-link-cont-ico'></div>
+                         <div className='dash-links-cont-link-cont-lab'>Link 1</div>
+                         <div className='dash-links-cont-link-right-cont'>
+                              <button className='dash-links-cont-link-right-copy-butt'>
+                                   <svg className='dash-links-cont-link-right-copy-butt-ico' viewBox='0 0 512 512'><title>Copy</title><rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/><path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+                              </button>
+                              <button className='dash-links-cont-link-right-copy-butt'>
+                                 <svg className='dash-links-cont-link-right-enal-butt-ico turned-on' viewBox='0 0 512 512'><title>Power</title><path d='M378 108a191.41 191.41 0 0170 148c0 106-86 192-192 192S64 362 64 256a192 192 0 0169-148M256 64v192' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+                              </button>
+                         </div>
+                         
+                    </div>
+                    
+                    <div className='dash-links-cont-link-cont'>
+                         <div className='dash-links-cont-link-cont-ico'></div>
+                         <div className='dash-links-cont-link-cont-lab'>Link 2</div>
+                         <div className='dash-links-cont-link-right-cont'>
+                              <button className='dash-links-cont-link-right-copy-butt'>
+                                   <svg className='dash-links-cont-link-right-copy-butt-ico' viewBox='0 0 512 512'><title>Copy</title><rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/><path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+                              </button>
+                              <button className='dash-links-cont-link-right-copy-butt'>
+                                 <svg className='dash-links-cont-link-right-enal-butt-ico turned-off' viewBox='0 0 512 512'><title>Power</title><path d='M378 108a191.41 191.41 0 0170 148c0 106-86 192-192 192S64 362 64 256a192 192 0 0169-148M256 64v192' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+                              </button>
+                         </div>
+                         
+                    </div>
+                    <div className='dash-links-cont-link-cont'>
+                         <div className='dash-links-cont-link-cont-ico'></div>
+                         <div className='dash-links-cont-link-cont-lab'>Link 3</div>
+                         <div className='dash-links-cont-link-right-cont'>
+                              <button className='dash-links-cont-link-right-copy-butt'>
+                                   <svg className='dash-links-cont-link-right-copy-butt-ico' viewBox='0 0 512 512'><title>Copy</title><rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/><path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+                              </button>
+                              <button className='dash-links-cont-link-right-copy-butt'>
+                                 <svg className='dash-links-cont-link-right-enal-butt-ico turned-off' viewBox='0 0 512 512'><title>Power</title><path d='M378 108a191.41 191.41 0 0170 148c0 106-86 192-192 192S64 362 64 256a192 192 0 0169-148M256 64v192' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+                              </button>
+                         </div>
+                         
+                    </div>
+
+                    <div className='dash-links-cont-link-botom-cont' >
+                         <button className='dash-links-cont-link-botom-crt-butt' >
+                              Create Link
+                         </button>
+                         <button className='app-input-class-raised-pressable dash-links-cont-link-botom-show-butt' >
+                              Show More
+                         </button>
+                    </div>
+
                </div>
           )
      }

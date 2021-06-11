@@ -38,7 +38,7 @@ margin-right: 4px;
      width: 90%;
      margin-left: 5%;
      height: auto;
-     margin-top: 32px;
+     margin-top: var(--margin-top);
      display: inline-flex;
      align-items: center;
      font-size: 17px;
@@ -87,9 +87,9 @@ margin-right: 4px;
 .dash-links-cont{
      width: 90%;
      margin-left: 5%;
-     height: 100px;
-     padding: 12px;
-      margin-top: 32px;
+     height: auto;
+     padding: 0;
+      margin-top: var(--margin-top);
 }
 
 .dash-search-cont{
@@ -97,4 +97,92 @@ margin-right: 4px;
      height: 42px;
 
 
+}
+.dash-links-cont-serch-cont{
+     padding: 12px;
+     border-bottom: 1px solid #3A4754;
+}
+
+.dash-links-cont-link-cont{
+     width: 100%;
+     position: relative;
+     border-bottom: 1px solid #3A4754;
+     display: inline-flex;
+     align-items: center;
+     padding: var(--margin);
+}
+
+.dash-links-cont-link-cont-ico{
+     width: 25px;
+     height: 25px;
+     background-color: #fff;
+     border-radius: 100px;
+
+}
+.dash-links-cont-link-cont-lab{
+     font-family: Poppins;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 15px;
+     color: #fff;
+     margin-left: 8px;
+}
+
+.dash-links-cont-link-right-cont{
+     position: absolute;
+     right: 0;
+     height: 100%;
+     display: inline-flex;
+     align-items: center;
+     padding-right: var(--margin);
+}
+.dash-links-cont-link-right-copy-butt{
+ background-color: rgba(0, 0, 0, 0);
+ border-style: none;
+ outline: none;
+ margin-left: 12px;
+}
+.dash-links-cont-link-right-copy-butt-ico{
+     width: 22px;
+     height: 22px;
+     color: #fff;
+}
+.turned-on{
+     color: var(--succ);
+     filter: drop-shadow(0px 0px 7px #24FF7C);
+}
+
+.turned-off{
+     color: var(--danger);
+     filter: drop-shadow(0px 0px 7px #EB445A);
+}
+
+.dash-links-cont-link-right-enal-butt-ico{
+     width: 22px;
+     height: 22px;
+   
+}
+
+.dash-links-cont-link-botom-cont{
+     width: 100%;
+     display: inline-flex;
+     padding: var(--margin);
+}
+.dash-links-cont-link-botom-crt-butt{
+flex: 1;
+margin: 4px;
+border-radius: 100px;
+height: 42px;
+background: #11E4D1;
+border-style: none;
+outline: none;
+font-size: 14px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), -6px -6px 20px #384148, 0px 0px 10px #11E4D1;
+}
+.dash-links-cont-link-botom-show-butt{
+     flex: 1;
+     font-size: 14px;
+     border-radius: 100px;
+     color: #fff;
+     margin: 4px;
 }

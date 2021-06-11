@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&family=Sen:wght@400;700;800&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: poppins;
+  --pri-dark: #11E4D1;
+  --sec-dark:#2E363F;
+  --warning:#EEC485;
+  --danger:#EB445A;
+  --text-s1:#fff;
+  --text-s2:#63798E;
+  --margin:20px;
+  --bor-rad:10px;
+
 }
 
 a {
@@ -13,4 +24,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.app-input-class{
+  padding-left: 12px;
+  background: #2A3239;
+  box-shadow: inset -3px -3px 10px #384148, inset 3px 3px 10px #1E242B;
+  outline: none;
+  border-style: none;
+  border-radius: var(--bor-rad);
+  
 }

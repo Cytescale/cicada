@@ -1,0 +1,127 @@
+.app-main-cont-main-body
+{
+     height: 100vh;
+     width: 100vw;
+     background: linear-gradient(174.15deg, #2E363F 0%, #2A2F35 100%);
+}
+.app-head-cont-main-body{
+     color: var(--text-s1);
+     font-size: 20px;    
+     font-weight: 700;
+     padding: var(--margin);
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     background-color: var(--sec-dark);
+     border-bottom: 1px solid #3D4650;
+
+}
+
+.app-moto-cont-main-body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-top: 102px;
+}
+.app-moto-cont-main-sub-body{
+     text-align: center;
+}
+.app-moto-cont-tit-1{
+     color: var(--text-s2);
+     font-size: 19px;
+     font-weight: 500;
+}
+.app-moto-cont-tit-2{
+     color: var(--text-s1);
+     font-size: 28px;
+     font-weight: 700;
+}
+
+.app-login-main-cont-body{
+     padding: var(--margin);
+}
+.login-form-fld{
+     width: 100%;
+     font-size: 12px;
+     height: 46px;
+     color: var(--text-s1);
+}
+.app-login-inpt-main-cont{
+margin-top: 16px;
+}
+.app-login-inpt-main-cont-lab{
+font-size: 12px;
+color: var(--text-s1);
+padding-bottom: 5px;
+padding-left: 3px;
+font-weight: 700;
+}
+.app-login-sub-main-cont{
+
+}
+.app-login-sub-butt{
+     width: 100%;
+     border-radius: var(--bor-rad);
+     height: 46px;
+     margin-top: 18px;
+     background-color: var(--pri-dark);
+     border-style: none;
+     outline: none;
+     color: #000;
+     box-shadow: 0px 0px 16px rgba(17, 228, 209, 0.4);
+     font-size: 13px;
+     font-weight: 700;    
+}
+.app-or-cont{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 15px;
+     font-weight: 600;
+     color: var(--text-s1);    
+     padding: var(--margin);
+     padding-top: 10px;
+     padding-bottom: 10px;
+}
+.app-login-cont-googl-butt-cont{
+
+}
+.app-login-cont-googl-butt{
+     width: 100%;
+     border-radius: var(--bor-rad);
+     height: 46px;
+     background: var(--sec-dark);
+     box-shadow: -6px -6px 20px #384148, 6px 6px 20px #1E242B;
+     border-style: none;
+     outline: none;
+     color: var(--text-s1);
+     font-size: 13px;
+     font-weight: 700;    
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.app-login-cont-googl-butt-ico{
+background-color: red;
+}
+.app-login-sub-act-cont{
+     color: aquamarine;
+     font-size: 14px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-top: 22px;
+}
+.app-content-main-cont{
+     width: 100%;
+     height: 100vh;
+     background: linear-gradient(174.15deg, #2E363F 0%, #2A2F35 100%);
+
+}
+.app-head-main-cont{
+     width: 100%;
+     height: 60px;
+     border-bottom: 1px solid #3D4650;
+}

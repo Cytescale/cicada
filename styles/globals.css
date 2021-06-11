@@ -30,6 +30,7 @@ a {
   padding-left: 12px;
   background: #2A3239;
   box-shadow: inset -3px -3px 10px #384148, inset 3px 3px 10px #1E242B;
+  -webkit-box-shadow: inset -3px -3px 10px #384148, inset 3px 3px 10px #1E242B;
   outline: none;
   border-style: none;
   border-radius: var(--bor-rad);

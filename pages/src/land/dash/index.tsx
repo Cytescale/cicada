@@ -11,7 +11,12 @@ export default class Dash extends React.Component {
           return(
                <div className='app-content-main-cont'>
                          <div className='app-head-main-cont'>
-                              
+                              <div className='app-head-main-cont-logo'>
+                                   Sakura
+                              </div>
+                              <div className='app-head-main-right-cont'>
+                                   
+                              </div>
                          </div>
                </div>
           )

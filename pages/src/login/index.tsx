@@ -18,7 +18,7 @@ export default class LoginAct extends React.Component<{},{}>{
         <link rel="icon" href="/favicon.ico" />
       </Head>
           <div className='app-head-cont-main-body'>
-                    Cicada
+                    Sakura
           </div>
           <div className='app-moto-cont-main-body'>
                     <div className='app-moto-cont-main-sub-body'>

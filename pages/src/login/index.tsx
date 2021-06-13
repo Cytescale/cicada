@@ -1,8 +1,18 @@
 import React from "react";
 import Head from 'next/head'
 import Image from 'next/image'
+import { withRouter, NextRouter } from 'next/router'
 
-export default class LoginAct extends React.Component<{},{}>{
+
+interface WithRouterProps {
+     router: NextRouter
+   }
+   
+interface LoginProps extends WithRouterProps {}
+
+
+
+class LoginAct extends React.Component<LoginProps>{
      constructor(props:any){
           super(props);
 
@@ -50,7 +60,9 @@ export default class LoginAct extends React.Component<{},{}>{
                   placeholder='********'/>
                   </div>
                   <div className='app-login-sub-main-cont'>
-                         <button className='app-login-sub-butt'>
+                         <button className='app-login-sub-butt' onClick={()=>{
+                              this.props.router.push('/src/land');
+                         }}>
                               Login
                          </button>
                   </div>
@@ -74,3 +86,5 @@ export default class LoginAct extends React.Component<{},{}>{
           )
      }
 }
+
+export default withRouter(LoginAct)

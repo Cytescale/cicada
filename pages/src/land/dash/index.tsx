@@ -6,7 +6,7 @@ const WelcomeHead:React.FC<any> = ()=>{
      return(
           show?
           <div className='dash-wel-main-cont'>
-                    Welcome to<br/>Sakura
+                    Welcome to<br/>Cicada
                     <svg width="31" height="27" viewBox="0 0 31 27" fill="none" className='dash-wel-main-cont-ico' onClick={()=>{
                          setShow(false);
                     }}>
@@ -164,7 +164,7 @@ export default class Dash extends React.Component {
                <div className='app-content-main-cont'>
                          <div className='app-head-main-cont'>
                               <div className='app-head-main-cont-logo'>
-                                   Sakura
+                              Cicada
                               </div>
                               <div className='app-head-main-right-cont'>
                                    <button
@@ -189,7 +189,7 @@ export default class Dash extends React.Component {
                          {this.renderInsight()}
                          {this.renderEnderLine()}
                          {this.renderBottomFader()}
-                         {this.renderBottomNav()}
+                        
                </div>
           )
      }

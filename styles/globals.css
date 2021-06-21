@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&family=Sen:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: poppins , inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-family: poppins;
+  
+  /*neuro design*/
+  
   --pri-dark: #11E4D1;
-  --sec-dark:#2E363F;
+  --sec-dark:#2E363E;
   --warning:#EEC485;
   --danger:#EB445A;
   --succ:#94FFBF;
@@ -16,6 +19,13 @@ body {
   --margin:20px;
   --margin-top:26px;
   --bor-rad:10px;
+  --bor-color:#3D4650;
+
+  --box-shad-inset:inset -3px -3px 10px #384148, 
+                  inset 3px 3px 10px #1E242B;
+  --box-shad-raised:-3px -3px 10px #384148,
+                    3px 3px 10px #1E242B;
+
 
 }
 
@@ -31,9 +41,9 @@ a {
 
 .app-input-class-raised{
   padding-left: 12px;
-  background: #2A3239;
-  box-shadow:-3px -3px 10px #384148,3px 3px 10px #1E242B;
-  -webkit-box-shadow:-3px -3px 10px #384148, 3px 3px 10px #1E242B;
+  background: var(--sec-dark);
+  box-shadow:var(--box-shad-raised);
+  -webkit-box-shadow:var(--box-shad-raised);
   outline: none;
   border-style: none;
   border-radius: var(--bor-rad);
@@ -42,9 +52,9 @@ a {
 
 .app-input-class{
   padding-left: 12px;
-  background: #2A3239;
-  box-shadow: inset -3px -3px 10px #384148, inset 3px 3px 10px #1E242B;
-  -webkit-box-shadow: inset -3px -3px 10px #384148, inset 3px 3px 10px #1E242B;
+  background: var(--sec-dark);
+  box-shadow: var(--box-shad-inset);
+  -webkit-box-shadow: var(--box-shad-inset);
   outline: none;
   border-style: none;
   border-radius: var(--bor-rad);
@@ -53,9 +63,9 @@ a {
 
 .app-input-class-raised-pressable{
   padding-left: 12px;
-  background: #2A3239;
-  box-shadow:-3px -3px 10px #384148,3px 3px 10px #1E242B;
-  -webkit-box-shadow:-3px -3px 10px #384148, 3px 3px 10px #1E242B;
+  background: var(--sec-dark);
+  box-shadow:var(--box-shad-raised);
+  -webkit-box-shadow:var(--box-shad-raised);
   outline: none;
   border-style: none;
   border-radius: var(--bor-rad);

@@ -2,7 +2,7 @@
 {
      height: 100vh;
      width: 100vw;
-     background: linear-gradient(174.15deg, #2E363F 0%, #2A2F35 100%);
+     background-color: var(--sec-dark);
 }
 .app-head-cont-main-body{
      color: var(--text-s1);
@@ -14,8 +14,43 @@
      left: 0;
      right: 0;
      background-color: var(--sec-dark);
-     border-bottom: 1px solid #3D4650;
+     border-bottom: 1px solid var(--bor-color);
 
+}
+
+
+.ecsp-tab-main-cont{
+     width: 100%;
+     height: 62px;
+     display: inline-flex;
+     align-items: center;
+     margin: 0;
+     padding: 0;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background-color:#1E262D;
+     z-index: 999;
+     color: var(--text-s1);
+}
+.app-bottom-tab-cont{
+     flex: 1;
+     display: inline-block;
+     border: 1px solid transparent;
+     border-bottom: none;
+     position: relative;
+     list-style: none;
+     padding: 6px 12px;
+     cursor: pointer;
+     color: var(--text-s1);
+}
+.react-tabs__tab{
+     color:var(--text-s1);
+}
+.react-tabs__tab--selected{
+       background-color:#1E262D;
+     color: var(--pri-dark);
 }
 
 .app-moto-cont-main-body{
@@ -31,11 +66,13 @@
      color: var(--text-s2);
      font-size: 19px;
      font-weight: 500;
+     font-family: inter;
 }
 .app-moto-cont-tit-2{
      color: var(--text-s1);
      font-size: 28px;
-     font-weight: 700;
+     font-weight: 800;
+     font-family: inter;
 }
 
 .app-login-main-cont-body{
@@ -56,6 +93,7 @@ color: var(--text-s1);
 padding-bottom: 5px;
 padding-left: 3px;
 font-weight: 700;
+font-family: inter;
 }
 .app-login-sub-main-cont{
 
@@ -93,7 +131,6 @@ font-weight: 700;
      border-radius: var(--bor-rad);
      height: 46px;
      background: var(--sec-dark);
-     box-shadow: -6px -6px 20px #384148, 6px 6px 20px #1E242B;
      border-style: none;
      outline: none;
      color: var(--text-s1);
@@ -103,8 +140,14 @@ font-weight: 700;
      justify-content: center;
      align-items: center;
 }
+.app-login-cont-googl-butt-ico-cont{
+     margin-right: 12px;
+}
+
 .app-login-cont-googl-butt-ico{
-background-color: red;
+     
+     width: 19px;
+     height: 19px;
 }
 .app-login-sub-act-cont{
      color: aquamarine;
@@ -119,21 +162,21 @@ background-color: red;
      height: 100%;
      padding-bottom: 56px;
      min-height: 100vh;
-     background: linear-gradient(174.15deg, #2E363F 0%, #2A2F35 100%);
+     background-color: var(--sec-dark);
 
 }
 .app-head-main-cont{
      width: 100%;
-     height: 72px;
+     height: 62px;
      display: flex;
      position: fixed;
      top: 0;
      left: 0;
-     z-index: 999999;
+     z-index: 500;
      right: 0;
      align-items: center;
      background-color: var(--sec-dark);
-     border-bottom: 1px solid #3D4650;
+     border-bottom: 1px solid var(--bor-color);
      position: fixed;
      top: 0;
      left: 0;
@@ -148,7 +191,7 @@ background-color: red;
  width: 100%;
  height: auto;
  font-weight: 700;
- color: #fff;
+ color: var(--text-s1);;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -156,11 +199,11 @@ padding: 32px;
 }
 
 .app-head-main-cont-logo{
-     color: #fff;
+     color: var(--text-s1);
      margin-left:var(--margin);
      font-family: poppins;
      font-weight: 700;
-     font-size: 20px;
+     font-size: 19px;
 }
 .app-head-main-right-cont{
      position: absolute;
@@ -183,7 +226,7 @@ padding: 32px;
      font-weight: 700;
      margin: var(--margin);
      margin-top: 72px;
-     color: #fff;
+     color: var(--text-s1);
      display: flex;
      justify-content: center;
      align-items: center;
@@ -241,6 +284,6 @@ padding: 32px;
      align-items: center;
      font-size: 32px;
      font-family: poppins;
-     color: #fff;
+     color: var(--text-s1);
      font-weight: 800;
 }

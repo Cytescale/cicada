@@ -269,16 +269,20 @@ export default class Analytics extends React.Component {
                               <div className='app-body-main-cont-lab'>Analytics</div>                              
                             
                          </div>
-                         {this.renderLinkSelection()}
-                         {this.renderTimeSelection()}
+                       
 
                          {this.renderAnalHeaderData('Total Clicks',100,false,13)}
                          {this.renderAnalHeaderData('Total Visitors',100,true,25)}
-                         
                          {this.renderAnalData('Click',100,true,25)}
-                         {this.renderClickChart()}
-                         
                          {this.renderAnalData('Visitors',100,false,21)}
+
+                         <div className='app-anal-hr-cont'/>
+
+                         {this.renderLinkSelection()}
+                         {this.renderTimeSelection()}
+                         
+                        
+                         {this.renderClickChart()}
                          {this.renderVisitChart()}
 
                          {this.renderOperaChart()}

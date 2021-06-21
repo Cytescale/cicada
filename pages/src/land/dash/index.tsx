@@ -168,12 +168,9 @@ export default class Dash extends React.Component {
                               </div>
                               <div className='app-head-main-right-cont'>
                                    <button
-                                   className='app-input-class-raised-pressable dash-add-butt'
+                                   className='app-input-class-raised-pressable link-add-butt'
                                    >
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className='dash-add-butt-ico'>
-                                   <path d="M14.0625 9H3.9375M9 3.9375V14.0625V3.9375Z" stroke="#11E4D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                   </svg>         
-                                        Add
+                                        Create Link
                                    </button>
                               </div>
                          </div>

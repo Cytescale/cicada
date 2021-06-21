@@ -49,14 +49,14 @@ export default class Links extends React.Component {
                               </button>
                               </div>
                     </div>
-                    <div className='lnk-lnk-body-cont'>
+                    {/* <div className='lnk-lnk-body-cont'>
                          <div className='lnk-lnk-body-tit-cont'>
                               Destination url
                          </div>
                          <div className='lnk-lnk-body-link-cont'>
                               {dest_link}
                          </div>
-                    </div>
+                    </div> */}
                     <div className='lnk-lnk-gen-cont'>
                          <div className='lnk-lnk-gen-link'>
                               {gen_link}
@@ -77,7 +77,7 @@ export default class Links extends React.Component {
                          </div>
                     </div>
                     <div className='lnk-lnk-bottom-cont'>
-                         <button className='app-input-class-raised-pressable lnk-lnk-bottom-show-butt'>
+                         <button className='lnk-lnk-bottom-show-butt'>
                               Show analytics
                          </button>
                          <button className='lnk-lnk-bottom-del-butt'>

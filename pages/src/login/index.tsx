@@ -4,6 +4,7 @@ import Image from 'next/image'
 import firebaseHelper from "../../../comp/helpers/firebaseHelper";
 import { withRouter, NextRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
+import nexusResponse from "../../../comp/helpers/nexusResponse";
 
 
 
@@ -37,6 +38,8 @@ class LoginAct extends React.Component<LoginProps,any>{
           this.setEmlFldData = this.setEmlFldData.bind(this);
           this.setPssFldData = this.setPssFldData.bind(this);
           this.handleLoginSub = this.handleLoginSub.bind(this);
+          this.seterrToast  =this.seterrToast.bind(this);
+          this.setsuccToast = this.setsuccToast.bind(this);
      }
 
      seterrToast(b:boolean,s:string){this.setState({errBool:b,errMess:s})}
@@ -49,22 +52,75 @@ class LoginAct extends React.Component<LoginProps,any>{
           
      }
      
+     processLogin(){
+          return new Promise((resolve, reject) => {
+               setTimeout(() => {
+                 FirebaseHelper.initEmailAuth(this.state.emlFldData,this.state.pssFldData).then((res:nexusResponse|null)=>{
+                    if(res){resolve(res);}
+                 }).catch((e:any)=>{reject(e);})
+               },5000);
+          });   
+     }
+
      async handleLoginSub(){
-          console.log('hit');
-          toast.error("Login Init", {
-               position: toast.POSITION.TOP_CENTER,
-               autoClose: 5000,
-               hideProgressBar: true,
-               closeOnClick: true,
-               pauseOnHover: true,
-               draggable: true,
-               progress: undefined,
-          });
-          if(this.state.setEmlFldData && this.state.setPssFldData){
-            
+          if(this.state.emlFldData.length && this.state.pssFldData.length){
+               this.setLoading(true);
+               this.processLogin().then((res:any)=>{
+                    if(!res.errBool){
+                         console.log('loginact: login success ');
+                         toast.dark('Login Successfull', {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                         this.props.router.push('/src/land');
+                    }
+                    else{
+                         console.log('loginact: login error '+res.errMess);
+                         switch(res.errMess){
+                              case "auth/user-not-found":{
+                                   toast.error("No such user found", {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                                   break;
+                              }
+                              case "auth/wrong-password":{
+                                   toast.error("Incorrent password", {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                                   break;
+                              }
+                              default:{
+                                   toast.error("Error occured", {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                                   break;
+                              }
+                         }
+                    }
+                    this.setLoading(false);
+               }).catch((e:any)=>{
+                    console.log('loginact: login error '+e);
+                    toast.error(e, {
+                         position: toast.POSITION.TOP_CENTER,
+                         autoClose: 5000,
+                         hideProgressBar: true,
+                         closeOnClick: true,
+                         pauseOnHover: true,
+                         draggable: true,
+                         progress: undefined,
+                    });
+                    this.setLoading(false);
+               });
           }
           else{
-              
+               toast.error("Enter login details please", {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
           }
      }
 

@@ -7,6 +7,7 @@ import axios from 'axios';
 import FIREBASE_CONFIG_VAR from "../certs/firebase.config";
 import URLS from './api.routes'; 
 import User from "../utils/user";
+import nexusResponse from "./nexusResponse";
 
 
 //cookie.load('userId')
@@ -37,7 +38,7 @@ declare  interface  firebaseHelperInter{
      getFirebase():(firebase.app.App)|null
      userCheck():boolean
      getCurrentUser():firebase.User|null
-     initEmailAuth(eml:string,pass:string,callback:any):Promise<serverReponse|null>
+     initEmailAuth(eml:string,pass:string):Promise<nexusResponse|null>
      intiGoogleAuth():serverReponse|null
      getConnected():boolean|null
      getSpaceDetails():void
@@ -51,14 +52,14 @@ const checkToken = async () => {
 }
 
 const setToken = async (token:string) => {
-     await cookie.save('userToken', token, { path: '/' })
+     await cookie.save('userToken', token, { path: '/usertoken' })
 };
 const getUid = async () => {
      const  value  = cookie.load('uid');
      return value;
 };
 const setUid = async (uid:string) => {
-     await cookie.save('uid', uid, { path: '/' })
+     await cookie.save('uid', uid, { path: '/uid' })
 };
 
 
@@ -156,29 +157,28 @@ export default class firebaseHelper implements firebaseHelperInter{
      }
 
 
-     async initEmailAuth(eml: string, pass: string,callback:any):Promise<serverReponse|null>{
-          let ress:serverReponse = {}
+     async initEmailAuth(eml: string, pass: string):Promise<nexusResponse|null>{
+          let ress:nexusResponse|null = null;
           await this.getFirebase()!.auth().signInWithEmailAndPassword(eml,pass).then((result)=>{
-                    
                     result.user?.getIdToken(true).then(res=>{
                          user.setUserToken(res);
+                         user.setUserUid(result.user?.uid!);
+                         setUid(result.user?.uid!)
                          setToken(res);
                     })
                     ress = {
-                         error:null,
-                         resCode:200,
-                         resMess:{uid:result.user?.uid}
+                         errMess:'null',
+                         errBool:false,
+                         responseData:{uid:result.user?.uid}
                     }
                })
                .catch((error) => {
                     console.log(error.code); 
                     ress= {
-                         error:{
-                              errCode :1,
-                              errMess:error.code,
-                              errBool : true,
-                              fatal :  false,
-                         }
+                         errBool:true,
+                         errCode:1,
+                         errMess:error.code,
+                         responseData:null,
                     }
                
           });

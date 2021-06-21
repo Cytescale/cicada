@@ -2,7 +2,6 @@ import React from "react";
 import Head from 'next/head'
 import Image from 'next/image'
 import { withRouter, NextRouter } from 'next/router'
-import FullHeiLoading from '../fullHeightLoading';
 
 interface WithRouterProps {
      router: NextRouter

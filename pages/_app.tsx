@@ -1,4 +1,5 @@
 import 'react-tabs/style/react-tabs.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css'
 import '../styles/main.css';
 import '../styles/land.css';

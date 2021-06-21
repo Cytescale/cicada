@@ -1,11 +1,8 @@
 import axios from 'axios';
 import URLS from './api.routes';
 import imageKitCert from '../certs/imagekit.config';
-import {userData} from '../components/user';
-import userTempDb from '../components/userTempDb';
+import {userData} from '../utils/user';
 import nexusResponse from './nexusResponse';
-
-const Usertmpdb = new userTempDb();
 
 // var data = qs.stringify({
 //   'uid': 'value' 

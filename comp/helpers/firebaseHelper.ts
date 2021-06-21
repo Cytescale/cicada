@@ -1,12 +1,18 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import cookie from 'react-cookies'
 
 import axios from 'axios';
 import FIREBASE_CONFIG_VAR from "../certs/firebase.config";
 import URLS from './api.routes'; 
-     import { Storage } from '@capacitor/storage';
-import User from "../components/user";
+import User from "../utils/user";
+
+
+//cookie.load('userId')
+//cookie.save('userId', userId, { path: '/' })
+//  cookie.remove('userId', { path: '/' })
+
 
 
 declare type errResponse = {
@@ -40,19 +46,19 @@ declare  interface  firebaseHelperInter{
 export type {serverReponse,firebaseHelperInter,errResponse};
 
 const checkToken = async () => {
-     const { value } = await Storage.get({ key: 'token' });
+     const  value  = await cookie.load('userToken');
      return value;
 }
 
 const setToken = async (token:string) => {
-     await Storage.set({key: 'token',value:token});
+     await cookie.save('userToken', token, { path: '/' })
 };
 const getUid = async () => {
-     const { value } = await Storage.get({ key: 'uid' });
+     const  value  = cookie.load('uid');
      return value;
 };
 const setUid = async (uid:string) => {
-     await Storage.set({key: 'uid',value:uid});
+     await cookie.save('uid', uid, { path: '/' })
 };
 
 

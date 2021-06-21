@@ -1,4 +1,4 @@
-import URLS from "../api/api.routes"
+import URLS from "../helpers/api.routes"
 const imageKitCert = {
    publicKey: "public_/DkOKC6N0KqktP0jSpjDTtKpiTA=",
    urlEndpoint: "https://ik.imagekit.io/cyte",

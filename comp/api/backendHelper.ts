@@ -29,7 +29,7 @@ export default class BackendHelper{
                          url:URLS.getUserInfo,
                          headers: { 'Content-Type': 'application/json'},
                          data : data,})
-                    .then((response:nexusResponse)=>{
+                    .then((response:any)=>{
                          let rd:nexusResponse = response.responseData;
                          resolve(rd);
                     })
@@ -47,7 +47,7 @@ export default class BackendHelper{
      async _get_image_kit_auth(){
           let gotFile = null;
           await axios.post(URLS.imagekitAuth,{})
-             .then((res:nexusResponse)=>{
+             .then((res:any)=>{
                  if(res){
                       
                  }

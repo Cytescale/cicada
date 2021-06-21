@@ -40,6 +40,13 @@
      font: 20px;
 }
 
+.app-login-sub-butt:active{
+     box-shadow: none;
+     -webkit-box-shadow:none;
+   }
+   
+   
+
 .app-or-cont{
 color: #252525;
 }

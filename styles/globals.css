@@ -75,3 +75,17 @@ a {
   -webkit-box-shadow:none;
 }
 
+.Toastify__toast-container {
+  height: 12px;
+  font-family: inter;
+  font-size: 14px;
+  font-weight: 700;
+
+}
+
+.Toastify__toast {
+  width: 94%;
+  margin-left: 3%;
+  margin-top: 7px;
+  border-radius: 8px;
+}

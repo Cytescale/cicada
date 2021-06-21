@@ -1,7 +1,13 @@
 import React from "react";
 import Head from 'next/head'
 import Image from 'next/image'
+import firebaseHelper from "../../../comp/helpers/firebaseHelper";
 import { withRouter, NextRouter } from 'next/router'
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
+const FirebaseHelper = new firebaseHelper();
 
 interface WithRouterProps {
      router: NextRouter
@@ -19,15 +25,47 @@ class LoginAct extends React.Component<LoginProps,any>{
      constructor(props:any){
           super(props);
           this.state ={
-               loading:false
+               loading:false,
+               emlFldData:'nikhilwilayate1998@gmail.com',
+               pssFldData:'password',
+               errBool:false,
+               errMess:'null',
+               succBool:false,
+               succMess:'null',
           }
           this.setLoading = this.setLoading.bind(this);
+          this.setEmlFldData = this.setEmlFldData.bind(this);
+          this.setPssFldData = this.setPssFldData.bind(this);
+          this.handleLoginSub = this.handleLoginSub.bind(this);
      }
 
+     seterrToast(b:boolean,s:string){this.setState({errBool:b,errMess:s})}
+     setsuccToast(b:boolean,s:string){this.setState({errBool:b,errMess:s})}
+     setEmlFldData(s:string){this.setState({emlFldData:s})}
+     setPssFldData(s:string){this.setState({pssFldData:s})}
      setLoading(b:boolean){this.setState({loading:b})}
 
      componentDidMount(){
-          console.log(this.state.loading);
+          
+     }
+     
+     async handleLoginSub(){
+          console.log('hit');
+          toast.error("Login Init", {
+               position: toast.POSITION.TOP_CENTER,
+               autoClose: 5000,
+               hideProgressBar: true,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+          });
+          if(this.state.setEmlFldData && this.state.setPssFldData){
+            
+          }
+          else{
+              
+          }
      }
 
      render(){
@@ -61,6 +99,8 @@ class LoginAct extends React.Component<LoginProps,any>{
                               <input 
                               disabled={this.state.loading}
                               type='email'
+                              value={this.state.emlFldData}
+                              onChange={(e)=>{this.setEmlFldData(e.target.value)}}
                               className='app-input-class login-form-fld'  
                               placeholder='Enter email address'/>
                               </div>
@@ -70,6 +110,8 @@ class LoginAct extends React.Component<LoginProps,any>{
                                    </div>
                               <input 
                               disabled={this.state.loading}
+                              value={this.state.pssFldData}
+                              onChange={(e)=>{this.setPssFldData(e.target.value)}}
                               type='password'
                               className='app-input-class login-form-fld'  
                               placeholder='********'/>
@@ -78,7 +120,8 @@ class LoginAct extends React.Component<LoginProps,any>{
                                         <button className='app-login-sub-butt' 
                                              disabled={this.state.loading}
                                              onClick={()=>{
-                                             this.props.router.push('/src/land');
+                                             this.handleLoginSub();
+                                                  //this.props.router.push('/src/land');
                                         }}>
                                              {!this.state.loading?'Login':'Just a sec'}
                                         </button>
@@ -106,6 +149,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                               </div>
                          </div>
                </div>
+               <ToastContainer />
      </>
           )
      }

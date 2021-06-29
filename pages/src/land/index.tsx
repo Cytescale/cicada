@@ -10,10 +10,10 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import { withRouter, NextRouter } from 'next/router'
 import FullHeiLoading from '../fullHeightLoading';
 import Head from "next/head";
-import  {Dropdown, Modal}  from "react-bootstrap";
+import  {Dropdown, Modal, Spinner}  from "react-bootstrap";
 import { ToastContainer,toast } from "react-toastify";
 import nexusResponse from "../../../comp/helpers/nexusResponse";
-
+import { linkDataType } from "../../../comp/utils/link";
 
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
@@ -53,34 +53,51 @@ class Land extends React.Component<LandProps,any>{
                createLinkModalVisi:false,
                isLoading:false,
                isAuth:false,
+               linkName:null,
+               linkDest:null,
+               platform_id:0,
+               makeLinkLoading:false,
+               linksData:[],
+               linkDataLoading:false,
           }
           this.initDataLoad = this.initDataLoad.bind(this);
           this.setAuth = this.setAuth.bind(this);
           this.setLoading = this.setLoading.bind(this);
           this.setcreateLinkModalVisi = this.setcreateLinkModalVisi.bind(this);
+          this.setLinkName = this.setLinkName.bind(this);
+          this.setLinkDest = this.setLinkDest.bind(this);
+          this.setPlatformId = this.setPlatformId.bind(this);
+          this.renderPlatformDrop = this.renderPlatformDrop.bind(this);
+          this.submitMakeLink = this.submitMakeLink.bind(this);
+          this.setmakeLinkLoading  =this.setmakeLinkLoading.bind(this);
+          this.setlinkDataLoading = this.setlinkDataLoading.bind(this);
+          this.setLinksData = this.setLinksData.bind(this);
+          this.initLinksDataLoad = this.initLinksDataLoad.bind(this);
+          this.renderLinkTable = this.renderLinkTable.bind(this);
      }
 
-     setcreateLinkModalVisi(b:boolean){
-          this.setState({createLinkModalVisi:b})
-     }
-
-     setLoading(b:boolean){
-          this.setState({isLoading:b})
-     }
-
-     setAuth(b:boolean){
-          this.setState({isAuth:b});
-     }
+     setLinksData(v:Array<linkDataType>){this.setState({linksData:v})}
+     setlinkDataLoading(b:boolean){this.setState({linkDataLoading:b})}
+     setLinkName(s:string){this.setState({linkName:s});}
+     setLinkDest(s:string){this.setState({linkDest:s})}
+     setPlatformId(n:number){this.setState({platform_id:n});}
+     setcreateLinkModalVisi(b:boolean){this.setState({createLinkModalVisi:b})}
+     setLoading(b:boolean){this.setState({isLoading:b})}
+     setmakeLinkLoading(b:boolean){this.setState({makeLinkLoading:b})}
+     setAuth(b:boolean){this.setState({isAuth:b});}
 
      async initDataLoad(){
                this.setLoading(true);
                if(await getUid()){
+                    User.setUserUid(await getUid());
+                    this.initLinksDataLoad();
                     this.setAuth(true);
                     if(backendHelper){
-                         BackendHelper._getUserInfo(await getUid()).then((res:nexusResponse)=>{
+                         BackendHelper._getUserInfo(User.getUserUid()).then((res:nexusResponse)=>{
                               if(res){
                                    if(!res.errBool){
                                          User.setUserData(res.responseData);
+                                         console.log(res.responseData);
                                          toast.dark('User data loaded', {
                                              position: toast.POSITION.TOP_CENTER,
                                              autoClose: 5000,
@@ -124,14 +141,63 @@ class Land extends React.Component<LandProps,any>{
                }
      }
 
+     async initLinksDataLoad(){
+          if(User.getUserUid()){
+               this.setlinkDataLoading(true);
+               if(backendHelper){
+                    BackendHelper._getLinksData(User.getUserUid()!).then((res:nexusResponse)=>{
+                         if(res){
+                              if(!res.errBool){
+                                    User.setUserData(res.responseData);
+                                    console.log(res.responseData);
+                                    this.setLinksData(res.responseData);
+                                    toast.dark('Link data loaded', {
+                                        position: toast.POSITION.TOP_CENTER,
+                                        autoClose: 5000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                   });
+                              }
+                              else{
+                                   toast.error(res.errMess, {
+                                        position: toast.POSITION.TOP_CENTER,
+                                        autoClose: 5000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                   });
+                              }
+
+                    }
+                    this.setlinkDataLoading(false);
+                    }).catch(e=>{
+                         toast.error(e, {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                         this.setlinkDataLoading(false);
+                    });
+               }
+          }
+     }
      
 
-     renderLink(ind:number,name:string,gen_link:string,dest_link:string){
+     renderLink(ind:number,d:linkDataType){
           return(
                <div className='lnk-lnk-main-cont'>
                     <div className='lnk-lnk-head-main-cont'>
                               <div className='lnk-lnk-head-main-cont-name-cont'>
-                                    {name}
+                                    {d.name}
                               </div>
 
                               <button
@@ -144,7 +210,7 @@ class Land extends React.Component<LandProps,any>{
                               </button>
                               <div  className='lnk-lnk-head-right-butt-cont'>
                               <label className="switch">
-                                   <input type="checkbox"/>
+                                   <input type="checkbox" checked={d.active_bool}/>
                                    <span className="slider round"></span>
                               </label>
                               {/* <button className='dash-links-cont-link-right-copy-butt'>
@@ -154,7 +220,7 @@ class Land extends React.Component<LandProps,any>{
                     </div>
                     <div className='lnk-lnk-gen-cont'>
                          <div className='lnk-lnk-gen-link'>
-                              {gen_link}
+                              {'gen link'}
                          </div>
                          <div className='lnk-lnk-gen-right-cont'>
                               <button className='lnk-lnk-gen-right-butt'>                             
@@ -177,6 +243,123 @@ class Land extends React.Component<LandProps,any>{
                </div>
           )
      }
+
+     renderPlatformDrop(){
+          switch(this.state.platform_id){
+               case 1:{
+                    return 'Instragram';
+                    break;
+               }
+               default:{
+                    return 'Select Platform';
+               }
+          }
+     }
+
+     async submitMakeLink(){
+          this.setmakeLinkLoading(true);
+          if(this.state.linkName && this.state.linkDest){
+               if(this.state.platform_id!==0){
+                    if(backendHelper){
+                         const link_data={
+                              "uid":User.getUserUid(),
+                              "link_data":{
+                                  "name":this.state.linkName,
+                                  "link_dest":this.state.linkDest,
+                                  "creator_id":User.getUserUid(),
+                                  "platform_id":this.state.platform_id,
+                                  "active_bool":true,
+                                  "deleted_bool":false,
+                                  "ban_bool":false
+                              }
+                          }
+                         BackendHelper._createLink(link_data).then((res:nexusResponse)=>{
+                              if(res){
+                                   if(!res.errBool){
+                                         User.setUserData(res.responseData);
+                                         console.log(res.responseData);
+                                         this.initLinksDataLoad();
+                                         if(res.responseData.linkCreated){
+                                             toast.success('Link Created', {
+                                                  position: toast.POSITION.TOP_CENTER,
+                                                  autoClose: 5000,
+                                                  hideProgressBar: true,
+                                                  closeOnClick: true,
+                                                  pauseOnHover: true,
+                                                  draggable: true,
+                                                  progress: undefined,
+                                             });
+                                             this.setcreateLinkModalVisi(false);
+                                             this.setLinkName('');
+                                             this.setLinkDest('');
+                                             this.setPlatformId(0);
+                                        }
+                                   }
+                                   else{
+                                        toast.error(res.errMess, {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 5000,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                        });
+                                   }
+                         }
+                         this.setmakeLinkLoading(false);
+                         }).catch(e=>{
+                              toast.error(e, {
+                                   position: toast.POSITION.TOP_CENTER,
+                                   autoClose: 5000,
+                                   hideProgressBar: true,
+                                   closeOnClick: true,
+                                   pauseOnHover: true,
+                                   draggable: true,
+                                   progress: undefined,
+                              });
+                              this.setmakeLinkLoading(false);
+                         });
+                    }
+               }else{
+                    toast.error("Select a platform", {
+                         position: toast.POSITION.TOP_CENTER,
+                         autoClose: 7000,
+                         hideProgressBar: true,
+                         closeOnClick: true,
+                         pauseOnHover: true,
+                         draggable: true,
+                         progress: undefined,
+                    });
+                    this.setmakeLinkLoading(false);
+               }
+          }else{
+               toast.error("Fill all details please", {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 7000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
+               this.setmakeLinkLoading(false);
+          }
+
+     }
+
+
+
+     renderLinkTable(){
+          let res:any = [];
+          if(this.state.linksData.length > 0){
+               this.state.linksData.map((e:linkDataType,ind:number)=>{
+                    res.push(this.renderLink(ind,e));
+               })
+          }
+          return res;
+     }
+
 
      componentDidMount(){
           console.log('component mount');
@@ -215,24 +398,20 @@ class Land extends React.Component<LandProps,any>{
                               <WelcomeHead/>
 
                               <div className='app-create-link-modal-hr'/>
-                              {this.renderLink(
-                              1,
-                              'YoutubeLink ',
-                              'cyte.com/fsavb',
-                              'https://www.figma.com/file/fasf/...'
-                         )}
-                         {this.renderLink(
-                              1,
-                              'YoutubeLink ',
-                              'cyte.com/fsavb',
-                              'https://www.figma.com/file/fasf/...'
-                         )}
-                         {this.renderLink(
-                              1,
-                              'YoutubeLink ',
-                              'cyte.com/fsavb',
-                              'https://www.figma.com/file/fasf/...'
-                         )}
+                              {
+                              this.state.linkDataLoading?
+                              <Spinner
+                              as="span"
+                              animation="border"
+                              size="sm"
+                              role="status"
+                              aria-hidden="true"
+                              />:
+                              <span>
+                              {this.renderLinkTable()}
+                              </span>
+                              }
+
 
                          <div className='app-create-link-modal-hr'/>
 
@@ -257,30 +436,56 @@ class Land extends React.Component<LandProps,any>{
                                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Name</div>
                                              <input 
                                              type='text' 
+                                             disabled={this.state.makeLinkLoading}
                                              placeholder='eg: YoutubeLink'
-                                             className='app-create-link-modal-main-cont-fld'/>
+                                             className='app-create-link-modal-main-cont-fld'
+                                             value={this.state.linkName}
+                                             onChange={(e)=>{this.setLinkName(e.target.value)}}
+                                             />
                                    </div>
                                    <div className='app-create-link-modal-main-cont-fld-cont'>
                                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Address</div>
                                              <input 
                                              type='text' 
+                                             disabled={this.state.makeLinkLoading}
                                              placeholder='eg: www.link.com'
-                                             className='app-create-link-modal-main-cont-fld'/>
+                                             className='app-create-link-modal-main-cont-fld'
+                                             value={this.state.linkDest}
+                                             onChange={(e)=>{this.setLinkDest(e.target.value)}}
+                                             />
                                    </div>
 
                                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                                   <Dropdown>
-                                        <Dropdown.Toggle variant="light" id="dropdown-basic" className='app-create-link-modal-main-cont-drop'>
-                                        Platform
+                                   <Dropdown >
+                                        <Dropdown.Toggle variant="light" id="dropdown-basic" className='app-create-link-modal-main-cont-drop' disabled={this.state.makeLinkLoading}>
+                                        {this.renderPlatformDrop()}
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu >
-                                        <Dropdown.Item as="button">Instagran</Dropdown.Item>
+                                        <Dropdown.Item as="button"
+                                        onClick={()=>{this.setPlatformId(1)}}
+                                        >Instagran</Dropdown.Item>
                                         </Dropdown.Menu>
                                         </Dropdown>
                                    </div>
 
                                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                                   <button className='app-create-link-modal-crt-lnk-butt'>Create Link</button>
+                                   <button className='app-create-link-modal-crt-lnk-butt'
+                                   onClick={()=>{
+                                        this.submitMakeLink();
+                                   }}
+                                   >{
+                                        this.state.makeLinkLoading?
+                                        <Spinner
+                                             as="span"
+                                             animation="border"
+                                             size="sm"
+                                             role="status"
+                                             aria-hidden="true"
+                                        />:
+                                        <span>Create Link</span>
+                                   }
+                                        
+                                   </button>
                                    </div>
                                    
                               </div>

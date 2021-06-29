@@ -41,7 +41,51 @@ export default class BackendHelper{
           })
       }
 
+
+     _createLink(got_data:any):Promise<nexusResponse>{
+          return new Promise((resolve, reject) => {
+               setTimeout(async ()=>{
+                    await axios({
+                         method: 'post',
+                         url:URLS.makeLinkData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : got_data,})
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+               }, 5000);
+          })
+     }
+
+     _getLinksData(uid:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid});             
+          return new Promise((resolve, reject) => {
+               setTimeout(async ()=>{
+                    await axios({
+                         method: 'post',
+                         url:URLS.getLinkData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,})
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+               }, 5000);
+          })
+     }
     
+
      async _updateUserInfo(data:userData){
           let respn =  null;
            await axios.post(URLS.updateUserInfo,{uid:this.UID,data:data,

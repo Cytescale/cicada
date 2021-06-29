@@ -1,12 +1,15 @@
+import { any } from "prop-types";
 import React,{useState} from "react";
 
-export default class Links extends React.Component {
+
+
+export default class Links extends React.Component<any,any> {
      constructor(props:any){
           super(props);
      }
 
 
-
+    
 
      renderSearchBar(){
           return(
@@ -15,13 +18,13 @@ export default class Links extends React.Component {
                          className='app-input-class link-search-bar-inp'
                          placeholder='Search'
                          />
-                         <button
+                         {/* <button
                          className='app-input-class-raised-pressable land-flt-butt'
                          >                        
                               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M4.24993 5.61C6.56993 8.59 9.99993 13 9.99993 13V18C9.99993 19.1 10.8999 20 11.9999 20C13.0999 20 13.9999 19.1 13.9999 18V13C13.9999 13 17.4299 8.59 19.7499 5.61C20.2599 4.95 19.7899 4 18.9499 4H5.03993C4.20993 4 3.73993 4.95 4.24993 5.61Z" fill="white"/>
                               </svg>
-                         </button>
+                         </button> */}
                          
                </div>
           )
@@ -42,11 +45,19 @@ export default class Links extends React.Component {
                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                    <path d="M2.375 13.8225V16.2292C2.375 16.4508 2.54917 16.625 2.77083 16.625H5.1775C5.28042 16.625 5.38333 16.5854 5.45458 16.5062L14.0996 7.86916L11.1308 4.90041L2.49375 13.5375C2.41458 13.6167 2.375 13.7117 2.375 13.8225ZM16.3954 5.57333C16.7042 5.26458 16.7042 4.76583 16.3954 4.45708L14.5429 2.60458C14.2342 2.29583 13.7354 2.29583 13.4267 2.60458L11.9779 4.05333L14.9467 7.02208L16.3954 5.57333Z" fill="white"/>
                                    </svg>
+                              
                               </button>
                               <div  className='lnk-lnk-head-right-butt-cont'>
                               <button className='dash-links-cont-link-right-copy-butt'>
                                  <svg className='dash-links-cont-link-right-enal-butt-ico turned-on' viewBox='0 0 512 512'><title>Power</title><path d='M378 108a191.41 191.41 0 0170 148c0 106-86 192-192 192S64 362 64 256a192 192 0 0169-148M256 64v192' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
                               </button>
+{/*                               
+                              <button className='lnk-lnk-bottom-del-butt'>
+                              <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.5 14.25C4.5 15.075 5.175 15.75 6 15.75H12C12.825 15.75 13.5 15.075 13.5 14.25V6.75C13.5 5.925 12.825 5.25 12 5.25H6C5.175 5.25 4.5 5.925 4.5 6.75V14.25ZM13.5 3H11.625L11.0925 2.4675C10.9575 2.3325 10.7625 2.25 10.5675 2.25H7.4325C7.2375 2.25 7.0425 2.3325 6.9075 2.4675L6.375 3H4.5C4.0875 3 3.75 3.3375 3.75 3.75C3.75 4.1625 4.0875 4.5 4.5 4.5H13.5C13.9125 4.5 14.25 4.1625 14.25 3.75C14.25 3.3375 13.9125 3 13.5 3Z" fill="currentColor"/>
+                              </svg>
+                              </button> */}
+
                               </div>
                     </div>
                     {/* <div className='lnk-lnk-body-cont'>
@@ -73,6 +84,7 @@ export default class Links extends React.Component {
                                    <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="#B9CAD8" stroke-linecap="round" stroke-linejoin="round"/>
                                    </svg>
                               </button>
+                              
 
                          </div>
                     </div>
@@ -80,11 +92,7 @@ export default class Links extends React.Component {
                          <button className='lnk-lnk-bottom-show-butt'>
                               Show analytics
                          </button>
-                         <button className='lnk-lnk-bottom-del-butt'>
-                              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M4.5 14.25C4.5 15.075 5.175 15.75 6 15.75H12C12.825 15.75 13.5 15.075 13.5 14.25V6.75C13.5 5.925 12.825 5.25 12 5.25H6C5.175 5.25 4.5 5.925 4.5 6.75V14.25ZM13.5 3H11.625L11.0925 2.4675C10.9575 2.3325 10.7625 2.25 10.5675 2.25H7.4325C7.2375 2.25 7.0425 2.3325 6.9075 2.4675L6.375 3H4.5C4.0875 3 3.75 3.3375 3.75 3.75C3.75 4.1625 4.0875 4.5 4.5 4.5H13.5C13.9125 4.5 14.25 4.1625 14.25 3.75C14.25 3.3375 13.9125 3 13.5 3Z" fill="white"/>
-                              </svg>
-                         </button>
+                       
                     </div>
 
                </div>
@@ -135,9 +143,9 @@ export default class Links extends React.Component {
 
      render(){
           return(
-               <div className='app-content-main-cont'>
-                     <div className='app-head-main-cont'>
-                              <div className='app-head-main-cont-logo'>
+               <div className='app-content-main-cont link-body-cont'>
+                     <div className='app-head-main-cont link-head-body-cont'>
+                              <div className='app-head-main-cont-logo link-head-logo'>
                               Cicada
                               </div>
                               <div className='app-head-main-right-cont'>
@@ -149,7 +157,7 @@ export default class Links extends React.Component {
                               </div>
                          </div>
                          <div className='app-body-main-cont'>
-                              <div className='app-body-main-cont-lab'>0 Links</div>                              
+                              <div className='app-body-main-cont-lab link-body-lab'>0 Links</div>                              
                             
                          </div>
                          {this.renderSearchBar()}
@@ -159,19 +167,7 @@ export default class Links extends React.Component {
                               'cyte.com/fsavb',
                               'https://www.figma.com/file/fasf/...'
                          )}
-                         {this.renderLink(
-                              1,
-                              'YoutubeLink ',
-                              'cyte.com/fsavb',
-                              'https://www.figma.com/file/fasf/...'
-                         )}
-                         {this.renderLink(
-                              1,
-                              'YoutubeLink ',
-                              'cyte.com/fsavb',
-                              'https://www.figma.com/file/fasf/...'
-                         )}
-                         {this.renderBottomFader()}
+                         {/* {this.renderBottomFader()} */}
                          
                </div>
           )

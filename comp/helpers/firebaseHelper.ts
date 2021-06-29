@@ -52,14 +52,14 @@ const checkToken = async () => {
 }
 
 const setToken = async (token:string) => {
-     await cookie.save('userToken', token, { path: '/usertoken' })
+     await cookie.save('userToken', token, { path: '/' })
 };
 const getUid = async () => {
      const  value  = cookie.load('uid');
      return value;
 };
 const setUid = async (uid:string) => {
-     await cookie.save('uid', uid, { path: '/uid' })
+     await cookie.save('uid', uid, { path: '/' })
 };
 
 
@@ -73,7 +73,7 @@ export default class firebaseHelper implements firebaseHelperInter{
      static _CONNTECD:boolean = false;
   
      constructor(){
-
+          this.initFirebaseApp();
      }
      
 

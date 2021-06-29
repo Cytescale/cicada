@@ -10,6 +10,7 @@
   "dependencies": {
     "@sentry/react": "^6.2.5",
     "@sentry/tracing": "^6.2.5",
+    "@types/react-bootstrap": "^0.32.25",
     "agora-access-token": "^2.0.4",
     "agora-rtc-sdk-ng": "^4.5.0",
     "axios": "^0.21.1",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react-cookies": "^0.1.0",
+    "@types/react-tabs": "^2.3.2",
     "typescript": "^4.2.4"
   }
 }

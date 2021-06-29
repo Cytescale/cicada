@@ -10,16 +10,16 @@ body {
   /*neuro design*/
   
   --pri-dark: #11E4D1;
-  --sec-dark:#2E363E;
+  --sec-dark:#fff;
   --warning:#EEC485;
   --danger:#EB445A;
-  --succ:#94FFBF;
-  --text-s1:#fff;
+  --succ:#0CCE6B;
+  --text-s1:#000;
   --text-s2:#63798E;
   --margin:20px;
   --margin-top:26px;
   --bor-rad:10px;
-  --bor-color:#3D4650;
+  --bor-color:#e0e0e0;
 
   --box-shad-inset:inset -3px -3px 10px #384148, 
                   inset 3px 3px 10px #1E242B;

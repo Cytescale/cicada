@@ -3,7 +3,7 @@ if(process.env.NODE_ENV=='development'){
      _BASE_API_URL = 'http://localhost:8200/api/'
 }
 if(process.env.NODE_ENV=='production'){
-     _BASE_API_URL = 'http://ec2-65-2-40-247.ap-south-1.compute.amazonaws.com:8200/api/'
+     _BASE_API_URL = 'https://9ukpweulq2.execute-api.ap-south-1.amazonaws.com/v2/'
 }
 
 export declare type URLinter = {

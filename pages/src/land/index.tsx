@@ -6,11 +6,13 @@ import Profile from "./profile";
 import Dash from "./dash";
 import user from "../../../comp/utils/user";
 import firebaseHelper,{getUid,checkToken} from "../../../comp/helpers/firebaseHelper";
+import backendHelper from "../../../comp/helpers/backendHelper";
 import { withRouter, NextRouter } from 'next/router'
 import FullHeiLoading from '../fullHeightLoading';
 import Head from "next/head";
 import  {Dropdown, Modal}  from "react-bootstrap";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer,toast } from "react-toastify";
+import nexusResponse from "../../../comp/helpers/nexusResponse";
 
 
 const WelcomeHead:React.FC<any> = ()=>{
@@ -29,6 +31,7 @@ const WelcomeHead:React.FC<any> = ()=>{
      )
 }
 const FirebaseHelper = new firebaseHelper();
+const BackendHelper = new backendHelper();
 const User = new user();
 
 
@@ -73,7 +76,48 @@ class Land extends React.Component<LandProps,any>{
                this.setLoading(true);
                if(await getUid()){
                     this.setAuth(true);
-                    this.setLoading(false);
+                    if(backendHelper){
+                         BackendHelper._getUserInfo(await getUid()).then((res:nexusResponse)=>{
+                              if(res){
+                                   if(!res.errBool){
+                                         User.setUserData(res.responseData);
+                                         toast.dark('User data loaded', {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 5000,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                        });
+                                   }
+                                   else{
+                                        toast.error(res.errMess, {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 5000,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                        });
+                                   }
+                         }
+                         this.setLoading(false);
+                         }).catch(e=>{
+                              toast.error(e, {
+                                   position: toast.POSITION.TOP_CENTER,
+                                   autoClose: 5000,
+                                   hideProgressBar: true,
+                                   closeOnClick: true,
+                                   pauseOnHover: true,
+                                   draggable: true,
+                                   progress: undefined,
+                              });
+                              this.setLoading(false);
+                         });
+                    }
+
                }else{
                     this.props.router.replace('/src/login');
                     this.setAuth(false);

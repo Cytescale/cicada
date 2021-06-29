@@ -14,8 +14,8 @@ export default class BackendHelper{
      public static CurrentPass = 0;
 
      UID :string|null = null;
-     constructor(UID:string|null){
-          this.UID = UID!;
+     constructor(){
+     
      }
      
    

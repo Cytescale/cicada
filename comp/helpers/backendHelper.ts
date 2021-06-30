@@ -42,6 +42,28 @@ export default class BackendHelper{
       }
 
 
+      _checkURLValid(got_data:any):Promise<nexusResponse>{
+          return new Promise((resolve, reject) => {
+               setTimeout(async ()=>{
+                    await axios({
+                         method: 'post',
+                         url:URLS.checkURLValidity,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : got_data,})
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+               }, 5000);
+          })
+     }
+
+
      _createLink(got_data:any):Promise<nexusResponse>{
           return new Promise((resolve, reject) => {
                setTimeout(async ()=>{

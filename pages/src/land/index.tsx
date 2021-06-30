@@ -59,6 +59,8 @@ class Land extends React.Component<LandProps,any>{
                makeLinkLoading:false,
                linksData:[],
                linkDataLoading:false,
+               validityLoading:false,
+               validated:false,
           }
           this.initDataLoad = this.initDataLoad.bind(this);
           this.setAuth = this.setAuth.bind(this);
@@ -74,12 +76,21 @@ class Land extends React.Component<LandProps,any>{
           this.setLinksData = this.setLinksData.bind(this);
           this.initLinksDataLoad = this.initLinksDataLoad.bind(this);
           this.renderLinkTable = this.renderLinkTable.bind(this);
+          this.setvalidityLoading = this.setvalidityLoading.bind(this);
+          this.setvalidated = this.setvalidated.bind(this);
+          this.renderValidityIndi = this.renderValidityIndi.bind(this);
+          this.validateOnChange = this.validateOnChange.bind(this);
      }
-
+     
+     setvalidated(b:boolean){this.setState({validated:b})}
+     setvalidityLoading(b:boolean){this.setState({validityLoading:b})}
      setLinksData(v:Array<linkDataType>){this.setState({linksData:v})}
      setlinkDataLoading(b:boolean){this.setState({linkDataLoading:b})}
      setLinkName(s:string){this.setState({linkName:s});}
-     setLinkDest(s:string){this.setState({linkDest:s})}
+     setLinkDest(s:string){
+     this.setvalidated(false);    
+     this.setState({linkDest:s})
+     this.validateOnChange(s)}
      setPlatformId(n:number){this.setState({platform_id:n});}
      setcreateLinkModalVisi(b:boolean){this.setState({createLinkModalVisi:b})}
      setLoading(b:boolean){this.setState({isLoading:b})}
@@ -98,15 +109,15 @@ class Land extends React.Component<LandProps,any>{
                                    if(!res.errBool){
                                          User.setUserData(res.responseData);
                                          console.log(res.responseData);
-                                         toast.dark('User data loaded', {
-                                             position: toast.POSITION.TOP_CENTER,
-                                             autoClose: 5000,
-                                             hideProgressBar: true,
-                                             closeOnClick: true,
-                                             pauseOnHover: true,
-                                             draggable: true,
-                                             progress: undefined,
-                                        });
+                                        //  toast.dark('User data loaded', {
+                                        //      position: toast.POSITION.TOP_CENTER,
+                                        //      autoClose: 5000,
+                                        //      hideProgressBar: true,
+                                        //      closeOnClick: true,
+                                        //      pauseOnHover: true,
+                                        //      draggable: true,
+                                        //      progress: undefined,
+                                        // });
                                    }
                                    else{
                                         toast.error(res.errMess, {
@@ -151,15 +162,15 @@ class Land extends React.Component<LandProps,any>{
                                     User.setUserData(res.responseData);
                                     console.log(res.responseData);
                                     this.setLinksData(res.responseData);
-                                    toast.dark('Link data loaded', {
-                                        position: toast.POSITION.TOP_CENTER,
-                                        autoClose: 5000,
-                                        hideProgressBar: true,
-                                        closeOnClick: true,
-                                        pauseOnHover: true,
-                                        draggable: true,
-                                        progress: undefined,
-                                   });
+                                   //  toast.dark('Link data loaded', {
+                                   //      position: toast.POSITION.TOP_CENTER,
+                                   //      autoClose: 5000,
+                                   //      hideProgressBar: true,
+                                   //      closeOnClick: true,
+                                   //      pauseOnHover: true,
+                                   //      draggable: true,
+                                   //      progress: undefined,
+                                   // });
                               }
                               else{
                                    toast.error(res.errMess, {
@@ -191,7 +202,6 @@ class Land extends React.Component<LandProps,any>{
           }
      }
      
-
      renderLink(ind:number,d:linkDataType){
           return(
                <div className='lnk-lnk-main-cont'>
@@ -244,10 +254,23 @@ class Land extends React.Component<LandProps,any>{
           )
      }
 
+     renderValidityIndi(){
+          if(this.state.linkDest && !this.state.validityLoading){
+               if(this.state.validated){return(<></>);}
+               else{return( <div className='app-land-url-valid-init-cont-err'>Invalid Url 🥲 </div>)}
+          }
+          //<div className='app-land-url-valid-init-cont-succ'>Valid Url 😄 </div>
+     }
+
      renderPlatformDrop(){
           switch(this.state.platform_id){
                case 1:{
-                    return 'Instragram';
+                    return (
+                         <div className='app-land-indi'>
+                              <svg className='app-land-indi-ico' xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5_logos</title><path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"/></svg>
+                              Youtube
+                         </div>
+                    );
                     break;
                }
                default:{
@@ -256,8 +279,54 @@ class Land extends React.Component<LandProps,any>{
           }
      }
 
+     async validateOnChange(s:string){
+          if(s){
+               this.setvalidityLoading(true);         
+               if(backendHelper){
+                    BackendHelper._checkURLValid({"uid":User.getUserUid(),"link_url":s}).then((res:nexusResponse)=>{
+                         if(res){
+                              if(!res.errBool){
+                                   //{valid_url: false, identified_platform_id: 0, parse_validity: false}
+                                   this.setvalidityLoading(false);
+                                   if(res.responseData.valid_url && res.responseData.parse_validity && res.responseData.identified_platform_id){
+                                        this.setvalidated(true);
+                                        this.setPlatformId(res.responseData.identified_platform_id);
+                                   }
+                              }
+                              else{
+                                   toast.error(res.errMess, {
+                                        position: toast.POSITION.TOP_CENTER,
+                                        autoClose: 5000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                   });
+                                   this.setvalidityLoading(false);
+                                   this.setvalidated(false);
+                              }
+                    }
+                    }).catch(e=>{
+                         toast.error(e, {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                    this.setvalidityLoading(false);
+                    this.setvalidated(false);
+                    });
+               }
+     }
+     }
+
      async submitMakeLink(){
           this.setmakeLinkLoading(true);
+          if(this.state.validated){
           if(this.state.linkName && this.state.linkDest){
                if(this.state.platform_id!==0){
                     if(backendHelper){
@@ -345,6 +414,18 @@ class Land extends React.Component<LandProps,any>{
                });
                this.setmakeLinkLoading(false);
           }
+          }else{
+               toast.error("Link not validated", {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 7000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
+               this.setmakeLinkLoading(false);     
+          }    
 
      }
 
@@ -371,7 +452,7 @@ class Land extends React.Component<LandProps,any>{
           return(
                <div className='app-main-cont-main-body login-body-cont'>
                     <Head>
-                    <title>Login</title>
+                    <title>Sakura</title>
                     <meta name="description" content="Cicada Login Activity" />
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
@@ -432,6 +513,14 @@ class Land extends React.Component<LandProps,any>{
                                    Select from given Platforms
                                    </div>
                                    
+                                   {
+                                        this.state.validated && this.state.platform_id>0?
+                                        <div className='app-land-plat-indi-cont'>
+                                        {this.renderPlatformDrop()}
+                                        </div>:
+                                        <span/>
+                                   }
+
                                    <div className='app-create-link-modal-main-cont-fld-cont'>
                                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Name</div>
                                              <input 
@@ -451,41 +540,66 @@ class Land extends React.Component<LandProps,any>{
                                              placeholder='eg: www.link.com'
                                              className='app-create-link-modal-main-cont-fld'
                                              value={this.state.linkDest}
-                                             onChange={(e)=>{this.setLinkDest(e.target.value)}}
+                                             onChange={(e)=>{
+                                                  this.setvalidityLoading(true); 
+                                                  this.setvalidated(false);
+                                                  this.setLinkDest(e.target.value)}
+                                             }
                                              />
                                    </div>
 
                                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                                   <Dropdown >
-                                        <Dropdown.Toggle variant="light" id="dropdown-basic" className='app-create-link-modal-main-cont-drop' disabled={this.state.makeLinkLoading}>
-                                        {this.renderPlatformDrop()}
-                                        </Dropdown.Toggle>
-                                        <Dropdown.Menu >
-                                        <Dropdown.Item as="button"
-                                        onClick={()=>{this.setPlatformId(1)}}
-                                        >Instagran</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                        </Dropdown>
+                                             <button
+                                             className='app-create-link-modal-main-paste-butt'
+                                             onClick={()=>{
+                                                  navigator.clipboard.readText().then((t)=>{
+                                                       if(typeof t == 'string'){
+                                                            this.setLinkDest(t)
+                                                       }
+                                                  });
+                                             }}
+                                             >
+                                             <svg className='app-create-link-modal-main-paste-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 2h-4.18C14.4.84 13.3 0 12 0S9.6.84 9.18 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm6 18H6c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V4h1c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1z"/></svg>
+                                             Paste from Clipboard
+                                             </button>
                                    </div>
 
                                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                                   <button className='app-create-link-modal-crt-lnk-butt'
-                                   onClick={()=>{
-                                        this.submitMakeLink();
-                                   }}
-                                   >{
-                                        this.state.makeLinkLoading?
-                                        <Spinner
-                                             as="span"
-                                             animation="border"
-                                             size="sm"
-                                             role="status"
-                                             aria-hidden="true"
-                                        />:
-                                        <span>Create Link</span>
+                                   {
+                                   this.state.validityLoading==true?
+                                        <div className='app-land-url-valid-indi-load-cont'>
+                                             <Spinner
+                                                  as="span"
+                                                  animation="border"
+                                                  size="sm"
+                                                  role="status"
+                                                  aria-hidden="true"/>
+                                        </div>:
+                                   this.renderValidityIndi()
                                    }
-                                        
-                                   </button>
+                                   </div>
+
+                                   <div className='app-create-link-modal-main-cont-fld-cont'>
+                                   {
+                                        this.state.validated?
+                                             <button className='app-create-link-modal-crt-lnk-butt'
+                                             onClick={()=>{
+                                                  this.submitMakeLink();
+                                             }}
+                                                  >{
+                                             this.state.makeLinkLoading?
+                                             <Spinner
+                                                  as="span"
+                                                  animation="border"
+                                                  size="sm"
+                                                  role="status"
+                                                  aria-hidden="true"
+                                             />:
+                                             <span>Create Link</span>
+                                        }     
+                                        </button>:
+                                   <span/>
+                                   }
                                    </div>
                                    
                               </div>

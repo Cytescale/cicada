@@ -14,6 +14,11 @@ import  {Dropdown, Modal, Spinner}  from "react-bootstrap";
 import { ToastContainer,toast } from "react-toastify";
 import nexusResponse from "../../../comp/helpers/nexusResponse";
 import { linkDataType } from "../../../comp/utils/link";
+import Link from 'next/link'
+import URLS from "../../../comp/helpers/api.routes";
+import copy from 'copy-to-clipboard';
+
+
 
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
@@ -80,6 +85,7 @@ class Land extends React.Component<LandProps,any>{
           this.setvalidated = this.setvalidated.bind(this);
           this.renderValidityIndi = this.renderValidityIndi.bind(this);
           this.validateOnChange = this.validateOnChange.bind(this);
+          this.openInNewTab = this.openInNewTab.bind(this);
      }
      
      setvalidated(b:boolean){this.setState({validated:b})}
@@ -201,6 +207,10 @@ class Land extends React.Component<LandProps,any>{
                }
           }
      }
+     openInNewTab(url:string){
+          const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+          if (newWindow) newWindow.opener = null
+     }
      
      renderLink(ind:number,d:linkDataType){
           return(
@@ -229,16 +239,31 @@ class Land extends React.Component<LandProps,any>{
                               </div>
                     </div>
                     <div className='lnk-lnk-gen-cont'>
-                         <div className='lnk-lnk-gen-link'>
-                              {'gen link'}
+                         <div className='lnk-lnk-gen-link' onClick={()=>{
+                              this.openInNewTab(`${URLS.visit}/${d.unique_identifier}`);
+                         }}>
+                              {`https://.../visit/${d.unique_identifier}`}
+                              <svg className='lnk-lnk-gen-link-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                          </div>
                          <div className='lnk-lnk-gen-right-cont'>
-                              <button className='lnk-lnk-gen-right-butt'>                             
+                              {/* <button className='lnk-lnk-gen-right-butt'>                             
                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                    <path d="M0.375 11.8225V14.2292C0.375 14.4508 0.549167 14.625 0.770833 14.625H3.1775C3.28042 14.625 3.38333 14.5854 3.45458 14.5062L12.0996 5.86916L9.13083 2.90041L0.49375 11.5375C0.414583 11.6167 0.375 11.7117 0.375 11.8225ZM14.3954 3.57333C14.7042 3.26458 14.7042 2.76583 14.3954 2.45708L12.5429 0.604579C12.2342 0.295829 11.7354 0.295829 11.4267 0.604579L9.97792 2.05333L12.9467 5.02208L14.3954 3.57333Z" fill="currentColor"/>
                                    </svg>
-                              </button>
-                              <button className='lnk-lnk-gen-right-butt'>                             
+                              </button> */}
+                              <button className='lnk-lnk-gen-right-butt' onClick={()=>{
+                                   copy(`${URLS.visit}/${d.unique_identifier}`);
+                                   toast.dark('Link Copied', {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 2500,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                   });
+
+                              }}>                             
                                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                    <path d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
                                    <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>

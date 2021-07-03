@@ -18,8 +18,9 @@ import Link from 'next/link'
 import URLS from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
 import { push as Menu } from 'react-burger-menu'
-import {Line} from 'react-chartjs-2';
+import Chart from 'chart.js';
 
+import LandVisitChart from './landChart';
 
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
@@ -40,6 +41,15 @@ const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 const User = new user();
 
+const data = (canvas:any) => {
+     const ctx = canvas.getContext('2d'); 
+     return {
+         datasets: [{
+             backgroundColor: '#f5f5f5',
+             // ...the rest
+         }],
+     };
+ }
 
 
 interface WithRouterProps {
@@ -509,10 +519,12 @@ class Land extends React.Component<LandProps,any>{
           return res;
      }
 
+  
 
      componentDidMount(){
           console.log('component mount');
           this.initDataLoad();
+          
      }
 
      render(){
@@ -547,6 +559,8 @@ class Land extends React.Component<LandProps,any>{
                               <div className='app-sub-head-des-main-cont'>Create your own deep links</div> */}
 
                               <WelcomeHead/>
+                              <LandVisitChart/>
+                              
                               
 
                               <div className='app-create-link-modal-hr'/>

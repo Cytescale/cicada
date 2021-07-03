@@ -492,7 +492,7 @@ font-family: inter;
      padding-left: 12px;
      font-family: poppins;
      font-size: 17px;
-     margin-top: 12px;
+     margin-top: 13px;
 }
 .menu-item-bottom-menu{
      background-color: #f8f8f8;
@@ -500,7 +500,7 @@ font-family: inter;
      left: 0;
      right: 0;
      padding: 12px;
-
+     margin-top: 12px;
 }
 .menu-item-bottom-v{
      width: 100%;

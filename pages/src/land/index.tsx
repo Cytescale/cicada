@@ -17,8 +17,8 @@ import { linkDataType } from "../../../comp/utils/link";
 import Link from 'next/link'
 import URLS from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
-import { scaleDown as Menu } from 'react-burger-menu'
-
+import { push as Menu } from 'react-burger-menu'
+import {Line} from 'react-chartjs-2';
 
 
 const WelcomeHead:React.FC<any> = ()=>{
@@ -248,12 +248,15 @@ class Land extends React.Component<LandProps,any>{
                          <path d="M17 5.73913C17 8.31505 14.8038 10.4783 12 10.4783C9.19622 10.4783 7 8.31505 7 5.73913C7 3.16321 9.19622 1 12 1C14.8038 1 17 3.16321 17 5.73913Z" stroke="currentColor" stroke-width="2"/>
                          </svg>
                     Profile</a>
+                    <a id="contact" className="menu-item" href="/contact">
+                         <svg className='menu-item-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
+                         Help</a>
 
                     <div className="menu-item-bottom-menu">
-                         <div className="menu-item-bottom-v">0.0.1 alpha </div>
                     <button className="menu-item-lgout">
                          Logout
                     </button>
+                    <div className="menu-item-bottom-v">v 0.0.1 </div>
                     </div>
              </Menu>
              )
@@ -281,9 +284,6 @@ class Land extends React.Component<LandProps,any>{
                                    <input type="checkbox" />
                                    <span className="slider round"></span>
                               </label>
-                              {/* <button className='dash-links-cont-link-right-copy-butt'>
-                                 <svg className='dash-links-cont-link-right-enal-butt-ico turned-on' viewBox='0 0 512 512'><title>Power</title><path d='M378 108a191.41 191.41 0 0170 148c0 106-86 192-192 192S64 362 64 256a192 192 0 0169-148M256 64v192' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
-                              </button> */}
                               </div>
                     </div>
                     <div className='lnk-lnk-gen-cont'>
@@ -294,11 +294,6 @@ class Land extends React.Component<LandProps,any>{
                               <svg className='lnk-lnk-gen-link-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                          </div>
                          <div className='lnk-lnk-gen-right-cont'>
-                              {/* <button className='lnk-lnk-gen-right-butt'>                             
-                                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M0.375 11.8225V14.2292C0.375 14.4508 0.549167 14.625 0.770833 14.625H3.1775C3.28042 14.625 3.38333 14.5854 3.45458 14.5062L12.0996 5.86916L9.13083 2.90041L0.49375 11.5375C0.414583 11.6167 0.375 11.7117 0.375 11.8225ZM14.3954 3.57333C14.7042 3.26458 14.7042 2.76583 14.3954 2.45708L12.5429 0.604579C12.2342 0.295829 11.7354 0.295829 11.4267 0.604579L9.97792 2.05333L12.9467 5.02208L14.3954 3.57333Z" fill="currentColor"/>
-                                   </svg>
-                              </button> */}
                               <button className='lnk-lnk-gen-right-butt' onClick={()=>{
                                    copy(`${URLS.visit}/${d.unique_identifier}`);
                                    toast.dark('Link Copied', {
@@ -312,13 +307,13 @@ class Land extends React.Component<LandProps,any>{
                                    });
 
                               }}>                             
-                                   <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <svg width="21" height="20" className='lnk-lnk-gen-right-butt-ico' viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                    <path d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
                                    <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                    </svg>
                               </button>
                               <button className='lnk-lnk-gen-right-butt' >
-                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                              <svg className='lnk-lnk-gen-right-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
                               </button>
 
                          </div>          
@@ -552,8 +547,13 @@ class Land extends React.Component<LandProps,any>{
                               <div className='app-sub-head-des-main-cont'>Create your own deep links</div> */}
 
                               <WelcomeHead/>
+                              
+
                               <div className='app-create-link-modal-hr'/>
                               <div className='app-land-lab-main-cont'>Links ({this.state.linksData.length})</div>
+                              <button className='app-land-crt-lnk-butt'
+                              onClick={()=>{this.setcreateLinkModalVisi(true)}}
+                              > Create Link </button>
                               {
                               this.state.linkDataLoading?
                               <Spinner
@@ -567,12 +567,7 @@ class Land extends React.Component<LandProps,any>{
                               {this.renderLinkTable()}
                               </span>
                               }
-
-
-                         <div className='app-create-link-modal-hr'/>
-                              <div className='app-ender-line-main-cont'>
-                                   Made with Love ❤️
-                              </div>
+                              <div className='app-create-link-modal-hr'/>
                          </div>
                          </div>
                          <Modal

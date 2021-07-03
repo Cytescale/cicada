@@ -11,13 +11,12 @@ import { useEffect,useRef } from 'react';
                type: 'line',
                data:  {
                     labels: ['a','b','c','d','e','a','b','c','d','e','a','b','c','d','e'],
-                    datasets: [
-                         {
-                          fill:true,   
+                    datasets: [{
+                         fill:false,   
                         data:[100,100,200,400,250,500,200,270,350,210,240,160,70,103,120],
                         backgroundColor:gradient_2,
                         borderColor: gradient_2,
-                        borderWidth: 5,
+                        borderWidth: 3,
                         pointRadius: 0,
                         lineTension:0.5,
                         pointBorderWidth:0,
@@ -28,24 +27,17 @@ import { useEffect,useRef } from 'react';
                 ]
                 },
                 options: {
-                    legend: {
-                         display: false
-                     },
                      plugins: {
                          legend: {
                            display: false
                          }
                     },
-                    scales: {
-                         xAxes: [{
-                              grid:{
-                                   display:false
-                              },
-                              ticks: {
-                                  display: false //this will remove only the label
-                              }
-                          }]
-                    }
+                   scales: {
+                    y: {
+                         suggestedMin: 50,
+                         suggestedMax: 100
+                     }
+                   }
                   }
            });
                 ctx.clearRect(0, 0, 200, 300);

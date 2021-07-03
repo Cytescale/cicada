@@ -555,15 +555,11 @@ class Land extends React.Component<LandProps,any>{
                          </div>
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
-                              {/* <div className='app-sub-head-main-cont'>Links</div>
-                              <div className='app-sub-head-des-main-cont'>Create your own deep links</div> */}
-
                               <WelcomeHead/>
                               <div className='app-create-link-modal-hr'/>
-                              <div className='app-land-lab-main-cont'>Visitors</div>
+                              {/* <div className='app-land-lab-main-cont'>Visitors</div> */}
                               <LandVisitChart/>
-                              <div className='app-create-link-modal-hr'/>
-                              <div className='app-land-lab-main-cont'>Links ({this.state.linksData.length})</div>
+                              <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}
                               > Create Link </button>

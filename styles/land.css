@@ -822,18 +822,17 @@ margin-bottom: 0px;
 
 .app-land-lab-main-cont{
      font-family: poppins;
-     font-size: 15px;
-     font-weight: 700;
+     font-size: 20px;
+     font-weight: 800;
      color: #000;
      padding-left: 22px;
-     margin-bottom: 6px;
+     margin-bottom: 12px;
+     margin-top: 12px;
 }
 
 .app-land-vist-grph-canva{
-     padding: 12px;
-     padding-top: 0px;
+     
      border-radius: 7px;
-     margin-top: 12px;
      background-color: #fff;
 
 }

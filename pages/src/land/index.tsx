@@ -17,6 +17,7 @@ import { linkDataType } from "../../../comp/utils/link";
 import Link from 'next/link'
 import URLS from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
+import { scaleDown as Menu } from 'react-burger-menu'
 
 
 
@@ -211,12 +212,59 @@ class Land extends React.Component<LandProps,any>{
           const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
           if (newWindow) newWindow.opener = null
      }
+
+     renderLinkLogo(platform_id:number){
+          switch(platform_id)
+          {
+               case 1:{
+                    return(<div className='app-link-logo-cont'><svg  className='app-link-logo-cont-ico' xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5_logos</title><path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"/></svg></div>)
+                    break;    
+               }
+               default:{
+                    break;
+               }
+          }
+
+     }
+     
+     renderBurgerMenu(){
+          return(
+               <Menu pageWrapId={"app-main-cont-body-id"} outerContainerId={'lnk-lnk-main-cont-id'}>
+               <a id="home" className="menu-item" href="/">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className='menu-item-ico'>
+                         <path d="M17 7H14C13.45 7 13 7.45 13 8C13 8.55 13.45 9 14 9H17C18.65 9 20 10.35 20 12C20 13.65 18.65 15 17 15H14C13.45 15 13 15.45 13 16C13 16.55 13.45 17 14 17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7ZM8 12C8 12.55 8.45 13 9 13H15C15.55 13 16 12.55 16 12C16 11.45 15.55 11 15 11H9C8.45 11 8 11.45 8 12ZM10 15H7C5.35 15 4 13.65 4 12C4 10.35 5.35 9 7 9H10C10.55 9 11 8.55 11 8C11 7.45 10.55 7 10 7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H10C10.55 17 11 16.55 11 16C11 15.45 10.55 15 10 15Z" fill="currentColor"/>
+                         </svg>
+                    Links</a>
+               <a id="about" className="menu-item" href="/about">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='menu-item-ico'>
+                         <path d="M21 8C19.55 8 18.74 9.44 19.07 10.51L15.52 14.07C15.22 13.98 14.78 13.98 14.48 14.07L11.93 11.52C12.27 10.45 11.46 9 10 9C8.55 9 7.73 10.44 8.07 11.52L3.51 16.07C2.44 15.74 1 16.55 1 18C1 19.1 1.9 20 3 20C4.45 20 5.26 18.56 4.93 17.49L9.48 12.93C9.78 13.02 10.22 13.02 10.52 12.93L13.07 15.48C12.73 16.55 13.54 18 15 18C16.45 18 17.27 16.56 16.93 15.48L20.49 11.93C21.56 12.26 23 11.45 23 10C23 8.9 22.1 8 21 8Z" fill="currentColor"/>
+                         <path d="M15 9L15.94 6.93L18 6L15.94 5.07L15 3L14.08 5.07L12 6L14.08 6.93L15 9Z" fill="currentColor"/>
+                         <path d="M3.5 11L4 9L6 8.5L4 8L3.5 6L3 8L1 8.5L3 9L3.5 11Z" fill="currentColor"/>
+                         </svg>
+                    Analytics</a>
+               <a id="contact" className="menu-item" href="/contact">
+               <svg width="24" height="24" viewBox="0 0 24 23" fill="none" className='menu-item-ico'>
+                         <path d="M3.08928 21.9859C1.76509 21.1674 -0.287408 18.9164 2.09614 16.4608C5.07557 13.3913 12.0276 13.3913 12.5241 13.3913C13.0207 13.3913 21.1781 14.4426 22.4556 17.0747C23.9453 20.1442 21.959 22.1906 21.4624 21.9859" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                         <path d="M17 5.73913C17 8.31505 14.8038 10.4783 12 10.4783C9.19622 10.4783 7 8.31505 7 5.73913C7 3.16321 9.19622 1 12 1C14.8038 1 17 3.16321 17 5.73913Z" stroke="currentColor" stroke-width="2"/>
+                         </svg>
+                    Profile</a>
+
+                    <div className="menu-item-bottom-menu">
+                         <div className="menu-item-bottom-v">0.0.1 alpha </div>
+                    <button className="menu-item-lgout">
+                         Logout
+                    </button>
+                    </div>
+             </Menu>
+             )
+     }
      
      renderLink(ind:number,d:linkDataType){
           return(
                <div className='lnk-lnk-main-cont'>
                     <div className='lnk-lnk-head-main-cont'>
                               <div className='lnk-lnk-head-main-cont-name-cont'>
+                                    {this.renderLinkLogo(Number.parseInt(d.platform_id))}
                                     {d.name}
                               </div>
 
@@ -230,7 +278,7 @@ class Land extends React.Component<LandProps,any>{
                               </button>
                               <div  className='lnk-lnk-head-right-butt-cont'>
                               <label className="switch">
-                                   <input type="checkbox" checked={d.active_bool}/>
+                                   <input type="checkbox" />
                                    <span className="slider round"></span>
                               </label>
                               {/* <button className='dash-links-cont-link-right-copy-butt'>
@@ -269,12 +317,12 @@ class Land extends React.Component<LandProps,any>{
                                    <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                    </svg>
                               </button>
-                              
+                              <button className='lnk-lnk-gen-right-butt' >
+                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                              </button>
 
-                         </div>
+                         </div>          
                     </div>
-                    
-
                </div>
           )
      }
@@ -475,14 +523,15 @@ class Land extends React.Component<LandProps,any>{
      render(){
           if(!this.state.isLoading && this.state.isAuth){
           return(
-               <div className='app-main-cont-main-body login-body-cont'>
+               <div className='app-main-cont-main-body login-body-cont'   id='lnk-lnk-main-cont-id'>
                     <Head>
                     <title>Sakura</title>
                     <meta name="description" content="Cicada Login Activity" />
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
-                          <div className='app-head-main-cont link-head-body-cont'>
+                              {this.renderBurgerMenu()}
+                              <div className='app-head-main-cont link-head-body-cont'>
                               <div className='app-head-main-cont-logo link-head-logo'>
                               Sakura
                               </div>
@@ -497,13 +546,14 @@ class Land extends React.Component<LandProps,any>{
                                    </button>
                               </div>
                          </div>
+                         <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
-                              <div className='app-sub-head-main-cont'>Links</div>
-                              <div className='app-sub-head-des-main-cont'>Create your own deep links</div>
+                              {/* <div className='app-sub-head-main-cont'>Links</div>
+                              <div className='app-sub-head-des-main-cont'>Create your own deep links</div> */}
 
                               <WelcomeHead/>
-
                               <div className='app-create-link-modal-hr'/>
+                              <div className='app-land-lab-main-cont'>Links ({this.state.linksData.length})</div>
                               {
                               this.state.linkDataLoading?
                               <Spinner
@@ -520,7 +570,10 @@ class Land extends React.Component<LandProps,any>{
 
 
                          <div className='app-create-link-modal-hr'/>
-
+                              <div className='app-ender-line-main-cont'>
+                                   Made with Love ❤️
+                              </div>
+                         </div>
                          </div>
                          <Modal
                               show={this.state.createLinkModalVisi}
@@ -643,60 +696,3 @@ class Land extends React.Component<LandProps,any>{
 export default withRouter(Land)
 
 
-
-// <Tabs>
-// <TabList className='ecsp-tab-main-cont'>
-//   <Tab className='app-bottom-tab-cont'>
-//        <div className='app-bottom-butt-main-outer-cont'>
-//           <button className='app-bottom-butt-main-cont'>
-//                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='app-bottom-butt-main-cont-ico'>
-//           <path d="M3 13H11V3H3V13ZM3 21H11V15H3V21ZM13 21H21V11H13V21ZM13 3V9H21V3H13Z" fill="currentColor"/>
-//           </svg></button>
-//           </div>
-//           </Tab>
-//           <Tab className='app-bottom-tab-cont'>   
-//           <div className='app-bottom-butt-main-outer-cont'>
-//                <button className='app-bottom-butt-main-cont'>
-//                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='app-bottom-butt-main-cont-ico'>
-//                <path d="M17 7H14C13.45 7 13 7.45 13 8C13 8.55 13.45 9 14 9H17C18.65 9 20 10.35 20 12C20 13.65 18.65 15 17 15H14C13.45 15 13 15.45 13 16C13 16.55 13.45 17 14 17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7ZM8 12C8 12.55 8.45 13 9 13H15C15.55 13 16 12.55 16 12C16 11.45 15.55 11 15 11H9C8.45 11 8 11.45 8 12ZM10 15H7C5.35 15 4 13.65 4 12C4 10.35 5.35 9 7 9H10C10.55 9 11 8.55 11 8C11 7.45 10.55 7 10 7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H10C10.55 17 11 16.55 11 16C11 15.45 10.55 15 10 15Z" fill="currentColor"/>
-//                </svg>
-//                </button>
-//                </div>
-//           </Tab>
-//           <Tab className='app-bottom-tab-cont'> 
-//                <div className='app-bottom-butt-main-outer-cont'>
-//                <button className='app-bottom-butt-main-cont'>
-//                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='app-bottom-butt-main-cont-ico'>
-//                <path d="M21 8C19.55 8 18.74 9.44 19.07 10.51L15.52 14.07C15.22 13.98 14.78 13.98 14.48 14.07L11.93 11.52C12.27 10.45 11.46 9 10 9C8.55 9 7.73 10.44 8.07 11.52L3.51 16.07C2.44 15.74 1 16.55 1 18C1 19.1 1.9 20 3 20C4.45 20 5.26 18.56 4.93 17.49L9.48 12.93C9.78 13.02 10.22 13.02 10.52 12.93L13.07 15.48C12.73 16.55 13.54 18 15 18C16.45 18 17.27 16.56 16.93 15.48L20.49 11.93C21.56 12.26 23 11.45 23 10C23 8.9 22.1 8 21 8Z" fill="currentColor"/>
-//                <path d="M15 9L15.94 6.93L18 6L15.94 5.07L15 3L14.08 5.07L12 6L14.08 6.93L15 9Z" fill="currentColor"/>
-//                <path d="M3.5 11L4 9L6 8.5L4 8L3.5 6L3 8L1 8.5L3 9L3.5 11Z" fill="currentColor"/>
-//                </svg>
-//                </button>
-//                </div>
-//           </Tab>
-        
-//           <Tab className='app-bottom-tab-cont'> 
-//                <div className='app-bottom-butt-main-outer-cont'>
-//                <button className='app-bottom-butt-main-cont'>
-//                <svg width="24" height="24" viewBox="0 0 24 23" fill="none" className='app-bottom-butt-main-cont-ico'>
-//                <path d="M3.08928 21.9859C1.76509 21.1674 -0.287408 18.9164 2.09614 16.4608C5.07557 13.3913 12.0276 13.3913 12.5241 13.3913C13.0207 13.3913 21.1781 14.4426 22.4556 17.0747C23.9453 20.1442 21.959 22.1906 21.4624 21.9859" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-//                <path d="M17 5.73913C17 8.31505 14.8038 10.4783 12 10.4783C9.19622 10.4783 7 8.31505 7 5.73913C7 3.16321 9.19622 1 12 1C14.8038 1 17 3.16321 17 5.73913Z" stroke="currentColor" stroke-width="2"/>
-//                </svg>
-//                </button>
-//                </div>
-//           </Tab>
-// </TabList>
-
-// <TabPanel>
-//   <Dash/>
-// </TabPanel>
-// <TabPanel>
-//   <Links/>
-// </TabPanel>
-// <TabPanel>
-//   <Analytics/>
-// </TabPanel>
-// <TabPanel>
-//   <Profile/>
-// </TabPanel>
-// </Tabs>

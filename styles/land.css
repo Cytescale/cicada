@@ -281,17 +281,30 @@ margin-bottom: 0px;
      margin-left: 5%;
      height: auto;
      padding: 0px;
+
      position: relative;
      margin-top: 12px;
-     border:1px solid #e0e0e0;
+     /* box-shadow: 0px 3px 8px 3px #f1f1f1; */
+     border: 1px solid #e0e0e0;
      border-radius: 7px;
 }
+
+.app-link-logo-cont{
+     width: 22px;
+     height: 22px;
+     margin-right: 7px;
+}
+.app-link-logo-cont-ico{
+     width: 100%;
+     height: 100%;
+
+}
+
 .lnk-lnk-head-main-cont{
      display: inline-flex;
      width: 100%;
      padding:13px;
-     border-bottom: 1px solid var(--bor-color);
-
+     border-bottom: 1px solid var(--bor-color)
 }
 .lnk-lnk-head-main-cont-name-cont{
      font-size: 15px;
@@ -301,6 +314,7 @@ margin-bottom: 0px;
      font-family: inter;
      color: #000;
      display: inline-flex;
+     align-items: center;
 }
 .lnk-lnk-head-edit-butt{
      background-color: rgba(0, 0, 0, 0);
@@ -331,9 +345,9 @@ margin-bottom: 0px;
      width: 100%;
      margin-left: 0%;
      margin-top: 0px;
-     
      padding: var(--margin);
-     height: 42px;
+     padding-left: 12px;
+     height: 52px;
      position: relative;
      display: inline-flex;
      align-items: center;
@@ -341,20 +355,38 @@ margin-bottom: 0px;
 .lnk-lnk-gen-link{
      font-size: 12px;
      color: #0070F3;
+     background-color: #f7f7f7;
+     height: 32px;
+     display: flex;
+     align-items: center;
+     padding-left: 12px;
+     padding-right: 12px;
+     border-radius: 100px;
 
 }
 .lnk-lnk-gen-right-cont{
+     display: inline-flex;
      position: absolute;
      right: 0;
      margin-right: 12px;
 }
 .lnk-lnk-gen-right-butt{
-     color: #000;
-     background-color: rgba(0, 0, 0, 0);
+     width: 32px;
+     height: 32px;
+     color: #0070F3;
+     background-color:#f1f1f1;
+     border-radius: 100px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
      outline: none;
      border-style: none;
-     margin-left: 6px;
+     margin-left: 8px;
 }
+.lnk-lnk-gen-right-butt:active{
+     background-color: #e0e0e0;
+}
+
 .lnk-lnk-bottom-cont{
      width: 100%;
      padding: var(--margin);
@@ -756,4 +788,13 @@ margin-bottom: 0px;
      width: 18px;
      height: 18px;
      margin-left: 5px;
+}
+
+.app-land-lab-main-cont{
+     font-family: poppins;
+     font-size: 15px;
+     font-weight: 700;
+     color: #555555;
+     padding-left: 22px;
+     
 }

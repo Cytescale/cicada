@@ -382,6 +382,10 @@ margin-bottom: 0px;
      width: 32px;
      height: 32px;
      color: #0070F3;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
      background-color:#f5f5f5;
      border-radius: 100px;
      overflow: visible;
@@ -394,7 +398,6 @@ margin-bottom: 0px;
 .lnk-lnk-gen-right-butt-ico{
      width: 22px;
      height: 22px;
-     
      object-fit: cover;
      color: #0070F3;
      
@@ -943,4 +946,19 @@ margin-bottom: 0px;
 
 .app-land-feed-butt-main-ico{
      color: #fff;
+}
+
+.app-land-mto-main-cont{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 11px;
+     font-family: poppins;
+     color: #555555;
+     padding-bottom: var(--margin);
+}
+.app-body-topper-main-cont{
+     background-color: #f7f7f7;
+     padding-top: 22px;
 }

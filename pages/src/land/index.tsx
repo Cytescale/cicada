@@ -550,7 +550,7 @@ class Land extends React.Component<LandProps,any>{
      render(){
           if(!this.state.isLoading && this.state.isAuth){
           return(
-               <div className='app-main-cont-main-body login-body-cont'   id='lnk-lnk-main-cont-id'>
+               <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
                     <Head>
                     <title>Sakura</title>
                     <meta name="description" content="Cicada Login Activity" />

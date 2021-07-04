@@ -31,29 +31,99 @@ const WelcomeHead:React.FC<any> = ()=>{
                     }}>
                     <path d="M15.8815 4.80617C10.3925 4.80617 5.95557 9.06947 5.95557 14.3437C5.95557 19.618 10.3925 23.8813 15.8815 23.8813C21.3706 23.8813 25.8075 19.618 25.8075 14.3437C25.8075 9.06947 21.3706 4.80617 15.8815 4.80617ZM20.1497 18.4449C19.7626 18.8169 19.1373 18.8169 18.7501 18.4449L15.8815 15.6885L13.0129 18.4449C12.6258 18.8169 12.0005 18.8169 11.6134 18.4449C11.2263 18.0729 11.2263 17.4721 11.6134 17.1001L14.482 14.3437L11.6134 11.5874C11.2263 11.2154 11.2263 10.6146 11.6134 10.2426C12.0005 9.87062 12.6258 9.87062 13.0129 10.2426L15.8815 12.9989L18.7501 10.2426C19.1373 9.87062 19.7626 9.87062 20.1497 10.2426C20.5368 10.6146 20.5368 11.2154 20.1497 11.5874L17.2811 14.3437L20.1497 17.1001C20.5269 17.4625 20.5269 18.0729 20.1497 18.4449Z" fill="#F7F7FC"/>
                     </svg>
+                    <div className='dash-wel-main-decor-cont'/>
           </div>:
           <span/>
      )
 }
+
+const EditLinkModal:React.FC<any>=(props:any)=>{
+     const [loading,setLoading] = useState<boolean>();
+     return(
+               <Modal
+               show={props.show}
+               onHide={()=>{props.setShow(false)}}
+               size="lg"
+               centered
+               animated
+               >
+               <div className='app-create-link-modal-main-cont'>
+                    <div className='app-create-link-modal-main-cont-tit'>
+                    Edit Link
+                    </div>
+                    <div className='app-create-link-modal-main-cont-des'>
+                    Edit the generated link by changing display name , custom url etc.
+                    </div>
+                    <div className='app-create-link-modal-hr'/>
+                         <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Display Name</div>
+                              <input 
+                              type='text' 
+                              disabled={loading}
+                              placeholder='eg: YoutubeLink'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={''}
+                               onChange={(e)=>{}}
+                              />
+                    </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Destination Url</div>
+                              <input 
+                              type='text' 
+                              disabled={true}
+                              placeholder='eg: www.link.com'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={''}
+                              onChange={(e)=>{}}
+                              />
+                    </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Url</div>
+                              <input 
+                              type='text' 
+                              disabled={loading}
+                              placeholder='eg: www.link.com'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={'this.state.linkDest'}
+                              onChange={(e)=>{}}
+                              />
+                    </div>
+                    
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <button className='app-create-link-modal-edt-lnk-butt'
+                              onClick={()=>{ }}
+                                   >{
+                              loading?
+                              <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"
+                              />:
+                              <span>Edit Link</span>
+                         }     
+                         </button>
+                    </div>
+                    <div className='app-create-link-modal-hr'/>
+                    <button className='app-create-link-edt-del-butt'>
+                            Delete
+                    </button>
+
+               </div>
+               </Modal>
+          )
+}
+
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 const User = new user();
 
-const data = (canvas:any) => {
-     const ctx = canvas.getContext('2d'); 
-     return {
-         datasets: [{
-             backgroundColor: '#f5f5f5',
-             // ...the rest
-         }],
-     };
- }
-
-
 interface WithRouterProps {
      router: NextRouter
    }
-   
+ 
+
 
 interface LandProps extends WithRouterProps {
      
@@ -448,103 +518,7 @@ class Land extends React.Component<LandProps,any>{
                </div>
                </Modal>
           )
-     }
-     renderLinkEditModal(){
-          return(
-               <Modal
-               show={this.state.editLinkModalVisi}
-               onHide={()=>{this.seteditLinkModalVisi(false)}}
-               size="lg"
-               centered
-               animated
-               >
-               <div className='app-create-link-modal-main-cont'>
-                    <div className='app-create-link-modal-main-cont-tit'>
-                    Edit Link
-                    </div>
-                    <div className='app-create-link-modal-main-cont-des'>
-                    Edit the generated link by changing display name , custom url etc.
-                    </div>
-                    <div className='app-create-link-modal-hr'/>
-                    {
-                         this.state.platform_id>0?
-                         <div className='app-land-plat-indi-cont'>
-                         {this.renderPlatformDrop()}
-                         </div>:
-                         <span/>
-                    }
-
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Display Name</div>
-                              <input 
-                              type='text' 
-                              disabled={this.state.makeLinkLoading}
-                              placeholder='eg: YoutubeLink'
-                              className='app-create-link-modal-main-cont-fld'
-                              value={this.state.linkName}
-                              onChange={(e)=>{this.setLinkName(e.target.value)}}
-                              />
-                    </div>
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Destination Url</div>
-                              <input 
-                              type='text' 
-                              disabled={true}
-                              placeholder='eg: www.link.com'
-                              className='app-create-link-modal-main-cont-fld'
-                              value={this.state.linkDest}
-                              onChange={(e)=>{
-                                   this.setvalidityLoading(true); 
-                                   this.setvalidated(false);
-                                   this.setLinkDest(e.target.value)}
-                              }
-                              />
-                    </div>
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Url</div>
-                              <input 
-                              type='text' 
-                              disabled={this.state.makeLinkLoading}
-                              placeholder='eg: www.link.com'
-                              className='app-create-link-modal-main-cont-fld'
-                              value={this.state.linkDest}
-                              onChange={(e)=>{
-                                   this.setvalidityLoading(true); 
-                                   this.setvalidated(false);
-                                   this.setLinkDest(e.target.value)}
-                              }
-                              />
-                    </div>
-                    
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <button className='app-create-link-modal-edt-lnk-butt'
-                              onClick={()=>{
-                                   this.submitMakeLink();
-                              }}
-                                   >{
-                              this.state.makeLinkLoading?
-                              <Spinner
-                                   as="span"
-                                   animation="border"
-                                   size="sm"
-                                   role="status"
-                                   aria-hidden="true"
-                              />:
-                              <span>Edit Link</span>
-                         }     
-                         </button>
-                    </div>
-                    <div className='app-create-link-modal-hr'/>
-                    <button className='app-create-link-edt-del-butt'>
-                            Delete
-                    </button>
-
-               </div>
-               </Modal>
-          )
-     }
-
-     
+     }     
      renderLink(ind:number,d:linkDataType){
           return(
                <div className='lnk-lnk-main-cont'>
@@ -564,7 +538,7 @@ class Land extends React.Component<LandProps,any>{
                               </button>
                               <div  className='lnk-lnk-head-right-butt-cont'>
                               <label className="switch">
-                                   <input type="checkbox" />
+                                   <input type="checkbox" checked={d.active_bool}/>
                                    <span className="slider round"></span>
                               </label>
                               </div>
@@ -884,7 +858,7 @@ class Land extends React.Component<LandProps,any>{
                          <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
                               <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
                          </button>
-                        {this.renderLinkEditModal()}
+                        <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi}/>
                         {this.renderLinkCreateModal()}
                         {this.renderFeedbackModal()}
                               <ToastContainer />
@@ -897,6 +871,10 @@ class Land extends React.Component<LandProps,any>{
           }
      }
 }
+
+
+
+
 
 export default withRouter(Land)
 

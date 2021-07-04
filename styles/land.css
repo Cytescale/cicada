@@ -375,14 +375,14 @@ margin-bottom: 0px;
      width: 32px;
      height: 32px;
      color: #0070F3;
-     background-color:#f1f1f1;
+     background-color:rgba(0, 0, 0, 0);
      border-radius: 100px;
      display: flex;
      justify-content: center;
      align-items: center;
      outline: none;
      border-style: none;
-     margin-left: 8px;
+     margin-left: 4px;
 }
 
 .app-land-crt-lnk-butt{
@@ -821,10 +821,10 @@ margin-bottom: 0px;
 }
 
 .app-land-lab-main-cont{
-     font-family: poppins;
-     font-size: 20px;
+     font-family: inter;
+     font-size: 15px;
      font-weight: 800;
-     color: #000;
+     color: #555555;
      padding-left: 22px;
      margin-bottom: 12px;
      margin-top: 12px;
@@ -844,6 +844,7 @@ margin-bottom: 0px;
      display: inline-flex;
      width: 100%;
      padding: 15px;
+     background: #f9f9f9;
      padding-bottom: 5px;
 }
 
@@ -881,7 +882,7 @@ margin-bottom: 0px;
      margin-top: var(--margin);
      height: auto;
      border-radius: 7px;
-     border: 1px solid #e0e0e0;
+     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
 }
 
 
@@ -893,9 +894,10 @@ margin-bottom: 0px;
      font-family: poppins;
      font-size: 12px;
      color: #0070F3;
-     padding-top: 5px;
-     padding-bottom: 5px;
+     padding-top: 7px;
+     padding-bottom: 7px;
      border-top: 1px solid #e0e0e0;
+     border-bottom: none;
      vertical-align: middle;
 }
 .app-land-visit-card-acrd-togg-ico{

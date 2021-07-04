@@ -524,7 +524,7 @@ font-family: poppins;
 
 .menu-item{
      padding: 12px;
-     border-radius: 7px;
+
      padding-left: 22px;
      font-family: poppins;
      font-size: 17px;
@@ -592,9 +592,9 @@ font-family: poppins;
    }
    
    .bm-menu {
-     
+     width: 100%;
      background: #fff;
-     
+     border-style: none;
      padding-top: 52px;
      font-size: 1.15em;
      z-index: 99999;

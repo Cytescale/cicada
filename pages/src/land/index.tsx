@@ -39,6 +39,7 @@ const WelcomeHead:React.FC<any> = ()=>{
 
 const EditLinkModal:React.FC<any>=(props:any)=>{
      const [loading,setLoading] = useState<boolean>();
+     const [lData,setLdata] = useState<linkDataType>();
      return(
                <Modal
                show={props.show}
@@ -62,7 +63,7 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                               disabled={loading}
                               placeholder='eg: YoutubeLink'
                               className='app-create-link-modal-main-cont-fld'
-                              value={''}
+                              value={props.uniId}
                                onChange={(e)=>{}}
                               />
                     </div>
@@ -136,6 +137,7 @@ class Land extends React.Component<LandProps,any>{
           this.state = {
                feedbackModalVisi:false,
                editLinkModalVisi:false,
+               editLinkUniId:null,
                createLinkModalVisi:false,
                isLoading:false,
                isAuth:false,
@@ -169,7 +171,9 @@ class Land extends React.Component<LandProps,any>{
           this.openInNewTab = this.openInNewTab.bind(this);
           this.seteditLinkModalVisi =this.seteditLinkModalVisi.bind(this);
           this.setfeedbackModalVisi = this.setfeedbackModalVisi.bind(this);
+          this.seteditLinkUniId = this.seteditLinkUniId.bind(this);
      }
+     seteditLinkUniId(s:string){this.setState({editLinkUniId:s})}
      setfeedbackModalVisi(b:boolean){this.setState({feedbackModalVisi:b})}
      seteditLinkModalVisi(b:boolean){this.setState({editLinkModalVisi:b})}
      setvalidated(b:boolean){this.setState({validated:b})}
@@ -571,6 +575,7 @@ class Land extends React.Component<LandProps,any>{
                                    </div>
                                    <div className='lnk-lnk-gen-right-butt' onClick={()=>{
                                         this.seteditLinkModalVisi(true);
+                                        this.seteditLinkUniId(d.unique_identifier);
                                    }}>
                                         <svg className='lnk-lnk-gen-right-butt-ico' enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,17.46l0,3.04C3,20.78,3.22,21,3.5,21h3.04c0.13,0,0.26-0.05,0.35-0.15L17.81,9.94l-3.75-3.75L3.15,17.1 C3.05,17.2,3,17.32,3,17.46z"/></g><g><path d="M20.71,5.63l-2.34-2.34c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83C21.1,6.65,21.1,6.02,20.71,5.63z"/></g></g></g></svg>
                               {/* <svg className='lnk-lnk-gen-right-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0070F3"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg> */}
@@ -858,7 +863,7 @@ class Land extends React.Component<LandProps,any>{
                          <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
                               <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
                          </button>
-                        <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi}/>
+                        <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId}/>
                         {this.renderLinkCreateModal()}
                         {this.renderFeedbackModal()}
                               <ToastContainer />

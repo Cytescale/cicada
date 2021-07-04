@@ -122,7 +122,7 @@ function renderFullVisitGraph(canvasRef){
                     y: {
                     display:true,
                     grid:{
-                         color:'#f5f5f5'
+                         color:'#e0e0e0'
                     },
                     ticks: {
                          display:true,

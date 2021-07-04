@@ -64,6 +64,8 @@ class Land extends React.Component<LandProps,any>{
      constructor(props:LandProps){
           super(props);
           this.state = {
+               feedbackModalVisi:false,
+               editLinkModalVisi:false,
                createLinkModalVisi:false,
                isLoading:false,
                isAuth:false,
@@ -95,8 +97,11 @@ class Land extends React.Component<LandProps,any>{
           this.renderValidityIndi = this.renderValidityIndi.bind(this);
           this.validateOnChange = this.validateOnChange.bind(this);
           this.openInNewTab = this.openInNewTab.bind(this);
+          this.seteditLinkModalVisi =this.seteditLinkModalVisi.bind(this);
+          this.setfeedbackModalVisi = this.setfeedbackModalVisi.bind(this);
      }
-     
+     setfeedbackModalVisi(b:boolean){this.setState({feedbackModalVisi:b})}
+     seteditLinkModalVisi(b:boolean){this.setState({editLinkModalVisi:b})}
      setvalidated(b:boolean){this.setState({validated:b})}
      setvalidityLoading(b:boolean){this.setState({validityLoading:b})}
      setLinksData(v:Array<linkDataType>){this.setState({linksData:v})}
@@ -291,7 +296,252 @@ class Land extends React.Component<LandProps,any>{
                     </div>
                )
      }
-     
+     renderFeedbackModal(){
+          return(
+               <Modal
+               show={this.state.feedbackModalVisi}
+               onHide={()=>{this.setfeedbackModalVisi(false)}}
+               size="lg"
+               centered
+               animated
+               >
+               <div className='app-create-link-modal-main-cont'>
+                    <div className='app-create-link-modal-main-cont-tit'>
+                    Feedback
+                    </div>
+                    <div className='app-create-link-modal-main-cont-des'>
+                    Please share with us what you think about Sakura. We are open for suggestions 😄
+                    </div>
+                    <div className='app-create-link-modal-hr'/>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <button className='app-create-link-modal-edt-lnk-butt'
+                              onClick={()=>{
+                                   this.submitMakeLink();
+                              }}
+                                   >{
+                              this.state.makeLinkLoading?
+                              <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"
+                              />:
+                              <span>Edit Link</span>
+                         }     
+                         </button>
+                    </div>
+               </div>
+               </Modal>
+          )
+     }
+     renderLinkCreateModal(){
+          return(
+               <Modal
+               show={this.state.createLinkModalVisi}
+               onHide={()=>{this.setcreateLinkModalVisi(false)}}
+               size="lg"
+               centered
+               animated
+               >
+               <div className='app-create-link-modal-main-cont'>
+                    <div className='app-create-link-modal-main-cont-tit'>
+                    Create Link
+                    </div>
+                    <div className='app-create-link-modal-main-cont-des'>
+                    Create a link by entering a name and it's address.
+                    Select from given Platforms
+                    </div>
+                    
+                    {
+                         this.state.validated && this.state.platform_id>0?
+                         <div className='app-land-plat-indi-cont'>
+                         {this.renderPlatformDrop()}
+                         </div>:
+                         <span/>
+                    }
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Name</div>
+                              <input 
+                              type='text' 
+                              disabled={this.state.makeLinkLoading}
+                              placeholder='eg: YoutubeLink'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={this.state.linkName}
+                              onChange={(e)=>{this.setLinkName(e.target.value)}}
+                              />
+                    </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Address</div>
+                              <input 
+                              type='text' 
+                              disabled={this.state.makeLinkLoading}
+                              placeholder='eg: www.link.com'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={this.state.linkDest}
+                              onChange={(e)=>{
+                                   this.setvalidityLoading(true); 
+                                   this.setvalidated(false);
+                                   this.setLinkDest(e.target.value)}
+                              }
+                              />
+                    </div>
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <button
+                              className='app-create-link-modal-main-paste-butt'
+                              onClick={()=>{
+                                   navigator.clipboard.readText().then((t)=>{
+                                        if(typeof t == 'string'){
+                                             this.setLinkDest(t)
+                                        }
+                                   });
+                              }}
+                              >
+                              <svg className='app-create-link-modal-main-paste-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 2h-4.18C14.4.84 13.3 0 12 0S9.6.84 9.18 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm6 18H6c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V4h1c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1z"/></svg>
+                              Paste from Clipboard
+                              </button>
+                    </div>
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                    {
+                    this.state.validityLoading==true?
+                         <div className='app-land-url-valid-indi-load-cont'>
+                              <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"/>
+                         </div>:
+                    this.renderValidityIndi()
+                    }
+                    </div>
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                    {
+                         this.state.validated?
+                              <button className='app-create-link-modal-crt-lnk-butt'
+                              onClick={()=>{
+                                   this.submitMakeLink();
+                              }}
+                                   >{
+                              this.state.makeLinkLoading?
+                              <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"
+                              />:
+                              <span>Create Link</span>
+                         }     
+                         </button>:
+                    <span/>
+                    }
+                    </div>
+                    
+               </div>
+               </Modal>
+          )
+     }
+     renderLinkEditModal(){
+          return(
+               <Modal
+               show={this.state.editLinkModalVisi}
+               onHide={()=>{this.seteditLinkModalVisi(false)}}
+               size="lg"
+               centered
+               animated
+               >
+               <div className='app-create-link-modal-main-cont'>
+                    <div className='app-create-link-modal-main-cont-tit'>
+                    Edit Link
+                    </div>
+                    <div className='app-create-link-modal-main-cont-des'>
+                    Edit the generated link by changing display name , custom url etc.
+                    </div>
+                    <div className='app-create-link-modal-hr'/>
+                    {
+                         this.state.platform_id>0?
+                         <div className='app-land-plat-indi-cont'>
+                         {this.renderPlatformDrop()}
+                         </div>:
+                         <span/>
+                    }
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Display Name</div>
+                              <input 
+                              type='text' 
+                              disabled={this.state.makeLinkLoading}
+                              placeholder='eg: YoutubeLink'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={this.state.linkName}
+                              onChange={(e)=>{this.setLinkName(e.target.value)}}
+                              />
+                    </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Destination Url</div>
+                              <input 
+                              type='text' 
+                              disabled={true}
+                              placeholder='eg: www.link.com'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={this.state.linkDest}
+                              onChange={(e)=>{
+                                   this.setvalidityLoading(true); 
+                                   this.setvalidated(false);
+                                   this.setLinkDest(e.target.value)}
+                              }
+                              />
+                    </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Link Url</div>
+                              <input 
+                              type='text' 
+                              disabled={this.state.makeLinkLoading}
+                              placeholder='eg: www.link.com'
+                              className='app-create-link-modal-main-cont-fld'
+                              value={this.state.linkDest}
+                              onChange={(e)=>{
+                                   this.setvalidityLoading(true); 
+                                   this.setvalidated(false);
+                                   this.setLinkDest(e.target.value)}
+                              }
+                              />
+                    </div>
+                    
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <button className='app-create-link-modal-edt-lnk-butt'
+                              onClick={()=>{
+                                   this.submitMakeLink();
+                              }}
+                                   >{
+                              this.state.makeLinkLoading?
+                              <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"
+                              />:
+                              <span>Edit Link</span>
+                         }     
+                         </button>
+                    </div>
+                    <div className='app-create-link-modal-hr'/>
+                    <button className='app-create-link-edt-del-butt'>
+                           <svg className='app-create-link-edt-del-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v10zM18 4h-2.5l-.71-.71c-.18-.18-.44-.29-.7-.29H9.91c-.26 0-.52.11-.7.29L8.5 4H6c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+                            Delete
+                    </button>
+
+               </div>
+               </Modal>
+          )
+     }
+
      renderLink(ind:number,d:linkDataType){
           return(
                <div className='lnk-lnk-main-cont'>
@@ -342,8 +592,11 @@ class Land extends React.Component<LandProps,any>{
                                    <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="#0070F3" stroke-linecap="round" stroke-linejoin="round"/>
                                    </svg>
                                    </div>
-                                   <div className='lnk-lnk-gen-right-butt'>
-                              <svg className='lnk-lnk-gen-right-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0070F3"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                   <div className='lnk-lnk-gen-right-butt' onClick={()=>{
+                                        this.seteditLinkModalVisi(true);
+                                   }}>
+                                        <svg className='lnk-lnk-gen-right-butt-ico' enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,17.46l0,3.04C3,20.78,3.22,21,3.5,21h3.04c0.13,0,0.26-0.05,0.35-0.15L17.81,9.94l-3.75-3.75L3.15,17.1 C3.05,17.2,3,17.32,3,17.46z"/></g><g><path d="M20.71,5.63l-2.34-2.34c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83C21.1,6.65,21.1,6.02,20.71,5.63z"/></g></g></g></svg>
+                              {/* <svg className='lnk-lnk-gen-right-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0070F3"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg> */}
                               </div>
                          </div>          
                     </div>
@@ -622,116 +875,12 @@ class Land extends React.Component<LandProps,any>{
                          </div>
                          <div className='app-land-mto-main-cont'>Made with Love ❤️</div>
                          </div>
-                         <button className='app-land-feed-butt-main-cont'>
+                         <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
                               <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
                          </button>
-                         <Modal
-                              show={this.state.createLinkModalVisi}
-                              onHide={()=>{this.setcreateLinkModalVisi(false)}}
-                              size="lg"
-                              centered
-                              animated
-                              >
-                              <div className='app-create-link-modal-main-cont'>
-                                   <div className='app-create-link-modal-main-cont-tit'>
-                                   Create Link
-                                   </div>
-                                   <div className='app-create-link-modal-main-cont-des'>
-                                   Create a link by entering a name and it's address.
-                                   Select from given Platforms
-                                   </div>
-                                   
-                                   {
-                                        this.state.validated && this.state.platform_id>0?
-                                        <div className='app-land-plat-indi-cont'>
-                                        {this.renderPlatformDrop()}
-                                        </div>:
-                                        <span/>
-                                   }
-
-                                   <div className='app-create-link-modal-main-cont-fld-cont'>
-                                             <div className='app-create-link-modal-main-cont-fld-tit'>Link Name</div>
-                                             <input 
-                                             type='text' 
-                                             disabled={this.state.makeLinkLoading}
-                                             placeholder='eg: YoutubeLink'
-                                             className='app-create-link-modal-main-cont-fld'
-                                             value={this.state.linkName}
-                                             onChange={(e)=>{this.setLinkName(e.target.value)}}
-                                             />
-                                   </div>
-                                   <div className='app-create-link-modal-main-cont-fld-cont'>
-                                             <div className='app-create-link-modal-main-cont-fld-tit'>Link Address</div>
-                                             <input 
-                                             type='text' 
-                                             disabled={this.state.makeLinkLoading}
-                                             placeholder='eg: www.link.com'
-                                             className='app-create-link-modal-main-cont-fld'
-                                             value={this.state.linkDest}
-                                             onChange={(e)=>{
-                                                  this.setvalidityLoading(true); 
-                                                  this.setvalidated(false);
-                                                  this.setLinkDest(e.target.value)}
-                                             }
-                                             />
-                                   </div>
-
-                                   <div className='app-create-link-modal-main-cont-fld-cont'>
-                                             <button
-                                             className='app-create-link-modal-main-paste-butt'
-                                             onClick={()=>{
-                                                  navigator.clipboard.readText().then((t)=>{
-                                                       if(typeof t == 'string'){
-                                                            this.setLinkDest(t)
-                                                       }
-                                                  });
-                                             }}
-                                             >
-                                             <svg className='app-create-link-modal-main-paste-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 2h-4.18C14.4.84 13.3 0 12 0S9.6.84 9.18 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm6 18H6c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V4h1c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1z"/></svg>
-                                             Paste from Clipboard
-                                             </button>
-                                   </div>
-
-                                   <div className='app-create-link-modal-main-cont-fld-cont'>
-                                   {
-                                   this.state.validityLoading==true?
-                                        <div className='app-land-url-valid-indi-load-cont'>
-                                             <Spinner
-                                                  as="span"
-                                                  animation="border"
-                                                  size="sm"
-                                                  role="status"
-                                                  aria-hidden="true"/>
-                                        </div>:
-                                   this.renderValidityIndi()
-                                   }
-                                   </div>
-
-                                   <div className='app-create-link-modal-main-cont-fld-cont'>
-                                   {
-                                        this.state.validated?
-                                             <button className='app-create-link-modal-crt-lnk-butt'
-                                             onClick={()=>{
-                                                  this.submitMakeLink();
-                                             }}
-                                                  >{
-                                             this.state.makeLinkLoading?
-                                             <Spinner
-                                                  as="span"
-                                                  animation="border"
-                                                  size="sm"
-                                                  role="status"
-                                                  aria-hidden="true"
-                                             />:
-                                             <span>Create Link</span>
-                                        }     
-                                        </button>:
-                                   <span/>
-                                   }
-                                   </div>
-                                   
-                              </div>
-                              </Modal>
+                        {this.renderLinkEditModal()}
+                        {this.renderLinkCreateModal()}
+                        {this.renderFeedbackModal()}
                               <ToastContainer />
             </div>
           )}

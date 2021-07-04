@@ -842,13 +842,9 @@ margin-bottom: 0px;
 
 .app-land-visit-card-main-cont{
      display: inline-flex;
-     width: 90%;
-     margin-left: 5%;
-     margin-top: var(--margin);
-     height: auto;
-     border-radius: 7px;
-     border: 1px solid #e0e0e0;
+     width: 100%;
      padding: 15px;
+     padding-bottom: 5px;
 }
 
 .app-land-visit-card-left-cont{
@@ -877,4 +873,43 @@ margin-bottom: 0px;
      font-family: poppins;
      font-weight: 700;
      
+}
+
+.app-land-visit-card-main-outer-cont{
+     width: 90%;
+     margin-left: 5%;
+     margin-top: var(--margin);
+     height: auto;
+     border-radius: 7px;
+     border: 1px solid #e0e0e0;
+}
+
+
+.app-land-visit-card-acrd-togg-cont{
+     background-color: #fff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-family: poppins;
+     font-size: 12px;
+     color: #0070F3;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     border-top: 1px solid #e0e0e0;
+     vertical-align: middle;
+}
+.app-land-visit-card-acrd-togg-ico{
+     vertical-align: middle;
+     width: 16px;
+     height: 16px;
+     margin-left: 6px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.app-land-vist-full-grph-canva{
+     padding-top: 12px;
+     border-bottom-left-radius: 7px;
+     border-bottom-right-radius: 7px;
+
 }

@@ -999,3 +999,15 @@ background-color: #fefefe;
      font-family: poppins;
      font-size: 15px;
 }
+
+.app-create-link-modal-edt-uniid-link{
+     font-size: 12px;
+     color: #000;
+     font-weight: 400;
+     font-family: poppins;    
+     margin-top:6px;
+     margin-bottom: 6px;
+}
+.app-land-edt-modl-cont{
+     margin-top: 12px;
+}

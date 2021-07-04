@@ -11,11 +11,15 @@ export declare type URLinter = {
      updateUserInfo:string
      makeLinkData:string
      getLinkData:string
+     getLinkDatabyUniId:string
      checkURLValidity:string
      visit:string
      imagekitAuth:string
+     updateLinkData:string
 }
 const URLS:URLinter = {
+     updateLinkData:_BASE_API_URL+'updateLinkData',
+     getLinkDatabyUniId:_BASE_API_URL+'getLinksDatabyUniId',
      visit:_BASE_API_URL+'visit',
      checkURLValidity :_BASE_API_URL+'checkURLData',
      getLinkData:_BASE_API_URL+'getLinksData',

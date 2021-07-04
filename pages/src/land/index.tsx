@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Links from "./links";
 import Analytics from "./analytics";
@@ -20,6 +20,13 @@ import copy from 'copy-to-clipboard';
 import { push as Menu } from 'react-burger-menu'
 import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 
+
+
+const FirebaseHelper = new firebaseHelper();
+const BackendHelper = new backendHelper();
+const User = new user();
+
+
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
      return(
@@ -36,10 +43,78 @@ const WelcomeHead:React.FC<any> = ()=>{
           <span/>
      )
 }
+async function processEditLinkData(lData:linkDataType,dname:string,unnid:string){
+     let updateDat:any ={
+          "name": dname,
+     }
+     if(lData.unique_identifier != unnid ){
+          updateDat['unique_identifier'] = unnid
+     }
+     let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,lData._id,updateDat);
+     return resp;
+}
+async function processDeleteLinkData(lData:linkDataType){
+     let updateDat:any ={
+          "deleted_bool": true,
+     }
+     let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,lData._id,updateDat);
+     return resp;
+}
+async function processActiveLinkData(lData:linkDataType,bool:boolean){
+     let updateDat:any ={
+          "active_bool": bool,
+     }
+     let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,lData._id,updateDat);
+     return resp;
+}
 
 const EditLinkModal:React.FC<any>=(props:any)=>{
      const [loading,setLoading] = useState<boolean>();
-     const [lData,setLdata] = useState<linkDataType>();
+     const [dataLoading,setdataLoading] = useState<boolean>();
+     const [lData,setLdata] = useState<linkDataType|null>(null);
+     const [dname,setdname] = useState<string>();
+     const [uniid,setuniid] = useState<string>();
+     const [errBool,seterrBool] = useState<boolean>(false);
+     const [errMess,seterrMess] = useState<string>('');
+
+     useEffect(() => {
+          setdataLoading(true);
+          setLdata(null);
+          seterrBool(false);
+          BackendHelper?._getLinksDatabyUniId(User?.getUserUid()!,props.uniId).then((res:nexusResponse)=>{
+               if(!res.errBool){
+                    setLdata(res.responseData.gotData);
+                    setdname(res.responseData.gotData.name)
+                    setuniid(res.responseData.gotData.unique_identifier)
+                    setdataLoading(false);
+               }
+          else{
+               toast.error(!res.errMess, {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 2500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });  
+               console.log(res.errMess);
+          }
+          
+    }).catch(e=>{
+          toast.error(!e, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+          console.log(e);
+    })
+}, [User.getUserUid(),props.uniId])
+
      return(
                <Modal
                show={props.show}
@@ -55,16 +130,19 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                     <div className='app-create-link-modal-main-cont-des'>
                     Edit the generated link by changing display name , custom url etc.
                     </div>
+                    {
+                    !dataLoading?
+                    <div>
                     <div className='app-create-link-modal-hr'/>
                          <div className='app-create-link-modal-main-cont-fld-cont'>
                               <div className='app-create-link-modal-main-cont-fld-tit'>Link Display Name</div>
                               <input 
                               type='text' 
                               disabled={loading}
-                              placeholder='eg: YoutubeLink'
+                              placeholder=''
                               className='app-create-link-modal-main-cont-fld'
-                              value={props.uniId}
-                               onChange={(e)=>{}}
+                              value={dname}
+                               onChange={(e)=>{setdname(e.target.value)}}
                               />
                     </div>
                     <div className='app-create-link-modal-main-cont-fld-cont'>
@@ -72,28 +150,77 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                               <input 
                               type='text' 
                               disabled={true}
-                              placeholder='eg: www.link.com'
+                              placeholder=''
                               className='app-create-link-modal-main-cont-fld'
-                              value={''}
+                              value={lData?.link_dest}
                               onChange={(e)=>{}}
                               />
                     </div>
                     <div className='app-create-link-modal-main-cont-fld-cont'>
                               <div className='app-create-link-modal-main-cont-fld-tit'>Link Url</div>
+                              <div className='app-create-link-modal-edt-uniid-link'>
+                              {`${URLS.visit}/${uniid}`}
+                              </div>
+
                               <input 
                               type='text' 
                               disabled={loading}
-                              placeholder='eg: www.link.com'
+                              placeholder=''
                               className='app-create-link-modal-main-cont-fld'
-                              value={'this.state.linkDest'}
-                              onChange={(e)=>{}}
+                              value={uniid}
+                              onChange={(e)=>{
+                                   if(e.target.value){
+                                        setuniid(e.target.value);
+                                   }else{
+                                        setuniid(lData?.unique_identifier);     
+                                   }
+                                   
+                              }}
                               />
                     </div>
-                    
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                                   {    
+                                        errBool?
+                                        <div className='app-land-edt-modl-cont'>
+                                        <div className='app-land-url-valid-init-cont-err'>{errMess}</div>
+                                        </div>
+                                        :
+                                        <span/>
+                                   }
+                              <div className='app-create-link-modal-main-cont-fld-cont'>
                               <button className='app-create-link-modal-edt-lnk-butt'
-                              onClick={()=>{ }}
-                                   >{
+                               disabled={loading}
+                              onClick={async ()=>{
+                                             await setLoading(true);
+                                             await processEditLinkData(lData!,dname!,uniid!).then(async (res:nexusResponse)=>{
+                                                  if(!res.errBool){
+                                                       toast.success("Link updated successfully", {
+                                                            position: toast.POSITION.TOP_CENTER,
+                                                            autoClose: 2500,
+                                                            hideProgressBar: true,
+                                                            closeOnClick: true,
+                                                            pauseOnHover: true,
+                                                            draggable: true,
+                                                            progress: undefined,
+                                                       });  
+                                                       props.setShow(false);
+                                                       props.reloadData();
+                                                  }
+                                             else{
+                                                  seterrBool(true);
+                                                  seterrMess(res.errMess);
+                                                  console.log(res.errMess);
+                                             }
+                                             
+                                   }).catch(e=>{
+                                             seterrBool(true);
+                                             seterrMess(e);
+                                             console.log(e);
+                                   });
+                                   setLoading(false);
+                               }
+                              }
+                                   >
+                              {
                               loading?
                               <Spinner
                                    as="span"
@@ -106,19 +233,174 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                          }     
                          </button>
                     </div>
-                    <div className='app-create-link-modal-hr'/>
-                    <button className='app-create-link-edt-del-butt'>
-                            Delete
+                    
+                    <button className='app-create-link-edt-del-butt'
+                    disabled={loading}
+                    onClick={async ()=>{
+                                             await setLoading(true);
+                                             await processDeleteLinkData(lData!).then(async (res:nexusResponse)=>{
+                                                  if(!res.errBool){
+                                                       toast.success("Link Deleted", {
+                                                            position: toast.POSITION.TOP_CENTER,
+                                                            autoClose: 2500,
+                                                            hideProgressBar: true,
+                                                            closeOnClick: true,
+                                                            pauseOnHover: true,
+                                                            draggable: true,
+                                                            progress: undefined,
+                                                       });  
+                                                       props.setShow(false);
+                                                       props.reloadData();
+                                                  }
+                                             else{
+                                                  seterrBool(true);
+                                                  seterrMess(res.errMess);
+                                                  console.log(res.errMess);
+                                             }
+                                             
+                                   }).catch(e=>{
+                                             seterrBool(true);
+                                             seterrMess(e);
+                                             console.log(e);
+                                   });
+                                   setLoading(false);
+                    }}
+                    >
+                    {
+                              loading?
+                              <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"
+                              />:
+                              <span>Delete</span>
+                         } 
                     </button>
-
+                    </div>
+                    : <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+               />
+               }
                </div>
                </Modal>
           )
 }
 
-const FirebaseHelper = new firebaseHelper();
-const BackendHelper = new backendHelper();
-const User = new user();
+const LinkCard:React.FC<any>=(props:any)=>{
+     const [active , setactive] = useState<boolean>(props.d.active_bool);
+     const [activeLoading,setactiveLoading] = useState<boolean>(false);
+     return(
+          <div className='lnk-lnk-main-cont'>
+          <div className='lnk-lnk-head-main-cont'>
+                    <div className='lnk-lnk-head-main-cont-name-cont'>
+                          {props.d.name}
+                    </div>
+
+                    <button
+                    className='lnk-lnk-head-edit-butt'
+                    >
+                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M2.375 13.8225V16.2292C2.375 16.4508 2.54917 16.625 2.77083 16.625H5.1775C5.28042 16.625 5.38333 16.5854 5.45458 16.5062L14.0996 7.86916L11.1308 4.90041L2.49375 13.5375C2.41458 13.6167 2.375 13.7117 2.375 13.8225ZM16.3954 5.57333C16.7042 5.26458 16.7042 4.76583 16.3954 4.45708L14.5429 2.60458C14.2342 2.29583 13.7354 2.29583 13.4267 2.60458L11.9779 4.05333L14.9467 7.02208L16.3954 5.57333Z" fill="white"/>
+                         </svg>
+                    
+                    </button>
+                    <div  className='lnk-lnk-head-right-butt-cont'>
+                    <label className="switch">
+                         <input type="checkbox" 
+                         disabled={activeLoading}
+                         checked={active}
+                         onClick={async ()=>{
+                              await setactive(!active);
+                              await setactiveLoading(true);
+                              await processActiveLinkData(props.d!,!active).then(async (res:nexusResponse)=>{
+                                   if(!res.errBool){
+                                        toast.success("Link activity status changed", {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 2500,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                        });  
+                                   }
+                              else{
+                                   toast.error(res.errMess, {
+                                        position: toast.POSITION.TOP_CENTER,
+                                        autoClose: 2500,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                   });  
+                                   console.log(res.errMess);
+                              }
+                              
+                    }).catch(e=>{
+                         toast.error(e, {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 2500,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });  
+                              console.log(e);
+                     })
+                     await setactiveLoading(false);
+                    }}
+                         />
+                         <span className="slider round"></span>
+                    </label>
+                    </div>
+          </div>
+          <div className='lnk-lnk-gen-cont'>
+               <div className='lnk-lnk-gen-link' onClick={()=>{
+                    props.openInNewTab(`${URLS.visit}/${props.d.unique_identifier}`);
+               }}>
+                    {`https://.../visit/${props.d.unique_identifier}`}
+                    <svg className='lnk-lnk-gen-link-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
+               </div>
+               <div className='lnk-lnk-gen-right-cont'>      
+                         <div className='lnk-lnk-gen-right-butt'  onClick={()=>{
+                         copy(`${URLS.visit}/${props.d.unique_identifier}`);
+                         toast.dark('Link Copied', {
+                                   position: toast.POSITION.TOP_CENTER,
+                                   autoClose: 2500,
+                                   hideProgressBar: true,
+                                   closeOnClick: true,
+                                   pauseOnHover: true,
+                                   draggable: true,
+                                   progress: undefined,
+                         });
+
+                    }} >
+                         <svg width="21" height="20"  className='lnk-lnk-gen-right-butt-ico' viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
+                         <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="#0070F3" stroke-linecap="round" stroke-linejoin="round"/>
+                         </svg>
+                         </div>
+                         <div className='lnk-lnk-gen-right-butt' onClick={()=>{
+                              props.seteditLinkModalVisi(true);
+                              props.seteditLinkUniId(props.d.unique_identifier);
+                         }}>
+                              <svg className='lnk-lnk-gen-right-butt-ico' enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,17.46l0,3.04C3,20.78,3.22,21,3.5,21h3.04c0.13,0,0.26-0.05,0.35-0.15L17.81,9.94l-3.75-3.75L3.15,17.1 C3.05,17.2,3,17.32,3,17.46z"/></g><g><path d="M20.71,5.63l-2.34-2.34c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83C21.1,6.65,21.1,6.02,20.71,5.63z"/></g></g></g></svg>
+                    {/* <svg className='lnk-lnk-gen-right-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0070F3"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg> */}
+                    </div>
+               </div>          
+          </div>
+     </div>
+     )
+}
+
 
 interface WithRouterProps {
      router: NextRouter
@@ -767,8 +1049,14 @@ class Land extends React.Component<LandProps,any>{
           let res:any = [];
           if(this.state.linksData.length > 0){
                this.state.linksData.map((e:linkDataType,ind:number)=>{
-                    res.push(this.renderLink(ind,e));
-               })
+                    // res.push(this.renderLink(ind,e));
+                    res.push(
+                         <LinkCard ind={ind} 
+                         d={e} 
+                         openInNewTab={this.openInNewTab} 
+                         seteditLinkModalVisi={this.seteditLinkModalVisi} 
+                         seteditLinkUniId={this.seteditLinkUniId}/>)
+               }) 
           }
           return res;
      }
@@ -863,10 +1151,10 @@ class Land extends React.Component<LandProps,any>{
                          <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
                               <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
                          </button>
-                        <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId}/>
+                        <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
                         {this.renderLinkCreateModal()}
                         {this.renderFeedbackModal()}
-                              <ToastContainer />
+                         <ToastContainer />
             </div>
           )}
           else{

@@ -106,6 +106,52 @@ export default class BackendHelper{
                }, 5000);
           })
      }
+
+     _updateLinkData(uid:string,linkId:string,updateData:any):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid, "linkid":linkId,"update_data":updateData});             
+          return new Promise((resolve, reject) => {
+               setTimeout(async ()=>{
+                    await axios({
+                         method: 'post',
+                         url:URLS.updateLinkData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,})
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+               }, 5000);
+          })
+     }
+    
+
+     
+     _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid,"uniid":uniId});             
+          return new Promise((resolve, reject) => {
+               setTimeout(async ()=>{
+                    await axios({
+                         method: 'post',
+                         url:URLS.getLinkDatabyUniId,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,})
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+               }, 5000);
+          })
+     }
     
 
      async _updateUserInfo(data:userData){

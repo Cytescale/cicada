@@ -4,7 +4,7 @@ import { useEffect,useRef } from 'react';
    function renderVisitGraph(canvasRef){
           const canvas = canvasRef;
           let ctx  = canvas.current.getContext('2d');     
-          let gradient_2 = ctx.createLinearGradient(0, 0, 0,190);
+          let gradient_2 = ctx.createLinearGradient(0, 0, 0,70);
           gradient_2.addColorStop(1, 'rgba(255,255,255,0)');
           gradient_2.addColorStop(0, '#55A3FF');
           let gradient = ctx.createLinearGradient(150, 0, 150,150);
@@ -24,17 +24,14 @@ import { useEffect,useRef } from 'react';
                         lineTension:0.5,
                         pointBorderWidth:0,
                         pointBorderColor:'#BBFFCA',
-                        pointBackgroundColor:'#BBFFCA'
+                        pointBackgroundColor:'#55A3FF'
                     },
                     
                 ]
                 },
                 options: {
                     layout: {
-                         padding: {
-                              top: 20,
-                              bottom:20
-                          }
+                         padding: 0
                      },
                      plugins: {
                          legend: {
@@ -76,7 +73,7 @@ var landVisitChart = ()=>{
 
      return(
           <div className='app-land-vist-grph-canva'>
-               <canvas ref={canvasRef} height='150' className='app_land_grh_viw'/>
+               <canvas ref={canvasRef} height='130' className='app_land_grh_viw'/>
           </div>
      )
 

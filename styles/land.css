@@ -527,16 +527,16 @@ margin-bottom: 0px;
      font-weight: 800;
 }
 .app-incri-main-cont{
-     border-radius: 100px;
+     border-radius: 6px;
      background: #81EAAB;
      padding-left: 8px;
      padding-right: 8px;
      height: 22px;
-     margin-left: 6px;
+     margin-left: 8px;
      padding-top: 0px;
      padding-bottom: 0px;
      color: #3E9D64;
-     font-size: 11px;
+     font-size: 10px;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -831,8 +831,50 @@ margin-bottom: 0px;
 }
 
 .app-land-vist-grph-canva{
-     
+     display: flex;
+     flex: 1;
+     width: 50%;
+     border-radius: 7px; 
+}
+.app_land_grh_viw{
+
+}
+
+.app-land-visit-card-main-cont{
+     display: inline-flex;
+     width: 90%;
+     margin-left: 5%;
+     margin-top: var(--margin);
+     height: auto;
      border-radius: 7px;
-     background-color: #fff;
+     border: 1px solid #e0e0e0;
+     padding: 15px;
+}
+
+.app-land-visit-card-left-cont{
+     flex: 1;
+     padding-top: 0px;
+}
+
+.app-land-visit-card-left-lab{
+     font-size: 14px;
+     display: inline-flex;
+     font-family: poppins;
+     font-weight: 700;
+     color: #000;
+}
+.app-land-visit-card-left-time{
+     font-size: 12px;
+     color: #bdbdbd;
+     font-weight: 700;
+     font-family: poppins;
+     margin-top: 7px;
+}
+.app-land-visit-card-left-Counter{
+     font-size: 28px;
+     margin-top: -5px;
+     color: #000;
+     font-family: poppins;
+     font-weight: 700;
      
 }

@@ -271,6 +271,28 @@ class Land extends React.Component<LandProps,any>{
              </Menu>
              )
      }
+
+     renderDecri(count:number){
+          return(
+               <div className='app-decri-main-cont'>                                                                
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" className='app-incri-main-ico'>
+                    <path d="M8.38303 6.55417C8.20428 6.37542 7.91553 6.37542 7.73678 6.55417L5.95844 8.32792L5.95844 1.375C5.95844 1.12292 5.75219 0.91667 5.50011 0.91667C5.24803 0.91667 5.04178 1.12292 5.04178 1.375L5.04178 8.32792L3.26344 6.54959C3.08469 6.37084 2.79594 6.37084 2.61719 6.54959C2.43844 6.72834 2.43844 7.01709 2.61719 7.19584L5.17928 9.7625C5.35803 9.94125 5.64678 9.94125 5.82553 9.7625L8.38303 7.20042C8.56178 7.02167 8.56178 6.72834 8.38303 6.55417Z" fill="#EB445A"/>
+                    </svg>
+                    {count}
+               </div>
+          )
+}
+
+     renderIncri(count:number){
+               return(
+                    <div className='app-incri-main-cont'>                         
+                              <svg width="12" height="13" viewBox="0 0 12 13" fill="none" className='app-incri-main-ico'>
+                              <path d="M3.08071 5.54711C3.26559 5.71951 3.55416 5.70943 3.72656 5.52455L5.44191 3.68982L5.68456 10.6385C5.69336 10.8904 5.90668 11.0894 6.15861 11.0806C6.41054 11.0718 6.60947 10.8584 6.60067 10.6065L6.35802 3.65783L8.19733 5.37302C8.38221 5.54542 8.67078 5.53534 8.84319 5.35046C9.01559 5.16558 9.00551 4.87701 8.82063 4.70461L6.17054 2.22892C5.98566 2.05652 5.69708 2.06659 5.52468 2.25147L3.05815 4.90125C2.88575 5.08613 2.89599 5.37928 3.08071 5.54711Z" fill="#3E9D64"/>
+                              </svg>
+                         {count}
+                    </div>
+               )
+     }
      
      renderLink(ind:number,d:linkDataType){
           return(
@@ -556,9 +578,17 @@ class Land extends React.Component<LandProps,any>{
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
                               <WelcomeHead/>
+                              {/* <div className='app-create-link-modal-hr'/> */}
+                              <div className='app-land-visit-card-main-cont'>
+                                   <div className='app-land-visit-card-left-cont'>
+                                        <div className='app-land-visit-card-left-lab'>Visitors {this.renderIncri(45)}</div>
+                                        <div className='app-land-visit-card-left-time'>Today</div>
+                                        <div className='app-land-visit-card-left-Counter'>8000</div>
+                                   </div>
+                                   <LandVisitChart/>
+                              </div>
                               <div className='app-create-link-modal-hr'/>
-                              {/* <div className='app-land-lab-main-cont'>Visitors</div> */}
-                              <LandVisitChart/>
+                              
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}

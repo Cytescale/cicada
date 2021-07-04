@@ -889,7 +889,7 @@ margin-bottom: 0px;
 
 
 .app-land-visit-card-acrd-togg-cont{
-     background-color: #fff;
+     background-color: rgba(0, 0, 0, 0);
      display: flex;
      justify-content: center;
      align-items: center;

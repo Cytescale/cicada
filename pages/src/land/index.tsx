@@ -314,6 +314,9 @@ class Land extends React.Component<LandProps,any>{
                     </div>
                     <div className='app-create-link-modal-hr'/>
                     <div className='app-create-link-modal-main-cont-fld-cont'>
+                    <textarea className='app-feed-main-txtar-fld' placeholder='Tell us what you feel.'></textarea>
+                    </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
                               <button className='app-create-link-modal-edt-lnk-butt'
                               onClick={()=>{
                                    this.submitMakeLink();
@@ -327,7 +330,7 @@ class Land extends React.Component<LandProps,any>{
                                    role="status"
                                    aria-hidden="true"
                               />:
-                              <span>Edit Link</span>
+                              <span>Send</span>
                          }     
                          </button>
                     </div>
@@ -533,7 +536,6 @@ class Land extends React.Component<LandProps,any>{
                     </div>
                     <div className='app-create-link-modal-hr'/>
                     <button className='app-create-link-edt-del-butt'>
-                           <svg className='app-create-link-edt-del-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v10zM18 4h-2.5l-.71-.71c-.18-.18-.44-.29-.7-.29H9.91c-.26 0-.52.11-.7.29L8.5 4H6c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
                             Delete
                     </button>
 
@@ -542,6 +544,7 @@ class Land extends React.Component<LandProps,any>{
           )
      }
 
+     
      renderLink(ind:number,d:linkDataType){
           return(
                <div className='lnk-lnk-main-cont'>
@@ -857,7 +860,10 @@ class Land extends React.Component<LandProps,any>{
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}
-                              > Create Link </button>
+                              > 
+                              <div className='app-land-crt-lnk-butt-decor'/>
+                              <div  className='app-land-crt-lnk-butt-lab'>Create Link </div>
+                              </button>
                               {
                               this.state.linkDataLoading?
                               <Spinner

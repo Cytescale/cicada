@@ -293,6 +293,7 @@ margin-bottom: 0px;
      position: relative;
      margin-top: 12px;
      box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
+     border: 1px solid   rgba(100, 100, 100, 0.17);
      /* border: 1px solid #e0e0e0; */
      border-radius: 7px;
 }
@@ -412,7 +413,8 @@ margin-bottom: 0px;
      margin-left: 5%;
      margin-top: 12px;
      height: 42px;
-     background-color: #55A3FF;
+     background-color: #0070F3;
+     box-shadow: 0px 4px 15px rgba(85, 163, 255, 0.53);
      border-radius: 8px;
      display: flex;
      justify-content: center;
@@ -423,7 +425,23 @@ margin-bottom: 0px;
      font-family: poppins;
      font-size: 15px;
      font-weight: 400;
+     overflow: hidden;
+     position: relative;
+}
 
+.app-land-crt-lnk-butt-decor{
+     position: absolute;
+     background-color: #328DF8;
+     width: 60%;
+     border-radius: 100px;
+     height: 200px;
+     
+     top: 30%;
+     bottom: 0px;
+     filter: blur(9px);
+}
+.app-land-crt-lnk-butt-lab{
+     z-index: 10;
 }
 
 .app-land-crt-lnk-butt:active{
@@ -960,4 +978,11 @@ margin-bottom: 0px;
 .app-body-topper-main-cont{
      background-color: #f7f7f7;
      padding-top: 22px;
+}
+.app-feed-main-txtar-fld{
+     width: 100%;
+     height: 100px;
+     padding: 7px;
+     font-family: poppins;
+     font-size: 15px;
 }

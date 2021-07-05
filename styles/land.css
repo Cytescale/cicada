@@ -1002,6 +1002,14 @@ background-color: #fefefe;
      background-color: #f7f7f7;
      padding-top: 22px;
 }
+.app-body-topper-hey-cont{
+     padding: 22px;
+     padding-bottom: 8px;
+     font-size: 22px;
+     color: #454545;
+     font-family: poppins;
+     font-weight: 700;    
+}
 .app-feed-main-txtar-fld{
      width: 100%;
      height: 100px;
@@ -1023,10 +1031,8 @@ background-color: #fefefe;
 }
 .app-land-top-butt-group-cont{
      display: inline-flex;
-     width: 100%;
      width: 90%;
      margin-left: 5%;
-     margin-top: 12px;
 }
 
 .app-land-det-butt{
@@ -1042,9 +1048,14 @@ background-color: #fefefe;
      border-style: none;
 
 }
+.app-land-det-butt:active{
+     background-color: #e0e0e0;
+}
 
 .app-land-det-butt-ico{
- color: #0070F3;
+ width: 20px;
+ height: 20px;
+color: #0070F3;
 }
 
 .app-land-crt-lnk-butt{
@@ -1081,6 +1092,12 @@ background-color: #fefefe;
 }
 .app-land-crt-lnk-butt-lab{
      z-index: 10;
+}
+.app-land-crt-lnk-butt-lab-ico{
+     width: 20px;
+     height: 20px;
+     margin-right: 7px;
+     color: #fff;
 }
 
 .app-land-crt-lnk-butt:active{

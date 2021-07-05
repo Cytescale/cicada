@@ -625,7 +625,7 @@ class Land extends React.Component<LandProps,any>{
                     <button className="menu-item-lgout">
                          Logout
                     </button>
-                    <div className="menu-item-bottom-v">v 0.0.1 </div>
+                    <div className="menu-item-bottom-v">v 0.0.13</div>
                     </div>
              </Menu>
              )

@@ -8,18 +8,21 @@ import nexusResponse from './nexusResponse';
 //   'uid': 'value' 
 // });
 
+
+
+
 export default class BackendHelper{
      public static SuccessPass = 0;
      public static MaxPass = 10;
      public static CurrentPass = 0;
-
+     public static REQUEST_TIMEOUT = 500;
      UID :string|null = null;
      constructor(){
      
      }
      
    
-      _getUserInfo(uid:any):Promise<nexusResponse>{    
+     async _getUserInfo(uid:any):Promise<nexusResponse>{    
           var data = JSON.stringify({"uid": uid});             
           return new Promise((resolve, reject) => {
                setTimeout(async ()=>{
@@ -37,14 +40,14 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, 5000);
+               }, BackendHelper.REQUEST_TIMEOUT);
           })
       }
 
 
-      _checkURLValid(got_data:any):Promise<nexusResponse>{
+     async _checkURLValid(got_data:any):Promise<nexusResponse>{
           return new Promise((resolve, reject) => {
-               setTimeout(async ()=>{
+               setTimeout(async()=>{
                     await axios({
                          method: 'post',
                          url:URLS.checkURLValidity,
@@ -59,7 +62,7 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, 5000);
+               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
 
@@ -81,11 +84,11 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, 5000);
+               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
 
-     _getLinksData(uid:string):Promise<nexusResponse>{
+     async _getLinksData(uid:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid});             
           return new Promise((resolve, reject) => {
                setTimeout(async ()=>{
@@ -103,7 +106,7 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, 5000);
+               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
 
@@ -125,13 +128,13 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, 5000);
+               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
     
 
      
-     _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
+    async _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"uniid":uniId});             
           return new Promise((resolve, reject) => {
                setTimeout(async ()=>{
@@ -149,7 +152,7 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, 5000);
+               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
     

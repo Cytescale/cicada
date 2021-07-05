@@ -248,6 +248,8 @@ padding-left: 22px;
 padding-bottom: 0px;
 }
 
+
+
 .app-head-main-cont-logo{
      color: var(--text-s1);
      margin-left:48px;
@@ -256,6 +258,7 @@ padding-bottom: 0px;
      font-size: 19px;
 }
 .app-head-main-right-cont{
+     display: inline-flex;
      position: absolute;
      right: 0;
      margin-right: var(--margin);
@@ -560,6 +563,7 @@ font-family: poppins;
      border-radius: 7px;
      padding-left: 12px;
      font-family: poppins;
+     background: #f1f1f1;
      color: var(--danger);
      font-size: 15px;
      margin-top: 12px;

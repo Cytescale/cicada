@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useEffect, useRef, useState} from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Links from "./links";
 import Analytics from "./analytics";
@@ -10,7 +10,7 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import { withRouter, NextRouter } from 'next/router'
 import FullHeiLoading from '../fullHeightLoading';
 import Head from "next/head";
-import  {Accordion, Card, Dropdown, Modal, Spinner}  from "react-bootstrap";
+import  {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
 import { ToastContainer,toast } from "react-toastify";
 import nexusResponse from "../../../comp/helpers/nexusResponse";
 import { linkDataType } from "../../../comp/utils/link";
@@ -59,6 +59,64 @@ function timeDifference(current:any, previous:any) {
          return Math.round(elapsed/msPerYear ) + ' years ago';   
      }
  }
+
+
+const ProfilePopover:React.FC<any> = ()=>{
+     const [show, setShow] = useState(false);
+     const [target, setTarget] = useState(null);
+     const ref = useRef(null);
+     const handleClick = (event:any) => {
+       setShow(!show);
+       setTarget(event.target);
+     };
+     return (
+       <div ref={ref}>
+         <button onClick={handleClick}
+         className='app-land-prof-pic-butt'
+         >
+         <svg className='app-land-prof-pic-butt-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M10.25,13c0,0.69-0.56,1.25-1.25,1.25S7.75,13.69,7.75,13S8.31,11.75,9,11.75S10.25,12.31,10.25,13z M15,11.75 c-0.69,0-1.25,0.56-1.25,1.25s0.56,1.25,1.25,1.25s1.25-0.56,1.25-1.25S15.69,11.75,15,11.75z M22,12c0,5.52-4.48,10-10,10 S2,17.52,2,12S6.48,2,12,2S22,6.48,22,12z M20,12c0-0.78-0.12-1.53-0.33-2.24C18.97,9.91,18.25,10,17.5,10 c-3.13,0-5.92-1.44-7.76-3.69C8.69,8.87,6.6,10.88,4,11.86C4.01,11.9,4,11.95,4,12c0,4.41,3.59,8,8,8S20,16.41,20,12z"/></g></svg>
+          </button>   
+         <Overlay
+           show={show}
+           target={target}
+           placement="bottom"
+           rootClose={true}
+           container={ref.current}
+           containerPadding={20}
+         >
+           <Popover id="popover-contained" className='app-land-prof-pop-main-cont'>
+             <div className='app-land-prof-pop-data-main-cont pop-name-cont'>
+                    {/* <div className='pop-name-cont-pro'>
+                    <svg className='app-land-prof-pic-butt-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M10.25,13c0,0.69-0.56,1.25-1.25,1.25S7.75,13.69,7.75,13S8.31,11.75,9,11.75S10.25,12.31,10.25,13z M15,11.75 c-0.69,0-1.25,0.56-1.25,1.25s0.56,1.25,1.25,1.25s1.25-0.56,1.25-1.25S15.69,11.75,15,11.75z M22,12c0,5.52-4.48,10-10,10 S2,17.52,2,12S6.48,2,12,2S22,6.48,22,12z M20,12c0-0.78-0.12-1.53-0.33-2.24C18.97,9.91,18.25,10,17.5,10 c-3.13,0-5.92-1.44-7.76-3.69C8.69,8.87,6.6,10.88,4,11.86C4.01,11.9,4,11.95,4,12c0,4.41,3.59,8,8,8S20,16.41,20,12z"/></g></svg>
+                    </div> */}
+                    Profile
+            </div>
+            <div className='app-land-prof-pop-data-main-cont pop-eml-cont'>
+                    {User?.getUserData()?.email.slice(0,20) + (User?.getUserData()!.email!.length >20 ? "..." : "")}
+            </div>
+            <div className='app-land-prof-pop-hr'/>
+            <div className='app-land-prof-pop-data-main-cont pop-link-cont'>
+            Terms of Use   
+                    <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
+            </div>
+            <div className='app-land-prof-pop-data-main-cont pop-link-cont'>
+            Privacy Policy
+            <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
+            </div>
+            <div className='app-land-prof-pop-hr'/>
+            <div className='app-land-prof-pop-data-main-cont pop-acc-sett-cont'>
+            Account Settings
+            <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
+            </div>
+            <div className='app-land-prof-pop-hr'/>
+            <Button variant="light" className="menu-item-lgout">
+                         Logout
+          </Button>
+           </Popover>
+         </Overlay>
+       </div>
+     );
+}
 
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
@@ -667,9 +725,6 @@ class Land extends React.Component<LandProps,any>{
                          Help</a>
 
                     <div className="menu-item-bottom-menu">
-                    <button className="menu-item-lgout">
-                         Logout
-                    </button>
                     <div className="menu-item-bottom-v">v 0.0.13</div>
                     </div>
              </Menu>
@@ -1064,6 +1119,7 @@ class Land extends React.Component<LandProps,any>{
                                    >
                                         Create Link
                                    </button>
+                                   <ProfilePopover />
                               </div>
                          </div>
                          <div id='app-main-cont-body-id'>

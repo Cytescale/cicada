@@ -25,7 +25,40 @@ import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 const User = new user();
+function timeDifference(current:any, previous:any) {
 
+     var msPerMinute = 60 * 1000;
+     var msPerHour = msPerMinute * 60;
+     var msPerDay = msPerHour * 24;
+     var msPerMonth = msPerDay * 30;
+     var msPerYear = msPerDay * 365;
+ 
+     var elapsed = current - previous;
+ 
+     if (elapsed < msPerMinute) {
+          return Math.round(elapsed/1000) + ' seconds ago';   
+     }
+ 
+     else if (elapsed < msPerHour) {
+          return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+     }
+ 
+     else if (elapsed < msPerDay ) {
+          return Math.round(elapsed/msPerHour ) + ' hours ago';   
+     }
+ 
+     else if (elapsed < msPerMonth) {
+         return Math.round(elapsed/msPerDay) + ' days ago';   
+     }
+ 
+     else if (elapsed < msPerYear) {
+         return Math.round(elapsed/msPerMonth) + ' months ago';   
+     }
+ 
+     else {
+         return Math.round(elapsed/msPerYear ) + ' years ago';   
+     }
+ }
 
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
@@ -169,12 +202,7 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                               className='app-create-link-modal-main-cont-fld'
                               value={uniid}
                               onChange={(e)=>{
-                                   if(e.target.value){
-                                        setuniid(e.target.value);
-                                   }else{
-                                        setuniid(lData?.unique_identifier);     
-                                   }
-                                   
+                                   setuniid(e.target.value);                                   
                               }}
                               />
                     </div>
@@ -190,6 +218,11 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                               <button className='app-create-link-modal-edt-lnk-butt'
                                disabled={loading}
                               onClick={async ()=>{
+                                             if(!uniid){setuniid(lData?.unique_identifier);}
+                                             if(dname!.length>10){seterrBool(true);seterrMess('Link name too long');return; }
+                                             if(dname!.length==0){seterrBool(true);seterrMess('Enter some name');return; }
+                                             if(uniid!.length>10){seterrBool(true);seterrMess('Unique Identifier too long');return; }
+                                             if(uniid!.length==0){seterrBool(true);seterrMess('Enter a unique identifier');return; }
                                              await setLoading(true);
                                              await processEditLinkData(lData!,dname!,uniid!).then(async (res:nexusResponse)=>{
                                                   if(!res.errBool){
@@ -300,6 +333,15 @@ const LinkCard:React.FC<any>=(props:any)=>{
           <div className='lnk-lnk-head-main-cont'>
                     <div className='lnk-lnk-head-main-cont-name-cont'>
                           {props.d.name}
+                          {
+                               props.isDetailed?
+                               <div className='lnk-lnk-head-main-cont-crt-cont'>
+                            Last edited:
+                            {timeDifference(new Date().getTime(),props.d.update_timestamp)}
+                              </div>:
+                              <span/>
+                          }
+                          
                     </div>
 
                     <button
@@ -362,6 +404,39 @@ const LinkCard:React.FC<any>=(props:any)=>{
                     </label>
                     </div>
           </div>
+          {
+                               props.isDetailed?
+                <div className='lnk-lnk-mid-body-cont'>
+                    <div className='lnk-lnk-mid-body-cont-lab'>
+                         Destinaion Url
+                    </div>
+                    <div className='lnk-lnk-mid-body-cont-cont'>
+                         {props.d.link_dest.slice(0,30) + (props.d.link_dest.length >30 ? "..." : "")}
+                    </div>
+                    <div className='lnk-lnk-mid-body-right-cont'>
+                              <div className='lnk-lnk-gen-right-butt' onClick={()=>{
+                                        props.seteditLinkModalVisi(true);
+                                        props.seteditLinkUniId(props.d.unique_identifier);
+                                   }}>
+                                   <svg className='lnk-lnk-mid-body-right-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
+                              </div>
+                    </div>
+                    
+               </div>:<span/>}
+               {
+               props.isDetailed?
+               <div className='lnk-lnk-mid-body-cont'>
+                    <div className='lnk-lnk-mid-body-cont-lab'>
+                         Unique Idenfier
+                    </div>
+                    <div className='lnk-lnk-mid-body-cont-cont'>
+                         {props.d.unique_identifier}
+                    </div>
+                    <div className='lnk-lnk-mid-body-right-cont'>
+
+                    </div>
+               </div>:
+               <span/>}
           <div className='lnk-lnk-gen-cont'>
                <div className='lnk-lnk-gen-link' onClick={()=>{
                     props.openInNewTab(`${URLS.visit}/${props.d.unique_identifier}`);
@@ -431,6 +506,7 @@ class Land extends React.Component<LandProps,any>{
                linkDataLoading:false,
                validityLoading:false,
                validated:false,
+               detailed:false,
           }
           this.initDataLoad = this.initDataLoad.bind(this);
           this.setAuth = this.setAuth.bind(this);
@@ -454,7 +530,9 @@ class Land extends React.Component<LandProps,any>{
           this.seteditLinkModalVisi =this.seteditLinkModalVisi.bind(this);
           this.setfeedbackModalVisi = this.setfeedbackModalVisi.bind(this);
           this.seteditLinkUniId = this.seteditLinkUniId.bind(this);
+          this.setdetailed = this.setdetailed.bind(this);
      }
+     setdetailed(b:boolean){this.setState({detailed:b})}
      seteditLinkUniId(s:string){this.setState({editLinkUniId:s})}
      setfeedbackModalVisi(b:boolean){this.setState({feedbackModalVisi:b})}
      seteditLinkModalVisi(b:boolean){this.setState({editLinkModalVisi:b})}
@@ -978,6 +1056,7 @@ class Land extends React.Component<LandProps,any>{
                     // res.push(this.renderLink(ind,e));
                     res.push(
                          <LinkCard ind={ind} 
+                         isDetailed={this.state.detailed}
                          d={e} 
                          openInNewTab={this.openInNewTab} 
                          seteditLinkModalVisi={this.seteditLinkModalVisi} 
@@ -1047,12 +1126,27 @@ class Land extends React.Component<LandProps,any>{
                             
                               
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
+                              <div className='app-land-top-butt-group-cont'>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}
                               > 
                               <div className='app-land-crt-lnk-butt-decor'/>
                               <div  className='app-land-crt-lnk-butt-lab'>Create Link </div>
                               </button>
+                              <button className='app-land-det-butt'
+                              onClick={()=>{this.setdetailed(!this.state.detailed)}}
+                              > 
+                              {
+                              this.state.detailed?
+                              <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 0v24H0V0h24z" fill="none" opacity=".87"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>
+                              :
+                              <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>
+                              }
+                              
+                              
+                              </button>
+                              
+                              </div>
                               {
                               this.state.linkDataLoading?
                               <Spinner

@@ -52,20 +52,10 @@ class LoginAct extends React.Component<LoginProps,any>{
           
      }
      
-     processLogin(){
-          return new Promise((resolve, reject) => {
-               setTimeout(() => {
-                 FirebaseHelper.initEmailAuth(this.state.emlFldData,this.state.pssFldData).then((res:nexusResponse|null)=>{
-                    if(res){resolve(res);}
-                 }).catch((e:any)=>{reject(e);})
-               },5000);
-          });   
-     }
-
      async handleLoginSub(){
           if(this.state.emlFldData.length && this.state.pssFldData.length){
                this.setLoading(true);
-               this.processLogin().then((res:any)=>{
+               FirebaseHelper.initEmailAuth(this.state.emlFldData,this.state.pssFldData).then((res:any)=>{
                     if(!res.errBool){
                          console.log('loginact: login success ');
                          toast.dark('Login Successfull', {
@@ -77,7 +67,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                               draggable: true,
                               progress: undefined,
                          });
-                         this.props.router.push('/src/land');
+                         this.props.router.replace('/');
                     }
                     else{
                          console.log('loginact: login error '+res.errMess);

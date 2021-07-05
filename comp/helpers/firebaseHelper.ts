@@ -46,24 +46,43 @@ declare  interface  firebaseHelperInter{
 
 export type {serverReponse,firebaseHelperInter,errResponse};
 
+var cookie_exp_date = new Date();
+cookie_exp_date.setDate(cookie_exp_date.getDate() + 7);
+
 const checkToken = async () => {
      const  value  = await cookie.load('userToken');
      return value;
 }
-
 const setToken = async (token:string) => {
-     await cookie.save('userToken', token, { path: '/' })
+     await cookie.save('userToken', token, { path: '/',
+     expires:cookie_exp_date,
+     secure: true,
+      })
+};
+
+const setUid = async (uid:string) => {
+     await cookie.save('uid', uid, { 
+     path: '/',
+     expires:cookie_exp_date,
+     secure: true,
+     })
 };
 const getUid = async () => {
      const  value  = cookie.load('uid');
      return value;
 };
-const setUid = async (uid:string) => {
-     await cookie.save('uid', uid, { path: '/' })
-};
+
+const unseUserToken = async ()=>{
+     console.log('init unset');
+     await cookie.remove('userToken', { path: '/' });
+}
+
+const unsetUid = async ()=>{
+     await cookie.remove('uid', { path: '/' });
+}
 
 
-export {checkToken,setToken,getUid,setUid}
+export {checkToken,setToken,getUid,setUid,unseUserToken,unsetUid}
 
 const  user = new User();
 
@@ -159,12 +178,12 @@ export default class firebaseHelper implements firebaseHelperInter{
 
      async initEmailAuth(eml: string, pass: string):Promise<nexusResponse|null>{
           let ress:nexusResponse|null = null;
-          await this.getFirebase()!.auth().signInWithEmailAndPassword(eml,pass).then((result)=>{
-                    result.user?.getIdToken(true).then(res=>{
+          await this.getFirebase()!.auth().signInWithEmailAndPassword(eml,pass).then(async (result)=>{
+                    await result.user?.getIdToken(true).then(async res=>{
                          user.setUserToken(res);
                          user.setUserUid(result.user?.uid!);
-                         setUid(result.user?.uid!)
-                         setToken(res);
+                         await setUid(result.user?.uid!)
+                         await setToken(res);
                     })
                     ress = {
                          errMess:'null',

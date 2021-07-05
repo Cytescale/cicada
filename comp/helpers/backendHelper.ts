@@ -3,6 +3,8 @@ import URLS from './api.routes';
 import imageKitCert from '../certs/imagekit.config';
 import {userData} from '../utils/user';
 import nexusResponse from './nexusResponse';
+import { setUid,setToken,unseUserToken,unsetUid} from './firebaseHelper';
+
 
 // var data = qs.stringify({
 //   'uid': 'value' 
@@ -21,6 +23,19 @@ export default class BackendHelper{
      
      }
      
+
+     async initUserLogout():Promise<boolean>{
+          return new Promise(async (resolve, reject) => {
+               try{
+                     await unseUserToken();
+                     await unsetUid();
+                    resolve(true);
+               } catch(e){
+                    reject(false);
+               }
+          })
+     }
+
      async _getUserInfo(uid:any):Promise<nexusResponse>{    
           var data = JSON.stringify({"uid": uid});             
           return new Promise((resolve, reject) => {

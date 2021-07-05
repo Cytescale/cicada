@@ -79,7 +79,24 @@ function timeDifference(current:any, previous:any) {
                          >
                               Not yet
                          </button>
-                         <button className='lgout-conf-main-cont-yes-butt'>
+                         <button className='lgout-conf-main-cont-yes-butt' onClick={()=>{
+                              BackendHelper.initUserLogout().then((res:boolean)=>{
+                                   if(res){
+                                        props.router.replace('/src/login');
+                                   }
+                                   else{
+                                        toast.error("Logout Error", {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 5000,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                        });
+                                   }
+                              });
+                         }}>
                               Gotta Go!
                          </button>
                     </div>
@@ -1238,7 +1255,7 @@ class Land extends React.Component<LandProps,any>{
                          <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
                               <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
                          </button>
-                        <ProfileLogoutModal setShow={this.setlgoutConfirmVisi} show={this.state.lgoutConfirmVisi}/>
+                        <ProfileLogoutModal setShow={this.setlgoutConfirmVisi} show={this.state.lgoutConfirmVisi} router={this.props.router}/>
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
                         {this.renderLinkCreateModal()}
                         {this.renderFeedbackModal()}

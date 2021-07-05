@@ -307,7 +307,7 @@ margin-bottom: 0px;
 }
 
 .pop-name-cont{
-     font-size: 18px;
+     font-size: 16px;
      font-family: poppins;
      font-weight: 400;
      color: #555555;
@@ -315,7 +315,7 @@ margin-bottom: 0px;
      align-items: center;
 }
 .pop-acc-sett-cont{
-     font-size: 18px;
+     font-size: 16px;
      font-family: poppins;
      font-weight: 400;
      margin-top: 12px;
@@ -324,7 +324,7 @@ margin-bottom: 0px;
      align-items: center;
 }
 .pop-link-cont{
-     font-size: 18px;
+     font-size: 16px;
      font-family: poppins;
      font-weight: 400;
      margin-top: 8px;
@@ -335,7 +335,7 @@ margin-bottom: 0px;
 .pop-eml-cont{
      font-family: poppins;
      color: #0070F3;
-     font-size: 18px;  
+     font-size: 16px;  
      padding-top: 4px;  
 }
 .pop-name-cont-pro{

@@ -15,22 +15,22 @@ export default class BackendHelper{
      public static SuccessPass = 0;
      public static MaxPass = 10;
      public static CurrentPass = 0;
-     public static REQUEST_TIMEOUT = 500;
+     public static REQUEST_TIMEOUT = 5000;
      UID :string|null = null;
      constructor(){
      
      }
      
-   
      async _getUserInfo(uid:any):Promise<nexusResponse>{    
           var data = JSON.stringify({"uid": uid});             
           return new Promise((resolve, reject) => {
-               setTimeout(async ()=>{
-                    await axios({
+                axios({
                          method: 'post',
                          url:URLS.getUserInfo,
                          headers: { 'Content-Type': 'application/json'},
-                         data : data,})
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
                     .then((response)=>{
                          let rd:nexusResponse = response.data;
                          resolve(rd);
@@ -40,19 +40,18 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, BackendHelper.REQUEST_TIMEOUT);
           })
       }
 
 
      async _checkURLValid(got_data:any):Promise<nexusResponse>{
           return new Promise((resolve, reject) => {
-               setTimeout(async()=>{
-                    await axios({
+                axios({
                          method: 'post',
                          url:URLS.checkURLValidity,
                          headers: { 'Content-Type': 'application/json'},
-                         data : got_data,})
+                         data : got_data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,})
                     .then((response)=>{
                          let rd:nexusResponse = response.data;
                          resolve(rd);
@@ -62,19 +61,18 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
 
 
      _createLink(got_data:any):Promise<nexusResponse>{
           return new Promise((resolve, reject) => {
-               setTimeout(async ()=>{
-                    await axios({
+                axios({
                          method: 'post',
                          url:URLS.makeLinkData,
                          headers: { 'Content-Type': 'application/json'},
-                         data : got_data,})
+                         data : got_data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,})
                     .then((response)=>{
                          let rd:nexusResponse = response.data;
                          resolve(rd);
@@ -84,19 +82,19 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
 
      async _getLinksData(uid:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid});             
           return new Promise((resolve, reject) => {
-               setTimeout(async ()=>{
-                    await axios({
+                axios({
                          method: 'post',
                          url:URLS.getLinkData,
                          headers: { 'Content-Type': 'application/json'},
-                         data : data,})
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
                     .then((response)=>{
                          let rd:nexusResponse = response.data;
                          resolve(rd);
@@ -106,19 +104,19 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
 
      _updateLinkData(uid:string,linkId:string,updateData:any):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid, "linkid":linkId,"update_data":updateData});             
           return new Promise((resolve, reject) => {
-               setTimeout(async ()=>{
-                    await axios({
+                          axios({
                          method: 'post',
                          url:URLS.updateLinkData,
                          headers: { 'Content-Type': 'application/json'},
-                         data : data,})
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,}
+                         )
                     .then((response)=>{
                          let rd:nexusResponse = response.data;
                          resolve(rd);
@@ -128,7 +126,6 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
     
@@ -137,12 +134,15 @@ export default class BackendHelper{
     async _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"uniid":uniId});             
           return new Promise((resolve, reject) => {
-               setTimeout(async ()=>{
-                    await axios({
+                      axios({
                          method: 'post',
                          url:URLS.getLinkDatabyUniId,
                          headers: { 'Content-Type': 'application/json'},
-                         data : data,})
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                         }
+                         
+                         )
                     .then((response)=>{
                          let rd:nexusResponse = response.data;
                          resolve(rd);
@@ -152,7 +152,6 @@ export default class BackendHelper{
                     let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
                     reject(sr);
                     });
-               }, BackendHelper.REQUEST_TIMEOUT);
           })
      }
     

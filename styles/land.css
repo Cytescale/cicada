@@ -1,5 +1,5 @@
 .land-body-cont{
-
+     background-color: #f7f7f7;
      color: #000;
      height: 100%;
 }
@@ -305,7 +305,7 @@ margin-bottom: 0px;
      position: relative;
      margin-top: 12px;
 background-color: #fefefe;
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
+     
      border: 1px solid   rgba(100, 100, 100, 0.17);
      /* border: 1px solid #e0e0e0; */
      border-radius: 7px;

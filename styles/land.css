@@ -268,8 +268,8 @@ margin-bottom: 0px;
 }
 
 .app-land-prof-pic-butt-ico{
-     width: 24px;
-     height: 24px;
+     width: 32px;
+     height: 32px;
 }
 
 .app-land-prof-pop-data-main-cont{
@@ -353,8 +353,9 @@ margin-bottom: 0px;
 
 .app-land-prof-pic-butt{
 margin-left: 12px;
-width: 32px;
-height: 32px;
+padding: 0;
+width: 36px;
+height: 36px;
 border-radius: 100px;
 font-family: poppins;
 font-weight: 700;
@@ -1140,6 +1141,7 @@ background-color: #fefefe;
 .app-land-det-butt{
      width: 42px;
      height: 42px;
+     padding: 0;
      margin-left: 8px;
      background-color: #e8e8e8;
      border-radius: 8px;

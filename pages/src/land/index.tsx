@@ -60,8 +60,35 @@ function timeDifference(current:any, previous:any) {
      }
  }
 
+ const ProfileLogoutModal:React.FC<any> = (props:any)=>{  
+     return(
+               <Modal
+               show={props.show}
+               onHide={()=>{props.setShow(false)}}
+               size="lg"
+               centered
+               animated
+               >
+               <div className='app-create-link-modal-main-cont'>
+                    <div className='app-create-link-modal-main-cont-tit'>
+                    Logout from Sakura
+                    </div>
+                    <div className='lgout-conf-main-cont'>
+                         <button className='lgout-conf-main-cont-no-butt'
+                              onClick={()=>{props.setShow(false)}}
+                         >
+                              Not yet
+                         </button>
+                         <button className='lgout-conf-main-cont-yes-butt'>
+                              Gotta Go!
+                         </button>
+                    </div>
+               </div>
+               </Modal>
+      )
+ }
 
-const ProfilePopover:React.FC<any> = ()=>{
+const ProfilePopover:React.FC<any> = (props:any)=>{
      const [show, setShow] = useState(false);
      const [target, setTarget] = useState(null);
      const ref = useRef(null);
@@ -109,9 +136,13 @@ const ProfilePopover:React.FC<any> = ()=>{
             <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
             </div>
             <div className='app-land-prof-pop-hr'/>
-            <Button variant="light" className="menu-item-lgout">
+            <Button variant="light" className="menu-item-lgout" onClick={()=>{
+                    setShow(!show);
+                 props.setlgoutShow(true)}
+               }
+                 >
                          Logout
-          </Button>
+            </Button>
            </Popover>
          </Overlay>
        </div>
@@ -540,6 +571,7 @@ class Land extends React.Component<LandProps,any>{
      constructor(props:LandProps){
           super(props);
           this.state = {
+               lgoutConfirmVisi:false,
                feedbackModalVisi:false,
                editLinkModalVisi:false,
                editLinkUniId:null,
@@ -555,6 +587,7 @@ class Land extends React.Component<LandProps,any>{
                validityLoading:false,
                validated:false,
                detailed:false,
+               
           }
           this.initDataLoad = this.initDataLoad.bind(this);
           this.setAuth = this.setAuth.bind(this);
@@ -579,7 +612,9 @@ class Land extends React.Component<LandProps,any>{
           this.setfeedbackModalVisi = this.setfeedbackModalVisi.bind(this);
           this.seteditLinkUniId = this.seteditLinkUniId.bind(this);
           this.setdetailed = this.setdetailed.bind(this);
+          this.setlgoutConfirmVisi = this.setlgoutConfirmVisi.bind(this);
      }
+     setlgoutConfirmVisi(b:boolean){this.setState({lgoutConfirmVisi:b})}
      setdetailed(b:boolean){this.setState({detailed:b})}
      seteditLinkUniId(s:string){this.setState({editLinkUniId:s})}
      setfeedbackModalVisi(b:boolean){this.setState({feedbackModalVisi:b})}
@@ -1119,7 +1154,7 @@ class Land extends React.Component<LandProps,any>{
                                    >
                                         Create Link
                                    </button>
-                                   <ProfilePopover />
+                                   <ProfilePopover  setlgoutShow={this.setlgoutConfirmVisi} />
                               </div>
                          </div>
                          <div id='app-main-cont-body-id'>
@@ -1203,6 +1238,7 @@ class Land extends React.Component<LandProps,any>{
                          <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
                               <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
                          </button>
+                        <ProfileLogoutModal setShow={this.setlgoutConfirmVisi} show={this.state.lgoutConfirmVisi}/>
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
                         {this.renderLinkCreateModal()}
                         {this.renderFeedbackModal()}

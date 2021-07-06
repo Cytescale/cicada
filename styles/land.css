@@ -1047,8 +1047,8 @@ background-color: #f1f1f1
      background-color: #fff;
      border-radius: 7px;
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
-     /* box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17); */
+     /* box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12); */
+     border: 1px solid #bdbdbd; 
      
 }
 
@@ -1111,7 +1111,7 @@ background-color: #f1f1f1
      padding-bottom: var(--margin);
 }
 .app-body-topper-main-cont{
-     background-color: #F2F7FB;
+     background-color: #fff;
      padding-top: 22px;
 }
 .app-body-topper-hey-cont{

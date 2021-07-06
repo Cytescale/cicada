@@ -922,11 +922,6 @@ class Land extends React.Component<LandProps,any>{
                     </div>
 
                     <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <div className='app-create-link-modal-main-cont-fld-tit'>is Deeplinked?</div>
-                              <div className='app-create-link-modal-main-cont-fld-data-lab'>Do you want to create a deeplink?</div>
-                    </div>
-
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
                               <button
                               className='app-create-link-modal-main-paste-butt'
                               onClick={()=>{
@@ -940,6 +935,20 @@ class Land extends React.Component<LandProps,any>{
                               <svg className='app-create-link-modal-main-paste-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 2h-4.18C14.4.84 13.3 0 12 0S9.6.84 9.18 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm6 18H6c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V4h1c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1z"/></svg>
                               Paste from Clipboard
                               </button>
+                    </div>
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>is Deeplinked?</div>
+                              <div className='app-create-link-modal-main-cont-fld-data-lab'>Do you want to create a deeplink?</div>
+                              <div  className='lnk-lnk-head-right-butt-cont'>
+                                   <label className="switch">
+                                        <input type="checkbox" 
+                                        disabled={this.state.makeLinkLoading}
+                                        defaultChecked={true}
+                                        />
+                                        <span className="slider round"></span>
+                                   </label>
+                    </div>
                     </div>
 
                     <div className='app-create-link-modal-main-cont-fld-cont'>

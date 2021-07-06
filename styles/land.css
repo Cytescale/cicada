@@ -1034,17 +1034,14 @@ background-color: #f1f1f1
 }
 
 .app-land-visit-card-main-outer-cont{
-     width: 100%;
-     margin-left: 0%;
+     width: 90%;
+     margin-left: 5%;
      margin-top: var(--margin);
-     height: auto;
-     padding-left: 2%;
-     padding-right: 2%;
+
      background-color: #fff;
-     border-radius: 0px;
+     border-radius: 7px;
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
-     border-top: 1px solid   #e0e0e0;
-     border-bottom: 1px solid   #e0e0e0;
+     border: 1px solid   #e0e0e0;
      /* box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17); */
      
 }
@@ -1283,11 +1280,11 @@ color: #0070F3;
 
 @keyframes wave-animation {
      0% { transform: rotate( 0.0deg) }
-    10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
-    20% { transform: rotate(-8.0deg) }
-    30% { transform: rotate(14.0deg) }
-    40% { transform: rotate(-4.0deg) }
-    50% { transform: rotate(10.0deg) }
+    10% { transform: rotate(24.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+    20% { transform: rotate(-16.0deg) }
+    30% { transform: rotate(24.0deg) }
+    40% { transform: rotate(-8.0deg) }
+    50% { transform: rotate(20.0deg) }
     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
    100% { transform: rotate( 0.0deg) }
  }
@@ -1297,6 +1294,7 @@ color: #0070F3;
      animation-name: wave-animation; 
      animation-duration: 2.5s;      
      transform-origin: 70% 70%;    
+     animation-timing-function: ease-out;
      display: inline-block;
 
 }

@@ -15,7 +15,7 @@ import { ToastContainer,toast } from "react-toastify";
 import nexusResponse from "../../../comp/helpers/nexusResponse";
 import { linkDataType } from "../../../comp/utils/link";
 import Link from 'next/link'
-import URLS from "../../../comp/helpers/api.routes";
+import URLS,{_BASE_CLIENT_URL} from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
 import { push as Menu } from 'react-burger-menu'
 import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
@@ -450,15 +450,19 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
 const LinkCard:React.FC<any>=(props:any)=>{
      const [active , setactive] = useState<boolean>(props.d.active_bool);
      const [activeLoading,setactiveLoading] = useState<boolean>(false);
+     
      return(
           <div className='lnk-lnk-main-cont'>
           <div className='lnk-lnk-head-main-cont'>
-                         <div className='lnk-lnk-head-link-ico-cont'>
+                         {
+                              props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?
+                              <div className='lnk-lnk-head-link-ico-cont'>
                                <svg className='lnk-lnk-head-link-ico' xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M17,7h-3c-0.55,0-1,0.45-1,1s0.45,1,1,1h3c1.65,0,3,1.35,3,3s-1.35,3-3,3h-3c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1h3 c2.76,0,5-2.24,5-5S19.76,7,17,7z M8,12c0,0.55,0.45,1,1,1h6c0.55,0,1-0.45,1-1s-0.45-1-1-1H9C8.45,11,8,11.45,8,12z M10,15H7 c-1.65,0-3-1.35-3-3s1.35-3,3-3h3c0.55,0,1-0.45,1-1s-0.45-1-1-1H7c-2.76,0-5,2.24-5,5s2.24,5,5,5h3c0.55,0,1-0.45,1-1 C11,15.45,10.55,15,10,15z"/></g></g></svg>
-                          </div>
+                              </div>:<span/>
+                         }
+                         
                     <div className='lnk-lnk-head-main-cont-name-cont'>
                           
-
                           {props.d.name}
                           {
                                props.isDetailed?
@@ -624,6 +628,7 @@ class Land extends React.Component<LandProps,any>{
                linkDataLoading:false,
                validityLoading:false,
                validated:false,
+               isdeeplink:true,
                detailed:false,
                
           }
@@ -651,7 +656,9 @@ class Land extends React.Component<LandProps,any>{
           this.seteditLinkUniId = this.seteditLinkUniId.bind(this);
           this.setdetailed = this.setdetailed.bind(this);
           this.setlgoutConfirmVisi = this.setlgoutConfirmVisi.bind(this);
+          this.setisdeeplink = this.setisdeeplink.bind(this);
      }
+     setisdeeplink(b:boolean){this.setState({isdeeplink:b})}
      setlgoutConfirmVisi(b:boolean){this.setState({lgoutConfirmVisi:b})}
      setdetailed(b:boolean){this.setState({detailed:b})}
      seteditLinkUniId(s:string){this.setState({editLinkUniId:s})}
@@ -663,9 +670,9 @@ class Land extends React.Component<LandProps,any>{
      setlinkDataLoading(b:boolean){this.setState({linkDataLoading:b})}
      setLinkName(s:string){this.setState({linkName:s});}
      setLinkDest(s:string){
-     this.setvalidated(false);    
      this.setState({linkDest:s})
-     this.validateOnChange(s)}
+     if(this.state.isdeeplink){this.validateOnChange(s)}
+     }
      setPlatformId(n:number){this.setState({platform_id:n});}
      setcreateLinkModalVisi(b:boolean){this.setState({createLinkModalVisi:b})}
      setLoading(b:boolean){this.setState({isLoading:b})}
@@ -908,14 +915,16 @@ class Land extends React.Component<LandProps,any>{
                     <div className='app-create-link-modal-main-cont-fld-cont'>
                               <div className='app-create-link-modal-main-cont-fld-tit'>Link Address</div>
                               <input 
-                              type='text' 
+                              type='url' 
                               disabled={this.state.makeLinkLoading}
                               placeholder='eg: www.link.com'
                               className='app-create-link-modal-main-cont-fld'
                               value={this.state.linkDest}
                               onChange={(e)=>{
-                                   this.setvalidityLoading(true); 
-                                   this.setvalidated(false);
+                                   if(this.state.isdeeplink){
+                                        this.setvalidityLoading(true); 
+                                        this.setvalidated(false);
+                                   }
                                    this.setLinkDest(e.target.value)}
                               }
                               />
@@ -944,7 +953,8 @@ class Land extends React.Component<LandProps,any>{
                                    <label className="switch">
                                         <input type="checkbox" 
                                         disabled={this.state.makeLinkLoading}
-                                        defaultChecked={true}
+                                        defaultChecked={this.state.isdeeplink}
+                                        onChange={()=>{this.setisdeeplink(!this.state.isdeeplink)}}
                                         />
                                         <span className="slider round"></span>
                                    </label>
@@ -953,7 +963,7 @@ class Land extends React.Component<LandProps,any>{
 
                     <div className='app-create-link-modal-main-cont-fld-cont'>
                     {
-                    this.state.validityLoading==true?
+                    this.state.validityLoading==true && this.state.isdeeplink?
                          <div className='app-land-url-valid-indi-load-cont'>
                               <Spinner
                                    as="span"
@@ -962,13 +972,14 @@ class Land extends React.Component<LandProps,any>{
                                    role="status"
                                    aria-hidden="true"/>
                          </div>:
-                    this.renderValidityIndi()
+                    this.state.isdeeplink?
+                    this.renderValidityIndi():null
                     }
                     </div>
 
                     <div className='app-create-link-modal-main-cont-fld-cont'>
                     {
-                         this.state.validated?
+                         this.state.validated || !this.state.isdeeplink?
                               <button className='app-create-link-modal-crt-lnk-butt'
                               onClick={()=>{
                                    this.submitMakeLink();
@@ -1062,9 +1073,9 @@ class Land extends React.Component<LandProps,any>{
      }
      async submitMakeLink(){
           this.setmakeLinkLoading(true);
-          if(this.state.validated){
+          if(this.state.validated || !this.state.isdeeplink){
           if(this.state.linkName && this.state.linkDest){
-               if(this.state.platform_id!==0){
+               if(this.state.platform_id!==0 || !this.state.isdeeplink){
                     if(backendHelper){
                          const link_data={
                               "uid":User.getUserUid(),
@@ -1075,7 +1086,8 @@ class Land extends React.Component<LandProps,any>{
                                   "platform_id":this.state.platform_id,
                                   "active_bool":true,
                                   "deleted_bool":false,
-                                  "ban_bool":false
+                                  "ban_bool":false,
+                                  "deeplink_bool":this.state.isdeeplink
                               }
                           }
                          BackendHelper._createLink(link_data).then((res:nexusResponse)=>{
@@ -1266,8 +1278,14 @@ class Land extends React.Component<LandProps,any>{
                                    <div className='clust-link-main-lock-cont'>
                                         <svg className='clust-link-main-lock-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
                                    </div>
-                                   <div className='clust-link-main-link'>
-                                        https://cyte.com/t/{User?.getUserData()?.uname}
+                                   <div className='clust-link-main-link' 
+                                        onClick={
+                                             ()=>{
+                                                  this.openInNewTab(_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname);
+                                             }
+                                        }
+                                   >
+                                       {_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname}
                                    </div>
                                    <div className='clust-link-main-right-cont'>
                                         <button className='clust-link-main-link-copy-butt'>

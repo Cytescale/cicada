@@ -144,6 +144,32 @@ export default class BackendHelper{
           })
      }
     
+ 
+     
+     async _getUserDatabyUname(uname:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uname": uname});             
+          return new Promise((resolve, reject) => {
+                      axios({
+                         method: 'post',
+                         url:URLS.getUserDatabyUname,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                         }
+                         )
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+    
+
 
      
     async _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{

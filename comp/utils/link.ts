@@ -10,6 +10,6 @@ type linkDataType = {
     creation_timestamp:string,
     update_timestamp: string,
     unique_identifier:string
-     
+    deeplink_bool?:boolean
 }
 export type {linkDataType}

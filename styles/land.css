@@ -410,8 +410,8 @@ background-color: #f1f1f1
      margin-left: 5%;
      height: auto;
      padding: 0px;
-     padding-top: 7px;
-     padding-bottom: 7px;
+     padding-top: 12px;
+     padding-bottom: 12px;
      position: relative;
      margin-top: 12px;
      background-color: #fefefe;
@@ -510,6 +510,7 @@ background-color: #f1f1f1
 
 .lnk-lnk-body-cont{
      padding: var(--margin);
+     
 }
 .lnk-lnk-body-tit-cont{
      color: #6F879C;

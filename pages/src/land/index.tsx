@@ -328,6 +328,17 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                               }}
                               />
                     </div>
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>Is Deeplinked?</div>
+                              <div  className='lnk-lnk-head-right-butt-cont'>
+                                   <label className="switch">
+                                        <input type="checkbox" 
+                                        defaultChecked={lData?.deeplink_bool}
+                                        />
+                                        <span className="slider round"></span>
+                                   </label>
+                              </div>
+                    </div>
                                    {    
                                         errBool?
                                         <div className='app-land-edt-modl-cont'>

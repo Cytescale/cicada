@@ -1288,7 +1288,20 @@ class Land extends React.Component<LandProps,any>{
                                        {_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname}
                                    </div>
                                    <div className='clust-link-main-right-cont'>
-                                        <button className='clust-link-main-link-copy-butt'>
+                                        <button className='clust-link-main-link-copy-butt'
+                                             onClick={()=>{
+                                                  copy(_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname);
+                                                  toast.dark('Link copied', {
+                                                       position: toast.POSITION.TOP_CENTER,
+                                                       autoClose: 5000,
+                                                       hideProgressBar: true,
+                                                       closeOnClick: true,
+                                                       pauseOnHover: true,
+                                                       draggable: true,
+                                                       progress: undefined,
+                                                  });
+                                             }}
+                                        >
                                              Copy
                                         </button>
                                    </div>

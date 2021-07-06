@@ -107,7 +107,7 @@ const Cluster=(props)=>{
                     <div className='cluster-hr-cont' />
                     {userData?<RenderLinks uid={userData.uid}/>:<span/>}
                     
-                    <div className='cluster-made-main-cont'>Made with Sakura❤️</div>
+                    <div className='cluster-made-main-cont'>Sakura❤️</div>
           </div>:
           <div>
           {errMess.toString()}

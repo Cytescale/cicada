@@ -462,8 +462,12 @@ const LinkCard:React.FC<any>=(props:any)=>{
                          }
                          
                     <div className='lnk-lnk-head-main-cont-name-cont'>
-                          
+                          <span style={{
+                              textDecoration:active?'none':'line-through'
+                          }}>
                           {props.d.name}
+                         </span>
+                          
                           {
                                props.isDetailed?
                                <div className='lnk-lnk-head-main-cont-crt-cont'>

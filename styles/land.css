@@ -408,8 +408,8 @@ background-color: #f1f1f1
      padding-bottom: 7px;
      position: relative;
      margin-top: 12px;
-background-color: #fefefe;
-     
+     background-color: #fefefe;
+     box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17);
      border: 1px solid   rgba(100, 100, 100, 0.17);
      /* border: 1px solid #e0e0e0; */
      border-radius: 7px;
@@ -984,7 +984,7 @@ background-color: #fefefe;
      font-weight: 700;
      color: #000;
      padding-left: 22px;
-     margin-bottom: 12px;
+     margin-bottom: 7px;
      margin-top: 12px;
 }
 
@@ -1038,9 +1038,10 @@ background-color: #fefefe;
      margin-left: 5%;
      margin-top: var(--margin);
      height: auto;
+     background-color: #fff;
      border-radius: 7px;
      border: 1px solid   rgba(100, 100, 100, 0.17);
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.17);
+     box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17);
      
 }
 
@@ -1136,6 +1137,8 @@ background-color: #fefefe;
 .app-land-top-butt-group-cont{
      display: inline-flex;
      width: 90%;
+     margin-top: 12px;
+     margin-bottom: 12px;
      margin-left: 5%;
 }
 
@@ -1207,4 +1210,61 @@ color: #0070F3;
 
 .app-land-crt-lnk-butt:active{
      background-color: #0070F3;
+}
+
+.clust-link-main-cont{
+     width: 90%;
+     margin-left: 5%;
+     height: 52px;
+     background-color: #fff;
+     border-radius: 7px;
+     border: 1px solid   rgba(100, 100, 100, 0.17);
+     box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17);
+     display: flex;
+     padding-left: 12px;
+     padding-right: 12px;
+     align-items: center;
+     position: relative;
+     vertical-align: middle;
+}
+
+.clust-link-main-link{
+     font-size: 13px;
+     color: #212121;
+     text-decoration: underline;
+}
+.clust-link-main-right-cont{
+     position: absolute;
+     height: 100%;
+     width: auto;        
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     margin-right: 12px;
+}
+.clust-link-main-lock-cont{
+     margin-right: 7px;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     vertical-align: middle;
+}
+
+.clust-link-main-lock-ico{
+     width: 18px;
+     height: 18px;
+}
+
+.clust-link-main-link-copy-butt{
+     background-color: #fff;
+     border:1px solid #000;
+     color: #000;
+     height: 26px;
+     font-size: 12px;
+     border-radius: 5px;
+     padding-left: 8px;
+     padding-right: 8px;
 }

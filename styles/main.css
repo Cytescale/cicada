@@ -232,7 +232,6 @@ font-family: inter;
 
 .app-body-main-cont{
     
-     padding-top: 42px;
 }
 .app-body-main-cont-lab{
  font-size: 26px;    
@@ -514,10 +513,11 @@ font-family: poppins;
    .app-create-link-modal-hr{
         width: 100%;
         height: 1px;
-        background-color: #f1f1f1;
+        background-color: #e0e0e0;
         margin-top: 22px;
         margin-bottom: 22px;
    }
+
 
    
 #app-main-cont-body-id {
@@ -665,4 +665,32 @@ font-family: poppins;
    .bm-overlay {
      background: rgba(0, 0, 0, 1);
      
+   }
+
+
+   .app-nav-bar-main-cont{
+        width: 100%;
+        height: 52px;
+        background-color: #fff;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+        margin-top: 62px;  
+        display: inline-flex;
+        padding-left: 22px;
+        padding-right: 22px;
+        align-items: center;
+        z-index: 100;
+   }
+   .app-nav-bar-main-link-cont{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 15px;
+        margin-left: 6px;
+        margin-right: 6px;
+        font-family: poppins;
+          color: #656565;
+        font-weight: 400;
    }

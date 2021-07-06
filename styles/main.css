@@ -211,7 +211,7 @@ font-family: inter;
      margin-left: 5%;
      
      color: #000;
-     font-family: poppins;
+     font-family: inter;
      font-size: 26px;    
      display: flex;
      align-items: center;
@@ -225,7 +225,7 @@ font-family: inter;
      margin-left: 5%;
      margin-bottom: 12px;
      color: #656565;
-     font-family: poppins;
+     font-family: inter;
      font-size: 14px;
      
 }
@@ -252,7 +252,7 @@ padding-bottom: 0px;
 .app-head-main-cont-logo{
      color: var(--text-s1);
      margin-left:48px;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      font-size: 19px;
 }
@@ -265,7 +265,7 @@ padding-bottom: 0px;
 .app-tit-main-cont{
      padding-left: var(--margin);
      margin-top: var(--margin-top);     
-     font-family: Poppins;
+     font-family: inter;
      font-style: normal;
      font-weight: bold;
      font-size: 13px;
@@ -333,7 +333,7 @@ padding-bottom: 0px;
      justify-content: center;
      align-items: center;
      font-size: 32px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--text-s1);
      font-weight: 800;
 }
@@ -342,7 +342,7 @@ padding-bottom: 0px;
 padding: 18px;
 }
 .app-create-link-modal-main-cont-tit{
-font-family: poppins;
+font-family: inter;
 font-weight: 600;
 color: #555555;
 margin-bottom: 12px;
@@ -374,7 +374,7 @@ margin-bottom: 12px;
      border-style: none;
      border-radius: 7px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--danger);
      margin-top: 12px;
 }
@@ -393,12 +393,12 @@ color: #555555;
 padding-bottom: 5px;
 padding-left: 3px;
 font-weight: 700;
-font-family: poppins;
+font-family: inter;
 }
 
 .app-create-link-modal-main-cont-des{
      color: #656565;
-     font-family: poppins;
+     font-family: inter;
      font-size: 13px;
      margin-bottom: 22px;
 }
@@ -408,7 +408,7 @@ font-family: poppins;
      height: 42px;
      border-radius: 4px;
      background-color: #e0e0e0;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 500;
      margin-top: 12px;
 }
@@ -419,7 +419,7 @@ font-family: poppins;
      border-radius: 4px;
      color: #fff;
      font-weight: 500;
-     font-family: poppins;
+     font-family: inter;
      outline: none;
      border-style: none;
      box-shadow: 0px 4px 13px rgba(12, 206, 107, 0.81);
@@ -434,7 +434,7 @@ font-family: poppins;
      color: #fff;
      font-size: 14px;
      font-weight: 500;
-     font-family: poppins;
+     font-family: inter;
      outline: none;
      border-style: none;
 }
@@ -538,7 +538,7 @@ font-family: poppins;
      margin-top: 6px;
      padding: 12px;
      padding-left: 22px;
-     font-family: poppins;
+     font-family: inter;
      font-size: 18px;
 }
 
@@ -576,7 +576,7 @@ font-family: poppins;
      outline: none;
      border-radius: 7px;
      padding-left: 12px;
-     font-family: poppins;
+     font-family: inter;
      background: #f1f1f1;
      color: var(--danger);
      font-size: 15px;
@@ -595,7 +595,7 @@ font-family: poppins;
      outline: none;
      border-radius: 4px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      color: #000;
      flex: 1;
      margin-right: 6px;
@@ -608,7 +608,7 @@ font-family: poppins;
      outline: none;
      border-radius: 4px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--danger);
      flex: 1;
      margin-left: 6px;
@@ -690,10 +690,11 @@ font-family: poppins;
         font-size: 15px;
         margin-left: 6px;
         margin-right: 6px;
-        font-family: poppins;
+        font-family: inter;
           color: #656565;
         font-weight: 400;
    }
    .app-nav-bar-main-link-cont-selec{
         color: #0070F3;
+        border-bottom: 3px solid #0070F3;
    }

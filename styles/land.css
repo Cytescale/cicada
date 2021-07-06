@@ -11,7 +11,7 @@
  border-radius: 100px;
  padding-left: 17px;
  padding-right: 17px;
- font-family: poppins;
+ font-family: inter;
  font-weight: 700;
  font-size: 13px;
  display: flex;
@@ -141,7 +141,7 @@ margin-right: 4px;
 
 }
 .dash-links-cont-link-cont-lab{
-     font-family: poppins;
+     font-family: inter;
      font-style: normal;
      font-weight: bold;
      font-size: 10px;
@@ -192,7 +192,7 @@ margin-right: 4px;
 .dash-links-cont-link-botom-crt-butt{
 flex: 1;
 margin: 10px;
-font-family: poppins;
+font-family: inter;
 border-radius: 100px;
 height: 36px;
 background: #11E4D1;
@@ -206,7 +206,7 @@ margin-bottom: 0px;
 }
 .dash-links-cont-link-botom-show-butt{
      flex: 1;
-     font-family: poppins;
+     font-family: inter;
      font-size: 12px;
      border-radius: 100px;
      height: 36px;
@@ -245,7 +245,7 @@ margin-bottom: 0px;
      border-style: none;
      outline: none;
      color: var(--text-s1);;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      background-color: rgba(0, 0, 0, 0);
 
@@ -264,7 +264,7 @@ margin-bottom: 0px;
      padding-bottom: 7px;
      font-weight: 500; 
      font-size: 11px;
-     font-family: poppins;
+     font-family: inter;
 }
 
 .app-land-prof-pic-butt-ico{
@@ -309,7 +309,7 @@ margin-bottom: 0px;
 
 .pop-name-cont{
      font-size: 16px;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 400;
      color: #555555;
      display: inline-flex;
@@ -317,7 +317,7 @@ margin-bottom: 0px;
 }
 .pop-acc-sett-cont{
      font-size: 16px;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 400;
      margin-top: 12px;
      color: #0070F3;
@@ -326,7 +326,7 @@ margin-bottom: 0px;
 }
 .pop-link-cont{
      font-size: 16px;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 400;
      margin-top: 8px;
      color: #555555;
@@ -334,7 +334,7 @@ margin-bottom: 0px;
      align-items: center;
 }
 .pop-eml-cont{
-     font-family: poppins;
+     font-family: inter;
      color: #0070F3;
      font-size: 16px;  
      padding-top: 4px;  
@@ -358,7 +358,7 @@ padding: 0;
 width: 36px;
 height: 36px;
 border-radius: 100px;
-font-family: poppins;
+font-family: inter;
 font-weight: 700;
 font-size: 17px;
 color: #555555;
@@ -440,7 +440,7 @@ background-color: #f1f1f1
      height: 100%;
      margin-top: 3px;
      font-weight: 700;
-     font-family: poppins;
+     font-family: inter;
      color: #000;
      display:block;
      align-items: center;
@@ -449,7 +449,7 @@ background-color: #f1f1f1
 .lnk-lnk-head-main-cont-crt-cont{
      font-size: 12px;
      color: #bdbdbd;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 400;
 }
 
@@ -620,7 +620,7 @@ background-color: #f1f1f1
      margin-top: var(--margin);
      background-color: var(--warning);
      font-weight: 700;
-     font-family: poppins;
+     font-family: inter;
      vertical-align: middle;
 }
 .app-anal-time-selc-butt{
@@ -630,7 +630,7 @@ background-color: #f1f1f1
      font-weight: 700;
      color: var(--text-s1);;
      margin-top: 12px;
-     font-family: poppins;
+     font-family: inter;
      vertical-align: middle;
 }
 .app-anal-lnk-selc-butt-ico{
@@ -663,7 +663,7 @@ background-color: #f1f1f1
 }
 .app-anal-header-data-body-data-tit-cont{
      color: var(--text-s1);;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      font-size: 21px;
      display: inline-flex;
@@ -756,7 +756,7 @@ background-color: #f1f1f1
      padding-right: 16px;
      color: #B4C7D8;
      font-size: 13px;
-     font-family: poppins;
+     font-family: inter;
      border-bottom: 1px solid var(--bor-color);
      position: relative;
          
@@ -935,7 +935,7 @@ background-color: #f1f1f1
      width: 100%;
      height: 32px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      vertical-align: middle;
 }
@@ -979,7 +979,7 @@ background-color: #f1f1f1
 }
 
 .app-land-lab-main-cont{
-     font-family: poppins;
+     font-family: inter;
      font-size: 14px;
      font-weight: 700;
      color: #000;
@@ -1013,7 +1013,7 @@ background-color: #f1f1f1
 .app-land-visit-card-left-lab{
      font-size: 14px;
      display: inline-flex;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      color: #000;
 }
@@ -1021,27 +1021,30 @@ background-color: #f1f1f1
      font-size: 12px;
      color: #bdbdbd;
      font-weight: 700;
-     font-family: poppins;
+     font-family: inter;
      margin-top: 7px;
 }
 .app-land-visit-card-left-Counter{
      font-size: 28px;
      margin-top: -5px;
      color: #000;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      
 }
 
 .app-land-visit-card-main-outer-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 100%;
+     margin-left: 0%;
      margin-top: var(--margin);
      height: auto;
+     padding-left: 2%;
+     padding-right: 2%;
      background-color: #fff;
-     border-radius: 7px;
+     border-radius: 0px;
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
-     border: 1px solid   #e0e0e0;
+     border-top: 1px solid   #e0e0e0;
+     border-bottom: 1px solid   #e0e0e0;
      /* box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17); */
      
 }
@@ -1052,7 +1055,7 @@ background-color: #f1f1f1
      display: flex;
      justify-content: center;
      align-items: center;
-     font-family: poppins;
+     font-family: inter;
      font-size: 12px;
      color: #0070F3;
      padding-top: 7px;
@@ -1100,7 +1103,7 @@ background-color: #f1f1f1
      justify-content: center;
      align-items: center;
      font-size: 11px;
-     font-family: poppins;
+     font-family: inter;
      color: #555555;
      padding-bottom: var(--margin);
 }
@@ -1109,18 +1112,19 @@ background-color: #f1f1f1
      padding-top: 22px;
 }
 .app-body-topper-hey-cont{
+     width: fit-content;
      padding: 22px;
      padding-bottom: 8px;
      font-size: 22px;
      color: #454545;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;    
 }
 .app-feed-main-txtar-fld{
      width: 100%;
      height: 100px;
      padding: 7px;
-     font-family: poppins;
+     font-family: inter;
      font-size: 15px;
 }
 
@@ -1128,7 +1132,7 @@ background-color: #f1f1f1
      font-size: 12px;
      color: #000;
      font-weight: 400;
-     font-family: poppins;    
+     font-family: inter;    
      margin-top:6px;
      margin-bottom: 6px;
 }
@@ -1181,7 +1185,7 @@ color: #0070F3;
      color: #fff;
      border-style: none;
      outline: none;
-     font-family: poppins;
+     font-family: inter;
      font-size: 15px;
      font-weight: 400;
      overflow: hidden;
@@ -1270,4 +1274,9 @@ color: #0070F3;
      border-radius: 5px;
      padding-left: 8px;
      padding-right: 8px;
+}
+.app-land-link-cont-holder{
+     background-color: #f7f7f7;
+     border-bottom: 1px solid #e0e0e0;
+     padding-bottom: 22px;margin-bottom: 22px;
 }

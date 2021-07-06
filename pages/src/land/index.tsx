@@ -1199,8 +1199,18 @@ class Land extends React.Component<LandProps,any>{
                               <div className='app-body-topper-main-cont'>
                                    {
                                         User.getUserData()?
-                                             <div className='app-body-topper-hey-cont'>
-                                                  Hey {User.getUserData()?.dname} 👋 
+                                             <div className='app-body-topper-hey-cont' >
+                                                  Hey {User.getUserData()?.dname} <span onClick={()=>{
+                                                  toast.dark('Hi-Fi ✋', {
+                                                       position: toast.POSITION.TOP_CENTER,
+                                                       autoClose: 5000,
+                                                       hideProgressBar: true,
+                                                       closeOnClick: true,
+                                                       pauseOnHover: true,
+                                                       draggable: true,
+                                                       progress: undefined,
+                                                  });
+                                             }}>👋</span> 
                                              </div>:
                                         <span/>
                                    }
@@ -1244,8 +1254,8 @@ class Land extends React.Component<LandProps,any>{
                                         </button>
                                    </div>
                               </div>
+                              <div className='app-land-link-cont-holder'>
                               <div className='app-create-link-modal-hr'/>
-                              
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               <div className='app-land-top-butt-group-cont'>
                               <button className='app-land-crt-lnk-butt'
@@ -1283,7 +1293,8 @@ class Land extends React.Component<LandProps,any>{
                               {this.renderLinkTable()}
                               </span>
                               }
-                              <div className='app-create-link-modal-hr'/>
+                              </div>
+                              
                          </div>
                          <div className='app-land-mto-main-cont'>Made with Love ❤️</div>
                          </div>

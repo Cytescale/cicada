@@ -708,3 +708,37 @@ font-family: inter;
         color: #0070F3;
         border-bottom: 3px solid #0070F3;
    }
+
+
+   .app-bottom-se-main-cont{
+        width: 100%;
+        height: 58px;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: inline-flex;
+          align-items: center;
+          color: #bdbdbd;
+          justify-content: center;
+          background-color: #fff;
+          border-top: 1px solid #e0e0e0;
+          z-index:500;
+   }
+     .app-bottom-se-butt-main-cont{
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 6px;
+          margin-right: 6px;
+     }
+
+     .app-bottom-se-butt-main-selec{
+          color: #0070F3;
+     }
+   .app-bottom-se-main-ico{
+        width:24px;
+        height: 24px;
+        color: inherit;
+   }

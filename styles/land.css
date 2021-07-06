@@ -411,7 +411,7 @@ background-color: #f1f1f1
      background-color: #fefefe;
      /* box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17); */
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
-     border: 1px solid #e0e0e0;
+     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
      border-radius: 7px;
 }
 
@@ -1149,7 +1149,8 @@ background-color: #f1f1f1
      height: 42px;
      padding: 0;
      margin-left: 8px;
-     background-color: #e8e8e8;
+     background-color: #fff;
+     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12); 
      border-radius: 8px;
      display: flex;
      justify-content: center;
@@ -1297,4 +1298,12 @@ color: #0070F3;
      animation-timing-function: ease-out;
      display: inline-block;
 
+}
+.lnk-lnk-head-link-ico-cont{
+     margin-right: 7px;
+     color: #0070F3;
+}
+.lnk-lnk-head-link-ico{
+     width: 20px;
+     height: 20px;
 }

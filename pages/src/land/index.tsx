@@ -453,7 +453,12 @@ const LinkCard:React.FC<any>=(props:any)=>{
      return(
           <div className='lnk-lnk-main-cont'>
           <div className='lnk-lnk-head-main-cont'>
+                         <div className='lnk-lnk-head-link-ico-cont'>
+                               <svg className='lnk-lnk-head-link-ico' xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M17,7h-3c-0.55,0-1,0.45-1,1s0.45,1,1,1h3c1.65,0,3,1.35,3,3s-1.35,3-3,3h-3c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1h3 c2.76,0,5-2.24,5-5S19.76,7,17,7z M8,12c0,0.55,0.45,1,1,1h6c0.55,0,1-0.45,1-1s-0.45-1-1-1H9C8.45,11,8,11.45,8,12z M10,15H7 c-1.65,0-3-1.35-3-3s1.35-3,3-3h3c0.55,0,1-0.45,1-1s-0.45-1-1-1H7c-2.76,0-5,2.24-5,5s2.24,5,5,5h3c0.55,0,1-0.45,1-1 C11,15.45,10.55,15,10,15z"/></g></g></svg>
+                          </div>
                     <div className='lnk-lnk-head-main-cont-name-cont'>
+                          
+
                           {props.d.name}
                           {
                                props.isDetailed?
@@ -1269,7 +1274,7 @@ class Land extends React.Component<LandProps,any>{
                               </button>
                               <button className='app-land-det-butt'
                               onClick={()=>{this.setdetailed(!this.state.detailed)}}
-                              > 
+                              >
                               {
                               this.state.detailed?
                               <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 0v24H0V0h24z" fill="none" opacity=".87"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>

@@ -344,7 +344,7 @@ padding: 18px;
 .app-create-link-modal-main-cont-tit{
 font-family: inter;
 font-weight: 600;
-color: #555555;
+color: #252525;
 margin-bottom: 12px;
 }
 
@@ -359,9 +359,14 @@ margin-bottom: 12px;
      border-style: none;
      border-bottom: 1px solid #bdbdbd;
      outline: none;
-     
      font-size: 14px;
 }
+
+.app-create-link-modal-main-cont-fld:focus{
+     border-bottom-color: #0070F3;     
+     color: #0070F3;
+}
+
 
 .app-create-link-edt-del-butt{
      width: 100%;
@@ -389,12 +394,12 @@ margin-bottom: 12px;
 
 .app-create-link-modal-main-cont-fld-tit{
 font-size: 12px;
-color: #555555;
+color: #000;
 padding-bottom: 5px;
-padding-left: 3px;
 font-weight: 700;
 font-family: inter;
 }
+
 
 .app-create-link-modal-main-cont-des{
      color: #656565;

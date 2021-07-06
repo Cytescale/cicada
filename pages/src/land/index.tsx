@@ -62,7 +62,9 @@ function timeDifference(current:any, previous:any) {
  const NavBarCont:React.FC<any> = (props:any)=>{  
      return(
           <div className='app-nav-bar-main-cont'>
-                    <div className='app-nav-bar-main-link-cont'>
+                    <div 
+                    className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-cont-selec':null}`}
+                    >
                          Links
                     </div>
                     <div className='app-nav-bar-main-link-cont'>
@@ -1191,7 +1193,7 @@ class Land extends React.Component<LandProps,any>{
                                              <ProfilePopover  setlgoutShow={this.setlgoutConfirmVisi} />
                                         </div>
                               </div>
-                         <NavBarCont/>
+                         <NavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>

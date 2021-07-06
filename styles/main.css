@@ -513,7 +513,7 @@ font-family: poppins;
    .app-create-link-modal-hr{
         width: 100%;
         height: 1px;
-        background-color: #e0e0e0;
+        background-color: #e9e9e9;
         margin-top: 22px;
         margin-bottom: 22px;
    }
@@ -693,4 +693,7 @@ font-family: poppins;
         font-family: poppins;
           color: #656565;
         font-weight: 400;
+   }
+   .app-nav-bar-main-link-cont-selec{
+        color: #0070F3;
    }

@@ -1197,10 +1197,11 @@ class Land extends React.Component<LandProps,any>{
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>
+                              
                                    {
                                         User.getUserData()?
                                              <div className='app-body-topper-hey-cont' >
-                                                  Hey {User.getUserData()?.dname} <span onClick={()=>{
+                                                  Hey {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
                                                   toast.dark('Hi-Fi ✋', {
                                                        position: toast.POSITION.TOP_CENTER,
                                                        autoClose: 5000,

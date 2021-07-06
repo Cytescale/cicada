@@ -554,7 +554,7 @@ background-color: #f1f1f1
 .lnk-lnk-gen-right-butt{
      width: 32px;
      height: 32px;
-     color: #0070F3;
+     color: #bdbdbd;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -571,12 +571,13 @@ background-color: #f1f1f1
      width: 20px;
      height: 20px;
      object-fit: cover;
-     color: #0070F3;
+     color: inherit;
      
 }
 
 .lnk-lnk-gen-right-butt:active{
      background-color: #e0e0e0;
+     color: #000;
 }
 
 

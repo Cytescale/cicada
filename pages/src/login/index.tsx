@@ -15,10 +15,7 @@ interface WithRouterProps {
    }
    
 interface LoginProps extends WithRouterProps {
-     isAuth:boolean
-     setAuth:any
-     loading:boolean
-     setLoading:any
+     
 }
 
 

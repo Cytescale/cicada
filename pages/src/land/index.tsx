@@ -193,7 +193,7 @@ const WelcomeHead:React.FC<any> = ()=>{
                     }}>
                     <path d="M15.8815 4.80617C10.3925 4.80617 5.95557 9.06947 5.95557 14.3437C5.95557 19.618 10.3925 23.8813 15.8815 23.8813C21.3706 23.8813 25.8075 19.618 25.8075 14.3437C25.8075 9.06947 21.3706 4.80617 15.8815 4.80617ZM20.1497 18.4449C19.7626 18.8169 19.1373 18.8169 18.7501 18.4449L15.8815 15.6885L13.0129 18.4449C12.6258 18.8169 12.0005 18.8169 11.6134 18.4449C11.2263 18.0729 11.2263 17.4721 11.6134 17.1001L14.482 14.3437L11.6134 11.5874C11.2263 11.2154 11.2263 10.6146 11.6134 10.2426C12.0005 9.87062 12.6258 9.87062 13.0129 10.2426L15.8815 12.9989L18.7501 10.2426C19.1373 9.87062 19.7626 9.87062 20.1497 10.2426C20.5368 10.6146 20.5368 11.2154 20.1497 11.5874L17.2811 14.3437L20.1497 17.1001C20.5269 17.4625 20.5269 18.0729 20.1497 18.4449Z" fill="#F7F7FC"/>
                     </svg>
-                    <div className='dash-wel-main-decor-cont'/>
+                    {/* <div className='dash-wel-main-decor-cont'/> */}
           </div>:
           <span/>
      )
@@ -1228,7 +1228,7 @@ class Land extends React.Component<LandProps,any>{
                                              <ProfilePopover  setlgoutShow={this.setlgoutConfirmVisi} />
                                         </div>
                               </div>
-                         <NavBarCont router={this.props.router}/>
+                         {/* <NavBarCont router={this.props.router}/> */}
                          <div id='app-main-cont-body-id'>
                          
                          <div className='app-body-main-cont'>

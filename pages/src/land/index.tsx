@@ -288,6 +288,18 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                     {
                     !dataLoading?
                     <div>
+                         <div className='app-create-link-modal-main-cont-fld-cont'>
+                                   <div className='app-create-link-modal-main-cont-fld-tit'>Is Deeplinked?</div>
+                                   <div  className='lnk-lnk-head-right-butt-cont'>
+                                        <label className="switch">
+                                             <input type="checkbox" 
+                                             disabled={true}
+                                             defaultChecked={lData?.deeplink_bool!=false? true:false}
+                                             />
+                                             <span className="slider round"></span>
+                                        </label>
+                                   </div>
+                         </div>
                     <div className='app-create-link-modal-hr'/>
                          <div className='app-create-link-modal-main-cont-fld-cont'>
                               <div className='app-create-link-modal-main-cont-fld-tit'>Link Display Name</div>
@@ -328,17 +340,7 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                               }}
                               />
                     </div>
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <div className='app-create-link-modal-main-cont-fld-tit'>Is Deeplinked?</div>
-                              <div  className='lnk-lnk-head-right-butt-cont'>
-                                   <label className="switch">
-                                        <input type="checkbox" 
-                                        defaultChecked={lData?.deeplink_bool}
-                                        />
-                                        <span className="slider round"></span>
-                                   </label>
-                              </div>
-                    </div>
+                  
                                    {    
                                         errBool?
                                         <div className='app-land-edt-modl-cont'>

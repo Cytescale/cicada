@@ -922,6 +922,11 @@ class Land extends React.Component<LandProps,any>{
                     </div>
 
                     <div className='app-create-link-modal-main-cont-fld-cont'>
+                              <div className='app-create-link-modal-main-cont-fld-tit'>is Deeplinked?</div>
+                              <div className='app-create-link-modal-main-cont-fld-data-lab'>Do you want to create a deeplink?</div>
+                    </div>
+
+                    <div className='app-create-link-modal-main-cont-fld-cont'>
                               <button
                               className='app-create-link-modal-main-paste-butt'
                               onClick={()=>{
@@ -1200,6 +1205,7 @@ class Land extends React.Component<LandProps,any>{
                               </div>
                          <NavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
+                         
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>
                               
@@ -1232,7 +1238,7 @@ class Land extends React.Component<LandProps,any>{
                                         </div>
                                         <LandVisitChart/>
                                    </div>
-                              
+                                
                                    <Accordion>
                                    <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
                                         Show more

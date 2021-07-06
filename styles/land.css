@@ -1044,13 +1044,12 @@ background-color: #f1f1f1
 .app-land-visit-card-main-outer-cont{
      width: 90%;
      margin-left: 5%;
-     margin-top: var(--margin);
 
      background-color: #fff;
      border-radius: 7px;
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
      /* box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12); */
-     border: 1px solid #bdbdbd; 
+     border: 1px solid #e0e0e0; 
      
 }
 

@@ -1237,7 +1237,7 @@ class Land extends React.Component<LandProps,any>{
                                    }
                                    
                                    <WelcomeHead/>
-                                   {/* <div className='app-create-link-modal-hr'/> */}
+                                   <div className='app-create-link-modal-hr'/>
                                    <div className='app-land-visit-card-main-outer-cont'>
                                    <div className='app-land-visit-card-main-cont'>
                                         <div className='app-land-visit-card-left-cont'>

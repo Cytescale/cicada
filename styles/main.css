@@ -347,7 +347,7 @@ padding: 18px;
 .app-create-link-modal-main-cont-tit{
 font-family: inter;
 font-weight: 600;
-color: #252525;
+color: #000;
 margin-bottom: 12px;
 }
 
@@ -362,18 +362,19 @@ margin-bottom: 12px;
 }
 .app-create-link-modal-main-cont-fld{
      width: 100%;
-     height: 37px;
-     border-radius: 0px;
-     background-color: rgba(0, 0, 0, 0);
-     border-style: none;
-     border-bottom: 1px solid #bdbdbd;
+     height: 42px;
+     margin-top: 7px;
+     border-radius: 7px;
+     padding-left: 12px;
+     background-color: #fff;
+     border: 1px solid #bdbdbd;
      outline: none;
      font-size: 14px;
 }
 
 .app-create-link-modal-main-cont-fld:focus{
-     border-bottom-color: #0070F3;     
-     color: #0070F3;
+     /* border-bottom-color: #0070F3;     
+     color: #0070F3; */
 }
 
 
@@ -410,7 +411,7 @@ font-family: inter;
 
 
 .app-create-link-modal-main-cont-des{
-     color: #656565;
+     color: #000;
      font-family: inter;
      font-size: 13px;
      margin-bottom: 22px;

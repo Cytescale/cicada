@@ -17,7 +17,7 @@ body {
   --text-s1:#000;
   --text-s2:#63798E;
   --margin:20px;
-  --margin-top:26px;
+  --margin-top:22px;
   --bor-rad:10px;
   --bor-color:#e0e0e0;
 
@@ -25,7 +25,11 @@ body {
                   inset 3px 3px 10px #1E242B;
   --box-shad-raised:-3px -3px 10px #384148,
                     3px 3px 10px #1E242B;
-
+/* 
+border-bottom: 1px solid #C6DDF0;
+background-color: #fefefe;
+box-shadow: 0px 4px 9px #DAE5EE;
+border-radius: 7px; */
 
 }
 

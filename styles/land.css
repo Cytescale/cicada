@@ -25,8 +25,8 @@
 margin-right: 4px;
 }
 .dash-wel-main-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: 130px;
      font-family: inter;
      position: relative;
@@ -78,8 +78,8 @@ margin-right: 4px;
      margin: 12px;
 }
 .dash-enal-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: auto;
      margin-top: var(--margin-top);
      display: inline-flex;
@@ -128,8 +128,8 @@ margin-right: 4px;
      box-shadow: 0px 0px 6px var(--danger);
 }
 .dash-links-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: auto;
      padding: 0;
       margin-top: 12px;
@@ -240,8 +240,8 @@ margin-bottom: 0px;
 }
 
 .insight-main-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: 200px;overflow: hidden;
      position: relative;
      margin-top: 12px;
@@ -254,8 +254,8 @@ margin-bottom: 0px;
      height: 42px;
      display: inline-flex;
      background: #34414D;
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      padding: 0px;
      overflow: hidden;
      margin-bottom: 12px;
@@ -423,8 +423,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .lnk-lnk-main-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: auto;
      padding: 0px;
      padding-top: 12px;
@@ -434,7 +434,7 @@ background-color: rgba(0, 0, 0, 0)
      background-color: #fefefe;
      /* box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17); */
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
+     box-shadow: 0px 4px 9px #DAE5EE;
      border-radius: 7px;
 }
 
@@ -745,8 +745,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-anal-data-main-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      padding: var(--margin);
      margin-top: var(--margin-top);
      position: relative;
@@ -766,8 +766,8 @@ background-color: rgba(0, 0, 0, 0)
      font-weight: 800;
 }
 .anal-click-chart-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: 250px;
      padding: 0px;
      margin-top: 22px;
@@ -1010,7 +1010,7 @@ background-color: rgba(0, 0, 0, 0)
      color: #000;
      padding-left: 22px;
      margin-bottom: 7px;
-     margin-top: 12px;
+     
 }
 
 .app-land-vist-grph-canva{
@@ -1059,14 +1059,13 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-visit-card-main-outer-cont{
-     width: 90%;
-     margin-left: 5%;
-
+     width: 92%;
+     margin-left: 4%;
+     margin-top: var(--margin-top);
      background-color: #fff;
      border-radius: 7px;
-     /* border: 1px solid   rgba(100, 100, 100, 0.17); */
-     /* box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12); */
-     border: 1px solid #e0e0e0; 
+
+     border: 1px solid #CAD0D4; 
      
 }
 
@@ -1103,6 +1102,7 @@ background-color: rgba(0, 0, 0, 0)
 .app-land-feed-butt-main-cont{
      background-color: #e0e0e0;
      border-radius: 100px;
+     padding: 0px;
      width: 32px;
      height: 32px;
      display: flex;
@@ -1114,6 +1114,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-feed-butt-main-ico{
+     width: 18px;
+     height: 18px;
      color: #555555;
 }
 
@@ -1161,10 +1163,10 @@ background-color: rgba(0, 0, 0, 0)
 }
 .app-land-top-butt-group-cont{
      display: inline-flex;
-     width: 90%;
+     width: 92%;
      margin-top: 12px;
      margin-bottom: 12px;
-     margin-left: 5%;
+     margin-left: 4%;
 }
 
 .app-land-det-butt{
@@ -1239,12 +1241,12 @@ color: #0070F3;
 }
 
 .clust-link-main-cont{
-     width: 90%;
-     margin-left: 5%;
+     width: 92%;
+     margin-left: 4%;
      height: 52px;
      background-color: #fff;
      border-radius: 7px;
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
+     box-shadow: 0px 4px 9px #DAE5EE;
      /* border: 1px solid   rgba(100, 100, 100, 0.17); */
      /* box-shadow: 0px 2px 4px rgba(100, 100, 100, 0.17); */
      display: flex;
@@ -1297,9 +1299,9 @@ color: #0070F3;
      padding-right: 8px;
 }
 .app-land-link-cont-holder{
-     
-     border-bottom: 1px solid #e0e0e0;
-     padding-bottom: 22px;margin-bottom: 22px;
+     /* border-bottom: 1px solid #C6DDF0; */
+     margin-top: 32px;
+     margin-bottom: 32px;
 }
 
 @keyframes wave-animation {

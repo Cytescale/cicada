@@ -1249,50 +1249,50 @@ class Land extends React.Component<LandProps,any>{
                          
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>
-                                   {
-                                        User.getUserData()?
-                                             <div className='app-body-topper-hey-cont' >
-                                                  Hey {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
-                                                  toast.dark('Hi-Fi ✋', {
-                                                       position: toast.POSITION.TOP_CENTER,
-                                                       autoClose: 5000,
-                                                       hideProgressBar: true,
-                                                       closeOnClick: true,
-                                                       pauseOnHover: true,
-                                                       draggable: true,
-                                                       progress: undefined,
-                                                  });
-                                             }}>👋</span> 
-                                             </div>:
-                                        <span/>
-                                   }
-                                   
-                                   <WelcomeHead/>
-                                   <div className='app-create-link-modal-hr'/>
-                                   <div className='app-land-visit-card-main-outer-cont'>
-                                   <div className='app-land-visit-card-main-cont'>
-                                        <div className='app-land-visit-card-left-cont'>
-                                             <div className='app-land-visit-card-left-lab'>Visitors {this.renderIncri(45)}</div>
-                                             <div className='app-land-visit-card-left-time'>Today</div>
-                                             <div className='app-land-visit-card-left-Counter'>8000</div>
-                                        </div>
-                                        <LandVisitChart/>
-                                   </div>
-                                
-                                   <Accordion>
-                                   <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
-                                        Show more
-                                        <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
-                                   </Accordion.Toggle>
-                                   <Accordion.Collapse eventKey="0">
-                                        <FullVisitChart/>
-                                   </Accordion.Collapse>
-                                   </Accordion>
+                              <div className='app-land-link-cont-holder'>
+                                             {
+                                                  User.getUserData()?
+                                                       <div className='app-body-topper-hey-cont' >
+                                                            Hey {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
+                                                            toast.dark('Hi-Fi ✋', {
+                                                                 position: toast.POSITION.TOP_CENTER,
+                                                                 autoClose: 5000,
+                                                                 hideProgressBar: true,
+                                                                 closeOnClick: true,
+                                                                 pauseOnHover: true,
+                                                                 draggable: true,
+                                                                 progress: undefined,
+                                                            });
+                                                       }}>👋</span> 
+                                                       </div>:
+                                                  <span/>
+                                             }
+                                             
+                                             <WelcomeHead/>
+                                             <div className='app-land-visit-card-main-outer-cont'>
+                                             <div className='app-land-visit-card-main-cont'>
+                                                  <div className='app-land-visit-card-left-cont'>
+                                                       <div className='app-land-visit-card-left-lab'>Visitors {this.renderIncri(45)}</div>
+                                                       <div className='app-land-visit-card-left-time'>Today</div>
+                                                       <div className='app-land-visit-card-left-Counter'>8000</div>
+                                                  </div>
+                                                  <LandVisitChart/>
+                                             </div>
+                                        
+                                             <Accordion>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                                  Show more
+                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                             </Accordion.Toggle>
+                                             <Accordion.Collapse eventKey="0">
+                                                  <FullVisitChart/>
+                                             </Accordion.Collapse>
+                                             </Accordion>
+                                             </div>
                                    </div>
                               </div> 
                               {/* background-color: #F2F7FB; */}
                               <div className='app-land-link-cont-holder'>
-                              <div className='app-create-link-modal-hr'/>
                               <div className='app-land-lab-main-cont'>Cluster Link</div>
                               <div className='clust-link-main-cont'> 
                               

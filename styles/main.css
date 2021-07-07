@@ -196,8 +196,9 @@ font-family: inter;
      z-index: 500;
      right: 0;
      align-items: center;
-     /* background-color: var(--sec-dark); */
-     background: rgba(255, 255, 255, 0.44);
+     background-color: #fff;
+     border-bottom: 1px solid #e0e0e0;
+     /* background: rgba(255, 255, 255, 0.44); */
      backdrop-filter: blur(16px);
      
      position: fixed;

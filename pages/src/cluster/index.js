@@ -2,7 +2,7 @@ import React,{useEffect, useRef, useState} from "react";
 import Head from "next/head";
 import { withRouter, NextRouter,useRouter } from 'next/router'
 
-import { BurgerMenu,ProfilePopover,NavBarCont } from "../../../comp/elements";
+import { BurgerMenu,ProfilePopover,NavBarCont,BottomCont } from "../../../comp/elements";
 
 const cluster = (props)=>{
      const router = useRouter()
@@ -44,6 +44,10 @@ const cluster = (props)=>{
                               </div>
                     </div>
                     <NavBarCont router={router}/>
+                    <div className='app-clust-act-main-cont'>
+                         
+                    </div>
+                    <BottomCont/>
           </div>
      )
 }

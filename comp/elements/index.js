@@ -1,10 +1,33 @@
 import React,{useEffect, useRef, useState} from "react";
 import {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
-import { push as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 import URLS,{_BASE_CLIENT_URL} from "../helpers/api.routes";
 
 import user from "../utils/user";
 const User = new user();
+
+
+const BottomCont =(prop)=>{
+     return(
+          <div className='app-bottom-cont-main-cont'>
+               <div className='app-bottom-cont-lnk-cont'>Home</div>
+               <div className='app-bottom-cont-lnk-cont'>About Us</div>
+               <div className='app-bottom-cont-lnk-cont'>Terms of conditions</div>
+               <div className='app-bottom-cont-lnk-cont'>Privacy Policy</div>
+               <div className='app-bottom-cont-lnk-cont'>DMCA Policy</div>
+               <div className='app-bottom-cont-main-logo'>Sakura</div>
+               <div className='app-bottom-cont-main-sys-stat'>
+                    Status:
+                    <div className='app-bottom-cont-main-sys-stat-lab'>
+                         <div className='app-bottom-cont-main-sys-stat-lab-cir'/>
+                         All systems normal</div>
+               </div>
+               <div className='app-bottom-cont-main-copy-cont'>
+                    Copyright &#xA9; 2021 Sakura , All rights reserved.
+               </div>
+          </div>
+     )
+}
 
 const ProfilePopover = (props)=>{
      const [show, setShow] = useState(false);
@@ -123,4 +146,4 @@ const NavBarCont = (props)=>{
           </div>
       )
  }
-export {BurgerMenu,ProfilePopover,NavBarCont}
+export {BurgerMenu,ProfilePopover,NavBarCont,BottomCont}

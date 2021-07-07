@@ -1245,6 +1245,7 @@ class Land extends React.Component<LandProps,any>{
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
+                    
                               {this.renderBurgerMenu()}
                               <div className='app-head-main-cont link-head-body-cont'>
                                         <div className='app-head-main-cont-logo link-head-logo'>
@@ -1279,24 +1280,30 @@ class Land extends React.Component<LandProps,any>{
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>
                               <div className='app-land-link-cont-holder'>
-                                             {
-                                                  User.getUserData()?
-                                                       <div className='app-body-topper-hey-cont' >
-                                                            Hey {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
-                                                            toast.dark('Hi-Fi ✋', {
-                                                                 position: toast.POSITION.TOP_CENTER,
-                                                                 autoClose: 5000,
-                                                                 hideProgressBar: true,
-                                                                 closeOnClick: true,
-                                                                 pauseOnHover: true,
-                                                                 draggable: true,
-                                                                 progress: undefined,
-                                                            });
-                                                       }}>👋</span> 
-                                                       </div>:
-                                                  <span/>
-                                             }
-                                             
+                              <div className='app-land-link-intro-pro-main-cont'>
+                                        <div className='app-land-head-pro-pic-main-cont'></div>
+                                                       {
+                                                            User.getUserData()?
+                                                                 
+                                                                 <div className='app-body-topper-hey-cont' >                                                               
+                                                                      {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
+                                                                      toast.dark('Hi-Fi ✋', {
+                                                                           position: toast.POSITION.TOP_CENTER,
+                                                                           autoClose: 5000,
+                                                                           hideProgressBar: true,
+                                                                           closeOnClick: true,
+                                                                           pauseOnHover: true,
+                                                                           draggable: true,
+                                                                           progress: undefined,
+                                                                      });
+                                                                 }}>👋</span> 
+                                                                 <div className='app-body-topper-hey-butt-cont' >
+                                                                      <button className='app-body-topper-hey-butt'>Edit Profile</button>
+                                                                      </div>
+                                                                 </div>:
+                                                            <span/>
+                                                       }
+                                                       </div>
                                              <WelcomeHead/>
                                              {/* <div className='app-land-visit-card-main-outer-cont'>
                                              <div className='app-land-visit-card-main-cont'>
@@ -1386,16 +1393,23 @@ class Land extends React.Component<LandProps,any>{
                               
                               
                               </button>
+                              <button className='app-land-det-butt'
+                              onClick={()=>{this.initLinksDataLoad()}}
+                              >
+                              <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
+                              </button>
                               </div>
                               {
                               this.state.linkDataLoading?
+                              <div className='app-land-rel-main-cont'>
                               <Spinner
                               as="span"
                               animation="border"
                               size="sm"
                               role="status"
                               aria-hidden="true"
-                              />:
+                              />
+                              </div>:
                               <span>
                               {this.renderLinkTable()}
                               </span>

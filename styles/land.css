@@ -1150,14 +1150,26 @@ background-color: rgba(0, 0, 0, 0)
 }
 .app-body-topper-hey-cont{
      width: fit-content;
-     padding: 22px;
-     padding-bottom: 8px;
-     font-size: 22px;
      
-     color: #454545;
+     padding-left: 16px;
+     font-size: 22px;
+     color: #000;
      font-family: inter;
      font-weight: 700;    
 }
+.app-body-topper-hey-butt
+{
+     background-color: #f2f2f2;
+     border: 1px solid var(--bor-color);
+     color: #000;
+     padding: 6px;
+     margin-top: 8px;
+     padding-right: 22px;
+     padding-left:22px;
+     border-radius: 7px;
+     font-size: 14px;
+}
+
 .app-feed-main-txtar-fld{
      width: 100%;
      height: 100px;
@@ -1202,6 +1214,15 @@ background-color: rgba(0, 0, 0, 0)
 .app-land-det-butt:active{
      background-color: #e0e0e0;
 }
+.app-land-rel-main-cont{
+     width: 100%;
+     padding: 32px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+
 
 .app-land-det-butt-ico{
  width: 20px;
@@ -1354,6 +1375,7 @@ color: #0070F3;
      display: inline-block;
 
 }
+
 .lnk-lnk-head-link-ico-cont{
      margin-right: 7px;
      color: #0070F3;
@@ -1377,4 +1399,20 @@ color: #0070F3;
      width: 14px;
      height: 14px;
      margin-left: 4px;
+}
+
+.app-land-head-pro-pic-main-cont{
+     width: 80px;
+     height: 80px;
+     
+     background: linear-gradient(180deg, #FEE27F 0%, #F6BC4F 100%);
+     border-radius: 100px;
+     
+}
+.app-land-link-intro-pro-main-cont{
+     width: 92%;
+     margin-left: 4%;
+     padding: 12px;
+     display: inline-flex;
+     
 }

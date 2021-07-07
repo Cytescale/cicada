@@ -18,14 +18,24 @@ body {
   --text-s2:#63798E;
   --margin:20px;
   --margin-top:22px;
+
+
   --bor-rad:10px;
+  
   --back-color:#fff;
-  --bor-color:#e0e0e0;
+  --backColor:#fff;
+  --borColor:#e0e0e0;
+  --boxShad:0 3px 10px 0px rgba(0,0,0,0.1);
+  --linkHolderColor:#f9f9f9;
+  --headerPriColor:#000;
+  --headerSecColor:#000;
+  --headColor:#fff;
+  --buttonBackColor:#fff;
+  --headBugerColor:#fff;
+  --cardColor:#fff;
+  --smallCardColor:#f5f5f5;
   --box-shad: 0 3px 10px 0px rgba(0,0,0,0.1);
-  --box-shad-inset:inset -3px -3px 10px #384148, 
-                  inset 3px 3px 10px #1E242B;
-  --box-shad-raised:-3px -3px 10px #384148,
-                    3px 3px 10px #1E242B;
+  
 /* 
 border-bottom: 1px solid #C6DDF0;
 border:1px solid #CAD0D4

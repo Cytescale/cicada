@@ -16,6 +16,7 @@
     "@types/react-burger-menu": "^2.8.0",
     "@types/react-chartjs-2": "^2.5.7",
     "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.11",
     "agora-access-token": "^2.0.4",
     "agora-rtc-sdk-ng": "^4.5.0",
     "axios": "^0.21.1",

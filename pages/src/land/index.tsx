@@ -614,6 +614,27 @@ const LinkCard:React.FC<any>=(props:any)=>{
      )
 }
 
+const BottomCont:React.FC<any> =(prop:any)=>{
+     return(
+          <div className='app-bottom-cont-main-cont'>
+               <div className='app-bottom-cont-lnk-cont'>Home</div>
+               <div className='app-bottom-cont-lnk-cont'>About Us</div>
+               <div className='app-bottom-cont-lnk-cont'>Terms of conditions</div>
+               <div className='app-bottom-cont-lnk-cont'>Privacy Policy</div>
+               <div className='app-bottom-cont-lnk-cont'>DMCA Policy</div>
+               <div className='app-bottom-cont-main-logo'>Sakura</div>
+               <div className='app-bottom-cont-main-sys-stat'>
+                    Status:
+                    <div className='app-bottom-cont-main-sys-stat-lab'>
+                         <div className='app-bottom-cont-main-sys-stat-lab-cir'/>
+                         All systems normal</div>
+               </div>
+               <div className='app-bottom-cont-main-copy-cont'>
+                    Copyright &#xA9; 2021 Sakura , All rights reserved.
+               </div>
+          </div>
+     )
+}
 
 interface WithRouterProps {
      router: NextRouter
@@ -1373,7 +1394,7 @@ class Land extends React.Component<LandProps,any>{
                               </div>
                               
                          </div>
-                         <div className='app-land-mto-main-cont'>Made with Love ❤️</div>
+                         <BottomCont />
                          </div>
                         <ProfileLogoutModal setShow={this.setlgoutConfirmVisi} show={this.state.lgoutConfirmVisi} router={this.props.router}/>
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>

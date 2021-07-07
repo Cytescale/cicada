@@ -234,7 +234,6 @@ font-family: inter;
 
 .app-body-main-cont{
     padding-top: 42px;
-    padding-bottom: 42px;
 }
 .app-body-main-cont-lab{
  font-size: 26px;    
@@ -746,4 +745,63 @@ font-family: inter;
         width:24px;
         height: 24px;
         color: inherit;
+   }
+
+
+   .app-bottom-cont-main-cont{
+        width: 100%;
+        text-align: center;
+        padding-top: 32px;
+        padding-bottom: 22px;
+   }
+   .app-bottom-cont-lnk-cont{
+        text-align: left;
+        font-size: 14px;
+        padding: 6px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-left: 22px;
+     
+     }
+   .app-bottom-cont-main-logo{
+     margin-top: 32px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-family: inter;
+     font-size: 20px;
+     font-weight: 700;
+   }
+
+   .app-bottom-cont-main-sys-stat{
+    
+     display: inline-flex;
+     padding: 6px;
+     padding-left: 12px;
+     padding-right: 12px;
+     font-size: 14px;
+     border: 1px solid #e0e0e0;
+     border-radius: 4px;
+     color: #000;
+     margin-top: 8px;
+   }
+   .app-bottom-cont-main-sys-stat-lab{
+     color: #09C264;
+     margin-left: 6px;
+     font-weight: 500;
+     display: inline-flex;
+     align-items: center;
+   }
+   
+   .app-bottom-cont-main-sys-stat-lab-cir{
+     width: 10px;
+     height: 10px;
+     margin-right: 6px;
+     background-color: #09C264;
+     border-radius: 100px;
+   }
+
+   .app-bottom-cont-main-copy-cont{
+        font-size: 13px; 
+        margin-top: 8px;
+        color: #757575;
    }

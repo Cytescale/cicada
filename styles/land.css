@@ -277,15 +277,15 @@ margin-bottom: 0px;
      color: #000;
 }
 .link-add-butt{
-     background: #55A3FF;
+     background: #fff;
      box-shadow: none;
      border-radius: 7px;
-     padding: 14px;
-     color: #fff;
+     padding: 0px;
+     color: #0070F3;
      padding-top: 7px;
      padding-bottom: 7px;
      font-weight: 500; 
-     font-size: 11px;
+     font-size: 14px;
      font-family: inter;
 }
 
@@ -320,6 +320,8 @@ margin-bottom: 0px;
      padding-top: 22px;
      padding-bottom: 22px;
      border-radius: 6px;     
+     border-color: var(--bor-color);
+     box-shadow: var(--box-shad);
 }
 
 .app-land-prof-pop-hr{
@@ -1355,11 +1357,11 @@ color: #0070F3;
 }
 .clust-visit-main-cont{
      width: 100%;
-     color: #0070F3;
+     color: #000;
      display: inline-flex;
      justify-content: center;
      align-items: center;
-     font-weight: 600;
+     font-weight: 400;
      padding-top: 12px;
      padding-bottom: 12px;
      font-size: 14px;

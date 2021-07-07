@@ -366,6 +366,7 @@ margin-bottom: 12px;
      border-radius: 7px;
      padding-left: 12px;
      background-color: #fff;
+     box-shadow: none;
      border: 1px solid #bdbdbd;
      outline: none;
      font-size: 14px;
@@ -757,7 +758,7 @@ font-family: inter;
    .app-bottom-cont-lnk-cont{
         text-align: left;
         font-size: 14px;
-        padding: 6px;
+        padding: 8px;
         border-bottom: 1px solid #e0e0e0;
         padding-left: 22px;
      

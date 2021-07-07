@@ -1271,7 +1271,7 @@ class Land extends React.Component<LandProps,any>{
                                              <div className='app-land-visit-card-main-outer-cont'>
                                              <div className='app-land-visit-card-main-cont'>
                                                   <div className='app-land-visit-card-left-cont'>
-                                                       <div className='app-land-visit-card-left-lab'>Visitors {this.renderIncri(45)}</div>
+                                                       <div className='app-land-visit-card-left-lab'>Visitors Activity </div>
                                                        <div className='app-land-visit-card-left-time'>Today</div>
                                                        <div className='app-land-visit-card-left-Counter'>8000</div>
                                                   </div>
@@ -1357,7 +1357,6 @@ class Land extends React.Component<LandProps,any>{
                               
                               </button>
                               </div>
-                              <div className='app-land-lnk-count-cont'>{this.state.linksData.length} Links</div>
                               {
                               this.state.linkDataLoading?
                               <Spinner

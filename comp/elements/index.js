@@ -1,6 +1,8 @@
 import React,{useEffect, useRef, useState} from "react";
-import  {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
+import {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
 import { push as Menu } from 'react-burger-menu'
+import URLS,{_BASE_CLIENT_URL} from "../helpers/api.routes";
+
 import user from "../utils/user";
 const User = new user();
 
@@ -103,15 +105,20 @@ const NavBarCont = (props)=>{
      return(
           <div className='app-nav-bar-main-cont'>
                     <div 
-                    className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-cont-selec':null}`}
-                    >
+                    className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-cont-selec':null}`}>
+                       <a href={_BASE_CLIENT_URL+'src/cluster'}>
                          Links
+                       </a>
                     </div>
                     <div className='app-nav-bar-main-link-cont'>
+                       <a href={_BASE_CLIENT_URL+'src/cluster/links'}>
                          Design
+                       </a>
                     </div>
                     <div className='app-nav-bar-main-link-cont'>
+                         <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
                          Settings
+                         </a>
                     </div>
           </div>
       )

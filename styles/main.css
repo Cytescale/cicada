@@ -783,7 +783,7 @@ font-family: inter;
      border: 1px solid #e0e0e0;
      border-radius: 4px;
      color: #000;
-     margin-top: 8px;
+     margin-top: 12px;
    }
    .app-bottom-cont-main-sys-stat-lab{
      color: #09C264;
@@ -803,6 +803,6 @@ font-family: inter;
 
    .app-bottom-cont-main-copy-cont{
         font-size: 13px; 
-        margin-top: 8px;
+        margin-top: 12px;
         color: #757575;
    }

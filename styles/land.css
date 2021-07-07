@@ -3,7 +3,14 @@
      color: #000;
      height: 100%;
 }
+.link-head-logo{
+     
+}
 
+.app-head-main-cont-logo-ico{
+     width: 26px;
+     height: 26px;
+}
 
 .dash-add-butt{
  color: var(--pri-dark);    

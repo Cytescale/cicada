@@ -1291,7 +1291,7 @@ class Land extends React.Component<LandProps,any>{
                                    </div>
                               </div> 
                               <div className='app-land-link-cont-holder'>
-                              <div className='app-land-lab-main-cont'>Cluster Link</div>
+                              {/* <div className='app-land-lab-main-cont'>Cluster Link</div> */}
                               <div className='clust-link-main-cont'> 
                                    <div className='clust-link-main-inner-cont'>
                                    <div className='clust-link-main-lock-cont'>
@@ -1334,7 +1334,7 @@ class Land extends React.Component<LandProps,any>{
 
                               </div>
                               <div className='app-land-link-cont-holder lnk-holder-cust'>
-                              <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
+                              {/* <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div> */}
                               <div className='app-land-top-butt-group-cont'>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}
@@ -1356,8 +1356,8 @@ class Land extends React.Component<LandProps,any>{
                               
                               
                               </button>
-                              
                               </div>
+                              <div className='app-land-lnk-count-cont'>{this.state.linksData.length} Links</div>
                               {
                               this.state.linkDataLoading?
                               <Spinner

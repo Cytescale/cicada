@@ -542,13 +542,13 @@ font-family: inter;
      text-decoration: none;
      color: #000;
      transition: color 0.2s;
-     border-bottom: 1px solid #e0e0e0;
+     /* border-bottom: 1px solid #e0e0e0; */
    }
 
 .menu-item{
      width: 92%;
      margin-left: 4%;
-     border-radius: 8px;
+     border-radius: 0px;
      margin-top: 6px;
      padding: 12px;
      padding-left: 22px;

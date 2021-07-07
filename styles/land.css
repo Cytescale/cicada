@@ -1,5 +1,5 @@
 .land-body-cont{
-     background-color: #F2F7FB;
+     background-color: #fff;
      color: #000;
      height: 100%;
 }
@@ -1301,8 +1301,8 @@ color: #0070F3;
 }
 .app-land-link-cont-holder{
      /* border-bottom: 1px solid #C6DDF0; */
-     margin-top: 32px;
-     margin-bottom: 32px;
+     margin-top: 22px;
+     margin-bottom: 22px;
 }
 
 @keyframes wave-animation {

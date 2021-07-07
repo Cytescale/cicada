@@ -327,7 +327,7 @@ margin-bottom: 0px;
      padding-top: 22px;
      padding-bottom: 22px;
      border-radius: 6px;     
-     border-color: var(--bor-color);
+     border-color: var(--borColor);
      box-shadow: var(--box-shad);
 }
 
@@ -1396,6 +1396,11 @@ color: #0070F3;
      padding-bottom: 12px;
      font-size: 14px;
 }
+
+.clust-visit-main-cont-lnk{
+     
+}
+
 .clust-visit-main-cont-ico{
      width: 14px;
      height: 14px;

@@ -426,8 +426,8 @@ background-color: rgba(0, 0, 0, 0)
      width: 92%;
      margin-left: 4%;
      height: auto;
-     padding: 0px;
-     padding-bottom: 12px;
+     padding: 7px;
+     
      position: relative;
      margin-top: 22px;
      background-color: #fefefe;
@@ -452,8 +452,7 @@ background-color: rgba(0, 0, 0, 0)
      height: 100%;
      width: 100%;
      padding:16px;
-     padding-top: 16px;
-     padding-bottom: 16px;
+     
      position: relative;
      
      border-bottom: 1px solid #f1f1f1;
@@ -1008,7 +1007,7 @@ background-color: rgba(0, 0, 0, 0)
 
 .app-land-lab-main-cont{
      font-family: inter;
-     font-size: 14px;
+     font-size: 16px;
      font-weight: 700;
      color: #000;
      padding-left: 22px;
@@ -1199,9 +1198,7 @@ color: #0070F3;
 }
 
 .app-land-crt-lnk-butt{
-     
      flex: 1;
-     
      height: 42px;
      background-color: #0070F3;
      box-shadow: 0px 4px 15px rgba(85, 163, 255, 0.53);
@@ -1246,7 +1243,7 @@ color: #0070F3;
 .clust-link-main-inner-cont{
      display: flex;
      align-items: center;
-     height: 52px;
+     height: 56px;
      border-bottom: 1px solid #e0e0e0;
      vertical-align: middle;
 }
@@ -1267,7 +1264,7 @@ color: #0070F3;
 .clust-link-main-link{
      font-size: 13px;
      color: #212121;
-     text-decoration: underline;
+     
 }
 .clust-link-main-right-cont{
      position: absolute;
@@ -1355,7 +1352,7 @@ color: #0070F3;
      align-items: center;
      padding-top: 12px;
      padding-bottom: 12px;
-     font-size: 13px;
+     font-size: 14px;
 }
 .clust-visit-main-cont-ico{
      width: 14px;

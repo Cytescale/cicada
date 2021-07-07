@@ -17,7 +17,7 @@ import { linkDataType } from "../../../comp/utils/link";
 import Link from 'next/link'
 import URLS,{_BASE_CLIENT_URL} from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
-import { push as Menu } from 'react-burger-menu'
+import {slide as Menu } from 'react-burger-menu'
 import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 
 
@@ -1217,15 +1217,16 @@ class Land extends React.Component<LandProps,any>{
      render(){
           if(!this.state.isLoading && this.state.isAuth){
           return(
-               <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
+               <div className='app-main-cont-main-body land-body-cont' id='lnk-lnk-main-cont-id'>
                     <Head>
                     <title>Sakura</title>
                     <meta name="description" content="Cicada Login Activity" />
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
-                              {this.renderBurgerMenu()}
-                              <div className='app-head-main-cont link-head-body-cont'>
+                            
+                              <div className='app-head-main-cont link-head-body-cont' >
+                                        {this.renderBurgerMenu()}
                                         <div className='app-head-main-cont-logo link-head-logo'>
                                         Sakura
                                         </div>

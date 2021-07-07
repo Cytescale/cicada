@@ -1333,7 +1333,7 @@ class Land extends React.Component<LandProps,any>{
                                     
 
                               </div>
-                              <div className='app-land-link-cont-holder'>
+                              <div className='app-land-link-cont-holder lnk-holder-cust'>
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               <div className='app-land-top-butt-group-cont'>
                               <button className='app-land-crt-lnk-butt'

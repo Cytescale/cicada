@@ -1246,8 +1246,12 @@ color: #0070F3;
 }
 .clust-link-main-inner-cont{
      display: flex;
+     position: relative;
      align-items: center;
-     height: 62px;
+     height: auto;
+     padding: 6px;
+     padding-top: 22px;
+     padding-bottom: 22px;
      border-bottom: 1px solid #e0e0e0;
      vertical-align: middle;
 }
@@ -1259,6 +1263,7 @@ color: #0070F3;
      border-radius: 7px;
      box-shadow: var(--box-shad);
      /* border: 1px solid var(--bor-color); */
+     padding: 7px;
      padding-left: 12px;
      padding-right: 12px;
      position: relative;
@@ -1272,7 +1277,7 @@ color: #0070F3;
 }
 .clust-link-main-right-cont{
      position: absolute;
-     height: 52px;
+     height: auto;
      width: auto;        
      display: flex;
      align-items: center;
@@ -1281,7 +1286,6 @@ color: #0070F3;
      top: 0;
      bottom: 0;
      margin-right: 12px;
-     padding-top: 5px;
 }
 .clust-link-main-lock-cont{
      margin-right: 7px;

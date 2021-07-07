@@ -648,7 +648,7 @@ font-family: inter;
    }
    .bm-burger-bars {
      background: #000;
-     max-height: 3px;
+     max-height: 2px;
      border-radius: 100px;
    }
    .bm-cross-button {

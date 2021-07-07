@@ -1,5 +1,5 @@
 .land-body-cont{
-     background-color: #fff;
+     background-color: var(--back-color);
      color: #000;
      height: 100%;
 }
@@ -431,7 +431,7 @@ background-color: rgba(0, 0, 0, 0)
      position: relative;
      margin-top: 12px;
      background-color: #fefefe;
-     border:1px solid #CAD0D4;
+     border:1px solid var(--bor-color);
      /* box-shadow: 0px 4px 9px #DAE5EE; */
      border-radius: 7px;
 }
@@ -1065,8 +1065,7 @@ background-color: rgba(0, 0, 0, 0)
      margin-top: var(--margin-top);
      background-color: #fff;
      border-radius: 7px;
-
-     border: 1px solid #CAD0D4; 
+     border: 1px solid var(--bor-color); 
      
 }
 
@@ -1131,6 +1130,7 @@ background-color: rgba(0, 0, 0, 0)
      padding-bottom: var(--margin);
 }
 .app-body-topper-main-cont{
+     
      padding-top: 22px;
 }
 .app-body-topper-hey-cont{
@@ -1248,7 +1248,7 @@ color: #0070F3;
      background-color: #fff;
      border-radius: 7px;
      /* box-shadow: 0px 4px 9px #DAE5EE; */
-     border: 1px solid   #CAD0D4;
+     border: 1px solid var(--bor-color);
      
      display: flex;
      padding-left: 12px;
@@ -1300,9 +1300,9 @@ color: #0070F3;
      padding-right: 8px;
 }
 .app-land-link-cont-holder{
-     /* border-bottom: 1px solid #C6DDF0; */
-     margin-top: 22px;
-     margin-bottom: 22px;
+     border-bottom: 1px solid var(--bor-color);
+     padding-bottom: 17px;
+     margin-bottom: 17px;
 }
 
 @keyframes wave-animation {
@@ -1332,4 +1332,18 @@ color: #0070F3;
 .lnk-lnk-head-link-ico{
      width: 20px;
      height: 20px;
+}
+.clust-visit-main-cont{
+     width: 100%;
+     color: #0070F3;
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+     padding-top: 12px;
+     font-size: 13px;
+}
+.clust-visit-main-cont-ico{
+     width: 14px;
+     height: 14px;
+     margin-left: 4px;
 }

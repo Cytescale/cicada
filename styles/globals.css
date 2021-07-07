@@ -19,6 +19,7 @@ body {
   --margin:20px;
   --margin-top:22px;
   --bor-rad:10px;
+  --back-color:#fff;
   --bor-color:#e0e0e0;
 
   --box-shad-inset:inset -3px -3px 10px #384148, 

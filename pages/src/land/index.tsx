@@ -1268,7 +1268,7 @@ class Land extends React.Component<LandProps,any>{
                                              }
                                              
                                              <WelcomeHead/>
-                                             <div className='app-land-visit-card-main-outer-cont'>
+                                             {/* <div className='app-land-visit-card-main-outer-cont'>
                                              <div className='app-land-visit-card-main-cont'>
                                                   <div className='app-land-visit-card-left-cont'>
                                                        <div className='app-land-visit-card-left-lab'>Visitors Activity </div>
@@ -1287,7 +1287,7 @@ class Land extends React.Component<LandProps,any>{
                                                   <FullVisitChart/>
                                              </Accordion.Collapse>
                                              </Accordion>
-                                             </div>
+                                             </div> */}
                                    </div>
                               </div> 
                               <div className='app-land-link-cont-holder'>

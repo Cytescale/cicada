@@ -1246,7 +1246,6 @@ class Land extends React.Component<LandProps,any>{
                               </div>
                          {/* <NavBarCont router={this.props.router}/> */}
                          <div id='app-main-cont-body-id'>
-                         
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>
                               <div className='app-land-link-cont-holder'>
@@ -1291,11 +1290,10 @@ class Land extends React.Component<LandProps,any>{
                                              </div>
                                    </div>
                               </div> 
-                              {/* background-color: #F2F7FB; */}
                               <div className='app-land-link-cont-holder'>
                               <div className='app-land-lab-main-cont'>Cluster Link</div>
                               <div className='clust-link-main-cont'> 
-                              
+                                   <div className='clust-link-main-inner-cont'>
                                    <div className='clust-link-main-lock-cont'>
                                         <svg className='clust-link-main-lock-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
                                    </div>
@@ -1325,15 +1323,16 @@ class Land extends React.Component<LandProps,any>{
                                         >
                                              Copy
                                         </button>
+                                        </div>
                                    </div>
-                              </div>
-                                        <div className='clust-visit-main-cont'>
+                                   <div className='clust-visit-main-cont'>
                                                   Go to cluster
                                                   <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
-                                        </div>
+                                   </div>
+                              </div>
+                                    
 
                               </div>
-
                               <div className='app-land-link-cont-holder'>
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               <div className='app-land-top-butt-group-cont'>

@@ -1240,22 +1240,25 @@ color: #0070F3;
 .app-land-crt-lnk-butt:active{
      background-color: #0070F3;
 }
+.clust-link-main-inner-cont{
+     display: flex;
+     align-items: center;
+     height: 52px;
+     border-bottom: 1px solid #e0e0e0;
+     vertical-align: middle;
+}
 
 .clust-link-main-cont{
      width: 92%;
      margin-left: 4%;
-     height: 52px;
      background-color: #fff;
      border-radius: 7px;
      /* box-shadow: 0px 4px 9px #DAE5EE; */
      border: 1px solid var(--bor-color);
-     
-     display: flex;
      padding-left: 12px;
      padding-right: 12px;
-     align-items: center;
      position: relative;
-     vertical-align: middle;
+     
 }
 
 .clust-link-main-link{
@@ -1265,7 +1268,7 @@ color: #0070F3;
 }
 .clust-link-main-right-cont{
      position: absolute;
-     height: 100%;
+     height: 52px;
      width: auto;        
      display: flex;
      align-items: center;
@@ -1300,7 +1303,7 @@ color: #0070F3;
      padding-right: 8px;
 }
 .app-land-link-cont-holder{
-     border-bottom: 1px solid var(--bor-color);
+ 
      padding-bottom: 17px;
      margin-bottom: 17px;
 }
@@ -1340,6 +1343,7 @@ color: #0070F3;
      justify-content: center;
      align-items: center;
      padding-top: 12px;
+     padding-bottom: 12px;
      font-size: 13px;
 }
 .clust-visit-main-cont-ico{

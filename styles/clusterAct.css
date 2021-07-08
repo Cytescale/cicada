@@ -5,7 +5,7 @@
 }
 .app-clust-act-topper-main-cont{
      padding-bottom: 22px;
-     background-color:#fff;
+     background-color:var(--backColor);
 }
 .app-clust-act-lnk-head-main-cont
 {
@@ -35,15 +35,24 @@
 
 .clust-link-head-cont{
      border-bottom: none;
-     margin-top: 0px;;
+     margin-top: 0px;
 }
 
 .clust-link-head-outer-cont{
-     margin-top: 12px;
-
-
+     margin-top: 12px;  
+     display: inline-flex;
 }
 
+.lnk-lnk-reord-main-cont{
+     height: 100%;
+     padding-top: 16px;
+     padding-bottom: 16px;
+     padding-right: 6px;
+     border-right: 1px solid var(--borColor);
+}
+.lnk-lnk-reord-ico{
+     color: #bdbdbd;
+}
 
 .app-clust-link-holder-main-cont{
      flex: 1;

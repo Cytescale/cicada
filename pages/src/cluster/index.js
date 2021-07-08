@@ -23,14 +23,10 @@ const LinkCard=(props)=>{
      const [activeLoading,setactiveLoading] = useState(false);
      return(
           <div className='lnk-lnk-main-cont  clust-link-head-outer-cont'>
+          <div className='lnk-lnk-reord-main-cont'>
+               <svg className='lnk-lnk-reord-ico' height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </div>
           <div className='lnk-lnk-head-main-cont clust-link-head-cont'>
-                         {
-                              props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?
-                              <div className='lnk-lnk-head-link-ico-cont'>
-                               <svg className='lnk-lnk-head-link-ico' xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M17,7h-3c-0.55,0-1,0.45-1,1s0.45,1,1,1h3c1.65,0,3,1.35,3,3s-1.35,3-3,3h-3c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1h3 c2.76,0,5-2.24,5-5S19.76,7,17,7z M8,12c0,0.55,0.45,1,1,1h6c0.55,0,1-0.45,1-1s-0.45-1-1-1H9C8.45,11,8,11.45,8,12z M10,15H7 c-1.65,0-3-1.35-3-3s1.35-3,3-3h3c0.55,0,1-0.45,1-1s-0.45-1-1-1H7c-2.76,0-5,2.24-5,5s2.24,5,5,5h3c0.55,0,1-0.45,1-1 C11,15.45,10.55,15,10,15z"/></g></g></svg>
-                              </div>:<span/>
-                         }
-                         
                     <div className='lnk-lnk-head-main-cont-name-cont'>
                           <span style={{
                               textDecoration:active?'none':'line-through'
@@ -219,15 +215,15 @@ const cluster = (props)=>{
                                    >
                                         Create Link
                                    </button>
-                                   <ProfilePopover 
+                                   {/* <ProfilePopover 
                                     //setlgoutShow={this.setlgoutConfirmVisi} 
-                                    />
+                                    /> */}
                               </div>
                     </div>
                     <NavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
-                              <div className='app-clust-tit-main-cont'>Your Links</div>
+                              <div className='app-clust-tit-main-cont'>Cluster Links</div>
                               <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want, or create a new one.</div>
                               <div className='app-clust-act-lnk-head-main-cont'>
                               <button className='app-land-crt-lnk-butt'

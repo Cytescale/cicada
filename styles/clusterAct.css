@@ -1,3 +1,55 @@
 .app-clust-act-main-cont{
      min-height: 100vh;
+     background-color:var(--linkHolderColor);
+     border-bottom: 1px solid var(--borColor);
+}
+.app-clust-act-topper-main-cont{
+     padding-bottom: 22px;
+     background-color:#fff;
+}
+.app-clust-act-lnk-head-main-cont
+{
+     display: inline-flex;
+     width: 100%;
+     padding: 22px;
+     padding-bottom: 12px;
+     padding-top: 22px;
+}
+.app-clust-tit-main-cont{
+     padding-top: 22px;
+     padding-left: 22px;
+     font-family: inter;
+     color: #000;
+     font-weight: 800;
+     font-size: 22px;
+     padding-top: 32px;
+}
+.app-clust-sub-tit-main-cont{
+     padding-left: 22px;
+     padding-right: 22px;
+     font-size: 12px;
+     color: #000;
+     font-family: inter;
+}
+
+
+.clust-link-head-cont{
+     border-bottom: none;
+     margin-top: 0px;;
+}
+
+.clust-link-head-outer-cont{
+     margin-top: 12px;
+
+
+}
+
+
+.app-clust-link-holder-main-cont{
+     flex: 1;
+     flex-direction: column;
+     height: 100%;
+     padding: 12px;
+     border-top: 1px solid var(--borColor);
+     
 }

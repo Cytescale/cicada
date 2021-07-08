@@ -466,6 +466,8 @@ background-color: rgba(0, 0, 0, 0)
      
      border-bottom: 1px solid #f1f1f1;
 }
+
+
 .lnk-lnk-head-main-cont-name-cont{
      font-size: 15px;
      height: 100%;
@@ -1262,6 +1264,9 @@ color: #0070F3;
      filter: blur(9px);
 }
 .app-land-crt-lnk-butt-lab{
+     font-size: 14px;
+     font-family: inter;
+     font-weight: 500;
      z-index: 10;
 }
 .app-land-crt-lnk-butt-lab-ico{

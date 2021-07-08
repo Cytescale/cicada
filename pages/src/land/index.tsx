@@ -1,9 +1,4 @@
 import React,{useEffect, useRef, useState} from "react";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Links from "./links";
-import Analytics from "./analytics";
-import Profile from "./profile";
-import Dash from "./dash";
 import user from "../../../comp/utils/user";
 import firebaseHelper,{getUid,checkToken} from "../../../comp/helpers/firebaseHelper";
 import backendHelper from "../../../comp/helpers/backendHelper";
@@ -17,7 +12,7 @@ import { linkDataType } from "../../../comp/utils/link";
 import Link from 'next/link'
 import URLS,{_BASE_CLIENT_URL} from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
-import { push as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 import {ThemeProvider} from "styled-components";
 
@@ -1275,16 +1270,17 @@ class Land extends React.Component<LandProps,any>{
                               {this.renderBurgerMenu()}
                               <div className='app-head-main-cont link-head-body-cont'>
                                         <div className='app-head-main-cont-logo link-head-logo'>
-                                             <svg className='app-head-main-cont-logo-ico' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <circle cx="50" cy="50" r="50" fill="url(#paint0_linear)"/>
-                                             <defs>
-                                             <linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
-                                             <stop stop-color="#FEE27F"/>
-                                             <stop offset="1" stop-color="#F6BC4F"/>
-                                             </linearGradient>
-                                             </defs>
-                                             </svg>
-
+                                             <a href={_BASE_CLIENT_URL+'src/land'}>
+                                                  <svg className='app-head-main-cont-logo-ico' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <circle cx="50" cy="50" r="50" fill="url(#paint0_linear)"/>
+                                                  <defs>
+                                                  <linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+                                                  <stop stop-color="#FEE27F"/>
+                                                  <stop offset="1" stop-color="#F6BC4F"/>
+                                                  </linearGradient>
+                                                  </defs>
+                                                  </svg>
+                                             </a>
                                         </div>
                                         <div className='app-head-main-right-cont'>
                                              <button

@@ -554,7 +554,8 @@ font-family: inter;
      padding: 12px;
      padding-left: 22px;
      font-family: inter;
-     font-size: 18px;
+     font-weight: 700;
+     font-size: 17px;
 }
 
 .menu-item-ico{
@@ -564,7 +565,7 @@ font-family: inter;
      height: 20px;
 }
 .menu-item-selec{
-     border-bottom:none;
+     border-radius: 6px;
      background-color: #f7f7f7;
      color: #0070F3;
 }
@@ -647,9 +648,11 @@ font-family: inter;
      position: fixed;
      top: 0;
      margin: var(--margin);
+     z-index: 200;
      margin-top: 22px;
    }
    .bm-burger-bars {
+    
      background: #000;
      max-height: 2px;
      border-radius: 100px;
@@ -660,6 +663,7 @@ font-family: inter;
    }
    
    .bm-cross {
+     
      background: #bdc3c7;
    }
    

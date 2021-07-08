@@ -52,6 +52,7 @@
     "react-images-uploading": "^3.1.2",
     "react-range": "^1.8.7",
     "react-rangeslider": "^2.2.0",
+    "react-reorder": "^3.0.0-alpha.7",
     "react-resizable": "^1.11.1",
     "react-router-dom": "^5.2.0",
     "react-tabs": "^3.2.2",

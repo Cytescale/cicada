@@ -134,11 +134,6 @@ const NavBarCont = (props)=>{
                        </a>
                     </div>
                     <div className='app-nav-bar-main-link-cont'>
-                       <a href={_BASE_CLIENT_URL+'src/cluster/links'}>
-                         Design
-                       </a>
-                    </div>
-                    <div className='app-nav-bar-main-link-cont'>
                          <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
                          Settings
                          </a>

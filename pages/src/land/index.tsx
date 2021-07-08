@@ -865,7 +865,7 @@ class Land extends React.Component<LandProps,any>{
                          Help</a>
 
                     <div className="menu-item-bottom-menu">
-                    <div className="menu-item-bottom-v">v 0.0.13</div>
+                    <div className="menu-item-bottom-v">v 0.0.3</div>
                     </div>
              </Menu>
              )

@@ -8,6 +8,7 @@ import firebaseHelper,{getUid,checkToken} from "../../../comp/helpers/firebaseHe
 import backendHelper from "../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
+
 const User = new user();
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
@@ -22,11 +23,22 @@ const LinkCard=(props)=>{
      const [active , setactive] = useState(props.d.active_bool);
      const [activeLoading,setactiveLoading] = useState(false);
      return(
-          <div className='lnk-lnk-main-cont  clust-link-head-outer-cont'>
-          <div className='lnk-lnk-reord-main-cont'>
-               <svg className='lnk-lnk-reord-ico' height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-          </div>
+          <div className='lnk-lnk-main-cont  clust-link-head-outer-cont' onClick={()=>{
+               props.setoverlayVisi(true);
+               props.setselecInd(props.ind)
+          }}
+               style={{
+                    zIndex:props.selecInd==props.ind?'900':'20'
+               }}
+          
+          >
           <div className='lnk-lnk-head-main-cont clust-link-head-cont'>
+                         {
+                              props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?
+                              <div className='lnk-lnk-head-link-ico-cont'>
+                               <svg className='lnk-lnk-head-link-ico' xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M17,7h-3c-0.55,0-1,0.45-1,1s0.45,1,1,1h3c1.65,0,3,1.35,3,3s-1.35,3-3,3h-3c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1h3 c2.76,0,5-2.24,5-5S19.76,7,17,7z M8,12c0,0.55,0.45,1,1,1h6c0.55,0,1-0.45,1-1s-0.45-1-1-1H9C8.45,11,8,11.45,8,12z M10,15H7 c-1.65,0-3-1.35-3-3s1.35-3,3-3h3c0.55,0,1-0.45,1-1s-0.45-1-1-1H7c-2.76,0-5,2.24-5,5s2.24,5,5,5h3c0.55,0,1-0.45,1-1 C11,15.45,10.55,15,10,15z"/></g></g></svg>
+                              </div>:<span/>
+                         }
                     <div className='lnk-lnk-head-main-cont-name-cont'>
                           <span style={{
                               textDecoration:active?'none':'line-through'
@@ -85,6 +97,20 @@ const LinkCard=(props)=>{
                     </label>
                     </div>
           </div>
+          {
+               props.selecInd==props.ind?
+               <div className='app-clust-link-more-menu'>
+                    <button className='app-clust-link-more-menu-butt'>
+                    Move Up
+                    <svg className='app-clust-link-more-menu-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/></svg>
+                    </button>
+                    <button className='app-clust-link-more-menu-butt'>
+                    Move Down
+                    <svg  className='app-clust-link-more-menu-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"/></svg>
+                    </button>
+               </div>:<span/>
+          }
+          
        
      </div>
      )
@@ -135,24 +161,22 @@ async function loadUserData(setLoading){
      }
 }
 
+
 const RenderClusterLink = (props) =>{
      const [linkData,setLinkData] = useState();
      const [linkDataLoading,setlinkDataLoading] = useState(true);
-     
+  
      useEffect(async ()=>{
           const uid = await getUid();
           if(uid){
                if(backendHelper){
                     BackendHelper._getLinksData(uid).then((res)=>{
                          if(res){
-                              if(!res.errBool){
-                                    console.log(res.responseData);
-                                    setLinkData(res.responseData);
-                              }
+                              if(!res.errBool){console.log(res.responseData);setLinkData(res.responseData);}
                               else{
                                    toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
                               }
-                    }
+                         }
                     }).catch(e=>{
                          toast.error(e, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
                     });
@@ -165,7 +189,7 @@ const RenderClusterLink = (props) =>{
      if(linkData ){
      if(linkData.length > 0){
           linkData.map((e,ind)=>{
-                    res.push(<LinkCard key={ind}ind={ind} d={e} />)
+               res.push(<LinkCard {...props} key={ind} ind={ind} d={e}/>)
           }) 
           return(res);
      }else{return(<span/>)}
@@ -176,7 +200,8 @@ const cluster = (props)=>{
      const router = useRouter()
      const [linkData,setLinkData] = useState(null);
      const [loading,setLoading] = useState(true);
-
+     const [overlayVisi,setoverlayVisi] = useState(false)
+     const [selecInd,setselecInd] = useState(null);
      useEffect(async ()=>{
               await loadUserData(setLoading);
      },[]);
@@ -235,8 +260,20 @@ const cluster = (props)=>{
                               </div>
                               </div>
                               <div className='app-clust-link-holder-main-cont'>
-                                   {!loading?<RenderClusterLink linksData={linkData}/>:<span/>}       
+                                   {!loading?<RenderClusterLink 
+                                   setoverlayVisi={setoverlayVisi}
+                                    linksData={linkData}
+                                    selecInd={selecInd}
+                                     setselecInd={setselecInd} 
+                                    />:<span/>}       
                               </div>
+                              <div className='app-clust-link-overlay-main-cont'
+                                   onClick={()=>{
+                                        setoverlayVisi(false)
+                                        setselecInd(null);
+                                   }}
+                                   style={{display:overlayVisi?'block':'none'}}
+                              />
                     </div>
                     <BottomCont/>
                     <ToastContainer/>

@@ -121,8 +121,8 @@
      left: 0;
      right: 0;
      width: 100%;
-     height: 200px;
-     margin-bottom: -70%;
+     height: auto;
+     margin-bottom: -40%;
      z-index: 800;
 }
 .app-clust-link-more-menu-butt{

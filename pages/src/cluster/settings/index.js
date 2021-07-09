@@ -109,7 +109,7 @@ const Settings = (props)=>{
                     <NavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
-                              <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Settings</div>
+                              <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Cluster <br/> Settings</div>
                               <div className='app-clust-sub-tit-main-cont clust-set-sub-tit-main-cont'>Set your cluster prefrences as per your need.</div>
                               </div>
                               <div className='app-clust-link-overlay-main-cont'
@@ -119,6 +119,44 @@ const Settings = (props)=>{
                                    }}
                                    style={{display:overlayVisi?'block':'none'}}
                               />
+                              <div className='app-clust-set-holder-main-cont'>
+                                        <div className='app-clust-set-card-main-cont'>
+                                             <div className='app-clust-set-card-main-tit-cont'>Cluster Status</div>
+                                             <div className='app-clust-set-card-main-sub-tit-cont'>Enable or disable the status of your cluster</div>
+                                             <div className='app-clust-set-card-main-rigt-cont'>
+                                                  <label className="switch">
+                                                       <input type="checkbox" 
+                                                            defaultChecked={true}
+                                                       />
+                                                       <span className="slider round"></span>
+                                                  </label>
+                                             </div>
+                                        </div>
+                                        <div className='app-clust-set-card-main-cont'>
+                                             <div className='app-clust-set-card-main-tit-cont'>Profile Card</div>
+                                             <div className='app-clust-set-card-main-sub-tit-cont'>Enable or disable the profile card of your cluster</div>
+                                             <div className='app-clust-set-card-main-rigt-cont'>
+                                                  <label className="switch">
+                                                       <input type="checkbox" 
+                                                            defaultChecked={true}
+                                                       />
+                                                       <span className="slider round"></span>
+                                                  </label>
+                                             </div>
+                                        </div>
+                                        <div className='app-clust-set-card-main-cont'>
+                                             <div className='app-clust-set-card-main-tit-cont'>Footer Card</div>
+                                             <div className='app-clust-set-card-main-sub-tit-cont'>Enable or disable the Footer card of your cluster</div>
+                                             <div className='app-clust-set-card-main-rigt-cont'>
+                                                  <label className="switch">
+                                                       <input type="checkbox" 
+                                                            defaultChecked={true}
+                                                       />
+                                                       <span className="slider round"></span>
+                                                  </label>
+                                             </div>
+                                        </div>
+                              </div>
                     </div>
                     <BottomCont/>
                     <ToastContainer/>

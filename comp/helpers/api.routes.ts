@@ -29,6 +29,7 @@ const URLS:URLinter = {
      buildClusterLinkArray:_BASE_API_URL+'buildClusterLinkArray',
      updateClusterConfigData:_BASE_API_URL+'updateClusterConfigData',
      getClusterConfigByUid:_BASE_API_URL+'getClusterConfigbyUid',
+     
      getUserDatabyUname:_BASE_API_URL+'getUserDatabyUname',
      updateLinkData:_BASE_API_URL+'updateLinkData',
      getLinkDatabyUniId:_BASE_API_URL+'getLinksDatabyUniId',

@@ -12,6 +12,42 @@ import { ToastContainer,toast } from "react-toastify";
 const User = new user();
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
+
+function timeDifference(current, previous) {
+
+     var msPerMinute = 60 * 1000;
+     var msPerHour = msPerMinute * 60;
+     var msPerDay = msPerHour * 24;
+     var msPerMonth = msPerDay * 30;
+     var msPerYear = msPerDay * 365;
+ 
+     var elapsed = current - previous;
+ 
+     if (elapsed < msPerMinute) {
+          return Math.round(elapsed/1000) + ' seconds ago';   
+     }
+ 
+     else if (elapsed < msPerHour) {
+          return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+     }
+ 
+     else if (elapsed < msPerDay ) {
+          return Math.round(elapsed/msPerHour ) + ' hours ago';   
+     }
+ 
+     else if (elapsed < msPerMonth) {
+         return Math.round(elapsed/msPerDay) + ' days ago';   
+     }
+ 
+     else if (elapsed < msPerYear) {
+         return Math.round(elapsed/msPerMonth) + ' months ago';   
+     }
+ 
+     else {
+         return Math.round(elapsed/msPerYear ) + ' years ago';   
+     }
+ }
+
 async function processActiveLinkData(lData,bool){
      let updateDat ={
           "active_bool": bool,
@@ -132,8 +168,6 @@ const LinkCard=(props)=>{
           return(<div className='app-loading-skt-main-cont' style={{height:'62px'}}></div>)
      }
 }
-
-
 async function loadUserData(setLoading){
      if(!User.getUserData()){
           if(backendHelper){
@@ -177,8 +211,6 @@ async function loadUserData(setLoading){
           return true;
      }
 }
-
-
 const RenderClusterLink = (props) =>{
      const [linkData,setLinkData] = useState([]);
      const [clusterConfigData ,setclusterConfigData] = useState(null);
@@ -193,6 +225,8 @@ const RenderClusterLink = (props) =>{
                               if(!res.errBool){
                                    console.log(res.responseData);
                                    setclusterConfigData(res.responseData)
+                                   props.setclusterActive(res.responseData.active_bool)
+                                   props.setlastUpdate(res.responseData.update_timestamp)
                               }
                               else{
                                    toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
@@ -222,6 +256,9 @@ const cluster = (props)=>{
      const [loading,setLoading] = useState(true);
      const [overlayVisi,setoverlayVisi] = useState(false)
      const [selecInd,setselecInd] = useState(null);
+     const [clusterActive,setclusterActive] = useState(false);
+     const [lastUpdate,setlastUpdate] = useState(null);
+
      useEffect(async ()=>{
               await loadUserData(setLoading);
      },[]);
@@ -268,8 +305,12 @@ const cluster = (props)=>{
                     <NavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
-                              <div className='app-clust-tit-main-cont'>Cluster Links</div>
+                              <div className='app-clust-tit-main-cont'>
+                                   Cluster Links 
+                                   {clusterActive?<div className='app-clust-indi-on'/>:<div className='app-clust-indi-off'/>}
+                              </div>
                               <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want, or create a new one.</div>
+                              <div className='app-clust-time-tit-main-cont'>Last Updated: {lastUpdate?timeDifference(new Date().getTime(),lastUpdate):null}</div>
                               <div className='app-clust-act-lnk-head-main-cont'>
                               <button className='app-land-crt-lnk-butt'
                               
@@ -278,13 +319,16 @@ const cluster = (props)=>{
                                    Create Link </div>
                               </button>
                               </div>
+                            
                               </div>
                               <div className='app-clust-link-holder-main-cont'>
-                                   {!loading?<RenderClusterLink 
+                                   {!loading?<RenderClusterLink
+                                   setlastUpdate={setlastUpdate}
+                                   setclusterActive={setclusterActive} 
                                    setoverlayVisi={setoverlayVisi}
-                                    linksData={linkData}
-                                    selecInd={selecInd}
-                                     setselecInd={setselecInd} 
+                                   linksData={linkData}
+                                   selecInd={selecInd}
+                                   setselecInd={setselecInd} 
                                     />:<span/>}       
                               </div>
                               <div className='app-clust-link-overlay-main-cont'

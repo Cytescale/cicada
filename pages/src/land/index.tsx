@@ -743,7 +743,7 @@ class Land extends React.Component<LandProps,any>{
                     this.initLinksDataLoad();
                     this.setAuth(true);
                     if(backendHelper){
-                         BackendHelper._getUserInfo(User.getUserUid()).then((res:nexusResponse)=>{
+                         BackendHelper._getUserInfo(User.getUserUid(),true).then((res:nexusResponse)=>{
                               if(res){
                                    if(!res.errBool){
                                          User.setUserData(res.responseData);

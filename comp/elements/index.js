@@ -133,7 +133,7 @@ const NavBarCont = (props)=>{
                          Links
                        </a>
                     </div>
-                    <div className='app-nav-bar-main-link-cont'>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster/settings'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
                          Settings
                          </a>

@@ -36,8 +36,8 @@ export default class BackendHelper{
           })
      }
 
-     async _getUserInfo(uid:any):Promise<nexusResponse>{    
-          var data = JSON.stringify({"uid": uid});             
+     async _getUserInfo(uid:any,check_user?:boolean):Promise<nexusResponse>{    
+          var data = JSON.stringify({"uid": uid,"check_user":check_user});             
           return new Promise((resolve, reject) => {
                 axios({
                          method: 'post',
@@ -79,6 +79,7 @@ export default class BackendHelper{
           })
      }
 
+     // buildClusterLinkArray
 
      _createLink(got_data:any):Promise<nexusResponse>{
           return new Promise((resolve, reject) => {
@@ -142,10 +143,7 @@ export default class BackendHelper{
                     reject(sr);
                     });
           })
-     }
-    
- 
-     
+     }    
      async _getUserDatabyUname(uname:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uname": uname});             
           return new Promise((resolve, reject) => {
@@ -167,11 +165,7 @@ export default class BackendHelper{
                     reject(sr);
                     });
           })
-     }
-    
-
-
-     
+     } 
     async _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"uniid":uniId});             
           return new Promise((resolve, reject) => {
@@ -195,8 +189,6 @@ export default class BackendHelper{
                     });
           })
      }
-    
-
      async _updateUserInfo(data:userData){
           let respn =  null;
            await axios.post(URLS.updateUserInfo,{uid:this.UID,data:data,
@@ -209,7 +201,98 @@ export default class BackendHelper{
               });
            return respn;
       }
-
+      async _getLinkDatabyId(uid:string,id:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid,"id":id});             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.getLinkDatabyId,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+     async _getClusterConfigByUid(uid:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid});             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.getClusterConfigByUid,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+     async _buildClusterLinkArray(uid:string,cluster_id?:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid,"cluster_id":cluster_id?cluster_id:null});             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.buildClusterLinkArray,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+     async _updateClusterConfigData(uid:string,cluster_id:string,update_data:any):Promise<nexusResponse>{
+          var data = JSON.stringify({
+               "uid": uid,
+               "cluster_id":cluster_id,
+               "update_data":update_data,
+          });             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.updateClusterConfigData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+    
+    
+    
+    
      async _get_image_kit_auth(){
           let gotFile = null;
           await axios.post(URLS.imagekitAuth,{})

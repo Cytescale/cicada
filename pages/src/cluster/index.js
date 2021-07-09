@@ -20,8 +20,22 @@ async function processActiveLinkData(lData,bool){
      return resp;
 }
 const LinkCard=(props)=>{
-     const [active , setactive] = useState(props.d.active_bool);
+     const [active , setactive] = useState(null);
      const [activeLoading,setactiveLoading] = useState(false);
+     const [d,setD] = useState(null);
+
+     useEffect(async()=>{
+          if(props.id){
+               const uid = await getUid();
+               BackendHelper._getLinkDatabyId(uid,props.id).then((res)=>{
+                    if(!res.errBool){
+                         setD(res.responseData.gotData);
+                         setactive(res.responseData.gotData.active_bool);
+                    }
+               })
+          }
+     },[props.id])
+     if(d){
      return(
           <div className='lnk-lnk-main-cont  clust-link-head-outer-cont' onClick={()=>{
                props.setoverlayVisi(true);
@@ -34,7 +48,7 @@ const LinkCard=(props)=>{
           >
           <div className='lnk-lnk-head-main-cont clust-link-head-cont'>
                          {
-                              props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?
+                              d.deeplink_bool !== 'undefined' && d.deeplink_bool !== false?
                               <div className='lnk-lnk-head-link-ico-cont'>
                                <svg className='lnk-lnk-head-link-ico' xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M17,7h-3c-0.55,0-1,0.45-1,1s0.45,1,1,1h3c1.65,0,3,1.35,3,3s-1.35,3-3,3h-3c-0.55,0-1,0.45-1,1c0,0.55,0.45,1,1,1h3 c2.76,0,5-2.24,5-5S19.76,7,17,7z M8,12c0,0.55,0.45,1,1,1h6c0.55,0,1-0.45,1-1s-0.45-1-1-1H9C8.45,11,8,11.45,8,12z M10,15H7 c-1.65,0-3-1.35-3-3s1.35-3,3-3h3c0.55,0,1-0.45,1-1s-0.45-1-1-1H7c-2.76,0-5,2.24-5,5s2.24,5,5,5h3c0.55,0,1-0.45,1-1 C11,15.45,10.55,15,10,15z"/></g></g></svg>
                               </div>:<span/>
@@ -43,7 +57,7 @@ const LinkCard=(props)=>{
                           <span style={{
                               textDecoration:active?'none':'line-through'
                           }}>
-                          {props.d.name}
+                          {d.name}
                          </span>  
                     </div>
 
@@ -63,7 +77,7 @@ const LinkCard=(props)=>{
                          onClick={async ()=>{
                               await setactive(!active);
                               await setactiveLoading(true);
-                              await processActiveLinkData(props.d,!active).then(async (res)=>{
+                              await processActiveLinkData(d,!active).then(async (res)=>{
                                    if(!res.errBool){ }
                               else{
                                    toast.error(res.errMess, {
@@ -113,14 +127,17 @@ const LinkCard=(props)=>{
           
        
      </div>
-     )
+     )}
+     else{
+          return(<div className='app-loading-skt-main-cont' style={{height:'62px'}}></div>)
+     }
 }
 
 
 async function loadUserData(setLoading){
      if(!User.getUserData()){
           if(backendHelper){
-               await BackendHelper._getUserInfo(await getUid()).then((res)=>{
+               await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
                     if(res){
                          if(!res.errBool){
                                User.setUserData(res.responseData);
@@ -163,16 +180,20 @@ async function loadUserData(setLoading){
 
 
 const RenderClusterLink = (props) =>{
-     const [linkData,setLinkData] = useState();
+     const [linkData,setLinkData] = useState([]);
+     const [clusterConfigData ,setclusterConfigData] = useState(null);
      const [linkDataLoading,setlinkDataLoading] = useState(true);
   
      useEffect(async ()=>{
           const uid = await getUid();
           if(uid){
                if(backendHelper){
-                    BackendHelper._getLinksData(uid).then((res)=>{
+                    BackendHelper._getClusterConfigByUid(uid).then(async(res)=>{
                          if(res){
-                              if(!res.errBool){console.log(res.responseData);setLinkData(res.responseData);}
+                              if(!res.errBool){
+                                   console.log(res.responseData);
+                                   setclusterConfigData(res.responseData)
+                              }
                               else{
                                    toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
                               }
@@ -183,13 +204,12 @@ const RenderClusterLink = (props) =>{
                }
           }
      },[]);
-     
      let res = [];
-
-     if(linkData ){
-     if(linkData.length > 0){
-          linkData.map((e,ind)=>{
-               res.push(<LinkCard {...props} key={ind} ind={ind} d={e}/>)
+     if(clusterConfigData ){
+     if(clusterConfigData.link_ids.length> 0){
+          clusterConfigData.link_ids.map((e,ind)=>{
+               console.log(e);
+               res.push(<LinkCard {...props} key={ind} ind={ind} id={e}/>)
           }) 
           return(res);
      }else{return(<span/>)}

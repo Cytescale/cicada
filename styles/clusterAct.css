@@ -132,3 +132,20 @@
      margin-left: 7px;
      color: inherit;
 }
+
+.clust-set-tit-main-cont{
+width: 100%;
+display: flex;
+justify-content: center;
+margin: 0;
+padding: 0;
+padding-top: 42px;
+}
+
+.clust-set-sub-tit-main-cont{
+display: flex;
+justify-content: center;
+margin: 0;
+padding: 0;
+padding-top: 7px;
+}

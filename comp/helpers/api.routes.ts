@@ -15,18 +15,26 @@ export declare type URLinter = {
      updateUserInfo:string
      makeLinkData:string
      getLinkData:string
+     getLinkDatabyId:string
      getLinkDatabyUniId:string
      checkURLValidity:string
      visit:string
      imagekitAuth:string
      updateLinkData:string
+     getClusterConfigByUid:string
+     updateClusterConfigData:string
+     buildClusterLinkArray:string
 }
 const URLS:URLinter = {
+     buildClusterLinkArray:_BASE_API_URL+'buildClusterLinkArray',
+     updateClusterConfigData:_BASE_API_URL+'updateClusterConfigData',
+     getClusterConfigByUid:_BASE_API_URL+'getClusterConfigbyUid',
      getUserDatabyUname:_BASE_API_URL+'getUserDatabyUname',
      updateLinkData:_BASE_API_URL+'updateLinkData',
      getLinkDatabyUniId:_BASE_API_URL+'getLinksDatabyUniId',
      visit:_BASE_API_URL+'visit',
      checkURLValidity :_BASE_API_URL+'checkURLData',
+     getLinkDatabyId:_BASE_API_URL+'getLinksDatabyId',
      getLinkData:_BASE_API_URL+'getLinksData',
      makeLinkData:_BASE_API_URL+'makeLinkData',
      getUserInfo:_BASE_API_URL+'getUserDatabyUid',

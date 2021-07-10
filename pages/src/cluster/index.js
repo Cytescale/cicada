@@ -58,9 +58,7 @@ async function processActiveLinkData(lData,bool){
 const LinkCard=(props)=>{
      const [active , setactive] = useState(null);
      const [activeLoading,setactiveLoading] = useState(false);
-     const [d,setD] = useState(null);
-
-     useEffect(async()=>{
+     const [d,setD] = useState(null);     useEffect(async()=>{
           if(props.id){
                const uid = await getUid();
                BackendHelper._getLinkDatabyId(uid,props.id).then((res)=>{
@@ -75,10 +73,10 @@ const LinkCard=(props)=>{
      return(
           <div className='lnk-lnk-main-cont  clust-link-head-outer-cont' onClick={()=>{
                props.setoverlayVisi(true);
-               props.setselecInd(props.ind)
+               props.setselecInd(props.id)
           }}
                style={{
-                    zIndex:props.selecInd==props.ind?'900':'20'
+                    zIndex:props.selecInd==props.id?'900':'20'
                }}
           
           >
@@ -148,13 +146,13 @@ const LinkCard=(props)=>{
                     </div>
           </div>
           {
-               props.selecInd==props.ind?
+               props.selecInd==props.id?
                <div className='app-clust-link-more-menu'>
-                    <button className='app-clust-link-more-menu-butt'>
+                    <button className='app-clust-link-more-menu-butt'onClick={props.moveLinkUp}>
                     Move Up
                     <svg className='app-clust-link-more-menu-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/></svg>
                     </button>
-                    <button className='app-clust-link-more-menu-butt'>
+                    <button className='app-clust-link-more-menu-butt' onClick={props.moveLinkDown}>
                     Move Down
                     <svg  className='app-clust-link-more-menu-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"/></svg>
                     </button>
@@ -174,7 +172,8 @@ async function loadUserData(setLoading){
                await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
                     if(res){
                          if(!res.errBool){
-                               User.setUserData(res.responseData);
+                              User.setUserUid(res.responseData.uid);
+                              User.setUserData(res.responseData);
                                console.log(res.responseData);
                          }
                          else{
@@ -211,11 +210,19 @@ async function loadUserData(setLoading){
           return true;
      }
 }
+
+
+function useForceUpdate(){
+     const [value, setValue] = useState(0); // integer state
+     return () => setValue(value => value + 1); // update the state to force render
+ }
+
 const RenderClusterLink = (props) =>{
      const [linkData,setLinkData] = useState([]);
      const [clusterConfigData ,setclusterConfigData] = useState(null);
      const [linkDataLoading,setlinkDataLoading] = useState(true);
-  
+     const forceUpdate = useForceUpdate();
+
      useEffect(async ()=>{
           const uid = await getUid();
           if(uid){
@@ -242,8 +249,34 @@ const RenderClusterLink = (props) =>{
      if(clusterConfigData ){
      if(clusterConfigData.link_ids.length> 0){
           clusterConfigData.link_ids.map((e,ind)=>{
-               console.log(e);
-               res.push(<LinkCard {...props} key={ind} ind={ind} id={e}/>)
+               res.push(<LinkCard 
+                    {...props} 
+                    key={ind} 
+                    ind={ind}
+                    id={e}
+                    moveLinkUp={()=>{
+                         if(ind>0){
+                              let tmpData = clusterConfigData.link_ids[ind-1];
+                              clusterConfigData.link_ids[ind-1] = clusterConfigData.link_ids[ind];
+                              clusterConfigData.link_ids[ind] = tmpData; 
+                              BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"link_ids":clusterConfigData.link_ids}).then((r)=>{
+                                   if(r.errBool){console.log(r.errMess);}
+                              }).catch(e=>{console.log(e)})
+                              forceUpdate();
+                         }
+                    }}
+                    moveLinkDown={()=>{
+                         if(ind<clusterConfigData.link_ids.length-1){
+                              let tmpData = clusterConfigData.link_ids[ind+1];
+                              clusterConfigData.link_ids[ind+1] = clusterConfigData.link_ids[ind];
+                              clusterConfigData.link_ids[ind] = tmpData;
+                              BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"link_ids":clusterConfigData.link_ids}).then((r)=>{
+                                   if(r.errBool){console.log(r.errMess);}
+                              }).catch(e=>{console.log(e)}) 
+                              forceUpdate();
+                         }
+                    }}
+               />)
           }) 
           return(res);
      }else{return(<span/>)}

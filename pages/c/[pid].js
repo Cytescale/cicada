@@ -4,6 +4,8 @@ import backendHelper from "../../comp/helpers/backendHelper";
 import FullHeiLoading from '../src/fullHeightLoading';
 import Head from "next/head";
 import URLS,{_BASE_CLIENT_URL} from "../../comp/helpers/api.routes";
+import { withRouter, NextRouter } from 'next/router'
+
 
 const BackendHelper = new backendHelper();
 
@@ -116,4 +118,98 @@ const Cluster=(props)=>{
           <FullHeiLoading/>
      )
 }
-export default Cluster
+
+const ClusterCompWithRouter = (props) => {
+     const router = useRouter();
+     const { pid } = router.query;
+     if(pid){
+          return <ClusterComp {...props} router={router} />
+     }
+     else{
+          return   <FullHeiLoading/>
+     }
+     
+   }
+   
+
+class ClusterComp extends React.Component{
+     constructor(props){
+          super(props);
+          this.state={
+               loading:true,
+               errBool:false,
+               errMess:'null',
+               userData:null,
+          }
+          this.initLoadUserData = this.initLoadUserData.bind(this);
+     }
+     
+     setuserData(d){this.setState({userData:d})}
+     setLoading(b){this.setState({loading:b})}
+     seterrBool(b){this.setState({errBool:b})}
+     seterrMess(s){this.setState({errMess:s})}
+
+     async initLoadUserData(){
+          BackendHelper._getUserDatabyUname(this.props.router.query.pid).then(res=>{
+               if(!res.errBool){
+                    this.seterrBool(false);
+                    this.seterrMess('');
+                    this.setuserData(res.responseData);
+                    this.setLoading(false);
+                    console.log(res.responseData);
+               }
+               else{throw new Error(res.errMess)}
+          }).catch((e)=>{
+               this.setLoading(false);
+               this.seterrBool(true);
+               this.seterrMess(e.message);
+          })
+     }
+     
+     async initLoadLinkConfig(){
+          
+     }
+
+     componentDidMount(){
+          console.log(this.props.router.query.pid);
+          this.initLoadUserData();
+     }
+     
+
+
+     render(){
+         
+          return(
+               !this.state.loading?!this.state.errBool?
+               <div className='cluster-page-main-cont'>
+                          <Head>
+                         <title>Sakura</title>
+                         <meta name="description" content="Cicada Login Activity" />
+                         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                         <link rel="icon" href="/favicon.ico" />
+                         </Head>
+                         <div className='cluster-profile-main-cont'>
+                              <div className='cluster-profile-pro-cont'>
+                                   <div className='cluster-profile-pro'>
+     
+                                   </div>
+                              </div>
+                              <div className='cluster-profile-pro-name'>
+                              {this.state.userData?this.state.userData.dname:<span/>}          
+                              </div>
+                         </div>
+                         <div className='cluster-hr-cont' />
+                         {/* {userData?<RenderLinks uid={userData.uid}/>:<span/>} */}
+                         
+                         <div className='cluster-made-main-cont'>Sakura❤️</div>
+               </div>:
+               <div>
+               {errMess.toString()}
+               </div>
+               :
+               <FullHeiLoading/>
+          )
+     }
+}
+
+export default ClusterCompWithRouter;

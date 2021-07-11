@@ -21,6 +21,7 @@ async function loadUserData(setLoading){
                     if(res){
                          if(!res.errBool){
                                User.setUserData(res.responseData);
+                               User.setUserUid(res.responseData.uid);
                                console.log(res.responseData);
                          }
                          else{
@@ -63,8 +64,38 @@ const Settings = (props)=>{
      const router = useRouter()
      const [loading,setLoading] = useState(true);
      const [overlayVisi,setoverlayVisi] = useState(false)
+     const [clusterConfigData ,setclusterConfigData] = useState(null);
+     const [clusterStatus,setClusterStatus] = useState(false);
+     const [profileCardBool,setprofileCardBool] = useState(false);
+     const [footerCardBool,setfooterCardBool] = useState(false);
+
      useEffect(async ()=>{
-              await loadUserData(setLoading);
+               
+               await loadUserData(setLoading);
+             
+     },[]);
+     useEffect(async ()=>{
+          const uid = await getUid();    
+          if(uid){
+               if(backendHelper){
+                    BackendHelper._getClusterConfigByUid(uid).then(async(res)=>{
+                         if(res){
+                              if(!res.errBool){
+                                   console.log(res.responseData);
+                                   setclusterConfigData(res.responseData)
+                                   setClusterStatus(res.responseData.active_bool);
+                                   setprofileCardBool(res.responseData.profile_card_bool);
+                                   setfooterCardBool(res.responseData.footer_card_bool);
+                              }
+                              else{
+                                   toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                              }
+                         }
+                    }).catch(e=>{
+                         toast.error(e, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                    });
+               }
+          }
      },[]);
 
      if(!loading){
@@ -125,8 +156,13 @@ const Settings = (props)=>{
                                              <div className='app-clust-set-card-main-sub-tit-cont'>Enable or disable the status of your cluster</div>
                                              <div className='app-clust-set-card-main-rigt-cont'>
                                                   <label className="switch">
-                                                       <input type="checkbox" 
-                                                            defaultChecked={true}
+                                                       <input type="checkbox"
+                                                            onClick={()=>{
+                                                                 BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"active_bool":!clusterStatus}).then((r)=>{
+                                                                      if(r.errBool){console.log(r.errMess);}
+                                                                 }).catch(e=>{console.log(e)})
+                                                            }} 
+                                                            defaultChecked={clusterStatus}
                                                        />
                                                        <span className="slider round"></span>
                                                   </label>
@@ -137,8 +173,13 @@ const Settings = (props)=>{
                                              <div className='app-clust-set-card-main-sub-tit-cont'>Enable or disable the profile card of your cluster</div>
                                              <div className='app-clust-set-card-main-rigt-cont'>
                                                   <label className="switch">
-                                                       <input type="checkbox" 
-                                                            defaultChecked={true}
+                                                       <input type="checkbox"
+                                                        onClick={()=>{
+                                                            BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"profile_card_bool":!profileCardBool}).then((r)=>{
+                                                                 if(r.errBool){console.log(r.errMess);}
+                                                            }).catch(e=>{console.log(e)})
+                                                       }}  
+                                                            defaultChecked={profileCardBool}
                                                        />
                                                        <span className="slider round"></span>
                                                   </label>
@@ -150,7 +191,12 @@ const Settings = (props)=>{
                                              <div className='app-clust-set-card-main-rigt-cont'>
                                                   <label className="switch">
                                                        <input type="checkbox" 
-                                                            defaultChecked={true}
+                                                          onClick={()=>{
+                                                            BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"footer_card_bool":!footerCardBool}).then((r)=>{
+                                                                 if(r.errBool){console.log(r.errMess);}
+                                                            }).catch(e=>{console.log(e)})
+                                                       }} 
+                                                            defaultChecked={footerCardBool}
                                                        />
                                                        <span className="slider round"></span>
                                                   </label>

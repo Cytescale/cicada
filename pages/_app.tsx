@@ -1,6 +1,7 @@
 import 'react-tabs/style/react-tabs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-spring-bottom-sheet/dist/style.css'
 
 
 import '../styles/globals.css'

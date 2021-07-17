@@ -17,6 +17,9 @@ import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 import {ThemeProvider} from "styled-components";
 import { LandNavBarCont } from "../../../comp/elements";
 // import GlobalStyles from './globalStyle';
+import { BottomSheet } from 'react-spring-bottom-sheet'
+
+
 
 export const lightTheme = {
      backColor: '#FFF',
@@ -665,8 +668,10 @@ interface LandProps extends WithRouterProps {
 
 
 class Land extends React.Component<LandProps,any>{
+     creationBottomRef:any = null;
      constructor(props:LandProps){
           super(props);
+          this.creationBottomRef = React.createRef();
           this.state = {
                lgoutConfirmVisi:false,
                feedbackModalVisi:false,
@@ -687,6 +692,7 @@ class Land extends React.Component<LandProps,any>{
                detailed:false,
                
           }
+
           this.initDataLoad = this.initDataLoad.bind(this);
           this.setAuth = this.setAuth.bind(this);
           this.setLoading = this.setLoading.bind(this);
@@ -713,6 +719,7 @@ class Land extends React.Component<LandProps,any>{
           this.setlgoutConfirmVisi = this.setlgoutConfirmVisi.bind(this);
           this.setisdeeplink = this.setisdeeplink.bind(this);
      }
+
      setisdeeplink(b:boolean){this.setState({isdeeplink:b})}
      setlgoutConfirmVisi(b:boolean){this.setState({lgoutConfirmVisi:b})}
      setdetailed(b:boolean){this.setState({detailed:b})}
@@ -932,23 +939,32 @@ class Land extends React.Component<LandProps,any>{
      }
      renderLinkCreateModal(){
           return(
-               <Modal
-               show={this.state.createLinkModalVisi}
-               onHide={()=>{this.setcreateLinkModalVisi(false)}}
-               size="lg"
-               centered
-               animated
+               <BottomSheet 
+                    open={this.state.createLinkModalVisi}
+                    snapPoints={({ minHeight, maxHeight }) => [minHeight,700]}
+                    onDismiss={()=>{
+                         this.setcreateLinkModalVisi(false);
+                    }}
+                    ref={this.creationBottomRef}
+                    footer={
+                         <Button onClick={()=>{
+                              this.setcreateLinkModalVisi(false);
+                         }} className="app-bottom-sheet-footer-butt">
+                           Cancel
+                         </Button>
+                         
+                    }
                >
-               <div className='app-create-link-modal-main-cont'>
-                    <div className='app-create-link-modal-main-cont-tit'>
-                    Create Link
-                    </div>
-                    <div className='app-create-link-modal-main-cont-des'>
-                    Create a link by entering a name and it's address.
-                    Select from given Platforms
-                    </div>
+                <div className='app-create-link-modal-main-cont'>
+                     <div className='app-create-link-modal-main-cont-tit'>
+                     Create Link
+                     </div>
+                     <div className='app-create-link-modal-main-cont-des'>
+                     Create a link by entering a name and it's address.
+                     Select from given Platforms
+                     </div>
                     
-                    {
+                     {
                          this.state.validated && this.state.platform_id>0?
                          <div className='app-land-plat-indi-cont'>
                          {this.renderPlatformDrop()}
@@ -1056,7 +1072,7 @@ class Land extends React.Component<LandProps,any>{
                     </div>
                     
                </div>
-               </Modal>
+               </BottomSheet>
           )
      }     
      renderValidityIndi(){
@@ -1255,7 +1271,7 @@ class Land extends React.Component<LandProps,any>{
      render(){
           if(!this.state.isLoading && this.state.isAuth){
           return(
-               <ThemeProvider theme={lightTheme}>
+               <ThemeProvider theme={darkTheme}>
                 {/* <GlobalStyles/> */}
                <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
                     <Head>

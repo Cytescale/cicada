@@ -6,6 +6,9 @@
 .link-head-logo{
      
 }
+.link-head-body-cont{
+     
+}
 
 .app-head-main-cont-logo-ico{
      width: 26px;
@@ -1443,4 +1446,11 @@ color: #0070F3;
      background-color: #f9f9f9;
      padding: 12px;
      border-radius: 9px;
+}
+
+.app-land-cret-bottom-sheet{
+     width: 100%;
+     height: 200px;
+     
+     z-index: 9999;
 }

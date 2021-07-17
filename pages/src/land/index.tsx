@@ -15,7 +15,7 @@ import copy from 'copy-to-clipboard';
 import { slide as Menu } from 'react-burger-menu'
 import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 import {ThemeProvider} from "styled-components";
-
+import { LandNavBarCont } from "../../../comp/elements";
 // import GlobalStyles from './globalStyle';
 
 export const lightTheme = {
@@ -36,7 +36,7 @@ export const lightTheme = {
      smallCardColor:'#f5f5f5',
 
 
- }
+}
  export const darkTheme = {
      backColor: '#000',
      borColor:'#555555',
@@ -53,9 +53,7 @@ export const lightTheme = {
      cardColor:'#000',
      smallCardColor:'#656565',
      
- }
-
-
+}
 
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
@@ -1297,7 +1295,7 @@ class Land extends React.Component<LandProps,any>{
                                              {/* <ProfilePopover  setlgoutShow={this.setlgoutConfirmVisi} /> */}
                                         </div>
                               </div>
-                         {/* <NavBarCont router={this.props.router}/> */}
+                         <LandNavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
                               <div className='app-body-topper-main-cont'>
@@ -1319,38 +1317,20 @@ class Land extends React.Component<LandProps,any>{
                                                                            progress: undefined,
                                                                       });
                                                                  }}>👋</span> 
+                                                                 <div className='app-body-topper-bio-cont'>{User.getUserData()?.bio}</div>
                                                                  <div className='app-body-topper-hey-butt-cont' >
                                                                       <button className='app-body-topper-hey-butt'>Edit Profile</button>
+                                                            
                                                                       </div>
                                                                  </div>:
                                                             <span/>
                                                        }
                                                        </div>
                                              <WelcomeHead/>
-                                             {/* <div className='app-land-visit-card-main-outer-cont'>
-                                             <div className='app-land-visit-card-main-cont'>
-                                                  <div className='app-land-visit-card-left-cont'>
-                                                       <div className='app-land-visit-card-left-lab'>Visitors Activity </div>
-                                                       <div className='app-land-visit-card-left-time'>Today</div>
-                                                       <div className='app-land-visit-card-left-Counter'>8000</div>
-                                                  </div>
-                                                  <LandVisitChart/>
-                                             </div>
-                                        
-                                             <Accordion>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
-                                                  Show more
-                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
-                                             </Accordion.Toggle>
-                                             <Accordion.Collapse eventKey="0">
-                                                  <FullVisitChart/>
-                                             </Accordion.Collapse>
-                                             </Accordion>
-                                             </div> */}
+                                           
                                    </div>
                               </div> 
                               <div className='app-land-link-cont-holder'>
-                              {/* <div className='app-land-lab-main-cont'>Cluster Link</div> */}
                               <div className='clust-link-main-cont'> 
                                    <div className='clust-link-main-inner-cont'>
                                    <div className='clust-link-main-lock-cont'>
@@ -1386,7 +1366,7 @@ class Land extends React.Component<LandProps,any>{
                                    </div>
                                    <div className='clust-visit-main-cont'>
                                                   <a className='clust-visit-main-cont-lnk' href={_BASE_CLIENT_URL+'src/cluster'}>
-                                                  Go to cluster
+                                                  Go to cluster settings
                                                   <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                                                   </a>
                                    </div>
@@ -1395,7 +1375,7 @@ class Land extends React.Component<LandProps,any>{
 
                               </div>
                               <div className='app-land-link-cont-holder lnk-holder-cust'>
-                              {/* <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div> */}
+                              
                               <div className='app-land-top-butt-group-cont'>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}
@@ -1423,6 +1403,7 @@ class Land extends React.Component<LandProps,any>{
                               <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
                               </button>
                               </div>
+                              <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
                               {
                               this.state.linkDataLoading?
                               <div className='app-land-rel-main-cont'>
@@ -1481,4 +1462,26 @@ export default withRouter(Land)
                               </div>
                               
                          </div>
+
+                         <div className='app-land-visit-card-main-outer-cont'>
+                                             <div className='app-land-visit-card-main-cont'>
+                                                  <div className='app-land-visit-card-left-cont'>
+                                                       <div className='app-land-visit-card-left-lab'>Visitors Activity </div>
+                                                       <div className='app-land-visit-card-left-time'>Today</div>
+                                                       <div className='app-land-visit-card-left-Counter'>8000</div>
+                                                  </div>
+                                                  <LandVisitChart/>
+                                             </div>
+                                        
+                                             <Accordion>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                                  Show more
+                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                             </Accordion.Toggle>
+                                             <Accordion.Collapse eventKey="0">
+                                                  <FullVisitChart/>
+                                             </Accordion.Collapse>
+                                             </Accordion>
+                                             </div>
+
                      */}

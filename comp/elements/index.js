@@ -141,4 +141,28 @@ const NavBarCont = (props)=>{
           </div>
       )
  }
-export {BurgerMenu,ProfilePopover,NavBarCont,BottomCont}
+ const LandNavBarCont = (props)=>{  
+     return(
+          <div className='app-nav-bar-main-cont land-nav-bar-cont'>
+                    <div 
+                    className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-cont-selec':null}`}>
+                       <a href={_BASE_CLIENT_URL+'src/cluster'}>
+                         Dashboard
+                       </a>
+                    </div>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land/settings'?'app-nav-bar-main-link-cont-selec':null}`}>
+                         <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
+                         Settings
+                         </a>
+                    </div>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/profile'?'app-nav-bar-main-link-cont-selec':null}`}>
+                         <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
+                         Profile
+                         </a>
+                    </div>
+          </div>
+      )
+ }
+
+
+export {BurgerMenu,ProfilePopover,NavBarCont,BottomCont,LandNavBarCont}

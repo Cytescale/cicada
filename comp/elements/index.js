@@ -119,7 +119,7 @@ const BurgerMenu = (props)=>{
                     Help</a>
 
                <div className="menu-item-bottom-menu">
-               <div className="menu-item-bottom-v">v 0.0.13</div>
+               <div className="menu-item-bottom-v">v 0.0.5</div>
                </div>
         </Menu>
      )

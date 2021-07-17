@@ -1026,10 +1026,12 @@ background-color: rgba(0, 0, 0, 0)
      padding-bottom: 0;
      color: #bdbdbd;
      width: 100%;
+     word-wrap: normal;
      display: flex;
      justify-content: center;
      align-items: center;
 }
+
 
 .app-land-vist-grph-canva{
      display: flex;
@@ -1206,8 +1208,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-det-butt{
-     width: 42px;
-     height: 42px;
+     width: 52px;
+     height: 52px;
      padding: 0;
      margin-left: 8px;
      background-color: var(--buttonBackColor);
@@ -1241,7 +1243,7 @@ color: #0070F3;
 
 .app-land-crt-lnk-butt{
      flex: 1;
-     height: 42px;
+     height: 52px;
      background-color: #0070F3;
      box-shadow: 0px 4px 15px rgba(85, 163, 255, 0.53);
      border-radius: 8px;

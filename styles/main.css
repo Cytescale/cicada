@@ -687,11 +687,11 @@ font-family: inter;
      position: fixed;
      top: 0;
      margin: var(--margin);
-     z-index: 200;
+     z-index: 0;
      margin-top: 22px;
    }
    .bm-burger-bars {
-    
+    z-index: 0;
      background: #000;
      max-height: 2px;
      border-radius: 100px;
@@ -863,9 +863,14 @@ font-family: inter;
         justify-content: center;
         align-items: center;
         color: #000;
+        outline: none;
         font-family: inter;
         background-color: #fff;
         border: 1px solid #e0e0e0;
         height: 42px;
+   }
+
+   .app-bottom-sheet-footer-butt:active{
+        background-color: #e0e0e0;
    }
    

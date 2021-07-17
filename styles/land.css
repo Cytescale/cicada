@@ -1033,6 +1033,47 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
 }
 
+.app-land-serch-main-cont{
+     width: 92%;
+     margin-left: 4%;
+     margin-right: 4%;
+     height: 52px;
+     margin-top: 22px;
+}
+.app-land-serch-cont{
+     width: 100%;
+     height: 100%;
+     border-radius: 8px;
+     background-color: #fff;
+     border: 1px solid #e0e0e0;
+     display: inline-flex;
+     align-items: center;
+     padding-left: 12px;
+     padding-right: 12px;
+}
+
+.app-land-serch-ico-cont{
+     width: 32px;
+     height: 52px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.app-land-serch-ico{
+     width: 18px;
+     height: 18px;
+}
+
+.app-land-serch-bar{
+     width: 100%;
+     height: 100%;
+     background-color: #fff;
+     border-style: none;
+     outline: none;
+     font-family: inter;
+     font-size: 15px;
+}
 
 .app-land-vist-grph-canva{
      display: flex;
@@ -1157,6 +1198,7 @@ background-color: rgba(0, 0, 0, 0)
 }
 .app-body-topper-main-cont{
      padding-top: 22px;
+     
 }
 .app-body-topper-hey-cont{
      width: fit-content;

@@ -1018,12 +1018,11 @@ background-color: rgba(0, 0, 0, 0)
 
 .app-land-lab-main-cont{
      font-family: inter;
-     font-size: 16px;
-     font-weight: 500;
+     padding: 22px;
+     font-size: 18px;
+     padding-bottom: 0;
      color: #bdbdbd;
      width: 100%;
-     padding: 22px;
-     padding-bottom:0;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -1162,7 +1161,6 @@ background-color: rgba(0, 0, 0, 0)
      font-family: inter;
      font-weight: 700;    
 }
-
 .app-body-topper-hey-butt
 {
      width: 200px;
@@ -1176,6 +1174,7 @@ background-color: rgba(0, 0, 0, 0)
      border-radius: 7px;
      font-size: 14px;
 }
+
 
 .app-feed-main-txtar-fld{
      width: 100%;
@@ -1438,8 +1437,10 @@ color: #0070F3;
      font-size: 14px;
      font-family: 'inter';
      font-weight: 500;
-     margin-top: 6px;
-     margin-bottom: 12px;
+     margin-top: 3px;
+     margin-bottom: 3px;
      color: #555555;
+     background-color: #f9f9f9;
+     padding: 12px;
      border-radius: 9px;
 }

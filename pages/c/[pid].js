@@ -62,63 +62,6 @@ const RenderLinks=(props)=>{
      )
 }
 
-const Cluster=(props)=>{
-     const [loading,setloading] = useState(true);
-     const [userData,setuserData] = useState(null);
-     const [linkData,setlinkData] = useState(null);
-     const [errBool,seterrBool] = useState(false);
-     const [errMess,seterrMess] = useState('');
-     const router = useRouter()
-     const { pid } = router.query
-     useEffect(() => {
-               BackendHelper._getUserDatabyUname(pid).then(res=>{
-                    if(!res.errBool){
-                         seterrBool(false);
-                         seterrMess('');
-                         setuserData(res.responseData);
-                         console.log(res.responseData);
-                    }
-                    else{throw new Error(res.errMess)}
-               }).catch((e)=>{
-                    setloading(false);
-                    seterrBool(true);
-                    seterrMess(e.message);
-               })
-               
-     },[pid]);
-
-     return(
-          !loading?!errBool?
-          <div className='cluster-page-main-cont'>
-                     <Head>
-                    <title>Sakura</title>
-                    <meta name="description" content="Cicada Login Activity" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                    <link rel="icon" href="/favicon.ico" />
-                    </Head>
-                    <div className='cluster-profile-main-cont'>
-                         <div className='cluster-profile-pro-cont'>
-                              <div className='cluster-profile-pro'>
-
-                              </div>
-                         </div>
-                         <div className='cluster-profile-pro-name'>
-                         {userData?userData.dname:<span/>}          
-                         </div>
-                    </div>
-                    <div className='cluster-hr-cont' />
-                    {userData?<RenderLinks uid={userData.uid}/>:<span/>}
-                    
-                    <div className='cluster-made-main-cont'>Sakura❤️</div>
-          </div>:
-          <div>
-          {errMess.toString()}
-          </div>
-          :
-          <FullHeiLoading/>
-     )
-}
-
 const ClusterCompWithRouter = (props) => {
      const router = useRouter();
      const { pid } = router.query;
@@ -140,10 +83,16 @@ class ClusterComp extends React.Component{
                errBool:false,
                errMess:'null',
                userData:null,
+               linkConfigData:null,
+               linkData:[],
           }
           this.initLoadUserData = this.initLoadUserData.bind(this);
+          this.setlinkConfigData = this.setlinkConfigData.bind(this);
+          this.setlinkData = this.setlinkData.bind(this);
      }
      
+     setlinkData(d){this.setState({linkData:d})}
+     setlinkConfigData(d){this.setState({linkConfigData:d})}
      setuserData(d){this.setState({userData:d})}
      setLoading(b){this.setState({loading:b})}
      seterrBool(b){this.setState({errBool:b})}
@@ -157,6 +106,7 @@ class ClusterComp extends React.Component{
                     this.setuserData(res.responseData);
                     this.setLoading(false);
                     console.log(res.responseData);
+                    this.initLoadLinkConfig();
                }
                else{throw new Error(res.errMess)}
           }).catch((e)=>{
@@ -167,7 +117,37 @@ class ClusterComp extends React.Component{
      }
      
      async initLoadLinkConfig(){
-          
+          BackendHelper._getClusterConfigByUid(this.state.userData.uid).then(res=>{
+               if(!res.errBool){
+                    console.log(res.responseData);
+                    this.setlinkConfigData(res.responseData);
+                    this.getLinksData();
+               }
+               else{throw new Error(res.errMess)}
+          }).catch((e)=>{
+               this.seterrBool(true);
+               this.seterrMess(e.message);
+          })
+     }
+     
+     async getLinksData(){
+          if(this.state.linkConfigData){
+               if(this.state.linkConfigData.active_bool){
+                         let resarr = []
+                         for(let l in this.state.linkConfigData.link_ids){
+                              await BackendHelper._getLinkDatabyId(this.state.userData.uid,this.state.linkConfigData.link_ids[l]).then((res)=>{
+                                   resarr.push(res.responseData.gotData)     
+                                   console.log(res.responseData.gotData);
+                              })
+                              .catch((e)=>{
+                                   this.seterrBool(true);
+                                   this.seterrMess(e.message);
+                              })
+                         }
+                         console.log(resarr);
+                         this.setlinkData(resarr);
+                    }
+          }
      }
 
      componentDidMount(){
@@ -181,6 +161,7 @@ class ClusterComp extends React.Component{
          
           return(
                !this.state.loading?!this.state.errBool?
+               this.state.linkConfigData?this.state.linkConfigData.active_bool?
                <div className='cluster-page-main-cont'>
                           <Head>
                          <title>Sakura</title>
@@ -188,21 +169,52 @@ class ClusterComp extends React.Component{
                          <meta name="viewport" content="width=device-width, initial-scale=1"/>
                          <link rel="icon" href="/favicon.ico" />
                          </Head>
-                         <div className='cluster-profile-main-cont'>
-                              <div className='cluster-profile-pro-cont'>
-                                   <div className='cluster-profile-pro'>
-     
+                        {
+                             this.state.linkConfigData?
+                             this.state.linkConfigData.profile_card_bool?
+                              <div className='cluster-profile-main-cont'>
+                                   <div className='cluster-profile-pro-cont'>
+                                        <div className='cluster-profile-pro'>
+          
+                                        </div>
                                    </div>
-                              </div>
-                              <div className='cluster-profile-pro-name'>
-                              {this.state.userData?this.state.userData.dname:<span/>}          
-                              </div>
-                         </div>
-                         <div className='cluster-hr-cont' />
-                         {/* {userData?<RenderLinks uid={userData.uid}/>:<span/>} */}
+                                   <div className='cluster-profile-pro-name'>
+                                   {this.state.userData?this.state.userData.dname:<span/>}          
+                                   </div>
+                                   <div className='cluster-profile-bio'>
+                                   {this.state.userData?this.state.userData.bio:<span/>}          
+                                   </div>
+                              </div>:<span/>:<span/>
+
+                        }     
                          
-                         <div className='cluster-made-main-cont'>Sakura❤️</div>
-               </div>:
+                         <div className='cluster-hr-cont' />
+                         {this.state.linkData?this.state.linkData.map((e,ind)=>{
+                              if(e.active_bool){
+                                   return (
+                                        <button
+                                        className='cluster-link-main-cont'
+                                        onClick={()=>{
+                                             openInNewTab(`${URLS.visit}/${e.unique_identifier}`);
+                                        }}
+                                        >
+                                        {e.name}
+                                        </button>
+                                   )
+                              }
+                         }):<span/>}
+                           
+                           <div className='cluster-hr-cont' />
+                           
+                           {
+                             this.state.linkConfigData?
+                             this.state.linkConfigData.footer_card_bool?
+                             <div className='cluster-made-main-cont'>Sakura❤️</div>:
+                             <span/>:
+                             <span/>  
+                         }
+                         
+               </div>:<span>Cluster link is disabled</span>:<span/>:
                <div>
                {errMess.toString()}
                </div>

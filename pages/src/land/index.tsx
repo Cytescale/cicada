@@ -1235,11 +1235,12 @@ class Land extends React.Component<LandProps,any>{
           }
           return res;
      }
+     
      componentDidMount(){
           console.log('component mount');
           this.initDataLoad();
-          
      }
+
      render(){
           if(!this.state.isLoading && this.state.isAuth){
           return(
@@ -1392,6 +1393,7 @@ class Land extends React.Component<LandProps,any>{
                               </button>
                               </div>
                               <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
+                              
                               {
                               this.state.linkDataLoading?
                               <div className='app-land-rel-main-cont'>

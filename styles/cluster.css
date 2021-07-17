@@ -20,6 +20,7 @@
      width: 100%;
     
 }
+
 .cluster-profile-pro{
      width: 100px;
      height: 100px;
@@ -38,9 +39,23 @@
      font-weight: 700;
 }
 
+.cluster-profile-bio{
+     width: 100%;
+     display: flex;
+     font-family: inter;
+     align-items: center;
+     padding: 12px;
+     border-radius: 8px;
+     background-color: #f7f7f7;
+     justify-content: center;
+     margin-top: 12px;
+     font-size: 15px;
+     color: #555555;
+}
+
 .cluster-hr-cont{
      width: 100%;
-     border-bottom: 1px solid #C6DDF0;
+     border-bottom: 1px solid #e0e0e0;
      margin-top: 22px;
      margin-bottom: 22px;
 
@@ -51,15 +66,16 @@
      max-width: 350px;
      height: 52px;
      background-color: #fefefe;
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);
+     box-shadow: var(--boxShad);
      border-radius: 7px;
-     margin-top: 15px;
+     margin-top: 22px;
      display: flex;
      justify-content: center;
      align-items: center;
      color: #0070F3;
      outline: none;
      border-style: none;
+     z-index: 100;
 }
 
 .cluster-link-main-cont:active{

@@ -443,7 +443,7 @@ background-color: rgba(0, 0, 0, 0)
      position: relative;
      margin-top: 22px;
      background-color: #fefefe;
-     /* border:1px solid var(--bor-color); */
+     border:1px solid var(--bor-color);
      box-shadow: var(--boxShad);
      border-radius: 7px;
 }
@@ -1024,7 +1024,8 @@ background-color: rgba(0, 0, 0, 0)
      padding: 22px;
      font-size: 18px;
      padding-bottom: 0;
-     color: #bdbdbd;
+
+     color: #000;
      width: 100%;
      word-wrap: normal;
      display: flex;
@@ -1208,8 +1209,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-det-butt{
-     width: 52px;
-     height: 52px;
+     width: 46px;
+     height: 46px;
      padding: 0;
      margin-left: 8px;
      background-color: var(--buttonBackColor);
@@ -1243,7 +1244,7 @@ color: #0070F3;
 
 .app-land-crt-lnk-butt{
      flex: 1;
-     height: 52px;
+     height: 46px;
      background-color: #0070F3;
      box-shadow: 0px 4px 15px rgba(85, 163, 255, 0.53);
      border-radius: 8px;
@@ -1370,6 +1371,7 @@ color: #0070F3;
      border-bottom: 1px solid var(--borColor);
      background-color: var(--linkHolderColor);
 }
+
 
 @keyframes wave-animation {
      0% { transform: rotate( 0.0deg) }

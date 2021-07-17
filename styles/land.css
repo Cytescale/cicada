@@ -1408,8 +1408,7 @@ color: #0070F3;
      padding-top: 70px;
      padding-bottom: 32px;     
      margin-top: -70px;
-     border-top: 
-     8px solid #55A3FF;
+     border-top: 2px solid #f1f1f1;
      border-bottom: 1px solid var(--borColor);
      background-color: var(--linkHolderColor);
 }

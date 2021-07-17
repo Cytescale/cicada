@@ -725,7 +725,7 @@ class Land extends React.Component<LandProps,any>{
           this.setsearchQuery = this.setsearchQuery.bind(this);
      }
 
-     setsearchQuery(s:boolean){this.setState({searchQuery:s})}
+     setsearchQuery(s:string){this.setState({searchQuery:s})}
      setisdeeplink(b:boolean){this.setState({isdeeplink:b})}
      setlgoutConfirmVisi(b:boolean){this.setState({lgoutConfirmVisi:b})}
      setdetailed(b:boolean){this.setState({detailed:b})}
@@ -1404,6 +1404,8 @@ class Land extends React.Component<LandProps,any>{
                                         type='text'
                                         className='app-land-serch-bar'
                                         placeholder='Search for link'
+                                        value={this.state.searchQuery}
+                                        onChange={(e)=>{this.setsearchQuery(e.target.value)}}
                                         />
                                    </div>
 

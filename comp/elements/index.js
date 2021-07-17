@@ -146,17 +146,17 @@ const NavBarCont = (props)=>{
           <div className='app-nav-bar-main-cont land-nav-bar-cont'>
                     <div 
                     className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-cont-selec':null}`}>
-                       <a href={_BASE_CLIENT_URL+'src/cluster'}>
+                       <a href={_BASE_CLIENT_URL+'src/land'}>
                          Dashboard
                        </a>
                     </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land/settings'?'app-nav-bar-main-link-cont-selec':null}`}>
-                         <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
+                         <a href={_BASE_CLIENT_URL+'src/settings'}>
                          Settings
                          </a>
                     </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/profile'?'app-nav-bar-main-link-cont-selec':null}`}>
-                         <a href={_BASE_CLIENT_URL+'src/cluster/settings'}>
+                         <a href={_BASE_CLIENT_URL+'src/profile'}>
                          Profile
                          </a>
                     </div>

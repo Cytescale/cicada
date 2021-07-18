@@ -23,13 +23,14 @@ body {
   --bor-rad:10px;
   
   --back-color:#fff;
-  --backColor:#fff;
+  --backColor:#F2EFE4;
   --borColor:#e0e0e0;
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.1);
   --linkHolderColor:#f9f9f9;
   --headerPriColor:#000;
   --headerSecColor:#000;
-  --headColor:#fff;
+  --headColor:#F2EFE4;
+  --NavheadColor:#F2EFE4;
   --buttonBackColor:#fff;
   --headBugerColor:#fff;
   --cardColor:#fff;

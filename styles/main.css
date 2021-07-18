@@ -217,7 +217,7 @@ font-family: inter;
      z-index:  100;
      right: 0;
      align-items: center;
-     background-color: #fff;
+     background-color: var(--headColor);
      border-bottom: 1px solid #e0e0e0;
      /* box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.10); */
      /* background: rgba(255, 255, 255, 0.44); */
@@ -729,7 +729,7 @@ font-family: inter;
    .app-nav-bar-main-cont{
         width: 100%;
         height: 52px;
-        background-color: #fff;
+        background-color: var(--NavheadColor);
         color: #000;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09);
         margin-top: 62px;  

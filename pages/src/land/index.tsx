@@ -1247,7 +1247,6 @@ class Land extends React.Component<LandProps,any>{
           if(!this.state.isLoading && this.state.isAuth){
           return(
                <ThemeProvider theme={darkTheme}>
-                {/* <GlobalStyles/> */}
                <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
                     <Head>
                     <title>Sakura</title>

@@ -12,7 +12,7 @@ declare type userData = {
      pvt_bool:boolean,
      admin_bool:boolean,
      joining_id:number,
-     
+     api_key:number,
 }
 export type{userData}
 

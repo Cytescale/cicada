@@ -763,6 +763,19 @@ font-family: inter;
         border-bottom: 3px solid #0070F3;
    }
 
+   .app-nav-lnk-lnk{
+        display: inline-flex;
+   }
+
+.app-nav-bar-main-link-ico{
+     width: 18px;
+     height: 18px;
+     margin-right: 7px;
+}
+.app-nav-bar-main-link-ico-selec{
+     color: inherit;
+}
+
 
    .app-bottom-se-main-cont{
         width: 100%;

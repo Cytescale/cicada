@@ -165,7 +165,7 @@ const NavBarCont = (props)=>{
                          Dashboard
                        </a>
                     </div>
-                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land/setting'?'app-nav-bar-main-link-cont-selec':null}`}>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/setting'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
                          href={_BASE_CLIENT_URL+'src/setting'}>

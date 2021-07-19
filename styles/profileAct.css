@@ -105,3 +105,10 @@ font-weight: 600;
      border: 1px solid var(--danger);
 
 }
+.app-sett-acrd-main-cont{
+     width: 92%;
+     margin-left: 4%;
+     margin-right: 4%;
+     margin-bottom: 12px;
+     border: 1px solid var(--borColor);
+}

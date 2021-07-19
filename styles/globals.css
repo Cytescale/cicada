@@ -51,6 +51,10 @@ border-radius: 7px; */
 
 }
 
+body{
+  background-color: var(--backColor);
+}
+
 /*   
 [data-rsbs-backdrop] {
   background: rgba(255, 255, 255, 0.42);

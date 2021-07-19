@@ -1,5 +1,5 @@
 .app-full-loading-main-cont{
-     background-color: #fff;
+     background-color: var(--backColor);
      font-family: inter;
      font-size: 20px;
      display: flex;
@@ -580,7 +580,7 @@ font-family: inter;
    .bm-item {
      display: inline-block;
      text-decoration: none;
-     color: #000;
+     color: #bdbdbd;
      transition: color 0.2s;
      /* border-bottom: 1px solid #e0e0e0; */
    }
@@ -605,11 +605,11 @@ font-family: inter;
 }
 .menu-item-selec{
      border-radius: 6px;
-     background-color: #f7f7f7;
-     color: #0070F3;
+     background-color: #51535A;
+     color: #fff;
 }
 .menu-item-bottom-menu{
-     background-color: #fff;
+     background-color: rgba(0, 0, 0, 0);
      position: absolute;
      bottom: 0;
      left: 0;
@@ -621,7 +621,7 @@ font-family: inter;
      width: 100%;
      margin-top: 7px;
      font-size: 14px;
-     color: #000;
+     color: #fff;
      text-align: center;
 }
 .menu-item-lgout{
@@ -708,7 +708,7 @@ font-family: inter;
    
    .bm-menu {
      width: 100%;
-     background: #fff;
+     background: #2D2E34;
      border-style: none;
      padding-top: 52px;
      font-size: 1.15em;

@@ -755,11 +755,11 @@ font-family: inter;
         padding-right: 12px;
         margin-right: 12px;
         font-family: inter;
-        color: #000;
+        color: #858585;
         font-weight: 400;
    }
    .app-nav-bar-main-link-cont-selec{
-        color: #0070F3;
+        color: #000;
         font-weight: 600;
         /* border-bottom: 3px solid #0070F3; */
    }

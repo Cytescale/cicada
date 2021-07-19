@@ -37,21 +37,25 @@ margin-right: 4px;
 .dash-wel-main-cont{
      width: 92%;
      margin-left: 4%;
-     height: 130px;
+     margin-right: 4%;
+     height: auto;
      font-family: inter;
      position: relative;
      border-radius: 10px;
      font-size: 26px;
      padding: 22px;
-     color: var(--welcomeMotoText);
+     color: #468C68;
      font-weight: 700;
-     background: #36D1DC;
+     margin-top:22px;
+
+     background-color: #A0E8C3;
+
+     /* background: #36D1DC;
      background: -webkit-linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC);
      background: linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC); 
      background-size: 400% 400%;
-     margin-top:22px;
      overflow: hidden;
-     animation: gradient 15s ease infinite;
+     animation: gradient 15s ease infinite; */
 
 }
 
@@ -443,7 +447,7 @@ background-color: rgba(0, 0, 0, 0)
      position: relative;
      margin-top: 22px;
      background-color: #fefefe;
-     border:1px solid var(--bor-color);
+     /* border:1px solid var(--bor-color); */
      box-shadow: var(--boxShad);
      border-radius: 7px;
 }
@@ -1407,6 +1411,8 @@ color: #0070F3;
 }
 .lnk-holder-cust{
      padding: 7px;
+     border-top-left-radius: 12px;
+     border-top-right-radius: 12px;
      /* border-top: 2px solid var(--borColor); */
      border-bottom: 1px solid var(--borColor);
      background-color: var(--linkHolderColor);
@@ -1503,4 +1509,33 @@ color: #0070F3;
      height: 200px;
      
      z-index: 9999;
+}
+.app-land-lnks-holder-shw-mr-main-cont{
+     width: 92%;
+     height: auto;
+     margin-top: 22px;
+     margin-left: 4%;
+     margin-right: 4%;
+}
+
+.app-land-lnks-holder-shw-mr-butt{
+     height: 46px;
+     width: 100%;
+     background-color: #fff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: #0070F3;
+     font-family: inter;
+     font-size: 17px;
+     outline: none;
+     border-style: none;
+     margin-top: 22px;
+     margin-bottom: 22px;
+     border-radius: 100px;
+     /* border:1px solid #000; */
+     
+}
+.app-land-lnks-holder-shw-mr-butt:active{
+     background-color: #e0e0e0;
 }

@@ -695,6 +695,7 @@ class Land extends React.Component<LandProps,any>{
                isdeeplink:true,
                detailed:false,
                searchQuery:null,
+               showAllLinks:false,
           }
 
           this.initDataLoad = this.initDataLoad.bind(this);
@@ -723,8 +724,10 @@ class Land extends React.Component<LandProps,any>{
           this.setlgoutConfirmVisi = this.setlgoutConfirmVisi.bind(this);
           this.setisdeeplink = this.setisdeeplink.bind(this);
           this.setsearchQuery = this.setsearchQuery.bind(this);
+          this.setshowAllLinks = this.setshowAllLinks.bind(this);
      }
 
+     setshowAllLinks(b:boolean){this.setState({showAllLinks:b})}
      setsearchQuery(s:string){this.setState({searchQuery:s})}
      setisdeeplink(b:boolean){this.setState({isdeeplink:b})}
      setlgoutConfirmVisi(b:boolean){this.setState({lgoutConfirmVisi:b})}
@@ -1222,18 +1225,19 @@ class Land extends React.Component<LandProps,any>{
      renderLinkTable(){
           let res:any = [];
           if(this.state.linksData.length > 0){
-               this.state.linksData.map((e:linkDataType,ind:number)=>{
-                    // res.push(this.renderLink(ind,e));
+               for(let l in this.state.linksData){
+                    if(parseInt(l) > 2 && !this.state.showAllLinks){continue;}
+                    let d = this.state.linksData[l];
                     res.push(
                          <LinkCard 
-                         key={ind}
-                         ind={ind} 
+                         key={parseInt(l)}
+                         ind={parseInt(l)} 
                          isDetailed={this.state.detailed}
-                         d={e} 
+                         d={d} 
                          openInNewTab={this.openInNewTab} 
                          seteditLinkModalVisi={this.seteditLinkModalVisi} 
                          seteditLinkUniId={this.seteditLinkUniId}/>)
-               }) 
+               }
           }
           return res;
      }
@@ -1432,6 +1436,15 @@ class Land extends React.Component<LandProps,any>{
                               {this.renderLinkTable()}
                               </span>
                               }
+                              
+                              <div className='app-land-lnks-holder-shw-mr-main-cont'>
+                                   <button className='app-land-lnks-holder-shw-mr-butt'
+                                   onClick={()=>{ this.setshowAllLinks(!this.state.showAllLinks)}}
+                                   >{
+                                   this.state.showAllLinks?'Show less':'Show more'
+                                   }</button>
+                              </div>
+                              
                               </div>
                               
                          </div>

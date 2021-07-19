@@ -1288,8 +1288,8 @@ class Land extends React.Component<LandProps,any>{
                          <LandNavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
-                              <div className='app-body-topper-main-cont'>
-                              <div className='app-land-link-cont-holder'>
+                              
+                              <div className='app-land-link-cont-holder top-holder-cont'>
                               <div className='app-land-link-intro-pro-main-cont'>
                                         <div className='app-land-head-pro-pic-main-cont'></div>
                                                        {
@@ -1308,10 +1308,10 @@ class Land extends React.Component<LandProps,any>{
                                                                       });
                                                                  }}>👋</span> 
                                                                  <div className='app-body-topper-bio-cont'>{User.getUserData()?.bio}</div>
-                                                                 <div className='app-body-topper-hey-butt-cont' >
+                                                                 {/* <div className='app-body-topper-hey-butt-cont' >
                                                                       <button className='app-body-topper-hey-butt'>Edit Profile</button>
                                                             
-                                                                      </div>
+                                                                      </div> */}
                                                                  </div>:
                                                             <span/>
                                                        }
@@ -1319,8 +1319,9 @@ class Land extends React.Component<LandProps,any>{
                                              <WelcomeHead/>
                                            
                                    </div>
-                              </div> 
-                              <div className='app-land-link-cont-holder'>
+                              
+                              <div className='app-land-link-cont-holder cluster-holder-cont'>
+                              <div className='app-land-lab-main-cont'>Cluster Link</div>
                               <div className='clust-link-main-cont'> 
                                    <div className='clust-link-main-inner-cont'>
                                    <div className='clust-link-main-lock-cont'>
@@ -1350,7 +1351,10 @@ class Land extends React.Component<LandProps,any>{
                                                   });
                                              }}
                                         >
-                                             Copy
+                                              <svg width="21" height="20"  className='lnk-lnk-gen-right-butt-ico' viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
+                                             <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                             </svg>
                                         </button>
                                         </div>
                                    </div>
@@ -1366,7 +1370,43 @@ class Land extends React.Component<LandProps,any>{
                               </div>
                               <div className='app-land-link-cont-holder lnk-holder-cust'>
                               
-                              <div className='app-land-top-butt-group-cont'>
+                              
+                              <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
+                              
+                              <div className='app-land-serch-main-cont'>
+                                        <div className='app-land-top-butt-group-cont'>
+                                             <div className='app-land-serch-cont'>
+                                                  <div className='app-land-serch-ico-cont'>
+                                                       <svg className='app-land-serch-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                                                  </div>
+                                                  <input
+                                                  type='text'
+                                                  className='app-land-serch-bar'
+                                                  placeholder='Search for link'
+                                                  value={this.state.searchQuery}
+                                                  onChange={(e)=>{this.setsearchQuery(e.target.value)}}
+                                                  />
+                                             </div>
+                                                  <button className='app-land-det-butt'
+                                                       onClick={()=>{this.setdetailed(!this.state.detailed)}}
+                                                       >
+                                                       {
+                                                       this.state.detailed?
+                                                       <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 0v24H0V0h24z" fill="none" opacity=".87"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>
+                                                       :
+                                                       <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>
+                                                       }
+                                                       
+                                                       
+                                                       </button>
+                                                       <button className='app-land-det-butt'
+                                                       onClick={()=>{this.initLinksDataLoad()}}
+                                                       >
+                                                       <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
+                                                       </button>
+                                        </div>
+                              </div>
+                              <div className='app-land-serch-main-cont'>
                               <button className='app-land-crt-lnk-butt'
                               onClick={()=>{this.setcreateLinkModalVisi(true)}}
                               > 
@@ -1375,39 +1415,7 @@ class Land extends React.Component<LandProps,any>{
                                    <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
                                    Create Link </div>
                               </button>
-                              <button className='app-land-det-butt'
-                              onClick={()=>{this.setdetailed(!this.state.detailed)}}
-                              >
-                              {
-                              this.state.detailed?
-                              <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 0v24H0V0h24z" fill="none" opacity=".87"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>
-                              :
-                              <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>
-                              }
-                              
-                              
-                              </button>
-                              <button className='app-land-det-butt'
-                              onClick={()=>{this.initLinksDataLoad()}}
-                              >
-                              <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
-                              </button>
-                              </div>
-                              <div className='app-land-lab-main-cont'>Links {this.state.linksData.length}</div>
-                              <div className='app-land-serch-main-cont'>
-                                   <div className='app-land-serch-cont'>
-                                        <div className='app-land-serch-ico-cont'>
-                                             <svg className='app-land-serch-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                                        </div>
-                                        <input
-                                        type='text'
-                                        className='app-land-serch-bar'
-                                        placeholder='Search for link'
-                                        value={this.state.searchQuery}
-                                        onChange={(e)=>{this.setsearchQuery(e.target.value)}}
-                                        />
-                                   </div>
-
+                           
                               </div>
                               {
                               this.state.linkDataLoading?

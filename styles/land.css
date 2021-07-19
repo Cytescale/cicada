@@ -1,6 +1,6 @@
 .land-body-cont{
      background-color: var(--backColor);
-     color: #000;
+     color: var(--textColor);
      height: 100%;
 }
 .link-head-logo{
@@ -43,7 +43,7 @@ margin-right: 4px;
      border-radius: 10px;
      font-size: 26px;
      padding: 22px;
-     color: #fff;
+     color: var(--welcomeMotoText);
      font-weight: 700;
      background: #36D1DC;
      background: -webkit-linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC);
@@ -97,7 +97,7 @@ margin-right: 4px;
      font-size: 14px;
      position: relative;
      font-weight: 700;
-     color: var(--text-s1);;
+     color: var(--textColor);
      padding: var(--margin);
 }
 
@@ -168,7 +168,7 @@ margin-right: 4px;
 .dash-links-cont-link-cont-ico{
      width: 22px;
      height: 22px;
-     background-color:var(--text-s1);;
+     background-color:var(--textColor);
      border-radius: 100px;
 
 }
@@ -177,7 +177,7 @@ margin-right: 4px;
      font-style: normal;
      font-weight: bold;
      font-size: 10px;
-     color: var(--text-s1);;
+     color: var(--textColor);
      margin-left: 8px;
 }
 
@@ -198,7 +198,7 @@ margin-right: 4px;
 .dash-links-cont-link-right-copy-butt-ico{
      width: 19px;
      height: 19px;
-     color: var(--text-s1);;
+     color: var(--textColor);
 }
 .turned-on{
      color: var(--succ);
@@ -242,7 +242,7 @@ margin-bottom: 0px;
      font-size: 12px;
      border-radius: 100px;
      height: 36px;
-     color: var(--text-s1);;
+     color: var(--textColor);
      margin: 10px;
      margin-top: 0px;
      margin-bottom: 0px;
@@ -276,7 +276,7 @@ margin-bottom: 0px;
      height: 100%;
      border-style: none;
      outline: none;
-     color: var(--text-s1);;
+     color: var(--textColor);
      font-family: inter;
      font-weight: 700;
      background-color: rgba(0, 0, 0, 0);
@@ -302,7 +302,7 @@ margin-bottom: 0px;
 .app-land-prof-pic-butt-ico{
      width: 24px;
      height: 24px;
-     color: #000;
+     color: var(--textColor);
 }
 
 .app-land-prof-pop-data-main-cont{
@@ -345,7 +345,7 @@ margin-bottom: 0px;
      font-size: 16px;
      font-family: inter;
      font-weight: 400;
-     color: #555555;
+     color: var(--textColor);
      display: inline-flex;
      align-items: center;
 }
@@ -363,7 +363,7 @@ margin-bottom: 0px;
      font-family: inter;
      font-weight: 400;
      margin-top: 8px;
-     color: #555555;
+     color: var(--textColor);
      display: inline-flex;
      align-items: center;
 }
@@ -395,7 +395,7 @@ border-radius: 100px;
 font-family: inter;
 font-weight: 700;
 font-size: 17px;
-color: #555555;
+color: var(--textColor);
 outline: none;
 border-style: none;
 background-color: rgba(0, 0, 0, 0)
@@ -484,7 +484,7 @@ background-color: rgba(0, 0, 0, 0)
 
 .lnk-lnk-head-main-cont-crt-cont{
      font-size: 12px;
-     color: #bdbdbd;
+     color: var(--textColor);
      font-family: inter;
      font-weight: 400;
 }
@@ -532,12 +532,12 @@ background-color: rgba(0, 0, 0, 0)
 
 .lnk-lnk-mid-body-cont-lab{
      font-size: 13px;
-     color: #656565;
+     color: var(--textColor);
 }
 .lnk-lnk-mid-body-cont-cont{
      font-size: 13px;
      font-weight: 500;
-     color: #454545;
+     color: var(--textColor);
      margin-top: 4px;
 }
 
@@ -546,12 +546,12 @@ background-color: rgba(0, 0, 0, 0)
      
 }
 .lnk-lnk-body-tit-cont{
-     color: #6F879C;
+     color: var(--textColor);
      font-size: 13px;
      font-weight: 700;
 }
 .lnk-lnk-body-link-cont{
-     color: #788A99;
+     color: var(--textColor);
      font-size: 13px;
      text-decoration: underline;
 
@@ -569,7 +569,7 @@ background-color: rgba(0, 0, 0, 0)
 }
 .lnk-lnk-gen-link{
      font-size: 12px;
-     color: #000;
+     color: var(--textColor);
      background-color: #f7f7f7;
      height: 32px;
      display: flex;
@@ -611,7 +611,7 @@ background-color: rgba(0, 0, 0, 0)
 
 .lnk-lnk-gen-right-butt:active{
      background-color: #e0e0e0;
-     color: #000;
+     color: var(--textColor);
 }
 
 
@@ -669,7 +669,7 @@ background-color: rgba(0, 0, 0, 0)
      width: 80%;
      margin-left: 10%;
      font-weight: 700;
-     color: var(--text-s1);;
+     color: var(--textColor);
      margin-top: 12px;
      font-family: inter;
      vertical-align: middle;
@@ -703,7 +703,7 @@ background-color: rgba(0, 0, 0, 0)
      
 }
 .app-anal-header-data-body-data-tit-cont{
-     color: var(--text-s1);;
+     color: var(--textColor);
      font-family: inter;
      font-weight: 700;
      font-size: 21px;
@@ -721,7 +721,7 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
      justify-content: center;
      margin-right: var(--margin);
-     color: var(--text-s1);;
+     color: var(--textColor);
      font-size: 21px;
      font-weight: 800;
 }
@@ -833,7 +833,7 @@ background-color: rgba(0, 0, 0, 0)
      padding-left: 22px;
      font-weight: 700;
      font-size: 14px;
-     color: #4D5E6D;
+     color: var(--textColor);
 
 }
 .anal-click-chart-tab-data-cont{
@@ -906,7 +906,7 @@ background-color: rgba(0, 0, 0, 0)
      border-radius: 32px;
 }
 .profile-data-main-name-cont{
-     color: var(--text-s1);;
+     color: var(--textColor);
      font-weight: 700;
      font-size: 16px;
      margin-top: 10px;
@@ -924,7 +924,7 @@ background-color: rgba(0, 0, 0, 0)
      margin-right: 6px;
 }
 .profile-data-main-email-cont{
-     color: #738192;
+     color: var(--textColor);
      font-size: 13px;
      display: flex;
      justify-content: center;
@@ -935,7 +935,7 @@ background-color: rgba(0, 0, 0, 0)
      width: 100%;
      height: 32px;
      background-color: #EE6A5E;
-     color: #fff;
+     color: var(--textColor);
      font-family: inter;
      font-size: 13px;
      border-radius: 4px;
@@ -1021,15 +1021,14 @@ background-color: rgba(0, 0, 0, 0)
 
 .app-land-lab-main-cont{
      font-family: inter;
-     padding: 22px;
      font-size: 18px;
-     padding-bottom: 0;
-
-     color: #000;
-     width: 100%;
+     font-weight: 500;
+     color: #696242;
+     width: 92%;
+     margin-left: 4%;
+     margin-right: 4%;
      word-wrap: normal;
      display: flex;
-     justify-content: center;
      align-items: center;
 }
 
@@ -1041,7 +1040,8 @@ background-color: rgba(0, 0, 0, 0)
      margin-top: 22px;
 }
 .app-land-serch-cont{
-     width: 100%;
+     width: auto;
+     flex: 1;
      height: 100%;
      border-radius: 8px;
      background-color: #fff;
@@ -1054,7 +1054,7 @@ background-color: rgba(0, 0, 0, 0)
 
 .app-land-serch-ico-cont{
      width: 32px;
-     height: 52px;
+     height: 46px;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -1103,7 +1103,7 @@ background-color: rgba(0, 0, 0, 0)
      font-family: inter;
      font-weight: 700;
 
-     color: #000;
+     color: var(--textColor);
 }
 .app-land-visit-card-left-time{
      font-size: 12px;
@@ -1117,7 +1117,7 @@ background-color: rgba(0, 0, 0, 0)
 .app-land-visit-card-left-Counter{
      font-size: 28px;
      margin-top: -4px;
-     color: #000;
+     color:var(--textColor);
      font-family: inter;
      font-weight: 800;
      
@@ -1142,7 +1142,7 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
      font-family: inter;
      font-size: 12px;
-     color: #000;
+     color: var(--textColor);
      padding-top: 24px;
      padding-bottom: 24px;
      font-weight: 600;
@@ -1183,7 +1183,7 @@ background-color: rgba(0, 0, 0, 0)
 .app-land-feed-butt-main-ico{
      width: 18px;
      height: 18px;
-     color: #555555;
+     color: var(--textColor);
 }
 
 .app-land-mto-main-cont{
@@ -1198,23 +1198,24 @@ background-color: rgba(0, 0, 0, 0)
 }
 .app-body-topper-main-cont{
      padding-top: 22px;
-     
+     border-bottom: 1px solid var(--borColor);
+     margin-bottom: 22px;
 }
 .app-body-topper-hey-cont{
      width: fit-content;
      
      padding-left: 16px;
      font-size: 22px;
-     color: #000;
+     color: var(--textColor);;
      font-family: inter;
      font-weight: 700;    
 }
 .app-body-topper-hey-butt
 {
      width: 200px;
-     background-color: #f2f2f2;
+     background-color: #fff;
      border: 1px solid var(--bor-color);
-     color: #000;
+     color: var(--textColor);
      padding: 6px;
      margin-top: 8px;
      padding-right: 22px;
@@ -1234,7 +1235,7 @@ background-color: rgba(0, 0, 0, 0)
 
 .app-create-link-modal-edt-uniid-link{
      font-size: 12px;
-     color: #000;
+     color: var(--textColor);
      font-weight: 400;
      font-family: inter;    
      margin-top:6px;
@@ -1245,9 +1246,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 .app-land-top-butt-group-cont{
      display: inline-flex;
-     width: 92%;
-     margin-bottom: 12px;
-     margin-left: 4%;
+     width: 100%;
+     
 }
 
 .app-land-det-butt{
@@ -1256,7 +1256,7 @@ background-color: rgba(0, 0, 0, 0)
      padding: 0;
      margin-left: 8px;
      background-color: var(--buttonBackColor);
-     box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12); 
+     /* box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);  */
      border-radius: 8px;
      display: flex;
      justify-content: center;
@@ -1286,6 +1286,7 @@ color: #0070F3;
 
 .app-land-crt-lnk-butt{
      flex: 1;
+     width: 100%;
      height: 46px;
      background-color: #0070F3;
      box-shadow: 0px 4px 15px rgba(85, 163, 255, 0.53);
@@ -1345,13 +1346,13 @@ color: #0070F3;
 .clust-link-main-cont{
      width: 92%;
      margin-left: 4%;
-     background: rgba(255, 255, 255, 0.44);
-     backdrop-filter: blur(31px);
+     margin-right: 4%;
+     background-color: #fff;
      border-radius: 7px;
+     margin-top: 22px;
      box-shadow: var(--boxShad);
-     /* border: 1px solid var(--bor-color); */
+     /* border: 1px solid var(--borColor); */
      padding: 7px;
-
      padding-left: 12px;
      padding-right: 12px;
      position: relative;
@@ -1360,7 +1361,7 @@ color: #0070F3;
 
 .clust-link-main-link{
      font-size: 13px;
-     color: #212121;
+     color: var(--textColor);
      
 }
 .clust-link-main-right-cont{
@@ -1391,28 +1392,32 @@ color: #0070F3;
 
 .clust-link-main-link-copy-butt{
      background-color: #fff;
-     border:1px solid #000;
-     color: #000;
+     border:none;
+     color: var(--textColor);
      height: 26px;
+     width: 26px;
      font-size: 12px;
      border-radius: 5px;
      padding-left: 8px;
      padding-right: 8px;
 }
 .app-land-link-cont-holder{
-     padding-bottom: 17px;
-     margin-bottom: 10px;
+     padding-bottom: 16px;
+     margin-bottom: 16px;
 }
 .lnk-holder-cust{
-     padding: 6px;
-     padding-top: 70px;
-     padding-bottom: 32px;     
-     margin-top: -70px;
-     border-top: 2px solid #f1f1f1;
+     padding: 7px;
+     /* border-top: 2px solid var(--borColor); */
      border-bottom: 1px solid var(--borColor);
      background-color: var(--linkHolderColor);
 }
+.top-holder-cont{
+     padding-top: 22px;
+}
 
+.cluster-holder-cont{
+     padding: 7px;
+}
 
 @keyframes wave-animation {
      0% { transform: rotate( 0.0deg) }
@@ -1445,7 +1450,7 @@ color: #0070F3;
 }
 .clust-visit-main-cont{
      width: 100%;
-     color: #000;
+     color: var(--textColor);
      display: inline-flex;
      justify-content: center;
      align-items: center;
@@ -1468,8 +1473,8 @@ color: #0070F3;
 .app-land-head-pro-pic-main-cont{
      width: 80px;
      height: 80px;
-     
-     background: linear-gradient(180deg, #FEE27F 0%, #F6BC4F 100%);
+     background-color: #DDD9C7;
+     /* background: linear-gradient(180deg, #FEE27F 0%, #F6BC4F 100%); */
      border-radius: 100px;
      
 }

@@ -444,7 +444,7 @@ background-color: rgba(0, 0, 0, 0)
      height: auto;
      padding: 7px;
      position: relative;
-     margin-top: 22px;
+     margin-top: var(--margin-top);
      background-color: var(--cardColor);
      /* border: 1px solid var(--borColor); */
      /* box-shadow: var(--boxShad); */
@@ -789,7 +789,7 @@ background-color: rgba(0, 0, 0, 0)
      margin-left: 4%;
      height: 250px;
      padding: 0px;
-     margin-top: 22px;
+     margin-top: var(--margin-top);
 }
 .anal-click-chart-head-cont{
      width: 100%;
@@ -1205,7 +1205,7 @@ background-color: rgba(0, 0, 0, 0)
 .app-body-topper-main-cont{
      padding-top: 22px;
      border-bottom: 1px solid var(--borColor);
-     margin-bottom: 22px;
+     margin-bottom: var(--margin-bottom);
 }
 .app-body-topper-hey-cont{
      width: fit-content;
@@ -1515,7 +1515,7 @@ color: #4189F7;
 .app-land-lnks-holder-shw-mr-main-cont{
      width: 92%;
      height: auto;
-     margin-top: 22px;
+     margin-top: var(--margin-top);
      margin-left: 4%;
      margin-right: 4%;
 }
@@ -1532,8 +1532,8 @@ color: #4189F7;
      font-size: 17px;
      outline: none;
      border-style: none;
-     margin-top: 22px;
-     margin-bottom: 22px;
+     margin-top: var(--margin-top);
+     margin-bottom: var(--margin-bottom);
      border-radius: 100px;
      /* border:1px solid #000; */
      

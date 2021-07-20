@@ -17,11 +17,12 @@ body {
   --text-s1:#000;
   --text-s2:#63798E;
   --margin:20px;
-  --margin-top:22px;
+  
 
 
   --pri-color:#4189F7;
-
+  --margin-top:28px;
+  --margin-bottom:28px;
 
   --bor-rad:10px;
   --back-color:#fff;

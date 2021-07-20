@@ -599,7 +599,7 @@ background-color: rgba(0, 0, 0, 0)
 .lnk-lnk-gen-right-butt{
      width: 32px;
      height: 32px;
-     color: #4189F7;
+     color: var(--textColor);
      display: flex;
      align-items: center;
      justify-content: center;
@@ -1156,27 +1156,38 @@ background-color: rgba(0, 0, 0, 0)
 
 
 .app-land-visit-card-acrd-togg-cont{
-     background-color: var(--cardColor);
+     background-color: var(--backColor);
      display: flex;
      justify-content: center;
      align-items: center;
      font-family: inter;
-     font-size: 12px;
-     color: var(--subtextColor);
-     padding-top: 12px;
-     padding-bottom: 12px;
+     font-size: 15px;
+     color: var(--textColor);
+     padding-top: 22px;
+     padding-bottom: 22px;
      font-weight: 600;
      border-top: 1px solid var(--borColor);
      /* border-bottom: 1px solid #e0e0e0; */
      vertical-align: middle;
 }
+
+
+.land-card-acrd-togg-cont{
+     background-color: var(--cardColor);
+}
+
+.app-land-visit-card-acrd-togg-butt-ico{
+     width: 22px;
+     height: 22px;
+     margin-right: 10px;
+}
+
 .app-land-visit-card-acrd-togg-ico{
      vertical-align: middle;
      width: 16px;
      height: 16px;
      margin-left: 6px;
      display: flex;
-     
      justify-content: center;
      align-items: center;
 }
@@ -1430,8 +1441,8 @@ color: inherit;
 }
 .lnk-holder-cust{
      padding: 7px;
-     border-top-left-radius: 12px;
-     border-top-right-radius: 12px;
+     border-top-left-radius: 22px;
+     border-top-right-radius: 22px;
      /* border-top: 2px solid var(--borColor); */
      border-bottom: 1px solid var(--borColor);
      padding-top: 22px;
@@ -1439,7 +1450,7 @@ color: inherit;
 }
 .top-holder-cont{
      padding-top: 22px;
-     border-bottom: 1px solid var(--borColor);
+     
 }
 
 .cluster-holder-cont{

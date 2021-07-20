@@ -101,7 +101,7 @@ const Profile = (props)=>{
                                         //this.setcreateLinkModalVisi(true);
                                    }}
                                    >
-                                        Create Link
+                                        +Link
                                    </button>
                                    {/* <ProfilePopover 
                                     //setlgoutShow={this.setlgoutConfirmVisi} 
@@ -111,8 +111,8 @@ const Profile = (props)=>{
                     <LandNavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
-                              <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Profile Settings</div>
-                              <div className='app-clust-sub-tit-main-cont clust-set-sub-tit-main-cont'>Change your profile details.</div>
+                              <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Settings</div>
+                              <div className='app-clust-sub-tit-main-cont clust-set-sub-tit-main-cont'>Change your profile details and prefrences.</div>
                               </div>
                               <div className='app-clust-link-overlay-main-cont'
                                    onClick={()=>{
@@ -124,6 +124,13 @@ const Profile = (props)=>{
                               />
                                              <Accordion className='app-sett-acrd-main-cont'>
                                              <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                                  <svg 
+                                                  className='app-land-visit-card-acrd-togg-butt-ico'
+                                                  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                                  <rect x="15" y="9" width="7" height="7" rx="3" stroke="currentColor" stroke-width="2"/>
+                                                  <path d="M25.2101 22.6842C20.0452 18.2619 15.3626 19.9856 12.1589 22.9709C10.4787 24.5365 11.8424 27 14.139 27H23.25C25.6748 27 27.052 24.2612 25.2101 22.6842Z" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                                  </svg>
                                                  General Details
                                                   <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
                                              </Accordion.Toggle>

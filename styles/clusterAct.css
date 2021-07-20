@@ -1,6 +1,6 @@
 .app-clust-act-main-cont{
      min-height: 100vh;
-     background-color:var(--linkHolderColor);
+     background-color:var(--backColor);
      border-bottom: 1px solid var(--borColor);
 }
 .app-clust-act-topper-main-cont{
@@ -20,7 +20,7 @@
      padding-top: 22px;
      padding-left: 22px;
      font-family: inter;
-     color: #000;
+     color: var(--textColor);
      font-weight: 800;
      font-size: 22px;
      padding-top: 52px;
@@ -56,7 +56,7 @@
      padding-right: 22px;
      font-size: 12px;
      margin-top: 7px;
-     color: #000;
+     color: var(--textColor);
      font-family: inter;
 }
 

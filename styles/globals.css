@@ -38,12 +38,13 @@ body {
   --textColor:#e4e6eb;
   --subtextColor:#656565;
   --backColor:var(--dark-pri-color);
-  --borColor:#282828;
+  --borColor:#202020;
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.3);
   
-  --linkHolderColor:#171717;
-  
-  --cardColor:#202020;
+  --linkHolderColor:#151515;
+  /* --linkHolderColor:#171717; */
+
+  --cardColor:#191919;
   --cardSubColor:#282828;
   --cardTextColor:#bdbdbd;
   --cardButtBackColor:#303030;

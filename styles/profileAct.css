@@ -23,33 +23,34 @@
 .app-prof-fld-lab-cont{
 font-family: inter;
 font-size: 15px;
-color: #000;
+color:var(--subtextColor);
 margin-bottom: 7px;
 font-weight: 600;
 }
 .app-prof-fld-cont{
      width: 100%;
      height: 42px;
-     color: #000;
+     color: var(--textColor);
      background-color: rgb(0,0,0,0);
      padding-left: 12px;
      font-family: inter;
      font-weight: 600;
      font-size: 14px;
      outline: none;
-     border: 1px solid #e0e0e0;
+     border: 1px solid var(--borColor);
      border-radius: 6px;
 }
 .app-prof-fld-textarea-cont{
      width: 100%;
      height: 100px;
      resize: none;
+     color: var(--textColor);
      background-color: rgb(0,0,0,0);
      padding: 12px;
      font-family: inter;
      font-size: 14px;
      outline: none;
-     border: 1px solid #e0e0e0;
+     border: 1px solid var(--borColor);
      border-radius: 6px;
 }
 
@@ -64,7 +65,7 @@ font-weight: 600;
      flex-direction: column;
      width: 100%;
      height: 100%;
-     background-color: #fff;
+     background-color: var(--cardColor);
      padding: 22px;
      padding-top: 0;
 }
@@ -106,9 +107,6 @@ font-weight: 600;
 
 }
 .app-sett-acrd-main-cont{
-     width: 92%;
-     margin-left: 4%;
-     margin-right: 4%;
-     margin-bottom: 12px;
+     width: 100%;
      border: 1px solid var(--borColor);
 }

@@ -498,7 +498,7 @@ background-color: rgba(0, 0, 0, 0)
 
 .lnk-lnk-head-main-cont-crt-cont{
      font-size: 12px;
-     color: var(--textColor);
+     color: var(--subtextColor);
      font-family: inter;
      font-weight: 400;
 }
@@ -1034,9 +1034,9 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-lab-main-cont{
-     font-family: poppins;
+     font-family: inter;
      font-size: 15px;
-     font-weight: 500;
+     font-weight: 700;
      color:var(--subtextColor);
      width: 92%;
      margin-left: 4%;
@@ -1044,6 +1044,13 @@ background-color: rgba(0, 0, 0, 0)
      word-wrap: normal;
      display: flex;
      align-items: center;
+     display: inline-flex;
+}
+
+.app-land-lab-main-cont-ico{
+     margin-right: 7px;
+     width: 19px;
+     height: 19px;
 }
 
 .app-land-serch-main-cont{
@@ -1304,7 +1311,7 @@ color: inherit;
      width: 100%;
      height: 46px;
      background-color: #4189F7;
-     box-shadow: 0px 4px 8px 1px rgba(58, 132, 244, 0.55);
+     box-shadow: 0px 4px 8px 1px rgba(58, 132, 244, 0.25);
      border-radius: 100px;
      display: flex;
      justify-content: center;
@@ -1317,6 +1324,8 @@ color: inherit;
      font-weight: 400;
      overflow: hidden;
      position: relative;
+
+
 }
 
 .app-land-crt-lnk-butt-decor{
@@ -1406,7 +1415,7 @@ color: inherit;
 }
 
 .clust-link-main-link-copy-butt{
-     background-color: var(--cardButtBackColor);
+     background-color: rgba(0, 0, 0, 0);
      border:none;
      color: var(--textColor);
      height: 26px;
@@ -1489,12 +1498,20 @@ color: inherit;
 }
 
 .app-land-head-pro-pic-main-cont{
-     width: 80px;
-     height: 80px;
-     background-color: #DDD9C7;
+     width: 70px;
+     height: 70px;
+     background-color: var(--cardSubColor);
      /* background: linear-gradient(180deg, #FEE27F 0%, #F6BC4F 100%); */
      border-radius: 100px;
-     
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 12px;
+}
+
+.app-land-head-pro-pic-main-cont-pic{
+     width: 100%;
+     height: 100%;
 }
 .app-land-link-intro-pro-main-cont{
      width: 92%;

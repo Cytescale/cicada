@@ -217,6 +217,7 @@ font-family: inter;
      z-index:  100;
      right: 0;
      align-items: center;
+     justify-content: center;
      background-color: var(--headColor);
      position: fixed;
      top: 0;
@@ -269,7 +270,6 @@ padding-bottom: 0px;
 
 .app-head-main-cont-logo{
      color: var(--text-s1);
-     margin-left:48px;
      font-family: inter;
      font-weight: 00;
      font-size: 19px;

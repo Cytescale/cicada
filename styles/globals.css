@@ -29,23 +29,24 @@ body {
   --buttonBackColor:#353535;
 
   --welcomeMotoText:#fff;
-  --textColor:#fff;
-  --subtextColor:#959595;
-  --backColor:#000;
+  --textColor:#e4e6eb;
+  --subtextColor:#B0B3B8;
+  --backColor:#18191A;
   --borColor:#454545;
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.1);
-  --linkHolderColor:#000;
   
-  --cardColor:#252525;
+  --linkHolderColor:#18191A;
+  
+  --cardColor:#242526;
   --cardSubColor:#353535;
   --cardTextColor:#bdbdbd;
-  --cardButtBackColor:#353535;
+  --cardButtBackColor:#3a3b3c;
 
   --headerPriColor:#000;
   --headerSecColor:#000;
-  --headColor:#000;
+  --headColor:#18191A;
   
-  --NavheadColor:#000;
+  --NavheadColor:#18191A;
   --NavTextColor:#959595;
   --NacTextColor-selec:#fff;
   

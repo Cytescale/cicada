@@ -453,6 +453,10 @@ background-color: rgba(0, 0, 0, 0)
      border-radius: 7px;
 }
 
+.lnk-lnk-enal-cont{
+     background-color: var(--cardColor);
+}
+
 .lnk-lnk-disabled-cont{
      background-color: #2E1F1F;
 }
@@ -1114,7 +1118,7 @@ background-color: rgba(0, 0, 0, 0)
      display: inline-flex;
      font-family: poppins;
      font-weight: 700;
-     color: var(--subtextColor);
+     color: var(--textColor);
 }
 .app-land-visit-card-left-time{
      font-size: 12px;
@@ -1274,7 +1278,7 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
      outline: none;
      border-style: none;
-
+     color: #fff;
 }
 .app-land-det-butt:active{
      background-color: #e0e0e0;
@@ -1292,7 +1296,7 @@ background-color: rgba(0, 0, 0, 0)
 .app-land-det-butt-ico{
  width: 20px;
  height: 20px;
-color: #4189F7;
+color: inherit;
 }
 
 .app-land-crt-lnk-butt{

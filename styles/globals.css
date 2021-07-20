@@ -24,19 +24,19 @@ body {
   
   --dark-sec-color:#3a3b3c;
 
-  --margin-top:28px;
-  --margin-bottom:28px;
+  --margin-top:32px;
+  --margin-bottom:32px;
 
   --bor-rad:10px;
   --back-color:#fff;
 
 
-  --textBoxBackColor:#242424;
-  --buttonBackColor:#242424;
+  --textBoxBackColor:#3A3B3C;
+  --buttonBackColor:#3A3B3C;
 
   --welcomeMotoText:#fff;
   --textColor:#e4e6eb;
-  --subtextColor:#B0B3B8;
+  --subtextColor:#757575;
   --backColor:#18191A;
   --borColor:#303030;
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.2);
@@ -44,7 +44,7 @@ body {
   --linkHolderColor:#18191A;
   
   --cardColor:#242526;
-  --cardSubColor:#303030;
+  --cardSubColor:#3a3b3c;
   --cardTextColor:#bdbdbd;
   --cardButtBackColor:#303030;
 

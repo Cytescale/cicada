@@ -13,7 +13,7 @@ body {
   --sec-dark:#fff;
   --warning:#EEC485;
   --danger:#EB445A;
-  --succ:#81EAAB;
+  --succ:#8FDE82;
   --text-s1:#000;
   --text-s2:#63798E;
   --margin:20px;
@@ -21,7 +21,7 @@ body {
 
 
   --pri-color:#4189F7;
-  --dark-pri-color:#141414;
+  --dark-pri-color:#101010;
   --dark-sec-color:#3a3b3c;
 
   --margin-top:22px;
@@ -31,28 +31,28 @@ body {
   --back-color:#fff;
 
 
-  --textBoxBackColor:#3A3B3C;
-  --buttonBackColor:#3A3B3C;
+  --textBoxBackColor:#292929;
+  --buttonBackColor:#292929;
 
   --welcomeMotoText:#fff;
   --textColor:#e4e6eb;
-  --subtextColor:#757575;
+  --subtextColor:#656565;
   --backColor:var(--dark-pri-color);
   --borColor:#303030;
-  --boxShad:0 3px 14px 0px rgba(0,0,0,0.2);
+  --boxShad:0 3px 14px 0px rgba(0,0,0,0.3);
   
   --linkHolderColor:var(--dark-pri-color);
   
-  --cardColor:#202020;
-  --cardSubColor:#3a3b3c;
+  --cardColor:#181818;
+  --cardSubColor:#282828;
   --cardTextColor:#bdbdbd;
   --cardButtBackColor:#303030;
 
   --headerPriColor:#000;
   --headerSecColor:#000;
-  --headColor:#202020;
+  --headColor:#191919;
   
-  --NavheadColor:#202020;
+  --NavheadColor:#191919;
   --NavTextColor:#959595;
   --NavTextColor-selec:#4189F7;
   

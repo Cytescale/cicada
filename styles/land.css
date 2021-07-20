@@ -1153,7 +1153,7 @@ background-color: rgba(0, 0, 0, 0)
      margin-top: 12px;
      background-color: var(--cardColor);
      border-radius: 7px;
-     /* box-shadow: var(--box-shad); */
+     box-shadow: var(--boxShad);
 
 }
 

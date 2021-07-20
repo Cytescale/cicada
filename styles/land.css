@@ -45,18 +45,15 @@ margin-right: 4px;
      border-radius: 10px;
      font-size: 26px;
      padding: 22px;
-     color: #000;
+     color: #fff;
      font-weight: 700;
      margin-top:22px;
-
-     background-color: #A0E8C3;
-
-     /* background: #36D1DC;
+     background: #36D1DC;
      background: -webkit-linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC);
      background: linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC); 
      background-size: 400% 400%;
      overflow: hidden;
-     animation: gradient 15s ease infinite; */
+     animation: gradient 15s ease infinite;
 
 }
 
@@ -1008,7 +1005,7 @@ background-color: rgba(0, 0, 0, 0)
      border-radius: 6px;
      border-style: none;
      outline: none;
-     background-color: #f7f7f7;
+     background-color: var(--cardSubColor);
      color: #55A3FF;
      font-family: inter;
      font-size: 13px;
@@ -1437,6 +1434,7 @@ color: inherit;
      border-top-right-radius: 12px;
      /* border-top: 2px solid var(--borColor); */
      border-bottom: 1px solid var(--borColor);
+     padding-top: 22px;
      background-color: var(--linkHolderColor);
 }
 .top-holder-cont{

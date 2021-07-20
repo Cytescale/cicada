@@ -13,7 +13,7 @@ body {
   --sec-dark:#fff;
   --warning:#EEC485;
   --danger:#EB445A;
-  --succ:#0CCE6B;
+  --succ:#81EAAB;
   --text-s1:#000;
   --text-s2:#63798E;
   --margin:20px;
@@ -35,7 +35,7 @@ body {
   --textColor:#e4e6eb;
   --subtextColor:#B0B3B8;
   --backColor:#18191A;
-  --borColor:#3a3b3c;
+  --borColor:#303030;
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.1);
   
   --linkHolderColor:#18191A;
@@ -59,7 +59,7 @@ body {
 
   
   --smallCardColor:#f5f5f5;
-  --box-shad: 0 3px 10px 0px rgba(0,0,0,0.1);
+  --box-shad: 0 3px 10px 2px rgba(0,0,0,0.2);
   
 /* 
 

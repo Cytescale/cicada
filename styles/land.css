@@ -447,7 +447,7 @@ background-color: rgba(0, 0, 0, 0)
      margin-top: var(--margin-top);
      background-color: var(--cardColor);
      /* border: 1px solid var(--borColor); */
-     /* box-shadow: var(--boxShad); */
+     box-shadow: var(--boxShad);
      border-radius: 7px;
 }
 

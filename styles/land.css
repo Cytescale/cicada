@@ -1023,8 +1023,8 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-lab-main-cont{
-     font-family: inter;
-     font-size: 16px;
+     font-family: poppins;
+     font-size: 15px;
      font-weight: 500;
      color:var(--subtextColor);
      width: 92%;
@@ -1095,7 +1095,6 @@ background-color: rgba(0, 0, 0, 0)
      display: inline-flex;
      width: 100%;
      padding: 15px;
-     padding-bottom: 5px;
 }
 
 .app-land-visit-card-left-cont{
@@ -1104,11 +1103,10 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-visit-card-left-lab{
-     font-size: 14px;
+     font-size: 16px;
      display: inline-flex;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
-
      color: var(--textColor);
 }
 .app-land-visit-card-left-time{
@@ -1131,29 +1129,29 @@ background-color: rgba(0, 0, 0, 0)
 
 .app-land-visit-card-main-outer-cont{
      width: 92%;
+     margin-right: 4%;
      margin-left: 4%;
-     margin-top: var(--margin-top);
-     background-color: #fff;
+     margin-top: 12px;
+     background-color: var(--cardColor);
      border-radius: 7px;
      /* box-shadow: var(--box-shad); */
-     border: 1px solid var(--bor-color); 
-     
+
 }
 
 
 .app-land-visit-card-acrd-togg-cont{
-     background-color: #fff;
+     background-color: var(--cardSubColor);
      display: flex;
      justify-content: center;
      align-items: center;
      font-family: inter;
      font-size: 12px;
-     color: var(--textColor);
-     padding-top: 16px;
-     padding-bottom: 16px;
+     color: var(--subtextColor);
+     padding-top: 12px;
+     padding-bottom: 12px;
      font-weight: 600;
-     border-top: 1px solid #e0e0e0;
-     border-bottom: 1px solid #e0e0e0;
+     border-top: 1px solid var(--borColor);
+     /* border-bottom: 1px solid #e0e0e0; */
      vertical-align: middle;
 }
 .app-land-visit-card-acrd-togg-ico{

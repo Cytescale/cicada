@@ -5,9 +5,9 @@ import { useEffect,useRef } from 'react';
           const canvas = canvasRef;
           let ctx  = canvas.current.getContext('2d');     
           let gradient_2 = ctx.createLinearGradient(0, 0, 0,70);
-          gradient_2.addColorStop(1, 'rgba(255,255,255,0)');
+          gradient_2.addColorStop(1, 'rgba(0,0,0,0)');
           gradient_2.addColorStop(0, '#55A3FF');
-          let gradient = ctx.createLinearGradient(150, 0, 150,150);
+          let gradient = ctx.createLinearGradient(100, 0, 100,100);
           gradient.addColorStop(0, '#11E4D1');
           gradient.addColorStop(1, '#7EFF9B');
           let myChart = new Chart(ctx, {

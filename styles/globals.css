@@ -24,6 +24,42 @@ body {
   --back-color:#fff;
 
 
+  --textBoxBackColor:#353535;
+  
+  --buttonBackColor:#353535;
+
+  --welcomeMotoText:#fff;
+  --textColor:#fff;
+  --subtextColor:#959595;
+  --backColor:#000;
+  --borColor:#454545;
+  --boxShad:0 3px 14px 0px rgba(0,0,0,0.1);
+  --linkHolderColor:#000;
+  
+  --cardColor:#252525;
+  --cardSubColor:#353535;
+  --cardTextColor:#bdbdbd;
+  --cardButtBackColor:#353535;
+
+  --headerPriColor:#000;
+  --headerSecColor:#000;
+  --headColor:#000;
+  
+  --NavheadColor:#000;
+  --NavTextColor:#959595;
+  --NacTextColor-selec:#fff;
+  
+  --BugerCrossColor:#fff;
+  --BurgerMenuColor:#2D2E34;
+
+
+  
+  --smallCardColor:#f5f5f5;
+  --box-shad: 0 3px 10px 0px rgba(0,0,0,0.1);
+  
+/* 
+
+
   --welcomeMotoText:#fff;
   --textColor:#000;
   --subtextColor:#000;
@@ -31,17 +67,24 @@ body {
   --borColor:#EAE5D2;
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.1);
   --linkHolderColor:#F2EFE4;
+  
   --headerPriColor:#000;
   --headerSecColor:#000;
   --headColor:#F2EFE4;
+  
   --NavheadColor:#F2EFE4;
+  
   --buttonBackColor:#fff;
-  --headBugerColor:#fff;
+  
+  --BugerCrossColor:#bdc3c7;
+  --BurgerMenuColor:#2D2E34;
+  
+
   --cardColor:#fff;
   --smallCardColor:#f5f5f5;
   --box-shad: 0 3px 10px 0px rgba(0,0,0,0.1);
-  
-/* 
+
+
 border-bottom: 1px solid #C6DDF0;
 border:1px solid #CAD0D4
 background-color: #fefefe;

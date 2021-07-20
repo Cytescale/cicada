@@ -726,7 +726,7 @@ font-family: inter;
         height: 52px;
         background-color: var(--NavheadColor);
         color: #000;
-        /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09); */
+        
         margin-top: 62px;  
         display: inline-flex;
         padding-left: 22px;
@@ -736,7 +736,7 @@ font-family: inter;
         border-bottom: 1px solid var(--borColor);
    }
    .land-nav-bar-cont{
-        box-shadow: none;
+     box-shadow: 0px 6px 22px 1px rgba(58, 132, 244, 0.23);
         
    }
    .app-nav-bar-main-link-cont{

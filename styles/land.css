@@ -1044,13 +1044,14 @@ background-color: rgba(0, 0, 0, 0)
      word-wrap: normal;
      display: flex;
      align-items: center;
+     
      display: inline-flex;
 }
 
 .app-land-lab-main-cont-ico{
      margin-right: 7px;
-     width: 19px;
-     height: 19px;
+     width: 17px;
+     height: 17px;
 }
 
 .app-land-serch-main-cont{
@@ -1158,7 +1159,7 @@ background-color: rgba(0, 0, 0, 0)
 
 
 .app-land-visit-card-acrd-togg-cont{
-     background-color: var(--cardSubColor);
+     background-color: var(--cardColor);
      display: flex;
      justify-content: center;
      align-items: center;
@@ -1426,8 +1427,8 @@ color: inherit;
      padding-right: 8px;
 }
 .app-land-link-cont-holder{
-     padding-bottom: 16px;
-     margin-bottom: 16px;
+     padding-bottom: var(--margin-bottom);
+     margin-bottom:var(--margin-bottom);
      
 }
 .lnk-holder-cust{
@@ -1440,6 +1441,7 @@ color: inherit;
 }
 .top-holder-cont{
      padding-top: 22px;
+     border-bottom: 1px solid var(--borColor);
 }
 
 .cluster-holder-cont{
@@ -1509,6 +1511,7 @@ color: inherit;
      padding: 12px;
 }
 
+
 .app-land-head-pro-pic-main-cont-pic{
      width: 100%;
      height: 100%;
@@ -1518,7 +1521,39 @@ color: inherit;
      margin-left: 4%;
      padding: 12px;
      display: inline-flex;
-     
+     position: relative;
+}
+
+.app-land-pro-edit-main-cont{
+     width: auto;
+     margin-left: 7px;
+     height: 70px;
+
+     position: absolute;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.app-land-pro-edit-butt{
+     width: 40px;
+     height: 40px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: var(--buttonBackColor);
+     outline: none;
+     border: none;
+     border-radius: 100px;
+     padding: 8px;
+}
+
+.app-land-pro-edit-butt-ico{
+     width: 100%;
+     height: 100%;
 }
 
 .app-body-topper-bio-cont{
@@ -1528,8 +1563,7 @@ color: inherit;
      margin-top: 3px;
      margin-bottom: 3px;
      color: var(--textColor);
-     background-color: var(--cardColor);
-     padding: 12px;
+
      border-radius: 9px;
 }
 

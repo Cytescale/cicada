@@ -108,5 +108,5 @@ font-weight: 600;
 }
 .app-sett-acrd-main-cont{
      width: 100%;
-     border: 1px solid var(--borColor);
+     border-style: none;
 }

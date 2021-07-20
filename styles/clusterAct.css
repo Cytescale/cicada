@@ -5,7 +5,7 @@
 }
 .app-clust-act-topper-main-cont{
      padding-bottom: 32px;
-     background-color:var(--backColor);
+     background-color:var(--subHeaderBackColor);
 }
 .app-clust-act-lnk-head-main-cont
 {
@@ -22,7 +22,7 @@
      font-family: inter;
      color: var(--textColor);
      font-weight: 800;
-     font-size: 22px;
+     font-size: 26px;
      padding-top: 52px;
      align-items: center;
 }

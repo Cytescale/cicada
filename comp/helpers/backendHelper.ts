@@ -166,7 +166,7 @@ export default class BackendHelper{
                     });
           })
      } 
-    async _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
+     async _getLinksDatabyUniId(uid:string,uniId:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"uniid":uniId});             
           return new Promise((resolve, reject) => {
                       axios({

@@ -26,6 +26,13 @@
      padding-top: 52px;
      align-items: center;
 }
+
+.app-clust-tit-main-cont-ico{
+     width: 32px;
+     height:32px;
+     margin-right: 7px;
+}
+
 .app-clust-time-tit-main-cont{
      width: 100%;
      font-size: 12px;

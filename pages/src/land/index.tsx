@@ -491,7 +491,7 @@ const LinkCard:React.FC<any>=(props:any)=>{
      const [activeLoading,setactiveLoading] = useState<boolean>(false);
      
      return(
-          <div className='lnk-lnk-main-cont'>
+          <div className={`lnk-lnk-main-cont ${props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?'':'lnk-lnk-disabled-cont'}`}>
           <div className='lnk-lnk-head-main-cont'>
                          {
                               props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?

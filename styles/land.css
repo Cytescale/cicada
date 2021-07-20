@@ -1,5 +1,6 @@
 .land-body-cont{
      background-color: var(--backColor);
+     border-bottom: 8px solid var(--pri-color);
      color: var(--textColor);
      height: 100%;
 }
@@ -438,6 +439,7 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
 }
 
+
 .lnk-lnk-main-cont{
      width: 92%;
      margin-left: 4%;
@@ -450,6 +452,11 @@ background-color: rgba(0, 0, 0, 0)
      box-shadow: var(--boxShad);
      border-radius: 7px;
 }
+
+.lnk-lnk-disabled-cont{
+     background-color: #2E1F1F;
+}
+
 
 .app-link-logo-cont{
      width: 22px;
@@ -596,7 +603,7 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
      justify-content: center;
      background-color:var(--cardButtBackColor);
-     border-radius: 7px;
+     border-radius: 100px;
      overflow: visible;
      outline: none;
      border-style: none;
@@ -1046,7 +1053,7 @@ background-color: rgba(0, 0, 0, 0)
      width: auto;
      flex: 1;
      height: 100%;
-     border-radius: 8px;
+     border-radius: 100px;
      background-color: var(--textBoxBackColor);
      border: 1px solid var(--borColor);
      display: inline-flex;
@@ -1103,11 +1110,11 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .app-land-visit-card-left-lab{
-     font-size: 16px;
+     font-size: 19px;
      display: inline-flex;
      font-family: poppins;
      font-weight: 700;
-     color: var(--textColor);
+     color: var(--subtextColor);
 }
 .app-land-visit-card-left-time{
      font-size: 12px;
@@ -1261,7 +1268,7 @@ background-color: rgba(0, 0, 0, 0)
      margin-left: 8px;
      background-color: var(--buttonBackColor);
      /* box-shadow: 0px 4px 9px rgba(100, 100, 100, 0.12);  */
-     border-radius: 8px;
+     border-radius: 100px;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -1527,7 +1534,7 @@ color: #4189F7;
      align-items: center;
      color: var(--pri-color);
      font-family: inter;
-     font-size: 17px;
+     font-size: 15px;
      outline: none;
      border-style: none;
      margin-top: var(--margin-top);

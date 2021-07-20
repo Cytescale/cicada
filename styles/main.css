@@ -518,7 +518,7 @@ font-family: inter;
      left: 0;
      right: 0;
      bottom: 0;
-     background-color: #ccc;
+     background-color: var(--dark-sec-color);
      -webkit-transition: .4s;
      transition: .4s;
    }
@@ -530,17 +530,17 @@ font-family: inter;
      width: 18px;
      left: 4px;
      bottom: 4px;
-     background-color: white;
+     background-color: #fff;
      -webkit-transition: .4s;
      transition: .4s;
    }
    
    input:checked + .slider {
-     background-color: #0CCE6B;
+     background-color: var(--succ);
    }
    
    input:focus + .slider {
-     box-shadow: 0 0 1px #0CCE6B;
+     box-shadow: 0 0 1px var(--succ);
    }
    
    input:checked + .slider:before {

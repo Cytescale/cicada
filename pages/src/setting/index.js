@@ -291,7 +291,7 @@ const Profile = (props)=>{
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
                               <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>
-                                   Settings</div>
+                                   Profile Settings</div>
                               <div className='app-clust-sub-tit-main-cont clust-set-sub-tit-main-cont'>Change your profile details and prefrences.</div>
                               </div>
                               <div className='app-clust-link-overlay-main-cont'

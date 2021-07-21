@@ -2,12 +2,14 @@ import React,{useEffect, useRef, useState} from "react";
 import Head from "next/head";
 import { withRouter, NextRouter,useRouter } from 'next/router'
 import user from "../../../comp/utils/user";
-import { BurgerMenu,ProfilePopover,NavBarCont,BottomCont } from "../../../comp/elements";
-import { _BASE_CLIENT_URL } from "../../../comp/helpers/api.routes";
+import { BurgerMenu,ProfilePopover,NavBarCont,BottomCont,LandNavBarCont } from "../../../comp/elements";
+import URLS,{_BASE_CLIENT_URL} from "../../../comp/helpers/api.routes";
 import firebaseHelper,{getUid,checkToken} from "../../../comp/helpers/firebaseHelper";
 import backendHelper from "../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
+import copy from 'copy-to-clipboard';
+
 
 const User = new user();
 const FirebaseHelper = new firebaseHelper();
@@ -94,17 +96,8 @@ const LinkCard=(props)=>{
                           {d.name}
                          </span>  
                     </div>
-
-                    <button
-                    className='lnk-lnk-head-edit-butt'
-                    >
-                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M2.375 13.8225V16.2292C2.375 16.4508 2.54917 16.625 2.77083 16.625H5.1775C5.28042 16.625 5.38333 16.5854 5.45458 16.5062L14.0996 7.86916L11.1308 4.90041L2.49375 13.5375C2.41458 13.6167 2.375 13.7117 2.375 13.8225ZM16.3954 5.57333C16.7042 5.26458 16.7042 4.76583 16.3954 4.45708L14.5429 2.60458C14.2342 2.29583 13.7354 2.29583 13.4267 2.60458L11.9779 4.05333L14.9467 7.02208L16.3954 5.57333Z" fill="white"/>
-                         </svg>
-                    
-                    </button>
                     <div  className='lnk-lnk-head-right-butt-cont'>
-                    <label className="switch">
+                    {/* <label className="switch">
                          <input type="checkbox" 
                          disabled={activeLoading}
                          defaultChecked={active}
@@ -142,7 +135,7 @@ const LinkCard=(props)=>{
                     }}
                          />
                          <span className="slider round"></span>
-                    </label>
+                    </label> */}
                     </div>
           </div>
           {
@@ -328,14 +321,14 @@ const cluster = (props)=>{
                                         //this.setcreateLinkModalVisi(true);
                                    }}
                                    >
-                                        Create Link
+                                        Create
                                    </button>
                                    {/* <ProfilePopover 
                                     //setlgoutShow={this.setlgoutConfirmVisi} 
                                     /> */}
                               </div>
                     </div>
-                    <NavBarCont router={router}/>
+                    <LandNavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
                               <div className='app-clust-tit-main-cont'>
@@ -343,18 +336,48 @@ const cluster = (props)=>{
                                    {clusterActive?<div className='app-clust-indi-on'/>:<div className='app-clust-indi-off'/>}
                               </div>
                               <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want, or create a new one.</div>
-                              <div className='app-clust-time-tit-main-cont'>Last Updated: {lastUpdate?timeDifference(new Date().getTime(),lastUpdate):null}</div>
+                              {/* <div className='app-clust-time-tit-main-cont'>Last Updated: {lastUpdate?timeDifference(new Date().getTime(),lastUpdate):null}</div> */}
                               <div className='app-clust-act-lnk-head-main-cont'>
-                              <button className='app-land-crt-lnk-butt'
-                              
-                              > 
-                              <div  className='app-land-crt-lnk-butt-lab'>
-                                   Create Link </div>
-                              </button>
+                                   <button className='app-clust-act-crt-lnk-butt'
+                                        onClick={()=>{
+                                             copy(_BASE_CLIENT_URL+'c/'+User?.getUserData()?.uname);
+                                             toast.dark('Link Copied', {
+                                                       position: toast.POSITION.TOP_CENTER,
+                                                       autoClose: 2500,
+                                                       hideProgressBar: true,
+                                                       closeOnClick: true,
+                                                       pauseOnHover: true,
+                                                       draggable: true,
+                                                       progress: undefined,
+                                             });
+
+                                        }} 
+                                   > 
+                                         {_BASE_CLIENT_URL+'c/'+User?.getUserData()?.uname}
+                                   </button>
+                                   <a href='/src/cluster/settings'>
+                                        <div className='app-clust-act-set-butt'>
+                                             <svg className='app-clust-act-set-butt-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="L4rKfs~Qrm~k0Pk8MRsoza" x1="32.012" x2="15.881" y1="32.012" y2="15.881" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".242" stop-color="#f2f2f2"/><stop offset="1" stop-color="#ccc"/></linearGradient><circle cx="24" cy="24" r="11.5" fill="url(#L4rKfs~Qrm~k0Pk8MRsoza)"/><linearGradient id="L4rKfs~Qrm~k0Pk8MRsozb" x1="17.45" x2="28.94" y1="17.45" y2="28.94" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0d61a9"/><stop offset=".363" stop-color="#0e5fa4"/><stop offset=".78" stop-color="#135796"/><stop offset="1" stop-color="#16528c"/></linearGradient><circle cx="24" cy="24" r="7" fill="url(#L4rKfs~Qrm~k0Pk8MRsozb)"/><linearGradient id="L4rKfs~Qrm~k0Pk8MRsozc" x1="5.326" x2="38.082" y1="5.344" y2="38.099" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#889097"/><stop offset=".331" stop-color="#848c94"/><stop offset=".669" stop-color="#78828b"/><stop offset="1" stop-color="#64717c"/></linearGradient><path fill="url(#L4rKfs~Qrm~k0Pk8MRsozc)" d="M43.407,19.243c-2.389-0.029-4.702-1.274-5.983-3.493c-1.233-2.136-1.208-4.649-0.162-6.693 c-2.125-1.887-4.642-3.339-7.43-4.188C28.577,6.756,26.435,8,24,8s-4.577-1.244-5.831-3.131c-2.788,0.849-5.305,2.301-7.43,4.188 c1.046,2.044,1.071,4.557-0.162,6.693c-1.281,2.219-3.594,3.464-5.983,3.493C4.22,20.77,4,22.358,4,24 c0,1.284,0.133,2.535,0.364,3.752c2.469-0.051,4.891,1.208,6.213,3.498c1.368,2.37,1.187,5.204-0.22,7.345 c2.082,1.947,4.573,3.456,7.34,4.375C18.827,40.624,21.221,39,24,39s5.173,1.624,6.303,3.971c2.767-0.919,5.258-2.428,7.34-4.375 c-1.407-2.141-1.588-4.975-0.22-7.345c1.322-2.29,3.743-3.549,6.213-3.498C43.867,26.535,44,25.284,44,24 C44,22.358,43.78,20.77,43.407,19.243z M24,34.5c-5.799,0-10.5-4.701-10.5-10.5c0-5.799,4.701-10.5,10.5-10.5S34.5,18.201,34.5,24 C34.5,29.799,29.799,34.5,24,34.5z"/></svg>
+                                        </div>
+                                   </a>
                               </div>
                             
                               </div>
                               <div className='app-clust-link-holder-main-cont'>
+                                   <div className='app-clust-time-tit-main-cont'>Last Updated: {lastUpdate?timeDifference(new Date().getTime(),lastUpdate):null}</div> 
+                              </div>
+                              <div className='app-clust-link-holder-main-cont'>
+                                   <div className='app-clust-link-holder-main-cont-lab'>
+                                   <div className='app-land-lab-main-cont'>
+                                        <svg 
+                                        className='app-land-lab-main-cont-ico'
+                                        width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                        <path d="M20.5 16.5C19.3 15.3 16 15.0001 15 16.0001L10 21.5C8.5 24 10.4665 27.1611 12.5 27.5C15.5 28 15.5 27 17.5 25.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M16.5 20C17.8057 21.2753 20 22.4999 22 20.9999L24.7049 18.4999L27.4252 15.5149C29.0573 12.8579 26.9176 9.49832 24.7049 9.13815C21.4406 8.60679 21.4406 9.66954 19.2643 11.2637" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                        </svg>
+                                        Links</div>
+                                   </div>
                                    {!loading?<RenderClusterLink
                                    setlastUpdate={setlastUpdate}
                                    setclusterActive={setclusterActive} 

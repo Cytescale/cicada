@@ -40,7 +40,7 @@ async function loadUserData(setLoading){
                               });
                          }
                }
-                    setLoading(false);
+               setLoading(false);
                }).catch(e=>{
                     toast.error(e, {
                          position: toast.POSITION.TOP_CENTER,
@@ -68,9 +68,67 @@ const Profile = (props)=>{
      const [dname,setdname] = useState(null);
      const [bio,setbio] = useState(null);
      
+     const [cname,setcname] = useState(null);
+
+
      const [gen_upt_err_bool,setgen_upt_err_bool] = useState(false);
      const [gen_upt_err_str,setgen_upt_err_str] = useState(null);
 
+     const [wor_upt_err_bool,setwor_upt_err_bool] = useState(false);
+     const [wor_upt_err_str,setwor_upt_err_str] = useState(null);
+
+
+
+     const sendResetLink = ()=>{
+          FirebaseHelper.sendPassResetEmail(User.getUserData().email).then((r)=>{
+               if(!r.errBool){
+                    toast.success('Password reset link is sent to email', {
+                         position: toast.POSITION.TOP_CENTER,
+                         autoClose: 5000,
+                         hideProgressBar: true,
+                         closeOnClick: true,
+                         pauseOnHover: true,
+                         draggable: true,
+                         progress: undefined,
+                    });     
+               }
+               else{
+                    throw new Error(r.errMess);
+               }
+          }).
+          catch(e=>{
+               toast.error(e, {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
+          })
+     }
+     const initLgout=()=>{
+          BackendHelper._initLogout().then(r=>{
+               console.log(r);
+               if(r){
+                    console.log('Logout successfully');
+                    router.replace('/');
+               }
+               
+          }).catch(e=>{
+               console.log(e);
+               toast.error("Logout failed", {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });               
+          })
+     }
      const update_general_det  = async ()=>{
           console.log('general_update_init');
           if(!dname || !uname || !OldUserData){return;}
@@ -96,20 +154,6 @@ const Profile = (props)=>{
                     }else{
                          throw new Error('Updation failed :(')
                     }
-                    if(r.responseData.unameChangeBool){
-                         toast.success('Username Updated Successfully', {
-                              position: toast.POSITION.TOP_CENTER,
-                              autoClose: 5000,
-                              hideProgressBar: true,
-                              closeOnClick: true,
-                              pauseOnHover: true,
-                              draggable: true,
-                              progress: undefined,
-                         });
-                    }
-                    else{
-                         throw new Error('Username updation failed :(')
-                    }
                     await loadUserData(setLoading);
                     console.log(OldUserData);
                     setgen_upt_err_bool(false);
@@ -129,7 +173,46 @@ const Profile = (props)=>{
 
           console.log(prod_data);
      }
+     const update_work_det  = async ()=>{
+          console.log('work_update_init');
+          if(!OldUserData){return;}
+          let prod_data ={};
+          cname != OldUserData.cname ?prod_data['cname']=cname:null;
+          BackendHelper._updateUserData(User.getUserUid(),prod_data).then(async (r)=>{
+               if(!r.errBool){
+                    console.log(r.responseData);
+                    if(r.responseData.editSuccessBool){
+                         toast.success('Profile Updated Successfully', {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                    }else{
+                         throw new Error('Updation failed :(')
+                    }
+                    await loadUserData(setLoading);
+                    console.log(OldUserData);
+                    setwor_upt_err_bool(false);
+               }
+               else{
+                    setwor_upt_err_bool(true);
+                    setwor_upt_err_str(r.errMess);     
+               }
+               
 
+          }).catch(async (e)=>{
+               await loadUserData(setLoading);
+               console.log(OldUserData);
+               setgen_upt_err_bool(true);
+               setgen_upt_err_str(e.message);
+          })
+
+          console.log(prod_data);
+     }
 
      useEffect(async ()=>{
                await loadUserData(setLoading);
@@ -137,7 +220,7 @@ const Profile = (props)=>{
                     setuname(User.getUserData().uname);
                     setdname(User.getUserData().dname);
                     setbio(User.getUserData().bio);
-     
+                    setcname(User.getUserData().cname);
                }
      },[]);
 
@@ -258,13 +341,14 @@ const Profile = (props)=>{
                                              <div className='app-prof-set-holder-main-cont'>
                                                        <div className='app-prof-sec-main-cont'>
                                                             <div className='app-prof-fld-lab-cont'>Email Address</div>    
-                                                            <input className='app-prof-fld-cont' value={User.getUserData().email}></input>
+                                                            <input className='app-prof-fld-cont' disabled  value={User.getUserData().email}></input>
                                                        </div>
                                                        <div className='app-prof-sec-main-cont'>
                                                             <div className='app-prof-fld-lab-cont'>Company Name</div>    
-                                                            <input className='app-prof-fld-cont' value={User.getUserData().cname}></input>
+                                                            <input className='app-prof-fld-cont' onChange={(event)=>{setcname(event.target.value);}} value={cname}></input>
                                                        </div>
-                                                       <button className='app-prof-upt-butt'>Save</button>
+                                                       {wor_upt_err_bool?<div className='app-set-err-main-cont'>{wor_upt_err_str}</div>:null}
+                                                       <button onClick={update_work_det} className='app-prof-upt-butt'>Save</button>
                                                   </div>
                                              </Accordion.Collapse>
                                              </Accordion>               
@@ -285,8 +369,8 @@ const Profile = (props)=>{
                                              </Accordion.Toggle>
                                              <Accordion.Collapse eventKey="0">
                                              <div className='app-prof-set-holder-main-cont'>
-                                                       <button className='app-prof-chng-pass-butt'>Change Password</button>
-                                                       <button className='app-prof-chng-pass-butt'>Logout</button>
+                                                       <button className='app-prof-chng-pass-butt' onClick={sendResetLink}>Change Password</button>
+                                                       <button className='app-prof-chng-pass-butt' onClick={initLgout} >Logout</button>
                                                   </div>
                                              </Accordion.Collapse>
                                              </Accordion>                 

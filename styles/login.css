@@ -1,39 +1,39 @@
 .login-body-cont{
-     background-color: #fff;
-     color: #000;
+     background-color: var(--backColor);
+     color: var(--textColor);
 }
 
 .login-head-body-cont{
-     color: #000;
+     color:var(--textColor);
      padding: 10px;
-     background-color: #fff;
-     border-bottom-color: #e0e0e0;
+     background-color: var(--backColor);
+     border-bottom-color: var(--borColor);
 }
 
 .app-moto-cont-tit-1{
-     color: #bdbdbd;
+     color: var(--subtextColor);
 }
 .app-moto-cont-tit-2{
-     color: #252525;
+     color: var(--textColor);
 }
 .app-login-inpt-main-cont-lab{
-     color: #757575;
+     color: var(--subtextColor);
 }
 .login-form-fld{
      box-shadow: none;
-     background-color: #fff;
+     background-color: var(--backColor);
      font-weight: 700;
      font-family: inter;
      padding-left: 0px;
-     border-bottom: 1px solid #bdbdbd;
-     color: #000;
+     border-bottom: 1px solid var(--borColor);
+     color: var(--textColor);
      height: 32px;
      border-radius: 0px;
 }
 .app-login-sub-butt{
      background-color: #0070F3;
      box-shadow: none;
-     box-shadow: 0px 4px 15px #0070F3;
+     box-shadow: 0px 4px 8px #0070F3;
      color: #fff;
      font-weight: 700;
      font-family: inter;
@@ -48,13 +48,13 @@
    
 
 .app-or-cont{
-color: #252525;
+color: var(--subtextColor);
 }
 .app-login-cont-googl-butt{
      box-shadow: none;
-     background-color: #fff;
-     color: #000;
-     box-shadow: 0px 4px 15px #e0e0e0;
+     background-color: var(--buttonBackColor);
+     color: var(--textColor);
+     box-shadow: 0px 4px 15px var(--borColor);
 }
 .app-login-sub-act-cont{
      color: #0070F3;

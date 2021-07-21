@@ -106,6 +106,14 @@ font-weight: 600;
      border: 1px solid var(--danger);
 
 }
+
+
+.app-prof-chng-pass-butt:active{
+     background-color: var(--danger);
+     color: var(--textColor);
+     
+}
+
 .app-sett-acrd-main-cont{
      width: 100%;
      border-style: none;

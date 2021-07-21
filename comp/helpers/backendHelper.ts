@@ -301,6 +301,19 @@ export default class BackendHelper{
           })
      }
     
+
+     _initLogout(){
+          return new Promise(async (resolve, reject) => {
+               try{
+                    await unseUserToken();
+                    await unsetUid();
+                    resolve(true);
+               }
+               catch(e){
+                    reject(e);
+               }
+         })
+     }
     
     
     

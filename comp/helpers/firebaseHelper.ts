@@ -205,6 +205,30 @@ export default class firebaseHelper implements firebaseHelperInter{
           return ress;
         
      }
+
+
+     
+     async sendPassResetEmail(eml:string):Promise<nexusResponse|null>{
+          let ress:nexusResponse|null = null;
+          await this.getFirebase()!.auth().sendPasswordResetEmail(eml).then(()=>{
+               ress = {
+                    errBool:false,
+                    errMess:'null',
+                    responseData:{
+                         linkSent:true
+                    }
+               }
+          }).catch(e=>[
+               ress = {
+                    errBool:true,
+                    errMess:e.code,
+                    responseData:null
+               }
+          ])
+          return ress;
+     }
+
+
      intiGoogleAuth(): serverReponse | null {
           throw new Error("Method not implemented.");
      }

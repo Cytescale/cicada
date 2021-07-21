@@ -603,28 +603,62 @@ background-color: rgba(0, 0, 0, 0)
      display: flex;
      align-items: center;
      justify-content: center;
-     background-color:var(--cardButtBackColor);
+     /* background-color:var(--cardButtBackColor); */
      border-radius: 100px;
      overflow: visible;
      outline: none;
      border-style: none;
      margin-left: 7px;
 }
+.lnk-lnk-gen-right-butt:active{
+     background-color: var(--buttonBackColor-selec);
+     color: var(--subtextColor);
+}
 
 
 .lnk-lnk-gen-right-butt-ico{
-     width: 20px;
-     height: 20px;
+     width: 22px;
+     height: 22px;
      object-fit: cover;
      color: inherit;
      
 }
 
-.lnk-lnk-gen-right-butt:active{
-     background-color: #e0e0e0;
-     color: var(--textColor);
+.app-link-more-butt-more-cont{
+     width: 100%;
+     height: auto;
+     margin-bottom: 12px;
 }
 
+.app-link-more-butt{
+     width: 100%;
+     height: 52px;
+     background-color: var(--buttonBackColor);
+     color: var(--textColor);
+     font-family: inter;
+     font-size: 14px;
+     font-weight: 600;
+     position: relative;
+     outline: none;
+     border-style: none;
+     border-radius: 7px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.app-link-more-butt-ico{
+     width: 24px;
+     height: 24px;
+     position: absolute;
+     left: 0;
+     margin-left: 22px;
+     color:inherit;
+}
+
+.app-link-more-butt:active{
+     background-color: var(--buttonBackColor-selec);
+}
 
 
 .lnk-lnk-bottom-cont{
@@ -1559,7 +1593,7 @@ color: inherit;
      display: flex;
      justify-content: center;
      align-items: center;
-     background-color: var(--buttonBackColor);
+     background-color: rgba(0, 0, 0, 0);
      outline: none;
      border: none;
      border-radius: 100px;
@@ -1569,6 +1603,7 @@ color: inherit;
 .app-land-pro-edit-butt-ico{
      width: 100%;
      height: 100%;
+     color: var(--textColor);
 }
 
 .app-body-topper-bio-cont{

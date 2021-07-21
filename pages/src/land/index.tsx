@@ -601,7 +601,7 @@ const LinkCard:React.FC<any>=(props:any)=>{
                     <svg className='lnk-lnk-gen-link-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                </div>
                <div className='lnk-lnk-gen-right-cont'>      
-                         <div className='lnk-lnk-gen-right-butt'  onClick={()=>{
+                         {/* <div className='lnk-lnk-gen-right-butt'  onClick={()=>{
                          copy(`${URLS.visit}/${props.d.unique_identifier}`);
                          toast.dark('Link Copied', {
                                    position: toast.POSITION.TOP_CENTER,
@@ -617,14 +617,26 @@ const LinkCard:React.FC<any>=(props:any)=>{
                          <svg width="21" height="20"  className='lnk-lnk-gen-right-butt-ico' viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <path  d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
                          <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
-                         </svg>
+                         </svg>                         
+
                          </div>
                          <div className='lnk-lnk-gen-right-butt' onClick={()=>{
                               props.seteditLinkModalVisi(true);
                               props.seteditLinkUniId(props.d.unique_identifier);
                          }}>
                               <svg className='lnk-lnk-gen-right-butt-ico' enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,17.46l0,3.04C3,20.78,3.22,21,3.5,21h3.04c0.13,0,0.26-0.05,0.35-0.15L17.81,9.94l-3.75-3.75L3.15,17.1 C3.05,17.2,3,17.32,3,17.46z"/></g><g><path d="M20.71,5.63l-2.34-2.34c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83C21.1,6.65,21.1,6.02,20.71,5.63z"/></g></g></g></svg>
-                    {/* <svg className='lnk-lnk-gen-right-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0070F3"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg> */}
+                    </div> */}
+                    <div className='lnk-lnk-gen-right-butt' onClick={()=>{
+                              props.setlinkMoreModalVisi(true);
+                              props.setselectLinkMoreUniId(props.d.unique_identifier);
+                         }}>
+                              <svg  className='lnk-lnk-gen-right-butt-ico' width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                              <rect x="8" y="16" width="5" height="5" rx="2.5" fill="currentColor"/>
+                              <rect x="16" y="16" width="5" height="5" rx="2.5" fill="currentColor"/>
+                              <rect x="24" y="16" width="5" height="5" rx="2.5" fill="currentColor"/>
+                              </svg>
+                    
                     </div>
                </div>          
           </div>
@@ -672,6 +684,8 @@ class Land extends React.Component<LandProps,any>{
                lgoutConfirmVisi:false,
                feedbackModalVisi:false,
                editLinkModalVisi:false,
+               linkMoreModalVisi:false,
+               selectLinkMoreUniId:null,
                editLinkUniId:null,
                createLinkModalVisi:false,
                isLoading:false,
@@ -688,6 +702,8 @@ class Land extends React.Component<LandProps,any>{
                detailed:false,
                searchQuery:null,
                showAllLinks:false,
+               
+               
           }
 
           this.initDataLoad = this.initDataLoad.bind(this);
@@ -717,8 +733,11 @@ class Land extends React.Component<LandProps,any>{
           this.setisdeeplink = this.setisdeeplink.bind(this);
           this.setsearchQuery = this.setsearchQuery.bind(this);
           this.setshowAllLinks = this.setshowAllLinks.bind(this);
+          this.setlinkMoreModalVisi  = this.setlinkMoreModalVisi.bind(this);
+          this.setselectLinkMoreUniId = this.setselectLinkMoreUniId.bind(this);
      }
-
+     setselectLinkMoreUniId(s:string){this.setState({selectLinkMoreUniId:s})}
+     setlinkMoreModalVisi(b:boolean){this.setState({linkMoreModalVisi:b})}
      setshowAllLinks(b:boolean){this.setState({showAllLinks:b})}
      setsearchQuery(s:string){this.setState({searchQuery:s})}
      setisdeeplink(b:boolean){this.setState({isdeeplink:b})}
@@ -1067,6 +1086,72 @@ class Land extends React.Component<LandProps,any>{
                }
           }
      }
+     renderLinkMoreModal(){
+          return(
+               <BottomSheet 
+                    open={this.state.linkMoreModalVisi}
+                    snapPoints={({ minHeight, maxHeight }) => [minHeight,700]}
+                    onDismiss={()=>{
+                         this.setlinkMoreModalVisi(false);
+                    }}
+                    expandOnContentDrag={true}
+                    footer={
+                         <button onClick={()=>{
+                              this.setlinkMoreModalVisi(false);
+                         }} className="app-bottom-sheet-footer-butt">
+                           Cancel
+                         </button>
+                         
+                    }
+               >
+                <div className='app-create-link-modal-main-cont'>
+                     
+                     <div className='app-link-more-butt-more-cont'>
+                              <button className='app-link-more-butt'
+                              onClick={()=>{
+                                   this.setlinkMoreModalVisi(false);
+                                   copy(`${URLS.visit}/${this.state.selectLinkMoreUniId}`);
+                                   toast.dark('Link Copied', {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 2500,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                   });
+          
+                              }} 
+                              >                                   
+                                   <svg className='app-link-more-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                   <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
+                                   <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
+                                   <rect x="10" y="9" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                   </svg>
+                                   Copy link
+                              </button>
+                     </div>
+                     <div className='app-link-more-butt-more-cont'>
+                              <button className='app-link-more-butt'
+                               onClick={()=>{
+                                   this.setlinkMoreModalVisi(false);
+                                   this.seteditLinkModalVisi(true);
+                                   this.seteditLinkUniId(this.state.selectLinkMoreUniId);
+                              }}
+                              >                                                                    
+                                   <svg  className='app-link-more-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                   <path d="M10 23.4625V26.5025C10 26.7825 10.22 27.0025 10.5 27.0025H13.54C13.67 27.0025 13.8 26.9525 13.89 26.8525L24.81 15.9425L21.06 12.1925L10.15 23.1025C10.05 23.2025 10 23.3225 10 23.4625ZM27.71 13.0425C28.1 12.6525 28.1 12.0225 27.71 11.6325L25.37 9.2925C24.98 8.9025 24.35 8.9025 23.96 9.2925L22.13 11.1225L25.88 14.8725L27.71 13.0425V13.0425Z" fill="currentColor"/>
+                                   </svg>
+                                   Edit link
+                              </button>
+                     </div>
+
+               </div>
+               </BottomSheet>
+          )
+     }
      async validateOnChange(s:string){
           if(s){
                this.setvalidityLoading(true);         
@@ -1228,7 +1313,11 @@ class Land extends React.Component<LandProps,any>{
                          d={d} 
                          openInNewTab={this.openInNewTab} 
                          seteditLinkModalVisi={this.seteditLinkModalVisi} 
-                         seteditLinkUniId={this.seteditLinkUniId}/>)
+                         setselectLinkMoreUniId={this.setselectLinkMoreUniId}
+                         setlinkMoreModalVisi={this.setlinkMoreModalVisi}
+                         seteditLinkUniId={this.seteditLinkUniId}/>
+                         
+                         )
                }
           }
           return res;
@@ -1320,8 +1409,12 @@ class Land extends React.Component<LandProps,any>{
                                                        }
                                                        <div className='app-land-pro-edit-main-cont'>
                                                                  <a href="/src/setting">
-                                                                 <button className='app-land-pro-edit-butt' disabled>
-                                                                 <svg   className='app-land-pro-edit-butt-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#c94f60" d="M42.583,9.067l-3.651-3.65c-0.555-0.556-1.459-0.556-2.015,0l-1.718,1.72l5.664,5.664l1.72-1.718	C43.139,10.526,43.139,9.625,42.583,9.067"/><path fill="#f0f0f0" d="M6.905,35.43L5,43l7.571-1.906l0.794-6.567L6.905,35.43z"/><path fill="#edbe00" d="M36.032,17.632l-23.46,23.461l-5.665-5.665l23.46-23.461L36.032,17.632z"/><linearGradient id="YoPixpDbHWOyk~b005eF1a" x1="35.612" x2="35.612" y1="7.494" y2="17.921" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#dedede"/><stop offset="1" stop-color="#d6d6d6"/></linearGradient><path fill="url(#YoPixpDbHWOyk~b005eF1a)" d="M30.363,11.968l4.832-4.834l5.668,5.664l-4.832,4.834L30.363,11.968z"/><path fill="#787878" d="M5.965,39.172L5,43l3.827-0.965L5.965,39.172z"/></svg>
+                                                                 <button className='app-land-pro-edit-butt ' disabled>
+                                                                 <svg className='app-land-pro-edit-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                      <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                                                      <path d="M10 23.4625V26.5025C10 26.7825 10.22 27.0025 10.5 27.0025H13.54C13.67 27.0025 13.8 26.9525 13.89 26.8525L24.81 15.9425L21.06 12.1925L10.15 23.1025C10.05 23.2025 10 23.3225 10 23.4625ZM27.71 13.0425C28.1 12.6525 28.1 12.0225 27.71 11.6325L25.37 9.2925C24.98 8.9025 24.35 8.9025 23.96 9.2925L22.13 11.1225L25.88 14.8725L27.71 13.0425V13.0425Z" fill="currentColor"/>
+                                                                      </svg>
+                                                                 {/* <svg   className='app-land-pro-edit-butt-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#c94f60" d="M42.583,9.067l-3.651-3.65c-0.555-0.556-1.459-0.556-2.015,0l-1.718,1.72l5.664,5.664l1.72-1.718	C43.139,10.526,43.139,9.625,42.583,9.067"/><path fill="#f0f0f0" d="M6.905,35.43L5,43l7.571-1.906l0.794-6.567L6.905,35.43z"/><path fill="#edbe00" d="M36.032,17.632l-23.46,23.461l-5.665-5.665l23.46-23.461L36.032,17.632z"/><linearGradient id="YoPixpDbHWOyk~b005eF1a" x1="35.612" x2="35.612" y1="7.494" y2="17.921" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#dedede"/><stop offset="1" stop-color="#d6d6d6"/></linearGradient><path fill="url(#YoPixpDbHWOyk~b005eF1a)" d="M30.363,11.968l4.832-4.834l5.668,5.664l-4.832,4.834L30.363,11.968z"/><path fill="#787878" d="M5.965,39.172L5,43l3.827-0.965L5.965,39.172z"/></svg> */}
                                                                  </button>
                                                                  </a>
                                                        </div>
@@ -1401,10 +1494,12 @@ class Land extends React.Component<LandProps,any>{
                                                   });
                                              }}
                                         >
-                                              <svg width="21" height="20"  className='lnk-lnk-gen-right-butt-ico' viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
-                                             <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                                             </svg>
+                                             <svg   className='lnk-lnk-gen-right-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                   <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
+                                   <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
+                                   <rect x="10" y="9" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                   </svg>
                                         </button>
                                         </div>
                                    </div>
@@ -1493,6 +1588,7 @@ class Land extends React.Component<LandProps,any>{
                          </div>
                         <ProfileLogoutModal setShow={this.setlgoutConfirmVisi} show={this.state.lgoutConfirmVisi} router={this.props.router}/>
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
+                        {this.renderLinkMoreModal()}
                         {this.renderLinkCreateModal()}
                         {this.renderFeedbackModal()}
                          <ToastContainer />

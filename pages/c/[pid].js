@@ -174,8 +174,8 @@ class ClusterComp extends React.Component{
                              this.state.linkConfigData.profile_card_bool?
                               <div className='cluster-profile-main-cont'>
                                    <div className='cluster-profile-pro-cont'>
-                                        <div className='cluster-profile-pro'>
-          
+                                   <div className='app-land-head-pro-pic-main-cont'>
+                                                       <img src={this.state.userData.pro_photo_url?this.state.userData.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
                                         </div>
                                    </div>
                                    <div className='cluster-profile-pro-name'>

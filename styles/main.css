@@ -589,7 +589,7 @@ font-family: inter;
      padding: 12px;
      padding-left: 22px;
      font-family: inter;
-     font-weight: 700;
+     font-weight: 600;
      font-size: 17px;
 }
 
@@ -601,7 +601,8 @@ font-family: inter;
 }
 .menu-item-selec{
      border-radius: 6px;
-     background-color: #51535A;
+     /* background-color: #888a90; */
+     background: linear-gradient(157.14deg, #4C9EFE 7.04%, #015ECB 91.55%);
      color: #fff;
 }
 .menu-item-bottom-menu{

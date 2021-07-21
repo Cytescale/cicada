@@ -75,15 +75,14 @@ const Profile = (props)=>{
      
      const [cname,setcname] = useState(null);
 
+     const [gen_upt_loading,setgen_upt_loading] = useState(false);
 
      const [gen_upt_err_bool,setgen_upt_err_bool] = useState(false);
      const [gen_upt_err_str,setgen_upt_err_str] = useState(null);
 
      const [wor_upt_err_bool,setwor_upt_err_bool] = useState(false);
      const [wor_upt_err_str,setwor_upt_err_str] = useState(null);
-
-
-
+     
      const sendResetLink = ()=>{
           FirebaseHelper.sendPassResetEmail(User.getUserData().email).then((r)=>{
                if(!r.errBool){
@@ -137,21 +136,12 @@ const Profile = (props)=>{
      const update_general_det  = async ()=>{
           console.log('general_update_init');
           
-          // fileId: "60f8439ca9ef1611983f3990"
-          // filePath: "/titan-user-img_MjcMPCi1G"
-          // fileType: "image"
-          // height: 1024
-          // name: "titan-user-img_MjcMPCi1G"
-          // size: 42155
-          // thumbnailUrl: "https://ik.imagekit.io/cyte/tr:n-media_library_thumbnail/titan-user-img_MjcMPCi1G"
-          // url: "https://ik.imagekit.io/cyte/titan-user-img_MjcMPCi1G"
-          // width: 1024
           let pic_res = null;
+          
           if(picChange && proPic.raw){
                pic_res = await  BackendHelper._image_upload(proPic.raw).catch((e)=>{
                     console.log(e);
-               })
-          }
+               })}
           console.log(pic_res); 
           if(!dname || !uname || !OldUserData){return;}
           let prod_data ={};
@@ -163,8 +153,8 @@ const Profile = (props)=>{
                prod_data['pro_photo_thumb_url']=pic_res.thumbnailUrl;
                prod_data['pro_photo_file_id']=pic_res.fileId;
           }
-          
-          BackendHelper._updateUserData(User.getUserUid(),prod_data).then(async (r)=>{
+
+          await BackendHelper._updateUserData(User.getUserUid(),prod_data).then(async (r)=>{
                if(!r.errBool){
                     console.log(r.responseData);
                     if(r.responseData.editSuccessBool){
@@ -188,8 +178,6 @@ const Profile = (props)=>{
                     setgen_upt_err_bool(true);
                     setgen_upt_err_str(r.errMess);     
                }
-               
-
           }).catch(async (e)=>{
                await loadUserData(setLoading);
                console.log(OldUserData);
@@ -197,7 +185,6 @@ const Profile = (props)=>{
                setgen_upt_err_str(e.message);
           })
 
-          console.log(prod_data);
      }
      const update_work_det  = async ()=>{
           console.log('work_update_init');
@@ -370,9 +357,17 @@ const Profile = (props)=>{
 
                                              {gen_upt_err_bool?<div className='app-set-err-main-cont'>{gen_upt_err_str}</div>:null}
 
-                                             <button className='app-prof-upt-butt'
-                                             onClick={update_general_det}
-                                             >Update Profile</button>
+                                             <button 
+                                             className='app-prof-upt-butt'
+                                             disabled={gen_upt_loading}     
+                                             onClick={()=>{
+                                                       setgen_upt_loading(true);
+                                                       update_general_det().then(()=>{
+                                                            setgen_upt_loading(false);
+                                                       });
+                                                  }    
+                                             }
+                                             >{gen_upt_loading?'Loading':'Update Profile'}</button>
                                         </div>
                                              </Accordion.Collapse>
                                              </Accordion>

@@ -19,7 +19,6 @@ const BackendHelper = new backendHelper();
 
 
 async function loadUserData(setLoading){
-     if(!User.getUserData()){
           if(backendHelper){
                await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
                     if(res){
@@ -57,11 +56,6 @@ async function loadUserData(setLoading){
                return true;
           }
           return false;
-     }
-     else{
-          setLoading(false);
-          return true;
-     }
 }
 
 
@@ -81,12 +75,12 @@ const Profile = (props)=>{
           console.log('general_update_init');
           if(!dname || !uname || !OldUserData){return;}
           let prod_data ={};
-          dname!=OldUserData.dname && dname ?prod_data['dname']=dname:null;
-          uname!=OldUserData.uname && uname ?prod_data['uname']=uname:null;
+          dname != OldUserData.dname && dname ?prod_data['dname']=dname:null;
+          uname != OldUserData.uname && uname ?prod_data['uname']=uname:null;
           bio!=OldUserData.bio? prod_data['bio']=bio:null;
           
           
-          BackendHelper._updateUserData(User.getUserUid(),prod_data).then((r)=>{
+          BackendHelper._updateUserData(User.getUserUid(),prod_data).then(async (r)=>{
                if(!r.errBool){
                     console.log(r.responseData);
                     if(r.responseData.editSuccessBool){
@@ -116,14 +110,19 @@ const Profile = (props)=>{
                     else{
                          throw new Error('Username updation failed :(')
                     }
+                    await loadUserData(setLoading);
+                    console.log(OldUserData);
                     setgen_upt_err_bool(false);
                }
                else{
                     setgen_upt_err_bool(true);
                     setgen_upt_err_str(r.errMess);     
                }
+               
 
-          }).catch((e)=>{
+          }).catch(async (e)=>{
+               await loadUserData(setLoading);
+               console.log(OldUserData);
                setgen_upt_err_bool(true);
                setgen_upt_err_str(e.message);
           })

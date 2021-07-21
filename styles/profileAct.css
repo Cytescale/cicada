@@ -82,6 +82,9 @@ font-weight: 600;
      outline: none;
      border-style: none;
 }
+.app-prof-upt-butt:active{
+     background-color: #0064D9;
+}
 
 .app-prof-main-lab-cont{
      background-color: #f7f7f7;

@@ -10,8 +10,10 @@ import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
 import  {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
 
-
 const User = new user();
+
+var OldUserData = null;
+
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 
@@ -22,6 +24,7 @@ async function loadUserData(setLoading){
                await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
                     if(res){
                          if(!res.errBool){
+                               OldUserData = res.responseData;
                                User.setUserData(res.responseData);
                                User.setUserUid(res.responseData.uid);
                                console.log(res.responseData);
@@ -67,12 +70,80 @@ const Profile = (props)=>{
      const [loading,setLoading] = useState(true);
      const [overlayVisi,setoverlayVisi] =  useState(false);
 
+     const [uname,setuname] = useState(null);
+     const [dname,setdname] = useState(null);
+     const [bio,setbio] = useState(null);
+     
+     const [gen_upt_err_bool,setgen_upt_err_bool] = useState(false);
+     const [gen_upt_err_str,setgen_upt_err_str] = useState(null);
 
+     const update_general_det  = async ()=>{
+          console.log('general_update_init');
+          if(!dname || !uname || !OldUserData){return;}
+          let prod_data ={};
+          dname!=OldUserData.dname && dname ?prod_data['dname']=dname:null;
+          uname!=OldUserData.uname && uname ?prod_data['uname']=uname:null;
+          bio!=OldUserData.bio? prod_data['bio']=bio:null;
+          
+          
+          BackendHelper._updateUserData(User.getUserUid(),prod_data).then((r)=>{
+               if(!r.errBool){
+                    console.log(r.responseData);
+                    if(r.responseData.editSuccessBool){
+                         toast.success('Profile Updated Successfully', {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                    }else{
+                         throw new Error('Updation failed :(')
+                    }
+                    if(r.responseData.unameChangeBool){
+                         toast.success('Username Updated Successfully', {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                    }
+                    else{
+                         throw new Error('Username updation failed :(')
+                    }
+                    setgen_upt_err_bool(false);
+               }
+               else{
+                    setgen_upt_err_bool(true);
+                    setgen_upt_err_str(r.errMess);     
+               }
+
+          }).catch((e)=>{
+               setgen_upt_err_bool(true);
+               setgen_upt_err_str(e.message);
+          })
+
+          console.log(prod_data);
+     }
 
 
      useEffect(async ()=>{
                await loadUserData(setLoading);
+               if(User.getUserData()){
+                    setuname(User.getUserData().uname);
+                    setdname(User.getUserData().dname);
+                    setbio(User.getUserData().bio);
+     
+               }
      },[]);
+
+
+
      if(!loading && User.getUserData()){
      return(
           <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
@@ -151,18 +222,22 @@ const Profile = (props)=>{
 
                                              <div className='app-prof-sec-main-cont'>
                                                   <div className='app-prof-fld-lab-cont'>Username</div>    
-                                                  <input className='app-prof-fld-cont' value={User.getUserData().uname}></input>
+                                                  <input className='app-prof-fld-cont' value={uname} onChange={(event)=>{setuname(event.target.value)}} ></input>
                                              </div>
                                              <div className='app-prof-sec-main-cont'>
                                                   <div className='app-prof-fld-lab-cont'>Display Name</div>    
-                                                  <input className='app-prof-fld-cont' value={User.getUserData().dname}></input>
+                                                  <input className='app-prof-fld-cont' value={dname} onChange={(event)=>{setdname(event.target.value);}}></input>
                                              </div>
                                              <div className='app-prof-sec-main-cont'>
                                                   <div className='app-prof-fld-lab-cont'>Bio</div>    
-                                                  <textarea className='app-prof-fld-textarea-cont' value={User.getUserData().bio}></textarea>
+                                                  <textarea className='app-prof-fld-textarea-cont' value={bio} onChange={(event)=>{setbio(event.target.value);}}></textarea>
                                              </div>
 
-                                             <button className='app-prof-upt-butt'>Update Profile</button>
+                                             {gen_upt_err_bool?<div className='app-set-err-main-cont'>{gen_upt_err_str}</div>:null}
+
+                                             <button className='app-prof-upt-butt'
+                                             onClick={update_general_det}
+                                             >Update Profile</button>
                                         </div>
                                              </Accordion.Collapse>
                                              </Accordion>
@@ -215,10 +290,7 @@ const Profile = (props)=>{
                                                        <button className='app-prof-chng-pass-butt'>Logout</button>
                                                   </div>
                                              </Accordion.Collapse>
-                                             </Accordion>
-                                             
-                              
-                              
+                                             </Accordion>                 
                                              <Accordion className='app-sett-acrd-main-cont'>
                                              <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
                                                   <svg 
@@ -237,8 +309,6 @@ const Profile = (props)=>{
                                                   </div>
                                              </Accordion.Collapse>
                                              </Accordion>
-                                             
-
                                              <Accordion className='app-sett-acrd-main-cont'>
                                              <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
                                                   <svg 

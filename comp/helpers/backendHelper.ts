@@ -123,6 +123,29 @@ export default class BackendHelper{
           })
      }
 
+
+     async _updateUserData(uid:string,up_data:any):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid,"update_data":up_data});             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.updateUserInfo,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+
      _updateLinkData(uid:string,linkId:string,updateData:any):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid, "linkid":linkId,"update_data":updateData});             
           return new Promise((resolve, reject) => {
@@ -189,18 +212,6 @@ export default class BackendHelper{
                     });
           })
      }
-     async _updateUserInfo(data:userData){
-          let respn =  null;
-           await axios.post(URLS.updateUserInfo,{uid:this.UID,data:data,
-               headers: {"Access-Control-Allow-Origin": "*"}})
-              .then(res=>{
-                respn = res.data;
-              })
-              .catch(err=>{
-                   console.log(err);
-              });
-           return respn;
-      }
       async _getLinkDatabyId(uid:string,id:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"id":id});             
           return new Promise((resolve, reject) => {

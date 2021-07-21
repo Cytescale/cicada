@@ -39,7 +39,7 @@ const URLS:URLinter = {
      getLinkData:_BASE_API_URL+'getLinksData',
      makeLinkData:_BASE_API_URL+'makeLinkData',
      getUserInfo:_BASE_API_URL+'getUserDatabyUid',
-     imagekitAuth:_BASE_API_URL+"imageKitAuth",
+     imagekitAuth:_BASE_API_URL+"getimageKitAuth",
      updateUserInfo:_BASE_API_URL+"updateUserData",
 }
 export default URLS;

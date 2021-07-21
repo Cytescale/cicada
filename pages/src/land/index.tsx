@@ -1287,9 +1287,14 @@ class Land extends React.Component<LandProps,any>{
                               
                               <div className='app-land-link-cont-holder top-holder-cont'>
                                          <div className='app-land-link-intro-pro-main-cont'>
-                                                       <div className='app-land-head-pro-pic-main-cont'>
+                                                       {/* <div className='app-land-head-pro-pic-main-cont'>
                                                        <svg  className='app-land-head-pro-pic-main-cont-pic' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><radialGradient id="S2w73RYcJka7XmMmG50Ola" cx="23.801" cy="27.168" r="23.295" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf54"/><stop offset=".261" stop-color="#fdcb4d"/><stop offset=".639" stop-color="#f7c13a"/><stop offset="1" stop-color="#f0b421"/></radialGradient><path fill="url(#S2w73RYcJka7XmMmG50Ola)" d="M44,23c0,2,0,7-3,7c-1.5,0-2.5-0.5-3-1v15H10V29c-0.5,0.5-1.5,1-3,1c-2.956,0-3-5-3-7	c0-8,7-18,20-18S44,15,44,23z"/><linearGradient id="S2w73RYcJka7XmMmG50Olb" x1="39.5" x2="39.5" y1="28.635" y2="44.054" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c48f0c"/><stop offset="1" stop-color="#cd9713"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olb)" d="M41,30v12c0,1.105-0.895,2-2,2h-1V29C38.5,29.5,39.5,30,41,30z"/><linearGradient id="S2w73RYcJka7XmMmG50Olc" x1="8.5" x2="8.5" y1="29.166" y2="44.279" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c48f0c"/><stop offset="1" stop-color="#cd9713"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olc)" d="M10,29v15H9c-1.105,0-2-0.895-2-2V30C8.5,30,9.5,29.5,10,29z"/><linearGradient id="S2w73RYcJka7XmMmG50Old" x1="23.08" x2="37.248" y1="7.513" y2="22.582" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6d7479"/><stop offset="1" stop-color="#323538"/></linearGradient><circle cx="32" cy="17" r="5" fill="url(#S2w73RYcJka7XmMmG50Old)"/><linearGradient id="S2w73RYcJka7XmMmG50Ole" x1="32.072" x2="35.941" y1="11.611" y2="20.794" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcfcfc"/><stop offset="1" stop-color="#c3c9cd"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Ole)" d="M32,12c-0.688,0-1.342,0.14-1.939,0.391C30.037,12.593,30,12.791,30,13c0,2.761,2.239,5,5,5	c0.688,0,1.342-0.14,1.939-0.391C36.963,17.407,37,17.209,37,17C37,14.239,34.761,12,32,12z"/><linearGradient id="S2w73RYcJka7XmMmG50Olf" x1="7.08" x2="21.248" y1="7.513" y2="22.582" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6d7479"/><stop offset="1" stop-color="#323538"/></linearGradient><circle cx="16" cy="17" r="5" fill="url(#S2w73RYcJka7XmMmG50Olf)"/><linearGradient id="S2w73RYcJka7XmMmG50Olg" x1="16.072" x2="19.941" y1="11.611" y2="20.794" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcfcfc"/><stop offset="1" stop-color="#c3c9cd"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olg)" d="M16,12c-0.688,0-1.342,0.14-1.939,0.391C14.037,12.593,14,12.791,14,13c0,2.761,2.239,5,5,5	c0.688,0,1.342-0.14,1.939-0.391C20.963,17.407,21,17.209,21,17C21,14.239,18.761,12,16,12z"/><path fill="#881421" d="M30,24c0,0-0.72,5.06-4.01,6.57c-0.02,0.01-0.04,0.02-0.06,0.03c-0.03,0.01-0.06,0.03-0.09,0.04	C25.94,30.44,26,30.22,26,30c0-1.1-1.34-2-3-2c-1.24,0-2.3,0.5-2.75,1.21c-0.11-0.11-0.2-0.22-0.29-0.34C18.41,26.81,18,24,18,24	s2.69,2,6,2S30,24,30,24z"/><path fill="#c94f60" d="M26,30c0,0.22-0.06,0.44-0.16,0.64C25.29,30.86,24.68,31,24,31c-1.55,0-2.72-0.67-3.59-1.6	c-0.06-0.06-0.11-0.12-0.16-0.19C20.7,28.5,21.76,28,23,28C24.66,28,26,28.9,26,30z"/><linearGradient id="S2w73RYcJka7XmMmG50Olh" x1="24" x2="24" y1="15.659" y2="33.13" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f19a00"/><stop offset="1" stop-color="#eb8100"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olh)" d="M24,16.005c-11.46,0.28-10.447,10.07-9.402,12.99c0.637,1.77,1.964,3,3.134,3	c3.134,0,3.677-5.08,4.179-8c0.198-1.23,1.16-1.72,2.089-1.84c0.93,0.12,1.891,0.61,2.089,1.84c0.501,2.92,1.045,8,4.179,8	c1.17,0,2.497-1.23,3.134-3C34.447,26.075,35.46,16.285,24,16.005z"/><linearGradient id="S2w73RYcJka7XmMmG50Oli" x1="24" x2="24" y1="19.783" y2="24.1" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#505559"/><stop offset="1" stop-color="#323538"/></linearGradient><ellipse cx="24" cy="22" fill="url(#S2w73RYcJka7XmMmG50Oli)" rx="4" ry="2"/></svg>
-                                                       </div>
+                                                       </div> */}
+                                                        
+                                                            <div className='app-land-head-pro-pic-main-cont'>
+                                                                 <img src={User!.getUserData()!.pro_photo_url?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
+                                                            </div>
+                                                       
                                                        {
                                                             User.getUserData()?
                                                                  
@@ -1314,9 +1319,11 @@ class Land extends React.Component<LandProps,any>{
                                                             <span/>
                                                        }
                                                        <div className='app-land-pro-edit-main-cont'>
-                                                                 <button className='app-land-pro-edit-butt'>
+                                                                 <a href="/src/setting">
+                                                                 <button className='app-land-pro-edit-butt' disabled>
                                                                  <svg   className='app-land-pro-edit-butt-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#c94f60" d="M42.583,9.067l-3.651-3.65c-0.555-0.556-1.459-0.556-2.015,0l-1.718,1.72l5.664,5.664l1.72-1.718	C43.139,10.526,43.139,9.625,42.583,9.067"/><path fill="#f0f0f0" d="M6.905,35.43L5,43l7.571-1.906l0.794-6.567L6.905,35.43z"/><path fill="#edbe00" d="M36.032,17.632l-23.46,23.461l-5.665-5.665l23.46-23.461L36.032,17.632z"/><linearGradient id="YoPixpDbHWOyk~b005eF1a" x1="35.612" x2="35.612" y1="7.494" y2="17.921" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#dedede"/><stop offset="1" stop-color="#d6d6d6"/></linearGradient><path fill="url(#YoPixpDbHWOyk~b005eF1a)" d="M30.363,11.968l4.832-4.834l5.668,5.664l-4.832,4.834L30.363,11.968z"/><path fill="#787878" d="M5.965,39.172L5,43l3.827-0.965L5.965,39.172z"/></svg>
                                                                  </button>
+                                                                 </a>
                                                        </div>
                                         </div>
                                              <WelcomeHead/>
@@ -1427,18 +1434,15 @@ class Land extends React.Component<LandProps,any>{
                               
                               <div className='app-land-serch-main-cont'>
                                         <div className='app-land-top-butt-group-cont'>
-                                             <div className='app-land-serch-cont'>
-                                                  <div className='app-land-serch-ico-cont'>
-                                                       <svg className='app-land-serch-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                                                  </div>
-                                                  <input
-                                                  type='text'
-                                                  className='app-land-serch-bar'
-                                                  placeholder='Search for link'
-                                                  value={this.state.searchQuery}
-                                                  onChange={(e)=>{this.setsearchQuery(e.target.value)}}
-                                                  />
-                                             </div>
+                                        <button className='app-land-crt-lnk-butt'
+                                             onClick={()=>{this.setcreateLinkModalVisi(true)}}
+                                             > 
+                                             {/* <div className='app-land-crt-lnk-butt-decor'/> */}
+                                             <div  className='app-land-crt-lnk-butt-lab'>
+                                                  <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
+                                                  Create Link </div>
+                                             </button>
+                                        
                                                   <button className='app-land-det-butt'
                                                        onClick={()=>{this.setdetailed(!this.state.detailed)}}
                                                        >
@@ -1457,17 +1461,6 @@ class Land extends React.Component<LandProps,any>{
                                                        <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor" strokeWidth="4"><path d="M0 0h24v24H0V0z" fill="none"/><path  d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
                                                        </button>
                                         </div>
-                              </div>
-                              <div className='app-land-serch-main-cont'>
-                              <button className='app-land-crt-lnk-butt'
-                              onClick={()=>{this.setcreateLinkModalVisi(true)}}
-                              > 
-                              {/* <div className='app-land-crt-lnk-butt-decor'/> */}
-                              <div  className='app-land-crt-lnk-butt-lab'>
-                                   <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
-                                   Create Link </div>
-                              </button>
-                           
                               </div>
                               {
                               this.state.linkDataLoading?

@@ -9,6 +9,9 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
 import  {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
+import ImageUploading from 'react-images-uploading';
+
+
 
 const User = new user();
 
@@ -64,6 +67,8 @@ const Profile = (props)=>{
      const [loading,setLoading] = useState(true);
      const [overlayVisi,setoverlayVisi] =  useState(false);
 
+     const [proPic,setProPic] = useState({ preview: "", raw: "" });
+     const [picChange,setpicChange] = useState(false);
      const [uname,setuname] = useState(null);
      const [dname,setdname] = useState(null);
      const [bio,setbio] = useState(null);
@@ -131,12 +136,33 @@ const Profile = (props)=>{
      }
      const update_general_det  = async ()=>{
           console.log('general_update_init');
+          
+          // fileId: "60f8439ca9ef1611983f3990"
+          // filePath: "/titan-user-img_MjcMPCi1G"
+          // fileType: "image"
+          // height: 1024
+          // name: "titan-user-img_MjcMPCi1G"
+          // size: 42155
+          // thumbnailUrl: "https://ik.imagekit.io/cyte/tr:n-media_library_thumbnail/titan-user-img_MjcMPCi1G"
+          // url: "https://ik.imagekit.io/cyte/titan-user-img_MjcMPCi1G"
+          // width: 1024
+          let pic_res = null;
+          if(picChange && proPic.raw){
+               pic_res = await  BackendHelper._image_upload(proPic.raw).catch((e)=>{
+                    console.log(e);
+               })
+          }
+          console.log(pic_res); 
           if(!dname || !uname || !OldUserData){return;}
           let prod_data ={};
           dname != OldUserData.dname && dname ?prod_data['dname']=dname:null;
           uname != OldUserData.uname && uname ?prod_data['uname']=uname:null;
           bio!=OldUserData.bio? prod_data['bio']=bio:null;
-          
+          if(pic_res){
+               prod_data['pro_photo_url']=pic_res.url;
+               prod_data['pro_photo_thumb_url']=pic_res.thumbnailUrl;
+               prod_data['pro_photo_file_id']=pic_res.fileId;
+          }
           
           BackendHelper._updateUserData(User.getUserUid(),prod_data).then(async (r)=>{
                if(!r.errBool){
@@ -213,7 +239,16 @@ const Profile = (props)=>{
 
           console.log(prod_data);
      }
-
+     const handlePhtChange = e => {
+          if (e.target.files.length) {
+               setpicChange(true);
+               setProPic({
+              preview: URL.createObjectURL(e.target.files[0]),
+              raw: e.target.files[0]
+            });
+          }
+        };
+      
      useEffect(async ()=>{
                await loadUserData(setLoading);
                if(User.getUserData()){
@@ -296,8 +331,26 @@ const Profile = (props)=>{
                                              <div className='app-prof-set-holder-main-cont'>
                                              <div className='app-prof-sec-main-cont'>
                                                   <div className='app-prof-sec-pro-pic-main-cont'>
-                                                            <div className='app-land-head-pro-pic-main-cont'></div>
-                                                            <button className='app-land-head-pro-upd-butt'>Upload Image</button>
+                                                            <label htmlFor="upload-button">
+                                                            {proPic.preview ? (
+                                                                      <div className='app-land-head-pro-pic-main-cont app-prof-prof-pic'>
+                                                                      <img src={proPic.preview} alt="dummy" className='app-land-head-pro-pic-main-cont-pic' />
+                                                                      <div className='app-prof-prof-pic-edit-cont'>
+                                                                                     <svg className='app-prof-prof-pic-edit-cont-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.46v3.04c0 .28.22.5.5.5h3.04c.13 0 .26-.05.35-.15L17.81 9.94l-3.75-3.75L3.15 17.1c-.1.1-.15.22-.15.36zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                                                                      </div>
+                                                                      </div>
+                                                                 ) : (
+                                                                      <>
+                                                                       <div className='app-land-head-pro-pic-main-cont app-prof-prof-pic'>
+                                                                                <img src={User.getUserData().pro_photo_url?User.getUserData().pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
+                                                                                <div className='app-prof-prof-pic-edit-cont'>
+                                                                                               <svg className='app-prof-prof-pic-edit-cont-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.46v3.04c0 .28.22.5.5.5h3.04c.13 0 .26-.05.35-.15L17.81 9.94l-3.75-3.75L3.15 17.1c-.1.1-.15.22-.15.36zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                                                                                </div>
+                                                                                </div>
+                                                                      </>
+                                                                 )}
+                                                            </label>
+                                                            <input type='file' id="upload-button" style={{ display: "none" }} onChange={handlePhtChange} className='app-land-head-pro-upd-butt'/>
                                                   </div>
                                                   
                                              </div>

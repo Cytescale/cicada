@@ -111,7 +111,45 @@ font-weight: 600;
 .app-prof-chng-pass-butt:active{
      background-color: var(--danger);
      color: var(--textColor);
+
+}
+.app-prof-prof-pic{
+     width: 100px;
+     height: 100px;
+     box-shadow: var(--boxShad);
+     position: relative;
      
+}
+
+.app-land-head-pro-pic-main-cont-pic{
+     width: 100%;
+     height: 100%;
+     border-radius: 100px;
+
+}
+
+.app-prof-prof-pic-edit-cont{
+     position: absolute;
+     bottom: 0;
+     right: 0;
+     box-shadow: var(--boxShad);
+     margin-right: -4px;
+     margin-bottom: -4px;
+     width: 32px;
+     height: 32px;
+     background-color: var(--buttonBackColor);
+     padding: 8px;
+     border-radius: 100px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: var(--textColor);
+}
+
+.app-prof-prof-pic-edit-cont-ico{
+     width: 100%;
+     height: 100%;
+     color: inherit;
 }
 
 .app-sett-acrd-main-cont{

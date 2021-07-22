@@ -2,6 +2,7 @@
      min-height: 100vh;
      background-color:var(--backColor);
      border-bottom: 1px solid var(--borColor);
+
 }
 .app-clust-act-topper-main-cont{
      padding-bottom: 32px;

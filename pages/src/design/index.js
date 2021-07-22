@@ -204,6 +204,7 @@ const design = (props)=>{
                                                                  <div className='app-design-card-tab-main-cont'/>
                                                                  <div className='app-design-card-tab-main-cont'/>
                                                                  </div>
+                                                                 <div className='app-design-bottom-bar'/>
                                                        </div>
                                                        <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='0'?'app-design-card-main-cont-selectab':null}`}>
                                                             Default
@@ -228,6 +229,7 @@ const design = (props)=>{
                                                                  <div className='app-design-card-tab-main-cont degi-neu-tab'/>
                                                                  <div className='app-design-card-tab-main-cont degi-neu-tab'/>
                                                                  </div>
+                                                                 <div className='app-design-bottom-bar'/>
                                                        </div>
                                                        <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='1'?'app-design-card-main-cont-selectab':null}`}>
                                                        Neumorphism
@@ -255,6 +257,7 @@ const design = (props)=>{
                                                                  <div className='app-design-card-tab-main-cont degi-rose-tab'/>
                                                                  <div className='app-design-card-tab-main-cont degi-rose-tab'/>
                                                                  </div>
+                                                                 <div className='app-design-bottom-bar'/>
                                                        </div>
                                                        <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='2'?'app-design-card-main-cont-selectab':null}`}>
                                                        Rose

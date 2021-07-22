@@ -2,9 +2,9 @@
 .app-design-temp-grid{
      width: 100%;
      max-width: 100vw;
-     height: 500px;
+     height: auto;
      display: grid;
-     
+     margin-bottom: 72px;    
 }
 
 .app-design-temp-grid-row{
@@ -18,7 +18,7 @@
 }
 
 .app-design-temp-item{
-     height: 250px;
+     height: 280px;
      width: auto;
      flex: 1;
      margin: 6px;
@@ -29,11 +29,12 @@
      width: 100%;
      height: 100%;
      background-color: #fff;
-     border-radius: 16px;
+     border-radius: 32px;
      padding: 12px;
      display: flex;
      align-items: center;
      justify-content: center;
+     position: relative;
 }
 
 .app-design-card-tab-outer-main-cont{
@@ -82,4 +83,15 @@
 }
 .app-design-card-main-cont-selectab{
      color: var(--pri-dark);
+}
+
+.app-design-bottom-bar{
+     width: 70px;
+     height: 5px;
+     border-radius: 100px;
+     background-color: #353535;
+     position: absolute;
+     bottom: 0;
+     
+     margin-bottom: 7px;
 }

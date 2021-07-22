@@ -5,7 +5,164 @@ import FullHeiLoading from '../src/fullHeightLoading';
 import Head from "next/head";
 import URLS,{_BASE_CLIENT_URL} from "../../comp/helpers/api.routes";
 import { withRouter, NextRouter } from 'next/router'
+import styled ,{ThemeProvider} from "styled-components";
+ import GlobalStyles from './clusterGlobalStyle.js';
 
+ const StyledClusterMainCont = styled.div.attrs(props => ({
+     textColor:'#000',
+     subTextColor:'#bdbdbd',
+     backColor:'#fff',
+     profileCardColor:'#f6f6f6',
+     cardColor:'#fff',
+     cardColorpress:'#e0e0e0',
+     cardTitleColor:'#000',
+     cardShadow:'0px 4px 8px rgba(0, 0, 0, 0.10)',
+     borderColor:'#e0e0e0',
+     border:'1px solid #e0e0e0',
+   }))`         
+          .cluster-page-main-cont{
+               height: 100%;
+               min-height: 100vh;
+               width: 100vw;
+               background-color: ${props => props.backColor};
+               position: relative;
+          }         
+          .cluster-profile-pro-cont{
+               width: 100%;
+               display: flex;
+               align-content: center;
+               justify-content: center;
+          }
+          .cluster-profile-pro-pic-main-cont{
+               width: 90px;
+               height: 90px;
+               border-radius: 100px;
+
+          }
+          .cluster-profile-main-cont{
+               width: 100%;
+               padding-top: 42px;
+               padding-bottom: 22px;
+               background-color:  ${props => props.profileCardColor};;
+               border-bottom:  ${props => props.border};;
+          }
+
+          .cluster-profile-pro{
+               width: 100px;
+               height: 100px;
+               background: linear-gradient(180deg, #FEE27F 0%, #F6BC4F 100%);
+               border-radius: 100px;
+          }
+          .cluster-profile-pro-name{
+               width: 100%;
+               display: flex;
+               font-family: inter;
+               align-items: center;
+               justify-content: center;
+               margin-top: 12px;
+               font-size: 22px;
+               color: ${props => props.textColor};
+               font-weight: 700;
+          }
+
+          .cluster-profile-bio{
+               width: 100%;
+               display: flex;
+               font-family: inter;
+               align-items: center;
+               padding: 6px;
+               border-radius: 8px;
+               justify-content: center;
+               margin-top: 0px;
+               font-size: 15px;
+               color: ${props => props.textColor};
+          }
+
+          .cluster-hr-cont{
+               width: 100%;
+               border-bottom:  ${props => props.border};;
+               margin-top: 22px;
+               margin-bottom: 22px;
+
+          }
+
+
+          .cluster-link-main-cont:active{
+               background-color: #e0e0e0;
+          }
+
+
+
+          .cluster-made-main-cont{
+               position: absolute;
+               bottom: 0;
+               width: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               font-size: 14px;
+               font-family: inter;
+               color:  ${props => props.textColor};;
+               padding-bottom: var(--margin);
+          }
+          .cluster-link-outer-cont{
+               padding: 22px;
+          }
+
+          .cluster-link-outer-cont-tab{
+               width: 100%;
+               height: 32px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 17px;
+               font-family: inter;
+               font-weight: 700;
+               color:  ${props => props.subTextColor};;
+          }
+
+          .cluster-link-main-cont{
+               width: 100%;
+               height: 52px;
+               background-color:  ${props => props.cardColor};;
+               box-shadow:  ${props => props.cardShadow};;
+               border:  ${props => props.border};;
+               border-radius: 7px;
+               margin-top: 22px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color:  ${props => props.cardTitleColor};;
+               outline: none;
+               z-index: 100;
+          }
+
+          .cluster-link-main-cont:active{
+               background-color:  ${props => props.cardColorpress};;
+               box-shadow:none;
+               
+          }
+
+`
+
+
+/*
+     --textColor
+     --subTextColor
+     --backColor
+     --profileCardColor
+     --cardColor
+     --cardShadow
+     --borderColor
+     --border
+*/
+
+
+let StyledOuterCont = styled(StyledClusterMainCont).attrs({
+     
+})`
+
+`;
 
 const BackendHelper = new backendHelper();
 
@@ -13,55 +170,6 @@ function openInNewTab(url){
      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
      if (newWindow) newWindow.opener = null
 }
-
-const RenderLinks=(props)=>{
-     const [loading,setloading] = useState(true);
-     const [errBool,seterrBool] = useState(false);
-     const [errMess,seterrMess] = useState('');
-     const [linkData,setlinkData] = useState(null);
-     useEffect(()=>{
-          console.log(props.uid);
-          BackendHelper._getLinksData(props.uid).then(res=>{
-               console.log(res);
-               setloading(false);
-               if(!res.errBool){
-                    seterrBool(false);
-                    seterrMess('');
-                    setlinkData(res.responseData)
-               }
-               else{throw new Error(res.errMess)}
-               
-          }).catch((e)=>{
-               setloading(false);
-               seterrBool(true);
-               seterrMess(e.message);
-          })
-     },[props.uid])
-     return(
-          !loading?
-          !errBool?
-          <div >
-               {linkData?linkData.map((e,ind)=>{
-                    if(e.active_bool){
-                         return (
-                              <button
-                              className='cluster-link-main-cont'
-                              onClick={()=>{
-                                   openInNewTab(`${URLS.visit}/${e.unique_identifier}`);
-                              }}
-                              >
-                              {e.name}
-                              </button>
-                         )
-                    }
-
-               }):<span/>}
-          </div>:
-          <div>{errMess}</div>:
-          <div>Loading</div>
-     )
-}
-
 const ClusterCompWithRouter = (props) => {
      const router = useRouter();
      const { pid } = router.query;
@@ -85,10 +193,12 @@ class ClusterComp extends React.Component{
                userData:null,
                linkConfigData:null,
                linkData:[],
+               
           }
           this.initLoadUserData = this.initLoadUserData.bind(this);
           this.setlinkConfigData = this.setlinkConfigData.bind(this);
           this.setlinkData = this.setlinkData.bind(this);
+          this.setStyledComponent  = this.setStyledComponent.bind(this);
      }
      
      setlinkData(d){this.setState({linkData:d})}
@@ -117,10 +227,11 @@ class ClusterComp extends React.Component{
      }
      
      async initLoadLinkConfig(){
-          BackendHelper._getClusterConfigByUid(this.state.userData.uid).then(res=>{
+          await BackendHelper._getClusterConfigByUid(this.state.userData.uid).then(res=>{
                if(!res.errBool){
                     console.log(res.responseData);
                     this.setlinkConfigData(res.responseData);
+                    this.setStyledComponent(res.responseData.design_temp_id);
                     this.getLinksData();
                }
                else{throw new Error(res.errMess)}
@@ -128,6 +239,7 @@ class ClusterComp extends React.Component{
                this.seterrBool(true);
                this.seterrMess(e.message);
           })
+         
      }
      
      async getLinksData(){
@@ -150,6 +262,56 @@ class ClusterComp extends React.Component{
           }
      }
 
+     async setStyledComponent(int){
+          if(int){
+               switch(int){
+                    
+               // textColor:'#000',
+               // subTextColor:'#bdbdbd',
+               // backColor:'#fff',
+               // profileCardColor:'#f6f6f6',
+               // cardColor:'#fff',
+               // cardTitleColor:'#000',
+               // cardShadow:'0px 4px 8px rgba(0, 0, 0, 0.10)',
+               // borderColor:'#e0e0e0',
+               // border:'1px solid #e0e0e0',
+             
+                    case 0:{
+                         StyledOuterCont = styled(StyledClusterMainCont).attrs({
+                              
+                         })``;
+                         break;
+                    }
+                    case 1:{
+                         StyledOuterCont = styled(StyledClusterMainCont).attrs({
+                              backColor:'#2A3239',
+                              textColor:'#fff',
+                              subTextColor:'#bdbdbd',
+                              profileCardColor:'#2A3239',
+                              cardColor:'#2A3239',
+                              cardColorpress:'#2E3942',
+                              cardShadow:'-3px -3px 10px #384148, 3px 3px 10px #1E242B',
+                              borderColor:'#757575',
+                              border:'none',
+                              cardTitleColor:'#fff',
+                         })``;
+                         break;
+                    }
+                    case 2:{
+
+                         break;
+                    }
+                    default:{
+                         
+                         break;
+                    }
+               }
+
+          }
+     }
+
+
+
      componentDidMount(){
           console.log(this.props.router.query.pid);
           this.initLoadUserData();
@@ -162,6 +324,7 @@ class ClusterComp extends React.Component{
           return(
                !this.state.loading?!this.state.errBool?
                this.state.linkConfigData?this.state.linkConfigData.active_bool?
+               <StyledOuterCont>
                <div className='cluster-page-main-cont'>
                           <Head>
                          <title>Sakura</title>
@@ -174,7 +337,7 @@ class ClusterComp extends React.Component{
                              this.state.linkConfigData.profile_card_bool?
                               <div className='cluster-profile-main-cont'>
                                    <div className='cluster-profile-pro-cont'>
-                                   <div className='app-land-head-pro-pic-main-cont'>
+                                   <div className='cluster-profile-pro-pic-main-cont'>
                                                        <img src={this.state.userData.pro_photo_url?this.state.userData.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
                                         </div>
                                    </div>
@@ -187,8 +350,8 @@ class ClusterComp extends React.Component{
                               </div>:<span/>:<span/>
 
                         }     
-                         
-                         <div className='cluster-hr-cont' />
+                        <div className='cluster-link-outer-cont'>
+                         <div className='cluster-link-outer-cont-tab'>My links</div>
                          {this.state.linkData?this.state.linkData.map((e,ind)=>{
                               if(e.active_bool){
                                    return (
@@ -203,8 +366,7 @@ class ClusterComp extends React.Component{
                                    )
                               }
                          }):<span/>}
-                           
-                           <div className='cluster-hr-cont' />
+                         </div>
                            
                            {
                              this.state.linkConfigData?
@@ -214,10 +376,13 @@ class ClusterComp extends React.Component{
                              <span/>  
                          }
                          
-               </div>:<span>Cluster link is disabled</span>:<span/>:
+               </div>
+               </StyledOuterCont>
+               :<span>Cluster link is disabled</span>:<span/>:
                <div>
                {errMess.toString()}
                </div>
+               
                :
                <FullHeiLoading/>
           )

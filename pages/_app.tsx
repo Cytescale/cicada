@@ -8,7 +8,7 @@ import '../styles/main.css';
 import '../styles/land.css';
 import '../styles/login.css';
 import '../styles/link.css';
-import '../styles/cluster.css';
+// import '../styles/cluster.css';
 import '../styles/clusterAct.css';
 import '../styles/profileAct.css'
 import '../styles/designAct.css';

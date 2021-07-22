@@ -75,3 +75,11 @@
 .degi-rose-tab{
      background-color: #fff;
 }
+.app-design-card-main-selec-ico{
+     width: 18px;
+     height: 18px;
+     margin-left: 7px;
+}
+.app-design-card-main-cont-selectab{
+     color: var(--pri-dark);
+}

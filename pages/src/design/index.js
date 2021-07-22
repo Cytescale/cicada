@@ -15,6 +15,12 @@ const User = new user();
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 
+
+function useForceUpdate(){
+     const [value, setValue] = useState(0); // integer state
+     return () => setValue(value => value + 1); // update the state to force render
+ }
+
 async function loadUserData(setLoading){
      if(!User.getUserData()){
           if(backendHelper){
@@ -65,10 +71,70 @@ const design = (props)=>{
      const router = useRouter()
      const [loading,setLoading] = useState(true);
      const [overlayVisi,setoverlayVisi] = useState(false)
+     const [clusterConfigData ,setclusterConfigData] = useState(null);
+     const [selecDeginTmpId,setselecDeginTmpId] = useState(0);
+     const forceUpdate = useForceUpdate();
+     
 
+     const setTempplateId =  async (int)=>{
+          BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"design_temp_id":int}).then((r)=>{
+               if(!r.errBool){
+                    console.log(r.responseData);
+                    if(r.responseData.editSuccessBool){
+                         setselecDeginTmpId(int);
+                         toast.success('Link design changed', {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                    }
+                    else{
+                         throw new Error('Error Occured')     
+                    }
+               }
+               else{
+                    throw new Error(r.errMess)
+               }
+          }).catch(e=>{
+               console.log(e)
+               toast.error(e.message, {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
+          })
+     }
 
      useEffect(async ()=>{
               await loadUserData(setLoading);
+              const uid = await getUid();
+               if(uid){
+                    if(backendHelper){
+                         BackendHelper._getClusterConfigByUid(uid).then(async(res)=>{
+                              if(res){
+                                   if(!res.errBool){
+                                        console.log(res.responseData);
+                                        setclusterConfigData(res.responseData)
+                                        setselecDeginTmpId(res.responseData.design_temp_id)
+                                   
+                                   }
+                                   else{
+                                        toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                                   }
+                              }
+                         }).catch(e=>{
+                              toast.error(e, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                         });
+                    }
+               }
      },[]);
 
      if(!loading){
@@ -126,7 +192,12 @@ const design = (props)=>{
                               </div>     
                               <div className='app-design-temp-grid'>
                                         <div className='app-design-temp-grid-row'>
-                                             <div className='app-design-temp-item'>
+                                             <div className='app-design-temp-item'
+                                                  onClick={()=>{
+                                                       setTempplateId(0);
+                                                  }}
+                                             
+                                             >
                                                        <div className='app-design-card-main-cont'>
                                                                  <div className='app-design-card-tab-outer-main-cont'>
                                                                  <div className='app-design-card-tab-main-cont'/>
@@ -134,11 +205,23 @@ const design = (props)=>{
                                                                  <div className='app-design-card-tab-main-cont'/>
                                                                  </div>
                                                        </div>
-                                                       <div className='app-design-card-main-cont-tab'>
+                                                       <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='0'?'app-design-card-main-cont-selectab':null}`}>
                                                             Default
+                                                       
+                                                            {
+                                                            selecDeginTmpId=='0'?
+                                                            <svg 
+                                                            className='app-design-card-main-selec-ico'
+                                                            xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="I9GV0SozQFknxHSR6DCx5a" x1="9.858" x2="38.142" y1="9.858" y2="38.142" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21ad64"/><stop offset="1" stop-color="#088242"/></linearGradient><path fill="url(#I9GV0SozQFknxHSR6DCx5a)" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/><path d="M32.172,16.172L22,26.344l-5.172-5.172c-0.781-0.781-2.047-0.781-2.828,0l-1.414,1.414	c-0.781,0.781-0.781,2.047,0,2.828l8,8c0.781,0.781,2.047,0.781,2.828,0l13-13c0.781-0.781,0.781-2.047,0-2.828L35,16.172	C34.219,15.391,32.953,15.391,32.172,16.172z" opacity=".05"/><path d="M20.939,33.061l-8-8c-0.586-0.586-0.586-1.536,0-2.121l1.414-1.414c0.586-0.586,1.536-0.586,2.121,0	L22,27.051l10.525-10.525c0.586-0.586,1.536-0.586,2.121,0l1.414,1.414c0.586,0.586,0.586,1.536,0,2.121l-13,13	C22.475,33.646,21.525,33.646,20.939,33.061z" opacity=".07"/><path fill="#fff" d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414c0.391-0.391,1.024-0.391,1.414,0	L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414c0.391,0.391,0.391,1.024,0,1.414l-13,13	C22.317,33.098,21.683,33.098,21.293,32.707z"/></svg>
+                                                            :null
+                                                            }
                                                        </div>
                                              </div>
-                                             <div className='app-design-temp-item'>
+                                             <div className='app-design-temp-item'
+                                             onClick={()=>{
+                                                  setTempplateId(1);
+                                             }}
+                                             >
                                                        <div className='app-design-card-main-cont degi-neu'>
                                                                  <div className='app-design-card-tab-outer-main-cont'>
                                                                  <div className='app-design-card-tab-main-cont degi-neu-tab'/>
@@ -146,14 +229,26 @@ const design = (props)=>{
                                                                  <div className='app-design-card-tab-main-cont degi-neu-tab'/>
                                                                  </div>
                                                        </div>
-                                                       <div className='app-design-card-main-cont-tab'>
-                                                            Neumorphism
+                                                       <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='1'?'app-design-card-main-cont-selectab':null}`}>
+                                                       Neumorphism
+                                                            {
+                                                            selecDeginTmpId=='1'?
+                                                            <svg 
+                                                            className='app-design-card-main-selec-ico'
+                                                            xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="I9GV0SozQFknxHSR6DCx5a" x1="9.858" x2="38.142" y1="9.858" y2="38.142" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21ad64"/><stop offset="1" stop-color="#088242"/></linearGradient><path fill="url(#I9GV0SozQFknxHSR6DCx5a)" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/><path d="M32.172,16.172L22,26.344l-5.172-5.172c-0.781-0.781-2.047-0.781-2.828,0l-1.414,1.414	c-0.781,0.781-0.781,2.047,0,2.828l8,8c0.781,0.781,2.047,0.781,2.828,0l13-13c0.781-0.781,0.781-2.047,0-2.828L35,16.172	C34.219,15.391,32.953,15.391,32.172,16.172z" opacity=".05"/><path d="M20.939,33.061l-8-8c-0.586-0.586-0.586-1.536,0-2.121l1.414-1.414c0.586-0.586,1.536-0.586,2.121,0	L22,27.051l10.525-10.525c0.586-0.586,1.536-0.586,2.121,0l1.414,1.414c0.586,0.586,0.586,1.536,0,2.121l-13,13	C22.475,33.646,21.525,33.646,20.939,33.061z" opacity=".07"/><path fill="#fff" d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414c0.391-0.391,1.024-0.391,1.414,0	L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414c0.391,0.391,0.391,1.024,0,1.414l-13,13	C22.317,33.098,21.683,33.098,21.293,32.707z"/></svg>
+                                                            :null
+                                                            }
+                                                            
                                                        </div>
 
                                              </div>     
                                         </div>
                                         <div className='app-design-temp-grid-row'>
-                                             <div className='app-design-temp-item'>
+                                             <div className='app-design-temp-item'
+                                             onClick={()=>{
+                                                  setTempplateId(2);
+                                             }}
+                                             >
                                                             <div className='app-design-card-main-cont degi-rose'>
                                                                  <div className='app-design-card-tab-outer-main-cont'>
                                                                  <div className='app-design-card-tab-main-cont degi-rose-tab'/>
@@ -161,8 +256,16 @@ const design = (props)=>{
                                                                  <div className='app-design-card-tab-main-cont degi-rose-tab'/>
                                                                  </div>
                                                        </div>
-                                                       <div className='app-design-card-main-cont-tab'>
-                                                            Rose
+                                                       <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='2'?'app-design-card-main-cont-selectab':null}`}>
+                                                       Rose
+                                                       {
+                                                            selecDeginTmpId=='2'?
+                                                            <svg 
+                                                            className='app-design-card-main-selec-ico'
+                                                            xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="I9GV0SozQFknxHSR6DCx5a" x1="9.858" x2="38.142" y1="9.858" y2="38.142" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21ad64"/><stop offset="1" stop-color="#088242"/></linearGradient><path fill="url(#I9GV0SozQFknxHSR6DCx5a)" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/><path d="M32.172,16.172L22,26.344l-5.172-5.172c-0.781-0.781-2.047-0.781-2.828,0l-1.414,1.414	c-0.781,0.781-0.781,2.047,0,2.828l8,8c0.781,0.781,2.047,0.781,2.828,0l13-13c0.781-0.781,0.781-2.047,0-2.828L35,16.172	C34.219,15.391,32.953,15.391,32.172,16.172z" opacity=".05"/><path d="M20.939,33.061l-8-8c-0.586-0.586-0.586-1.536,0-2.121l1.414-1.414c0.586-0.586,1.536-0.586,2.121,0	L22,27.051l10.525-10.525c0.586-0.586,1.536-0.586,2.121,0l1.414,1.414c0.586,0.586,0.586,1.536,0,2.121l-13,13	C22.475,33.646,21.525,33.646,20.939,33.061z" opacity=".07"/><path fill="#fff" d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414c0.391-0.391,1.024-0.391,1.414,0	L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414c0.391,0.391,0.391,1.024,0,1.414l-13,13	C22.317,33.098,21.683,33.098,21.293,32.707z"/></svg>
+                                                            :null
+                                                            }
+                                                            
                                                        </div>
                                              </div>
                                              <div className='app-design-temp-item'>

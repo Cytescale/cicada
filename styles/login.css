@@ -5,8 +5,15 @@
 
 .login-head-body-cont{
      color:var(--textColor);
-     padding: 10px;
-     background-color: var(--backColor);
+     height: 52px;
+     display: flex;
+     align-items: center;
+     padding-left: 22px;
+     font-family: inter;
+     font-size: 16px;
+     font-weight: 700;    
+     background: rgba(0, 0, 0, 0.45);
+     backdrop-filter: blur(17px);
      border-bottom-color: var(--borColor);
 }
 
@@ -33,7 +40,7 @@
 .app-login-sub-butt{
      background-color: #0070F3;
      box-shadow: none;
-     box-shadow: 0px 4px 8px #0070F3;
+     /* box-shadow: 0px 4px 8px #0070F3; */
      color: #fff;
      font-weight: 700;
      font-family: inter;
@@ -54,7 +61,7 @@ color: var(--subtextColor);
      box-shadow: none;
      background-color: var(--buttonBackColor);
      color: var(--textColor);
-     box-shadow: 0px 4px 15px var(--borColor);
+     /* box-shadow: 0px 4px 15px var(--borColor); */
 }
 .app-login-sub-act-cont{
      color: #0070F3;

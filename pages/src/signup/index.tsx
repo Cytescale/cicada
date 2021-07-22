@@ -17,18 +17,20 @@ interface WithRouterProps {
      router: NextRouter
    }
    
-interface LoginProps extends WithRouterProps {
+interface SignUpProps extends WithRouterProps {
      
 }
 
 
-class LoginAct extends React.Component<LoginProps,any>{
+class SignUpAct extends React.Component<SignUpProps,any>{
      constructor(props:any){
           super(props);
           this.state ={
                loading:false,
-               emlFldData:'nikhilwilayate1998@gmail.com',
-               pssFldData:'password',
+               emlFldData:'',
+               pssFldData:'',
+               displFldData:'',
+               unameFldData:'',
                errBool:false,
                errMess:'null',
                succBool:false,
@@ -40,10 +42,14 @@ class LoginAct extends React.Component<LoginProps,any>{
           this.handleLoginSub = this.handleLoginSub.bind(this);
           this.seterrToast  =this.seterrToast.bind(this);
           this.setsuccToast = this.setsuccToast.bind(this);
+          this.setunameFldData = this.setunameFldData.bind(this);
+          this.setdisplFldData = this.setdisplFldData.bind(this);
      }
 
      seterrToast(b:boolean,s:string){this.setState({errBool:b,errMess:s})}
      setsuccToast(b:boolean,s:string){this.setState({errBool:b,errMess:s})}
+     setunameFldData(s:string){this.setState({unameFldData:s})}
+     setdisplFldData(s:string){this.setState({displFldData:s})}
      setEmlFldData(s:string){this.setState({emlFldData:s})}
      setPssFldData(s:string){this.setState({pssFldData:s})}
      setLoading(b:boolean){this.setState({loading:b})}
@@ -131,14 +137,40 @@ class LoginAct extends React.Component<LoginProps,any>{
                          <div className='app-moto-cont-main-body'>
                                    <div className='app-moto-cont-main-sub-body'>
                                         <div className='app-moto-cont-tit-1'>
-                                             Welcome
+                                             Create Account
                                         </div>
                                         <div className='app-moto-cont-tit-2'>
-                                             Sign In now.
+                                             Sign Up now.
                                         </div>
                                    </div>
                          </div>
                          <div className='app-login-main-cont-body'>
+                              <div className='app-login-inpt-main-cont'>
+                                   <div className='app-login-inpt-main-cont-lab'>
+                                        Display Name
+                                   </div>
+                              
+                              <input 
+                              disabled={this.state.loading}
+                              type='text'
+                              value={this.state.displFldData}
+                              onChange={(e)=>{this.setdisplFldData(e.target.value)}}
+                              className='app-input-class login-form-fld'  
+                              placeholder='Enter display name'/>
+                              </div>
+                              <div className='app-login-inpt-main-cont'>
+                                   <div className='app-login-inpt-main-cont-lab'>
+                                        Username
+                                   </div>
+                              
+                              <input 
+                              disabled={this.state.loading}
+                              type='email'
+                              value={this.state.unameFldData}
+                              onChange={(e)=>{this.setunameFldData(e.target.value)}}
+                              className='app-input-class login-form-fld'  
+                              placeholder='Enter username'/>
+                              </div>
                               <div className='app-login-inpt-main-cont'>
                                    <div className='app-login-inpt-main-cont-lab'>
                                         Email Address
@@ -162,7 +194,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                               onChange={(e)=>{this.setPssFldData(e.target.value)}}
                               type='password'
                               className='app-input-class login-form-fld'  
-                              placeholder='********'/>
+                              placeholder='Enter password'/>
                             
                               </div>
                               <div className='app-login-sub-main-cont'>
@@ -172,7 +204,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                                              this.handleLoginSub();
                                                   //this.props.router.push('/src/land');
                                         }}>
-                                             {!this.state.loading?'Login':'Just a sec'}
+                                             {!this.state.loading?'Create Account':'Just a sec'}
                                         </button>
                               </div>
                               <div className='app-or-cont'>or</div>
@@ -193,9 +225,9 @@ class LoginAct extends React.Component<LoginProps,any>{
                                         Continue with Google
                                         </button>
                               </div>
-                              <a href='/src/signup'>
+                              <a href='/src/login'>
                               <div className='app-login-sub-act-cont'>
-                                   Create an account
+                                   Sign In
                               </div>
                               </a>
                          </div>
@@ -208,4 +240,4 @@ class LoginAct extends React.Component<LoginProps,any>{
      }
 }
 
-export default withRouter(LoginAct)
+export default withRouter(SignUpAct)

@@ -159,28 +159,54 @@ const NavBarCont = (props)=>{
                        <a 
                        className='app-nav-lnk-lnk'
                        href={_BASE_CLIENT_URL+'src/land'}>                         
-                         <svg className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-ico-selec':null}`}
-                         xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="jv689zNUBazMNK6AOyXtga" x1="6" x2="42" y1="41" y2="41" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c8d3de"/><stop offset="1" stop-color="#c8d3de"/></linearGradient><path fill="url(#jv689zNUBazMNK6AOyXtga)" d="M42,39H6v2c0,1.105,0.895,2,2,2h32c1.105,0,2-0.895,2-2V39z"/><linearGradient id="jv689zNUBazMNK6AOyXtgb" x1="14.095" x2="31.385" y1="10.338" y2="43.787" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcfcfc"/><stop offset=".495" stop-color="#f4f4f4"/><stop offset=".946" stop-color="#e8e8e8"/><stop offset="1" stop-color="#e8e8e8"/></linearGradient><path fill="url(#jv689zNUBazMNK6AOyXtgb)" d="M42,39H6V20L24,3l18,17V39z"/><path fill="#de490d" d="M13,25h10c0.552,0,1,0.448,1,1v17H12V26C12,25.448,12.448,25,13,25z"/><path d="M24,4c-0.474,0-0.948,0.168-1.326,0.503l-5.359,4.811L6,20v5.39L24,9.428L42,25.39V20L30.685,9.314	l-5.359-4.811C24.948,4.168,24.474,4,24,4z" opacity=".05"/><path d="M24,3c-0.474,0-0.948,0.167-1.326,0.5l-5.359,4.784L6,18.909v5.359L24,8.397l18,15.871v-5.359	L30.685,8.284L25.326,3.5C24.948,3.167,24.474,3,24,3z" opacity=".07"/><linearGradient id="jv689zNUBazMNK6AOyXtgc" x1="24" x2="24" y1="1.684" y2="23.696" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d43a02"/><stop offset="1" stop-color="#b9360c"/></linearGradient><path fill="url(#jv689zNUBazMNK6AOyXtgc)" d="M44.495,19.507L25.326,2.503C24.948,2.168,24.474,2,24,2s-0.948,0.168-1.326,0.503	L3.505,19.507c-0.42,0.374-0.449,1.02-0.064,1.43l1.636,1.745c0.369,0.394,0.984,0.424,1.39,0.067L24,7.428L41.533,22.75	c0.405,0.356,1.021,0.327,1.39-0.067l1.636-1.745C44.944,20.527,44.915,19.881,44.495,19.507z"/><linearGradient id="jv689zNUBazMNK6AOyXtgd" x1="28.05" x2="35.614" y1="25.05" y2="32.614" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#33bef0"/><stop offset="1" stop-color="#0a85d9"/></linearGradient><path fill="url(#jv689zNUBazMNK6AOyXtgd)" d="M29,25h6c0.552,0,1,0.448,1,1v6c0,0.552-0.448,1-1,1h-6c-0.552,0-1-0.448-1-1v-6	C28,25.448,28.448,25,29,25z"/></svg>
+                         <svg 
+                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-ico-selec':null}`}
+                         width="37" height="37" viewBox="0 0 37 37" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M7.5 16.2426V28.5C7.5 30.1569 8.84315 31.5 10.5 31.5H11.5C13.1569 31.5 14.5 30.1569 14.5 28.5V25C14.5 23.3431 15.8431 22 17.5 22H19.5C21.1569 22 22.5 23.3431 22.5 25V28.5C22.5 30.1569 23.8431 31.5 25.5 31.5H26.5C28.1569 31.5 29.5 30.1569 29.5 28.5V16.7038C29.5 15.9312 29.2019 15.1884 28.6679 14.6301L20.6203 6.21664C19.457 5.00047 17.521 4.97896 16.331 6.16899L8.37868 14.1213C7.81607 14.6839 7.5 15.447 7.5 16.2426Z" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                         </svg>
                          Home
                        </a>
                     </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
-                         href={_BASE_CLIENT_URL+'src/cluster'}>  
-                         <svg 
-                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-ico-selec':null}`}
-                         xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="g5dniRY~PPjSqIO9PSW_ia" x1="24" x2="24" y1="8.979" y2="6.308" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b33f20"/><stop offset=".129" stop-color="#c74724"/><stop offset=".295" stop-color="#d94f29"/><stop offset=".469" stop-color="#e4532b"/><stop offset=".659" stop-color="#e8552c"/></linearGradient><path fill="url(#g5dniRY~PPjSqIO9PSW_ia)" d="M28.5,6h-9C18.672,6,18,6.672,18,7.5V9h12V7.5C30,6.672,29.328,6,28.5,6z"/><radialGradient id="g5dniRY~PPjSqIO9PSW_ib" cx="23.832" cy="5.992" r="45.74" gradientTransform="matrix(1 0 0 .8044 0 1.172)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#40150b"/><stop offset=".156" stop-color="#622110"/><stop offset=".417" stop-color="#953218"/><stop offset=".645" stop-color="#ba3f1e"/><stop offset=".828" stop-color="#d14722"/><stop offset=".944" stop-color="#d94a23"/></radialGradient><path fill="url(#g5dniRY~PPjSqIO9PSW_ib)" d="M42,41H6c-1.1,0-2-0.9-2-2V13c0-2.2,1.8-4,4-4h32c2.2,0,4,1.8,4,4v26C44,40.1,43.1,41,42,41z"/><linearGradient id="g5dniRY~PPjSqIO9PSW_ic" x1="24" x2="24" y1="9.028" y2="26.927" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fc7d5b"/><stop offset=".06" stop-color="#f8734f"/><stop offset=".18" stop-color="#f3653d"/><stop offset=".326" stop-color="#f05b31"/><stop offset=".523" stop-color="#ee552a"/><stop offset="1" stop-color="#ed5328"/></linearGradient><path fill="url(#g5dniRY~PPjSqIO9PSW_ic)" d="M42.297,25.255L24,28L5.703,25.255C4.724,25.109,4,24.268,4,23.278V13c0-2.2,1.8-4,4-4h32	c2.2,0,4,1.8,4,4v10.278C44,24.268,43.276,25.109,42.297,25.255z"/><path fill="#f6eca5" d="M25.5,21h-3c-0.276,0-0.5,0.224-0.5,0.5v3c0,0.276,0.224,0.5,0.5,0.5h3c0.276,0,0.5-0.224,0.5-0.5v-3	C26,21.224,25.776,21,25.5,21z"/></svg>
+                         href={_BASE_CLIENT_URL+'src/cluster'}>                           
+                              <svg 
+                              className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-ico-selec':null}`}
+                              width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M7 8H30C31.1046 8 32 8.89543 32 10C32 11.1046 31.1046 12 30 12H7C5.89543 12 5 11.1046 5 10C5 8.89543 5.89543 8 7 8Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                              <rect x="5" y="16" width="27" height="4" rx="2" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                              <rect x="5" y="24" width="27" height="4" rx="2" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                         </svg>
+
                          Cluster
+                         </a>
+                    </div>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-cont-selec':null}`}>
+                         <a 
+                         className='app-nav-lnk-lnk'
+                         href={_BASE_CLIENT_URL+'src/design'}>     
+                         <svg 
+                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-ico-selec':null}`}
+                         width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M7 27H5V31H7V27ZM27 31C28.1046 31 29 30.1046 29 29C29 27.8954 28.1046 27 27 27V31ZM7 31H27V27H7V31Z" fill="currentColor"/>
+                         <path d="M6 24V20.5714L16.973 9.5062C17.7833 8.68907 19.1144 8.72265 19.8825 9.57961L21.1806 11.0279C21.9118 11.8437 21.8506 13.0959 21.0434 13.8365L9.96667 24H6Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                         <path d="M24.8182 10L21 6.18182L21.2727 5.90909C22.3271 4.85473 24.0365 4.85473 25.0909 5.90909C26.1453 6.96345 26.1453 8.67291 25.0909 9.72727L24.8182 10Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                         </svg>
+                         Design
                          </a>
                     </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/setting'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
-                         href={_BASE_CLIENT_URL+'src/setting'}>
+                         href={_BASE_CLIENT_URL+'src/setting'}>     
                          <svg 
                          className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-ico-selec':null}`}
-                         xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="iCKXIOPdkM~UA8JX4zrana" x1="39.001" x2="41.528" y1="29.5" y2="29.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c48f0c"/><stop offset=".251" stop-color="#d19b16"/><stop offset=".619" stop-color="#dca51f"/><stop offset="1" stop-color="#e0a922"/></linearGradient><path fill="url(#iCKXIOPdkM~UA8JX4zrana)" d="M38.999,25H38v9h1.333c0.975,0,1.808-0.703,1.972-1.664l0.653-3.832	C42.269,26.672,40.857,25,38.999,25z"/><linearGradient id="iCKXIOPdkM~UA8JX4zranb" x1="-201" x2="-198.472" y1="29.5" y2="29.5" gradientTransform="matrix(-1 0 0 1 -192 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c48f0c"/><stop offset=".251" stop-color="#d19b16"/><stop offset=".619" stop-color="#dca51f"/><stop offset="1" stop-color="#e0a922"/></linearGradient><path fill="url(#iCKXIOPdkM~UA8JX4zranb)" d="M9.001,25H10v9H8.667c-0.975,0-1.808-0.703-1.972-1.664l-0.653-3.832	C5.731,26.672,7.143,25,9.001,25z"/><radialGradient id="iCKXIOPdkM~UA8JX4zranc" cx="24" cy="25.5" r="17.396" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf54"/><stop offset=".261" stop-color="#fdcb4d"/><stop offset=".639" stop-color="#f7c13a"/><stop offset="1" stop-color="#f0b421"/></radialGradient><path fill="url(#iCKXIOPdkM~UA8JX4zranc)" d="M24,6C16.598,6,9,9,9,25c0,1.281,0,5.92,0,7.288C9,38,18,45,24,45s15-7,15-12.712	c0-1.368,0-6.007,0-7.288C39,9,31.402,6,24,6z"/><radialGradient id="iCKXIOPdkM~UA8JX4zrand" cx="9.386" cy="5.933" r="42.765" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c26715"/><stop offset=".508" stop-color="#b85515"/><stop offset="1" stop-color="#ad3f16"/></radialGradient><path fill="url(#iCKXIOPdkM~UA8JX4zrand)" d="M24,4c-7.982,0-10,3-10,3c-3.245,0.479-7,4.566-7,10c0,3.032,0.653,4.439,2,12c1-12,2-16,4-16	c3,0,3,2,11.778,2C29.801,15,32,13,34,13c5,0,5,14.108,5,16c0.806-7.405,1-9.351,1-12C40,10.712,35.383,4,24,4z"/><radialGradient id="iCKXIOPdkM~UA8JX4zrane" cx="20.832" cy="9.178" r="53.981" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c26715"/><stop offset=".508" stop-color="#b85515"/><stop offset="1" stop-color="#ad3f16"/></radialGradient><path fill="url(#iCKXIOPdkM~UA8JX4zrane)" d="M24,3c-7.982,0-10,4-10,4c-0.08,2.125,1,4,1,4s1.46,3,9.778,3C29.801,14,37,11.003,37,3	C37,3,35.383,3,24,3z"/></svg>
+                         width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <rect x="13" y="5" width="10" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                         <path d="M28.4294 25.3066C23.496 16.8047 12.552 17.1082 8.27514 25.4564C7.39548 27.1734 8.84189 28.9996 10.7711 28.9996L25.9821 28.9998C27.9875 28.9998 29.4358 27.0411 28.4294 25.3066Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                         </svg>
+
                          Profile
                          </a>
                     </div>

@@ -724,11 +724,14 @@ font-family: inter;
 
 
    .app-nav-bar-main-cont{
-        width: 100%;
+        width: 100vw;
+        max-width: 100vw;
         height: 52px;
+        overflow-x: scroll;
+        scrollbar-color: var(--backColor);
+        scrollbar-width: 0;
         background-color: var(--NavheadColor);
         color: #000;
-        
         margin-top: 62px;  
         display: inline-flex;
         padding-left: 22px;
@@ -748,8 +751,8 @@ font-family: inter;
         justify-content: center;
         height: 100%;
         font-size: 13px;
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: 8px;
+        padding-right: 8px;
         margin-right: 12px;
         font-family: inter;
         color: var(--NavTextColor);
@@ -766,12 +769,13 @@ font-family: inter;
    }
 
 .app-nav-bar-main-link-ico{
-     width: 18px;
-     height: 18px;
+     width: 22px;
+     height: 22px;
      margin-right: 7px;
 }
 .app-nav-bar-main-link-ico-selec{
      color: inherit;
+     
 }
 
 

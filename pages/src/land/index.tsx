@@ -1109,7 +1109,6 @@ class Land extends React.Component<LandProps,any>{
                      <div className='app-link-more-butt-more-cont'>
                               <button className='app-link-more-butt'
                               onClick={()=>{
-                                   this.setlinkMoreModalVisi(false);
                                    copy(`${URLS.visit}/${this.state.selectLinkMoreUniId}`);
                                    toast.dark('Link Copied', {
                                              position: toast.POSITION.TOP_CENTER,
@@ -1381,7 +1380,7 @@ class Land extends React.Component<LandProps,any>{
                                                        </div> */}
                                                         
                                                             <div className='app-land-head-pro-pic-main-cont'>
-                                                                 <img src={User!.getUserData()!.pro_photo_url?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
+                                                                 <img src={User!.getUserData()?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
                                                             </div>
                                                        
                                                        {

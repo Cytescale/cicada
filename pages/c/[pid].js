@@ -13,12 +13,15 @@ import styled ,{ThemeProvider} from "styled-components";
      subTextColor:'#bdbdbd',
      backColor:'#fff',
      profileCardColor:'#f6f6f6',
+     bioCardColor:'#f0f0f0',
+     bioCardShad:'none',
      cardColor:'#fff',
      cardColorpress:'#e0e0e0',
      cardTitleColor:'#000',
      cardShadow:'0px 4px 8px rgba(0, 0, 0, 0.10)',
      borderColor:'#e0e0e0',
-     border:'1px solid #e0e0e0',
+     ButtonBorderRadius:'3px',
+     Buttonborder:'1px solid #f1f1f1',
    }))`         
           .cluster-page-main-cont{
                height: 100%;
@@ -62,20 +65,27 @@ import styled ,{ThemeProvider} from "styled-components";
                margin-top: 12px;
                font-size: 22px;
                color: ${props => props.textColor};
+               
                font-weight: 700;
           }
 
           .cluster-profile-bio{
-               width: 100%;
+               width: 92%;
+               margin-left:4%;
+               margin-right:4%;
                display: flex;
                font-family: inter;
                align-items: center;
-               padding: 6px;
+               padding: 12px;
+               padding-top:22px;
+               padding-bottom:22px;
                border-radius: 8px;
                justify-content: center;
-               margin-top: 0px;
+               margin-top: 12px;
                font-size: 15px;
+               background: ${props => props.bioCardColor};
                color: ${props => props.textColor};
+               box-shadow:${props => props.bioCardShad};
           }
 
           .cluster-hr-cont{
@@ -126,8 +136,8 @@ import styled ,{ThemeProvider} from "styled-components";
                height: 52px;
                background-color:  ${props => props.cardColor};;
                box-shadow:  ${props => props.cardShadow};;
-               border:  ${props => props.border};;
-               border-radius: 7px;
+               border:  ${props => props.Buttonborder};;
+               border-radius: ${props => props.ButtonBorderRadius};
                margin-top: 22px;
                display: flex;
                justify-content: center;
@@ -292,13 +302,28 @@ class ClusterComp extends React.Component{
                               cardColorpress:'#2E3942',
                               cardShadow:'-3px -3px 10px #384148, 3px 3px 10px #1E242B',
                               borderColor:'#757575',
-                              border:'none',
+                              Buttonborder:'none',
+                              bioCardColor:'#2A3239',
+                              bioCardShad:'inset -3px -3px 10px #384148, inset 3px 3px 10px #1E242B',
                               cardTitleColor:'#fff',
                          })``;
                          break;
                     }
                     case 2:{
-
+                         StyledOuterCont = styled(StyledClusterMainCont).attrs({
+                              backColor:'#FFE1E1',
+                              textColor:'#000',
+                              subTextColor:'#222222',
+                              profileCardColor:'#FFE1E1',
+                              cardColor:'#fff',
+                              cardColorpress:'#f1f1f1',
+                              cardShadow:'none',
+                              borderColor:'#F9CBCB',
+                              Buttonborder:'none',
+                              bioCardColor:'#FFD4D4',
+                              bioCardShad:'none',
+                              cardTitleColor:'#000',
+                         })``;
                          break;
                     }
                     default:{
@@ -351,7 +376,7 @@ class ClusterComp extends React.Component{
 
                         }     
                         <div className='cluster-link-outer-cont'>
-                         <div className='cluster-link-outer-cont-tab'>My links</div>
+                         {/* <div className='cluster-link-outer-cont-tab'>My links</div> */}
                          {this.state.linkData?this.state.linkData.map((e,ind)=>{
                               if(e.active_bool){
                                    return (
@@ -371,7 +396,7 @@ class ClusterComp extends React.Component{
                            {
                              this.state.linkConfigData?
                              this.state.linkConfigData.footer_card_bool?
-                             <div className='cluster-made-main-cont'>Sakura❤️</div>:
+                             <a href={_BASE_CLIENT_URL}><div className='cluster-made-main-cont'>Made with Project Sakura ❤️</div></a>:
                              <span/>:
                              <span/>  
                          }

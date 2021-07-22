@@ -1,0 +1,77 @@
+
+.app-design-temp-grid{
+     width: 100%;
+     max-width: 100vw;
+     height: 500px;
+     display: grid;
+     
+}
+
+.app-design-temp-grid-row{
+     height: auto;
+     width: auto;
+     flex: 1;
+     display: inline-flex;
+     padding: 12px;
+     margin-bottom: 22px;
+     /* background-color: #11E4D1; */
+}
+
+.app-design-temp-item{
+     height: 250px;
+     width: auto;
+     flex: 1;
+     margin: 6px;
+     /* background-color: green; */
+}
+
+.app-design-card-main-cont{
+     width: 100%;
+     height: 100%;
+     background-color: #fff;
+     border-radius: 16px;
+     padding: 12px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.app-design-card-tab-outer-main-cont{
+     width: 100%;
+     height: auto;
+}
+
+.app-design-card-tab-main-cont{
+     width: 100%;
+     height: 22px;
+     
+     margin-top: 12px;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-design-card-main-cont-tab{
+     width: 100%;
+     height: auto;
+     font-size: 17px;
+     font-family: inter;
+     color:var(--textColor);
+     margin-top: 12px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.degi-neu{
+     background-color: #2E363E;
+}
+.degi-neu-tab{
+
+     background: #2A3239;
+     box-shadow: -3px -3px 10px #384148, 3px 3px 10px #1E242B;
+}
+.degi-rose{
+     background-color: #FFE1E1;
+}
+.degi-rose-tab{
+     background-color: #fff;
+}

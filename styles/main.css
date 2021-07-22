@@ -739,9 +739,10 @@ font-family: inter;
         align-items: center;
         z-index: 100;
         border-bottom: 1px solid var(--borColor);
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
    }
    .land-nav-bar-cont{
-     box-shadow: none;
+     
         
    }
    .app-nav-bar-main-link-cont{
@@ -755,7 +756,7 @@ font-family: inter;
         padding-right: 8px;
         margin-right: 12px;
         font-family: inter;
-        color: var(--NavTextColor);
+        color: var(--textColor);
         font-weight: 400;
    }
    .app-nav-bar-main-link-cont-selec{

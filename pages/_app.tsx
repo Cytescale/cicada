@@ -11,7 +11,7 @@ import '../styles/link.css';
 import '../styles/cluster.css';
 import '../styles/clusterAct.css';
 import '../styles/profileAct.css'
-
+import '../styles/designAct.css';
 
 import type { AppProps } from 'next/app'
 

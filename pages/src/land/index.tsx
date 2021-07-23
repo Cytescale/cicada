@@ -664,7 +664,7 @@ class Land extends React.Component<LandProps,any>{
                console.log('init data load');          
                  this.setLoading(true);
                     User.setUserUid(await getUid());
-                    // this.initLinksDataLoad();
+                     this.initLinksDataLoad();
                     this.setAuth(true);
                     if(backendHelper && !User.getUserData()){
                          BackendHelper._getUserInfo(User.getUserUid(),true).then((res:nexusResponse)=>{

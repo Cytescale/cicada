@@ -46,4 +46,12 @@ export default class User {
      public  getUserUid():string|null{
           return User.UID
      }
+
+     public purgeData():boolean{
+          this.setUserData(null);
+          this.setUserToken(null);
+          this.setUserUid(null);
+          return true;
+     }
+
 }

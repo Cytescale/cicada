@@ -24,17 +24,18 @@
      color: var(--textColor);
 }
 .app-login-inpt-main-cont-lab{
-     color: var(--subtextColor);
+     color: var(--textColor);
 }
 .login-form-fld{
      box-shadow: none;
      background-color: var(--backColor);
-     font-weight: 700;
+     font-weight: 500;
      font-family: inter;
+     font-size: 18px;
      padding-left: 0px;
      border-bottom: 1px solid var(--borColor);
      color: var(--textColor);
-     height: 32px;
+     height: 42px;
      border-radius: 0px;
 }
 .app-login-sub-butt{
@@ -66,4 +67,48 @@ color: var(--subtextColor);
 .app-login-sub-act-cont{
      color: #0070F3;
      font-weight: 700;
+}
+.app-login-redirct-mess-main-cont{
+     background-color:#66D655;
+     color:#000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 7px;
+     border-radius: 7px;
+     margin-bottom: 22px;
+}
+.forgot-pass-lab{
+     font-size: 21px;
+     font-family: inter;
+     color: var(--textColor);
+}
+
+.forgot-pass-sub-lab{
+     font-size: 15px;
+     font-family: inter;
+     margin-top: 6px;
+     font-weight: 500;
+}
+.forgot-pass-fld{
+     width: 100%;
+     height: 42px;
+     margin-top: 12px;
+     background-color: var(--buttonBackColor);
+     border-radius: 3px;
+     color: var(--textColor)  ;
+}
+
+.forgot-sub-butt{
+     width: 100%;
+     height: 42px;
+     border-radius: 7px;
+     outline: none;
+     border-style: none;
+     color: #000;
+     margin-top: 22px;
+     background-color: var(--pri-dark);
+}
+.forgot-sub-butt:active{
+     background-color: #11CEBD;    
 }

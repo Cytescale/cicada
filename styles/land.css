@@ -1652,3 +1652,20 @@ color: inherit;
 .app-land-lnks-holder-shw-mr-butt:active{
      background-color: #e0e0e0;
 }
+
+.app-init-acc-lab-main-cont{
+     color: var(--textColor);
+     font-size: 28px;
+     font-family: inter;
+     font-weight: 700;
+     width: 100%;
+     padding: 22px;
+     padding-top: 82px;
+     border-bottom: 1px solid var(--borColor);
+}
+.app-init-acc-form-main-cont{
+     width: 100%;
+     height: 100%;
+     padding: 32px;
+     padding-top: 12px;
+}

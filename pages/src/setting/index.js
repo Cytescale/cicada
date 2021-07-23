@@ -10,6 +10,8 @@ import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
 import  {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
 import ImageUploading from 'react-images-uploading';
+import AuthView from '../auth';
+import getAuth from '../../../comp/utils/getAuth';
 
 
 
@@ -117,6 +119,7 @@ const Profile = (props)=>{
                console.log(r);
                if(r){
                     console.log('Logout successfully');
+                    User.purgeData();
                     router.replace('/');
                }
                
@@ -237,6 +240,9 @@ const Profile = (props)=>{
         };
       
      useEffect(async ()=>{
+          setLoading(true);
+          getAuth().then(async(m)=>{
+               console.log("User auth success"+m);
                await loadUserData(setLoading);
                if(User.getUserData()){
                     setuname(User.getUserData().uname);
@@ -244,6 +250,12 @@ const Profile = (props)=>{
                     setbio(User.getUserData().bio);
                     setcname(User.getUserData().cname);
                }
+               
+          }).catch((e)=>{
+               console.log("User auth failure"+e.message);
+               router.replace('/src/login');
+          })     
+          
      },[]);
 
 

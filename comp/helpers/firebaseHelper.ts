@@ -206,6 +206,36 @@ export default class firebaseHelper implements firebaseHelperInter{
         
      }
 
+     async createEmailAuth(eml: string, pass: string):Promise<nexusResponse|null>{
+          let ress:nexusResponse|null = null;
+          await this.getFirebase()!.auth().createUserWithEmailAndPassword(eml,pass).then(async (result)=>{
+                         var user = result.user;
+                         var res = await result.user?.getIdToken(true);
+                         ress= {
+                              errBool:false,
+                              errCode:0,
+                              errMess:'null',
+                              responseData:{
+                                   uid:user?.uid,
+                                   email:user?.email,
+                                   userToken:res
+                              },
+                         }
+
+               })
+               .catch((error) => {
+                    console.log(error.code); 
+                    ress= {
+                         errBool:true,
+                         errCode:1,
+                         errMess:error.code,
+                         responseData:null,
+                    }
+               
+          });
+          return ress;
+     }
+
 
      
      async sendPassResetEmail(eml:string):Promise<nexusResponse|null>{

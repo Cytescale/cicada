@@ -16,47 +16,9 @@ import { slide as Menu } from 'react-burger-menu'
 import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
 import {ThemeProvider} from "styled-components";
 import { BurgerMenu,LandNavBarCont } from "../../../comp/elements";
-// import GlobalStyles from './globalStyle';
 import { BottomSheet } from 'react-spring-bottom-sheet'
+import getAuth from '../../../comp/utils/getAuth';
 
-
-
-export const lightTheme = {
-     backColor: '#FFF',
-     borColor:'#e0e0e0',
-     boxShad:'0 3px 10px 0px rgba(0,0,0,0.1)',
-
-     buttonBackColor:'#fff',
-     
-     linkHolderColor:'#f8f8f8',
-     headerPriColor:'#000',
-     headerSecColor:'#000',
-
-     headColor:'#fff',
-     headBugerColor:'#000',
-     
-     cardColor:'#fff',
-     smallCardColor:'#f5f5f5',
-
-
-}
- export const darkTheme = {
-     backColor: '#000',
-     borColor:'#555555',
-     boxShad:'0 3px 10px 0px rgba(0,0,0,0.1)',
-     buttonBackColor:'#000',
-     
-     linkHolderColor:'252525',
-     headerPriColor:'#fff',
-     headerSecColor:'#ff',
-
-     headColor:'#000',
-     headBugerColor:'#fff',
-     
-     cardColor:'#000',
-     smallCardColor:'#656565',
-     
-}
 
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
@@ -95,7 +57,6 @@ function timeDifference(current:any, previous:any) {
          return Math.round(elapsed/msPerYear ) + ' years ago';   
      }
  }
-
  const ProfileLogoutModal:React.FC<any> = (props:any)=>{  
      return(
                <Modal
@@ -140,68 +101,6 @@ function timeDifference(current:any, previous:any) {
                </Modal>
       )
  }
-
-const ProfilePopover:React.FC<any> = (props:any)=>{
-     const [show, setShow] = useState(false);
-     const [target, setTarget] = useState(null);
-     const ref = useRef(null);
-     const handleClick = (event:any) => {
-       setShow(!show);
-       setTarget(event.target);
-     };
-     return (
-       <div ref={ref}>
-         <button onClick={handleClick}
-         className='app-land-prof-pic-butt'
-         >
-         <svg className='app-land-prof-pic-butt-ico' xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M10.25,13c0,0.69-0.56,1.25-1.25,1.25S7.75,13.69,7.75,13S8.31,11.75,9,11.75S10.25,12.31,10.25,13z M15,11.75 c-0.69,0-1.25,0.56-1.25,1.25s0.56,1.25,1.25,1.25s1.25-0.56,1.25-1.25S15.69,11.75,15,11.75z M22,12c0,5.52-4.48,10-10,10 S2,17.52,2,12S6.48,2,12,2S22,6.48,22,12z M20,12c0-0.78-0.12-1.53-0.33-2.24C18.97,9.91,18.25,10,17.5,10 c-3.13,0-5.92-1.44-7.76-3.69C8.69,8.87,6.6,10.88,4,11.86C4.01,11.9,4,11.95,4,12c0,4.41,3.59,8,8,8S20,16.41,20,12z"/></g></svg>
-          </button>   
-         <Overlay
-           placement={'bottom'}
-           show={show}
-           target={target}
-           rootClose={true}
-           container={ref.current}
-           containerPadding={20}
-         >
-           <Popover id="popover-contained" className='app-land-prof-pop-main-cont'>
-             <div className='app-land-prof-pop-data-main-cont pop-name-cont'>
-                    {/* <div className='pop-name-cont-pro'>
-                    <svg className='app-land-prof-pic-butt-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M10.25,13c0,0.69-0.56,1.25-1.25,1.25S7.75,13.69,7.75,13S8.31,11.75,9,11.75S10.25,12.31,10.25,13z M15,11.75 c-0.69,0-1.25,0.56-1.25,1.25s0.56,1.25,1.25,1.25s1.25-0.56,1.25-1.25S15.69,11.75,15,11.75z M22,12c0,5.52-4.48,10-10,10 S2,17.52,2,12S6.48,2,12,2S22,6.48,22,12z M20,12c0-0.78-0.12-1.53-0.33-2.24C18.97,9.91,18.25,10,17.5,10 c-3.13,0-5.92-1.44-7.76-3.69C8.69,8.87,6.6,10.88,4,11.86C4.01,11.9,4,11.95,4,12c0,4.41,3.59,8,8,8S20,16.41,20,12z"/></g></svg>
-                    </div> */}
-                    Profile
-            </div>
-            <div className='app-land-prof-pop-data-main-cont pop-eml-cont'>
-                    {User?.getUserData()?.email?User?.getUserData()?.email!.slice(0,20) + (User?.getUserData()!.email!.length >20 ? "..." : ""):null}
-            </div>
-            <div className='app-land-prof-pop-hr'/>
-            <div className='app-land-prof-pop-data-main-cont pop-link-cont'>
-            Terms of Use   
-                    <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
-            </div>
-            <div className='app-land-prof-pop-data-main-cont pop-link-cont'>
-            Privacy Policy
-            <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
-            </div>
-            <div className='app-land-prof-pop-hr'/>
-            <div className='app-land-prof-pop-data-main-cont pop-acc-sett-cont'>
-            Account Settings
-            <div className='app-land-prof-pop-rgt-main-cont'><svg className='app-land-prof-pop-rgt-main-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/></svg></div>
-            </div>
-            <div className='app-land-prof-pop-hr'/>
-            <Button variant="light" className="menu-item-lgout" onClick={()=>{
-                    setShow(!show);
-                 props.setlgoutShow(true)}
-               }
-                 >
-                         Logout
-            </Button>
-           </Popover>
-         </Overlay>
-       </div>
-     );
-}
-
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
      return(
@@ -762,12 +661,12 @@ class Land extends React.Component<LandProps,any>{
      setAuth(b:boolean){this.setState({isAuth:b});}
 
      async initDataLoad(){
-               this.setLoading(true);
-               if(await getUid()){
+               console.log('init data load');          
+                 this.setLoading(true);
                     User.setUserUid(await getUid());
-                    this.initLinksDataLoad();
+                    // this.initLinksDataLoad();
                     this.setAuth(true);
-                    if(backendHelper){
+                    if(backendHelper && !User.getUserData()){
                          BackendHelper._getUserInfo(User.getUserUid(),true).then((res:nexusResponse)=>{
                               if(res){
                                    if(!res.errBool){
@@ -799,12 +698,10 @@ class Land extends React.Component<LandProps,any>{
                               });
                               this.setLoading(false);
                          });
+                    }else{
+                         this.setAuth(true);
+                         this.setLoading(false);
                     }
-
-               }else{
-                    this.props.router.replace('/src/login');
-                    this.setAuth(false);
-               }
      }
      async initLinksDataLoad(){
           if(User.getUserUid()){
@@ -1324,13 +1221,21 @@ class Land extends React.Component<LandProps,any>{
      
      componentDidMount(){
           console.log('component mount');
-          this.initDataLoad();
+          this.setLoading(true);
+          getAuth().then((m)=>{
+               console.log("User auth success"+m);
+               this.initDataLoad();
+          }).catch((e)=>{
+               console.log("User auth failure"+e.message);
+               this.props.router.replace('/src/login');
+          })
+          
      }
 
      render(){
-          if(!this.state.isLoading && this.state.isAuth){
+          //  && this.state.isAuth
+          if(!this.state.isLoading){
           return(
-               <ThemeProvider theme={darkTheme}>
                <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
                     <Head>
                     <title>Sakura</title>
@@ -1592,7 +1497,6 @@ class Land extends React.Component<LandProps,any>{
                         {this.renderFeedbackModal()}
                          <ToastContainer />
             </div>
-            </ThemeProvider>
           )}
           else{
                return (

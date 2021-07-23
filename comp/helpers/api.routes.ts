@@ -13,6 +13,7 @@ export declare type URLinter = {
      getUserInfo: string
      getUserDatabyUname:string
      updateUserInfo:string
+     makeUserInfo:string,
      makeLinkData:string
      getLinkData:string
      getLinkDatabyId:string
@@ -29,7 +30,7 @@ const URLS:URLinter = {
      buildClusterLinkArray:_BASE_API_URL+'buildClusterLinkArray',
      updateClusterConfigData:_BASE_API_URL+'updateClusterConfigData',
      getClusterConfigByUid:_BASE_API_URL+'getClusterConfigbyUid',
-     
+     makeUserInfo:_BASE_API_URL+'createaccount',
      getUserDatabyUname:_BASE_API_URL+'getUserDatabyUname',
      updateLinkData:_BASE_API_URL+'updateLinkData',
      getLinkDatabyUniId:_BASE_API_URL+'getLinksDatabyUniId',

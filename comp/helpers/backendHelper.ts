@@ -123,6 +123,33 @@ export default class BackendHelper{
           })
      }
 
+     async _makeUserData(uid:string,email:string,userToken:string,login_method:number):Promise<nexusResponse>{
+          var data = JSON.stringify({
+               "uid":uid,
+               "email":email,
+               "signup_method":login_method,
+               "userToken":userToken
+          });             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.makeUserInfo,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
+    
 
      async _updateUserData(uid:string,up_data:any):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"update_data":up_data});             
@@ -300,7 +327,8 @@ export default class BackendHelper{
                     });
           })
      }
-    
+
+   
 
      _initLogout(){
           return new Promise(async (resolve, reject) => {

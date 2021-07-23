@@ -9,7 +9,7 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
 import copy from 'copy-to-clipboard';
-
+import getAuth from '../../../comp/utils/getAuth';
 
 const User = new user();
 const FirebaseHelper = new firebaseHelper();
@@ -286,7 +286,14 @@ const cluster = (props)=>{
      const [lastUpdate,setlastUpdate] = useState(null);
 
      useEffect(async ()=>{
-              await loadUserData(setLoading);
+              setLoading(true);
+              getAuth().then(async(m)=>{
+                   console.log("User auth success"+m);
+                   await loadUserData(setLoading);
+              }).catch((e)=>{
+                   console.log("User auth failure"+e.message);
+                   router.replace('/src/login');
+              })
      },[]);
 
      if(!loading){

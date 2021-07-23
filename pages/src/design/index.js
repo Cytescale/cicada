@@ -9,6 +9,7 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
 import copy from 'copy-to-clipboard';
+import getAuth from '../../../comp/utils/getAuth';
 
 
 const User = new user();
@@ -114,27 +115,36 @@ const design = (props)=>{
      }
 
      useEffect(async ()=>{
-              await loadUserData(setLoading);
-              const uid = await getUid();
-               if(uid){
-                    if(backendHelper){
-                         BackendHelper._getClusterConfigByUid(uid).then(async(res)=>{
-                              if(res){
-                                   if(!res.errBool){
-                                        console.log(res.responseData);
-                                        setclusterConfigData(res.responseData)
-                                        setselecDeginTmpId(res.responseData.design_temp_id)
-                                   
-                                   }
-                                   else{
-                                        toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
-                                   }
-                              }
-                         }).catch(e=>{
-                              toast.error(e, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
-                         });
-                    }
-               }
+          setLoading(true);
+          getAuth().then(async(m)=>{
+               console.log("User auth success"+m);
+               await loadUserData(setLoading);
+               const uid = await getUid();
+                if(uid){
+                     if(backendHelper){
+                          BackendHelper._getClusterConfigByUid(uid).then(async(res)=>{
+                               if(res){
+                                    if(!res.errBool){
+                                         console.log(res.responseData);
+                                         setclusterConfigData(res.responseData)
+                                         setselecDeginTmpId(res.responseData.design_temp_id)
+                                    
+                                    }
+                                    else{
+                                         toast.error(res.errMess, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                                    }
+                               }
+                          }).catch(e=>{
+                               toast.error(e, {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                          });
+                     }
+               }        
+          }).catch((e)=>{
+               console.log("User auth failure"+e.message);
+               router.replace('/src/login');
+          })     
+
+        
      },[]);
 
      if(!loading){

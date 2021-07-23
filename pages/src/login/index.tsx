@@ -8,10 +8,11 @@ import nexusResponse from "../../../comp/helpers/nexusResponse";
 import backendHelper from "../../../comp/helpers/backendHelper";
 
 import { BottomCont} from "../../../comp/elements";
-
+import user  from "../../../comp/utils/user";
 
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
+const User = new user();
 
 interface WithRouterProps {
      router: NextRouter
@@ -27,8 +28,8 @@ class LoginAct extends React.Component<LoginProps,any>{
           super(props);
           this.state ={
                loading:false,
-               emlFldData:'nikhilwilayate1998@gmail.com',
-               pssFldData:'password',
+               emlFldData:'',
+               pssFldData:'',
                errBool:false,
                errMess:'null',
                succBool:false,
@@ -40,6 +41,7 @@ class LoginAct extends React.Component<LoginProps,any>{
           this.handleLoginSub = this.handleLoginSub.bind(this);
           this.seterrToast  =this.seterrToast.bind(this);
           this.setsuccToast = this.setsuccToast.bind(this);
+          
      }
 
      seterrToast(b:boolean,s:string){this.setState({errBool:b,errMess:s})}
@@ -48,8 +50,26 @@ class LoginAct extends React.Component<LoginProps,any>{
      setPssFldData(s:string){this.setState({pssFldData:s})}
      setLoading(b:boolean){this.setState({loading:b})}
 
-     componentDidMount(){
+
+     renderRedirectionMessage(){
+          const {accnt_redirect,accnt_crt_succ} = this.props.router.query
+          if(accnt_redirect && accnt_crt_succ){
+               return(
+                    <div className='app-login-redirct-mess-main-cont'>
+                              Account created successfully
+                    </div>
+               )
+          }
+     }
+
+     
+
+     componentDidUpdate(){          
           
+     }
+
+     componentDidMount(){
+          User.purgeData();
      }
      
      async handleLoginSub(){
@@ -125,9 +145,11 @@ class LoginAct extends React.Component<LoginProps,any>{
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
                          <div className='app-head-cont-main-body login-head-body-cont'>
+                                   <a href='/' className='app-head-outer-link-main-cont'>
                                    Sakura
+                                   </a>
                          </div>
-                         <form>
+                         {/* <form> */}
                          <div className='app-moto-cont-main-body'>
                                    <div className='app-moto-cont-main-sub-body'>
                                         <div className='app-moto-cont-tit-1'>
@@ -139,6 +161,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                                    </div>
                          </div>
                          <div className='app-login-main-cont-body'>
+                              {this.renderRedirectionMessage()}
                               <div className='app-login-inpt-main-cont'>
                                    <div className='app-login-inpt-main-cont-lab'>
                                         Email Address
@@ -165,6 +188,8 @@ class LoginAct extends React.Component<LoginProps,any>{
                               placeholder='********'/>
                             
                               </div>
+                              <div className='app-login-for-main-cont'>
+                                   <a href='/src/forgotpassword' className='app-login-for-link'>Can't remember password?</a></div>
                               <div className='app-login-sub-main-cont'>
                                         <button className='app-login-sub-butt' 
                                              disabled={this.state.loading}
@@ -199,7 +224,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                               </div>
                               </a>
                          </div>
-                         </form>
+                         {/* </form> */}
                </div>
                <ToastContainer />
                <BottomCont/>

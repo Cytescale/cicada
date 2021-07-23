@@ -159,50 +159,7 @@ const LinkCard=(props)=>{
           return(<div className='app-loading-skt-main-cont' style={{height:'62px'}}></div>)
      }
 }
-async function loadUserData(setLoading){
-     if(!User.getUserData()){
-          if(backendHelper){
-               await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
-                    if(res){
-                         if(!res.errBool){
-                              User.setUserUid(res.responseData.uid);
-                              User.setUserData(res.responseData);
-                               console.log(res.responseData);
-                         }
-                         else{
-                              toast.error(res.errMess, {
-                                   position: toast.POSITION.TOP_CENTER,
-                                   autoClose: 5000,
-                                   hideProgressBar: true,
-                                   closeOnClick: true,
-                                   pauseOnHover: true,
-                                   draggable: true,
-                                   progress: undefined,
-                              });
-                         }
-               }
-                    setLoading(false);
-               }).catch(e=>{
-                    toast.error(e, {
-                         position: toast.POSITION.TOP_CENTER,
-                         autoClose: 5000,
-                         hideProgressBar: true,
-                         closeOnClick: true,
-                         pauseOnHover: true,
-                         draggable: true,
-                         progress: undefined,
-                    });
-                    setLoading(false);
-               });
-               return true;
-          }
-          return false;
-     }
-     else{
-          setLoading(false);
-          return true;
-     }
-}
+
 
 
 function useForceUpdate(){
@@ -215,7 +172,7 @@ const RenderClusterLink = (props) =>{
      const [clusterConfigData ,setclusterConfigData] = useState(null);
      const [linkDataLoading,setlinkDataLoading] = useState(true);
      const forceUpdate = useForceUpdate();
-
+    
      useEffect(async ()=>{
           const uid = await getUid();
           if(uid){
@@ -284,7 +241,60 @@ const cluster = (props)=>{
      const [selecInd,setselecInd] = useState(null);
      const [clusterActive,setclusterActive] = useState(false);
      const [lastUpdate,setlastUpdate] = useState(null);
-
+     const loadUserData = async ()=> {
+          if(!User.getUserData()){
+               if(backendHelper){
+                    await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
+                         if(res){
+                              if(!res.errBool){
+                                   if(res.responseData.deleted_bool){
+                                        console.log('User is deleted');
+                                        router.replace('/src/login');
+                                        return;
+                                    }
+                                    if(!res.responseData.init_bool){
+                                        console.log('User is not initiated');
+                                        router.replace('/src/initAccount');
+                                        return;
+                                    }
+                                   User.setUserUid(res.responseData.uid);
+                                   User.setUserData(res.responseData);
+                                    console.log(res.responseData);
+                              }
+                              else{
+                                   toast.error(res.errMess, {
+                                        position: toast.POSITION.TOP_CENTER,
+                                        autoClose: 5000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                   });
+                              }
+                    }
+                         setLoading(false);
+                    }).catch(e=>{
+                         toast.error(e, {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                         setLoading(false);
+                    });
+                    return true;
+               }
+               return false;
+          }
+          else{
+               setLoading(false);
+               return true;
+          }
+     }
      useEffect(async ()=>{
               setLoading(true);
               getAuth().then(async(m)=>{

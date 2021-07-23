@@ -22,50 +22,6 @@ function useForceUpdate(){
      return () => setValue(value => value + 1); // update the state to force render
  }
 
-async function loadUserData(setLoading){
-     if(!User.getUserData()){
-          if(backendHelper){
-               await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
-                    if(res){
-                         if(!res.errBool){
-                              User.setUserUid(res.responseData.uid);
-                              User.setUserData(res.responseData);
-                               console.log(res.responseData);
-                         }
-                         else{
-                              toast.error(res.errMess, {
-                                   position: toast.POSITION.TOP_CENTER,
-                                   autoClose: 5000,
-                                   hideProgressBar: true,
-                                   closeOnClick: true,
-                                   pauseOnHover: true,
-                                   draggable: true,
-                                   progress: undefined,
-                              });
-                         }
-               }
-                    setLoading(false);
-               }).catch(e=>{
-                    toast.error(e, {
-                         position: toast.POSITION.TOP_CENTER,
-                         autoClose: 5000,
-                         hideProgressBar: true,
-                         closeOnClick: true,
-                         pauseOnHover: true,
-                         draggable: true,
-                         progress: undefined,
-                    });
-                    setLoading(false);
-               });
-               return true;
-          }
-          return false;
-     }
-     else{
-          setLoading(false);
-          return true;
-     }
-}
 
 
 const design = (props)=>{
@@ -76,7 +32,61 @@ const design = (props)=>{
      const [selecDeginTmpId,setselecDeginTmpId] = useState(0);
      const forceUpdate = useForceUpdate();
      
-
+     const loadUserData =async ()=>{
+          if(!User.getUserData()){
+               if(backendHelper){
+                    await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
+                         if(res){
+                              if(!res.errBool){
+                                   if(res.responseData.deleted_bool){
+                                        console.log('User is deleted');
+                                        this.props.router.replace('/src/login');
+                                        return;
+                                    }
+                                    if(!res.responseData.init_bool){
+                                        console.log('User is not initiated');
+                                        this.props.router.replace('/src/initAccount');
+                                        return;
+                                    }
+                                   User.setUserUid(res.responseData.uid);
+                                   User.setUserData(res.responseData);
+                                    console.log(res.responseData);
+                              }
+                              else{
+                                   toast.error(res.errMess, {
+                                        position: toast.POSITION.TOP_CENTER,
+                                        autoClose: 5000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                   });
+                              }
+                    }
+                         setLoading(false);
+                    }).catch(e=>{
+                         toast.error(e, {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                         setLoading(false);
+                    });
+                    return true;
+               }
+               return false;
+          }
+          else{
+               setLoading(false);
+               return true;
+          }
+     }
+     
      const setTempplateId =  async (int)=>{
           BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"design_temp_id":int}).then((r)=>{
                if(!r.errBool){

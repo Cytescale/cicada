@@ -669,6 +669,16 @@ class Land extends React.Component<LandProps,any>{
                     if(backendHelper && !User.getUserData()){
                          BackendHelper._getUserInfo(User.getUserUid(),true).then((res:nexusResponse)=>{
                               if(res){
+                                   if(res.responseData.deleted_bool){
+                                        console.log('User is deleted');
+                                        this.props.router.replace('/src/login');
+                                        return;
+                                    }
+                                    if(!res.responseData.init_bool){
+                                        console.log('User is not initiated');
+                                        this.props.router.replace('/src/initAccount');
+                                        return;
+                                    }
                                    if(!res.errBool){
                                          User.setUserData(res.responseData);
                                          console.log(res.responseData);

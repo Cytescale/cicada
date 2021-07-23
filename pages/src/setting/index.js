@@ -23,46 +23,6 @@ const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 
 
-async function loadUserData(setLoading){
-          if(backendHelper){
-               await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
-                    if(res){
-                         if(!res.errBool){
-                               OldUserData = res.responseData;
-                               User.setUserData(res.responseData);
-                               User.setUserUid(res.responseData.uid);
-                               console.log(res.responseData);
-                         }
-                         else{
-                              toast.error(res.errMess, {
-                                   position: toast.POSITION.TOP_CENTER,
-                                   autoClose: 5000,
-                                   hideProgressBar: true,
-                                   closeOnClick: true,
-                                   pauseOnHover: true,
-                                   draggable: true,
-                                   progress: undefined,
-                              });
-                         }
-               }
-               setLoading(false);
-               }).catch(e=>{
-                    toast.error(e, {
-                         position: toast.POSITION.TOP_CENTER,
-                         autoClose: 5000,
-                         hideProgressBar: true,
-                         closeOnClick: true,
-                         pauseOnHover: true,
-                         draggable: true,
-                         progress: undefined,
-                    });
-                    setLoading(false);
-               });
-               return true;
-          }
-          return false;
-}
-
 
 const Profile = (props)=>{
      const router = useRouter()
@@ -85,6 +45,56 @@ const Profile = (props)=>{
      const [wor_upt_err_bool,setwor_upt_err_bool] = useState(false);
      const [wor_upt_err_str,setwor_upt_err_str] = useState(null);
      
+     const loadUserData =async ()=>{
+     if(backendHelper){
+          await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
+               if(res){
+                    if(!res.errBool){
+                         if(res.responseData.deleted_bool){
+                              console.log('User is deleted');
+                              router.replace('/src/login');
+                              return;
+                          }
+                          if(!res.responseData.init_bool){
+                              console.log('User is not initiated');
+                              router.replace('/src/initAccount');
+                              return;
+                          }
+                          OldUserData = res.responseData;
+                          User.setUserData(res.responseData);
+                          User.setUserUid(res.responseData.uid);
+                          console.log(res.responseData);
+                    }
+                    else{
+                         toast.error(res.errMess, {
+                              position: toast.POSITION.TOP_CENTER,
+                              autoClose: 5000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                         });
+                    }
+          }
+          setLoading(false);
+          }).catch(e=>{
+               toast.error(e, {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
+               setLoading(false);
+          });
+          return true;
+     }
+     return false;
+     }
+
      const sendResetLink = ()=>{
           FirebaseHelper.sendPassResetEmail(User.getUserData().email).then((r)=>{
                if(!r.errBool){

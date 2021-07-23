@@ -11,7 +11,8 @@ const getAuth = async ()=>{
      return new Promise(async (resolve, reject) => {
           const GOT_UID = await getUid();
           const GOT_TOKEN = await checkToken();     
-          if(GOT_UID && GOT_TOKEN){resolve('User auth with success');}
+          if(GOT_UID && GOT_TOKEN){
+               resolve('User auth with success');}
           else{reject('User auth failure')}
     })
 }

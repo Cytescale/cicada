@@ -83,7 +83,7 @@ class SignUpAct extends React.Component<SignUpProps,any>{
                                         draggable: true,
                                         progress: undefined,
                                    });
-                                   this.props.router.replace('src/login?accnt_redirect=true&&accnt_crt_succ=true');  
+                                   this.props.router.replace('/src/login?accnt_redirect=true&&accnt_crt_succ=true');  
                               }else{
                                    throw new Error(r.errMess);
                               }

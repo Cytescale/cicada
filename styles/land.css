@@ -1024,6 +1024,7 @@ background-color: rgba(0, 0, 0, 0)
      font-family: inter;
      font-weight: 700;
      vertical-align: middle;
+     color: var(--textColor);
 }
 
 .app-land-indi-ico{
@@ -1668,4 +1669,65 @@ color: inherit;
      height: 100%;
      padding: 32px;
      padding-top: 12px;
+}
+.app-link-more-del-butt{
+     color: var(--danger);
+}
+.app-land-act-delete-cnfm-main-cont{
+     
+background: rgba(0, 0, 0, 0.45);
+backdrop-filter: blur(17px);
+}
+.modal-content{
+     background-color: var(--cardColor);
+     padding: 0px;
+}
+.app-land-act-delete-bdy-cont{
+     padding: 22px;
+     
+}
+.app-land-act-delete-tab{
+     color: var(--textColor);
+     font-size: 18px;
+     font-family: inter;
+     font-weight: 700;
+}
+.app-land-act-delete-sub-tab{
+     color: var(--subtextColor);
+     width: 100%;
+     font-size: 15px;
+     font-family: inter;
+     font-weight: 500;
+}
+
+.app-land-act-delete-opt-cont{
+     display: inline-flex;
+     width: 100%;
+     height: auto;
+     margin-top: 22px;
+}
+
+.app-land-act-delete-opt-cal{
+     width: auto;
+     height: 42px;
+     flex: 1;
+     background-color: #fff;
+     color: #000;
+     border-radius: 7px;
+     outline: none;
+     border-style: none;
+     margin-right: 6px;
+     
+}
+
+.app-land-act-delete-opt-del{
+     width: auto;
+     height: 42px;
+     flex: 1;
+     margin-left: 6px;
+     background-color: var(--danger);
+     color: #fff;
+     border-radius: 7px;
+     outline: none;
+     border-style: none;
 }

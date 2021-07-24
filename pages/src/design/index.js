@@ -219,6 +219,9 @@ const design = (props)=>{
                                              
                                              >
                                                        <div className='app-design-card-main-cont'>
+                                                                 <div className='app-design-card-dp-main-cont'>
+                                                                                <div className='app-design-card-dp'/>
+                                                                           </div>
                                                                  <div className='app-design-card-tab-outer-main-cont'>
                                                                  <div className='app-design-card-tab-main-cont'/>
                                                                  <div className='app-design-card-tab-main-cont'/>
@@ -244,6 +247,9 @@ const design = (props)=>{
                                              }}
                                              >
                                                        <div className='app-design-card-main-cont degi-neu'>
+                                                                 <div className='app-design-card-dp-main-cont'>
+                                                                      <div className='app-design-card-dp degi-dp'/>
+                                                                 </div>
                                                                  <div className='app-design-card-tab-outer-main-cont'>
                                                                  <div className='app-design-card-tab-main-cont degi-neu-tab'/>
                                                                  <div className='app-design-card-tab-main-cont degi-neu-tab'/>
@@ -272,6 +278,9 @@ const design = (props)=>{
                                              }}
                                              >
                                                             <div className='app-design-card-main-cont degi-rose'>
+                                                            <div className='app-design-card-dp-main-cont'>
+                                                                      <div className='app-design-card-dp degi-rose-dp'/>
+                                                                 </div>
                                                                  <div className='app-design-card-tab-outer-main-cont'>
                                                                  <div className='app-design-card-tab-main-cont degi-rose-tab'/>
                                                                  <div className='app-design-card-tab-main-cont degi-rose-tab'/>

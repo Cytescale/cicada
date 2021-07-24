@@ -5,102 +5,21 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import { withRouter, NextRouter } from 'next/router'
 import FullHeiLoading from '../fullHeightLoading';
 import Head from "next/head";
-import  {Accordion, Button, Card, Dropdown, Modal, Overlay, Popover, Spinner}  from "react-bootstrap";
+import  {Modal, Spinner}  from "react-bootstrap";
 import { ToastContainer,toast } from "react-toastify";
 import nexusResponse from "../../../comp/helpers/nexusResponse";
 import { linkDataType } from "../../../comp/utils/link";
-import Link from 'next/link'
 import URLS,{_BASE_CLIENT_URL} from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
-import { slide as Menu } from 'react-burger-menu'
-import LandVisitChart,{landFullVisitChart as FullVisitChart} from './landChart';
-import {ThemeProvider} from "styled-components";
-import { BurgerMenu,LandNavBarCont } from "../../../comp/elements";
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import getAuth from '../../../comp/utils/getAuth';
+import { timeDifference } from "../../../comp/utils/utils";
+import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont } from "../../../comp/elements";
 
-
-const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 const User = new user();
-function timeDifference(current:any, previous:any) {
 
-     var msPerMinute = 60 * 1000;
-     var msPerHour = msPerMinute * 60;
-     var msPerDay = msPerHour * 24;
-     var msPerMonth = msPerDay * 30;
-     var msPerYear = msPerDay * 365;
- 
-     var elapsed = current - previous;
- 
-     if (elapsed < msPerMinute) {
-          return Math.round(elapsed/1000) + ' seconds ago';   
-     }
- 
-     else if (elapsed < msPerHour) {
-          return Math.round(elapsed/msPerMinute) + ' minutes ago';   
-     }
- 
-     else if (elapsed < msPerDay ) {
-          return Math.round(elapsed/msPerHour ) + ' hours ago';   
-     }
- 
-     else if (elapsed < msPerMonth) {
-         return Math.round(elapsed/msPerDay) + ' days ago';   
-     }
- 
-     else if (elapsed < msPerYear) {
-         return Math.round(elapsed/msPerMonth) + ' months ago';   
-     }
- 
-     else {
-         return Math.round(elapsed/msPerYear ) + ' years ago';   
-     }
- }
- const ProfileLogoutModal:React.FC<any> = (props:any)=>{  
-     return(
-               <Modal
-               show={props.show}
-               onHide={()=>{props.setShow(false)}}
-               size="lg"
-               centered
-               animated
-               >
-               <div className='app-create-link-modal-main-cont'>
-                    <div className='app-create-link-modal-main-cont-tit'>
-                    Logout from Sakura
-                    </div>
-                    <div className='lgout-conf-main-cont'>
-                         <button className='lgout-conf-main-cont-no-butt'
-                              onClick={()=>{props.setShow(false)}}
-                         >
-                              Not yet
-                         </button>
-                         <button className='lgout-conf-main-cont-yes-butt' onClick={()=>{
-                              BackendHelper.initUserLogout().then((res:boolean)=>{
-                                   if(res){
-                                        props.router.replace('/src/login');
-                                   }
-                                   else{
-                                        toast.error("Logout Error", {
-                                             position: toast.POSITION.TOP_CENTER,
-                                             autoClose: 5000,
-                                             hideProgressBar: true,
-                                             closeOnClick: true,
-                                             pauseOnHover: true,
-                                             draggable: true,
-                                             progress: undefined,
-                                        });
-                                   }
-                              });
-                         }}>
-                              Gotta Go!
-                         </button>
-                    </div>
-               </div>
-               </Modal>
-      )
- }
+
 const WelcomeHead:React.FC<any> = ()=>{
      const [show,setShow] = useState<boolean>(true);
      return(
@@ -133,6 +52,13 @@ async function processDeleteLinkData(lData:linkDataType){
           "deleted_bool": true,
      }
      let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,lData._id,updateDat);
+     return resp;
+}
+async function processDeleteLinkDataById(id:string){
+     let updateDat:any ={
+          "deleted_bool": true,
+     }
+     let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,id,updateDat);
      return resp;
 }
 async function processActiveLinkData(lData:linkDataType,bool:boolean){
@@ -327,51 +253,7 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                          }     
                          </button>
                     </div>
-                    
-                    <button className='app-create-link-edt-del-butt'
-                    disabled={loading}
-                    onClick={async ()=>{
-                                             await setLoading(true);
-                                             await processDeleteLinkData(lData!).then(async (res:nexusResponse)=>{
-                                                  if(!res.errBool){
-                                                       toast.success("Link Deleted", {
-                                                            position: toast.POSITION.TOP_CENTER,
-                                                            autoClose: 2500,
-                                                            hideProgressBar: true,
-                                                            closeOnClick: true,
-                                                            pauseOnHover: true,
-                                                            draggable: true,
-                                                            progress: undefined,
-                                                       });  
-                                                       props.setShow(false);
-                                                       props.reloadData();
-                                                  }
-                                             else{
-                                                  seterrBool(true);
-                                                  seterrMess(res.errMess);
-                                                  console.log(res.errMess);
-                                             }
-                                             
-                                   }).catch(e=>{
-                                             seterrBool(true);
-                                             seterrMess(e);
-                                             console.log(e);
-                                   });
-                                   setLoading(false);
-                    }}
-                    >
-                    {
-                              loading?
-                              <Spinner
-                                   as="span"
-                                   animation="border"
-                                   size="sm"
-                                   role="status"
-                                   aria-hidden="true"
-                              />:
-                              <span>Delete</span>
-                         } 
-                    </button>
+
                     </div>
                     : <Spinner
                     as="span"
@@ -528,6 +410,8 @@ const LinkCard:React.FC<any>=(props:any)=>{
                     <div className='lnk-lnk-gen-right-butt' onClick={()=>{
                               props.setlinkMoreModalVisi(true);
                               props.setselectLinkMoreUniId(props.d.unique_identifier);
+                              console.log(props.d._id);
+                              props.setseleteLinkMoreId(props.d._id);
                          }}>
                               <svg  className='lnk-lnk-gen-right-butt-ico' width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
@@ -540,28 +424,6 @@ const LinkCard:React.FC<any>=(props:any)=>{
                </div>          
           </div>
      </div>
-     )
-}
-
-const BottomCont:React.FC<any> =(prop:any)=>{
-     return(
-          <div className='app-bottom-cont-main-cont'>
-               <div className='app-bottom-cont-lnk-cont'>Home</div>
-               <div className='app-bottom-cont-lnk-cont'>About Us</div>
-               <div className='app-bottom-cont-lnk-cont'>Terms of conditions</div>
-               <div className='app-bottom-cont-lnk-cont'>Privacy Policy</div>
-               <div className='app-bottom-cont-lnk-cont'>DMCA Policy</div>
-               <div className='app-bottom-cont-main-logo'>Sakura</div>
-               <div className='app-bottom-cont-main-sys-stat'>
-                    Status:
-                    <div className='app-bottom-cont-main-sys-stat-lab'>
-                         <div className='app-bottom-cont-main-sys-stat-lab-cir'/>
-                         All systems normal</div>
-               </div>
-               <div className='app-bottom-cont-main-copy-cont'>
-                    Copyright &#xA9; 2021 Sakura , All rights reserved.
-               </div>
-          </div>
      )
 }
 
@@ -580,10 +442,12 @@ class Land extends React.Component<LandProps,any>{
      constructor(props:LandProps){
           super(props);
           this.state = {
-               lgoutConfirmVisi:false,
                feedbackModalVisi:false,
                editLinkModalVisi:false,
                linkMoreModalVisi:false,
+               deleteConfirmLoading:false,
+               deleteConfirmModalVisi:false,
+               seleteLinkMoreId:null,
                selectLinkMoreUniId:null,
                editLinkUniId:null,
                createLinkModalVisi:false,
@@ -600,9 +464,7 @@ class Land extends React.Component<LandProps,any>{
                isdeeplink:true,
                detailed:false,
                searchQuery:null,
-               showAllLinks:false,
-               
-               
+               showAllLinks:false,               
           }
 
           this.initDataLoad = this.initDataLoad.bind(this);
@@ -628,19 +490,23 @@ class Land extends React.Component<LandProps,any>{
           this.setfeedbackModalVisi = this.setfeedbackModalVisi.bind(this);
           this.seteditLinkUniId = this.seteditLinkUniId.bind(this);
           this.setdetailed = this.setdetailed.bind(this);
-          this.setlgoutConfirmVisi = this.setlgoutConfirmVisi.bind(this);
           this.setisdeeplink = this.setisdeeplink.bind(this);
           this.setsearchQuery = this.setsearchQuery.bind(this);
           this.setshowAllLinks = this.setshowAllLinks.bind(this);
           this.setlinkMoreModalVisi  = this.setlinkMoreModalVisi.bind(this);
           this.setselectLinkMoreUniId = this.setselectLinkMoreUniId.bind(this);
+          this.setdeleteConfirmModalVisi= this.setdeleteConfirmModalVisi.bind(this);
+          this.setseleteLinkMoreId  =this.setseleteLinkMoreId.bind(this);
+          this.setdeleteConfirmLoading = this.setdeleteConfirmLoading.bind(this);
      }
+     setdeleteConfirmLoading(b:boolean){this.setState({deleteConfirmLoading:b})}
+     setseleteLinkMoreId(s:string|null){this.setState({seleteLinkMoreId:s})}
+     setdeleteConfirmModalVisi(b:boolean){this.setState({deleteConfirmModalVisi:b})}
      setselectLinkMoreUniId(s:string){this.setState({selectLinkMoreUniId:s})}
      setlinkMoreModalVisi(b:boolean){this.setState({linkMoreModalVisi:b})}
      setshowAllLinks(b:boolean){this.setState({showAllLinks:b})}
      setsearchQuery(s:string){this.setState({searchQuery:s})}
      setisdeeplink(b:boolean){this.setState({isdeeplink:b})}
-     setlgoutConfirmVisi(b:boolean){this.setState({lgoutConfirmVisi:b})}
      setdetailed(b:boolean){this.setState({detailed:b})}
      seteditLinkUniId(s:string){this.setState({editLinkUniId:s})}
      setfeedbackModalVisi(b:boolean){this.setState({feedbackModalVisi:b})}
@@ -759,7 +625,9 @@ class Land extends React.Component<LandProps,any>{
           switch(platform_id)
           {
                case 1:{
-                    return(<div className='app-link-logo-cont'><svg  className='app-link-logo-cont-ico' xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5_logos</title><path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"/></svg></div>)
+                    return(<div className='app-link-logo-cont'>
+                         <svg  className='app-link-logo-cont-ico' xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5_logos</title><path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"/>
+                         </svg></div>)
                     break;    
                }
                default:{
@@ -768,68 +636,7 @@ class Land extends React.Component<LandProps,any>{
           }
 
      }
-     renderDecri(count:number){
-          return(
-               <div className='app-decri-main-cont'>                                                                
-                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" className='app-incri-main-ico'>
-                    <path d="M8.38303 6.55417C8.20428 6.37542 7.91553 6.37542 7.73678 6.55417L5.95844 8.32792L5.95844 1.375C5.95844 1.12292 5.75219 0.91667 5.50011 0.91667C5.24803 0.91667 5.04178 1.12292 5.04178 1.375L5.04178 8.32792L3.26344 6.54959C3.08469 6.37084 2.79594 6.37084 2.61719 6.54959C2.43844 6.72834 2.43844 7.01709 2.61719 7.19584L5.17928 9.7625C5.35803 9.94125 5.64678 9.94125 5.82553 9.7625L8.38303 7.20042C8.56178 7.02167 8.56178 6.72834 8.38303 6.55417Z" fill="#EB445A"/>
-                    </svg>
-                    {count}
-               </div>
-          )
-     }
-     renderIncri(count:number){
-               return(
-                    <div className='app-incri-main-cont'>                         
-                              <svg width="12" height="13" viewBox="0 0 12 13" fill="none" className='app-incri-main-ico'>
-                              <path d="M3.08071 5.54711C3.26559 5.71951 3.55416 5.70943 3.72656 5.52455L5.44191 3.68982L5.68456 10.6385C5.69336 10.8904 5.90668 11.0894 6.15861 11.0806C6.41054 11.0718 6.60947 10.8584 6.60067 10.6065L6.35802 3.65783L8.19733 5.37302C8.38221 5.54542 8.67078 5.53534 8.84319 5.35046C9.01559 5.16558 9.00551 4.87701 8.82063 4.70461L6.17054 2.22892C5.98566 2.05652 5.69708 2.06659 5.52468 2.25147L3.05815 4.90125C2.88575 5.08613 2.89599 5.37928 3.08071 5.54711Z" fill="#3E9D64"/>
-                              </svg>
-                         {count}
-                    </div>
-               )
-     }
-     renderFeedbackModal(){
-          return(
-               <Modal
-               show={this.state.feedbackModalVisi}
-               onHide={()=>{this.setfeedbackModalVisi(false)}}
-               size="lg"
-               centered
-               animated
-               >
-               <div className='app-create-link-modal-main-cont'>
-                    <div className='app-create-link-modal-main-cont-tit'>
-                    Feedback
-                    </div>
-                    <div className='app-create-link-modal-main-cont-des'>
-                    Please share with us what you think about Sakura. We are open for suggestions 😄
-                    </div>
-                    <div className='app-create-link-modal-hr'/>
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                    <textarea className='app-feed-main-txtar-fld' placeholder='Tell us what you feel.'></textarea>
-                    </div>
-                    <div className='app-create-link-modal-main-cont-fld-cont'>
-                              <button className='app-create-link-modal-edt-lnk-butt'
-                              onClick={()=>{
-                                   this.submitMakeLink();
-                              }}
-                                   >{
-                              this.state.makeLinkLoading?
-                              <Spinner
-                                   as="span"
-                                   animation="border"
-                                   size="sm"
-                                   role="status"
-                                   aria-hidden="true"
-                              />:
-                              <span>Send</span>
-                         }     
-                         </button>
-                    </div>
-               </div>
-               </Modal>
-          )
-     }
+     
      renderLinkCreateModal(){
           return(
                <BottomSheet 
@@ -982,7 +789,7 @@ class Land extends React.Component<LandProps,any>{
                case 1:{
                     return (
                          <div className='app-land-indi'>
-                              <svg className='app-land-indi-ico' xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5_logos</title><path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"/></svg>
+                              <svg className='app-land-indi-ico' xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill='currentColor'><title>ionicons-v5_logos</title><path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"/></svg>
                               Youtube
                          </div>
                     );
@@ -993,6 +800,75 @@ class Land extends React.Component<LandProps,any>{
                }
           }
      }
+
+
+
+     renderDeteleConfirmModal(){
+          return(
+               <Modal 
+               size="lg"
+               className='app-land-act-delete-cnfm-main-cont'
+               aria-labelledby="contained-modal-title-vcenter"
+               centered         
+               show={this.state.deleteConfirmModalVisi} 
+               onHide={()=>{this.setdeleteConfirmModalVisi(false)}}>
+               <div className='app-land-act-delete-bdy-cont'>
+                         <div className='app-land-act-delete-tab'> Delete Link</div>
+                         <div className='app-land-act-delete-sub-tab'>Are you sure want to delete the link?</div>
+                         <div className='app-land-act-delete-opt-cont'>
+                              <button className='app-land-act-delete-opt-cal'
+                                   onClick={()=>{
+                                        this.setdeleteConfirmModalVisi(false)
+                                        this.setseleteLinkMoreId(null);
+                                   }}
+                              >
+                                   Cancel
+                              </button>
+                              <button className='app-land-act-delete-opt-del'
+                              onClick={async ()=>{
+                                   await this.setdeleteConfirmLoading(true);               
+                                   await processDeleteLinkDataById(this.state.seleteLinkMoreId).then(async (res:nexusResponse)=>{
+                                                       if(!res.errBool){
+                                                            toast.success("Link Deleted", {
+                                                                 position: toast.POSITION.TOP_CENTER,
+                                                                 autoClose: 2500,
+                                                                 hideProgressBar: true,
+                                                                 closeOnClick: true,
+                                                                 pauseOnHover: true,
+                                                                 draggable: true,
+                                                                 progress: undefined,
+                                                            });  
+                                                       }
+                                                  else{
+                                                       console.log(res.errMess);
+                                                       throw new Error(res.errMess);
+                                                  }
+                                                  this.initLinksDataLoad();
+                                                  this.setdeleteConfirmModalVisi(false);
+
+                                        }).catch(e=>{
+                                                  console.log(e);
+                                                  toast.error(e.message, {
+                                                       position: toast.POSITION.TOP_CENTER,
+                                                       autoClose: 2500,
+                                                       hideProgressBar: true,
+                                                       closeOnClick: true,
+                                                       pauseOnHover: true,
+                                                       draggable: true,
+                                                       progress: undefined,
+                                                  });  
+                                        });
+                                   await this.setdeleteConfirmLoading(false);               
+                              }}
+                              >
+                                   {this.state.deleteConfirmLoading?'Loading':'Delete'}
+                              </button>
+                         </div>
+               </div>
+             </Modal>
+          )
+     }
+
      renderLinkMoreModal(){
           return(
                <BottomSheet 
@@ -1053,6 +929,20 @@ class Land extends React.Component<LandProps,any>{
                                    Edit link
                               </button>
                      </div>
+                     <div className='app-link-more-butt-more-cont'>
+                              <button className='app-link-more-butt app-link-more-del-butt'
+                               onClick={()=>{
+                                   this.setlinkMoreModalVisi(false);   
+                                   this.setdeleteConfirmModalVisi(true);   
+                              }}
+                              >                          
+                                   <svg className='app-link-more-butt-ico' width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                   <path d="M23.5714 15V26.6667H14.4286V15H23.5714ZM21.8571 8H16.1429L15 9.16667H11V11.5H27V9.16667H23L21.8571 8ZM25.8571 12.6667H12.1429V26.6667C12.1429 27.95 13.1714 29 14.4286 29H23.5714C24.8286 29 25.8571 27.95 25.8571 26.6667V12.6667Z" fill="currentColor"/>
+                                   </svg>
+                                   Delete
+                              </button>
+                     </div>
 
                </div>
                </BottomSheet>
@@ -1065,7 +955,6 @@ class Land extends React.Component<LandProps,any>{
                     BackendHelper._checkURLValid({"uid":User.getUserUid(),"link_url":s}).then((res:nexusResponse)=>{
                          if(res){
                               if(!res.errBool){
-                                   //{valid_url: false, identified_platform_id: 0, parse_validity: false}
                                    this.setvalidityLoading(false);
                                    if(res.responseData.valid_url && res.responseData.parse_validity && res.responseData.identified_platform_id){
                                         this.setvalidated(true);
@@ -1221,7 +1110,9 @@ class Land extends React.Component<LandProps,any>{
                          seteditLinkModalVisi={this.seteditLinkModalVisi} 
                          setselectLinkMoreUniId={this.setselectLinkMoreUniId}
                          setlinkMoreModalVisi={this.setlinkMoreModalVisi}
-                         seteditLinkUniId={this.seteditLinkUniId}/>
+                         seteditLinkUniId={this.seteditLinkUniId}
+                         setseleteLinkMoreId={this.setseleteLinkMoreId}
+                         />
                          
                          )
                }
@@ -1243,7 +1134,6 @@ class Land extends React.Component<LandProps,any>{
      }
 
      render(){
-          //  && this.state.isAuth
           if(!this.state.isLoading){
           return(
                <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
@@ -1272,32 +1162,19 @@ class Land extends React.Component<LandProps,any>{
                                         <div className='app-head-main-right-cont'>
                                              <button
                                              className='app-input-class-raised-pressable link-add-butt'
-                                             onClick={()=>{
-                                                  this.setcreateLinkModalVisi(true);
-                                             }}
-                                             >
-                                                  Create
+                                             onClick={()=>{this.setcreateLinkModalVisi(true);}}
+                                             >Create
                                              </button>
-                                             {/* <button className='app-land-feed-butt-main-cont' onClick={()=>{this.setfeedbackModalVisi(true)}}>
-                                                  <svg  className='app-land-feed-butt-main-ico'xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4.01c-1.1 0-2 .9-2 2v18L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-5c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
-                                             </button> */}
-                                             {/* <ProfilePopover  setlgoutShow={this.setlgoutConfirmVisi} /> */}
                                         </div>
                               </div>
                          <LandNavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
                          <div className='app-body-main-cont'>
-                              
                               <div className='app-land-link-cont-holder top-holder-cont'>
-                                         <div className='app-land-link-intro-pro-main-cont'>
-                                                       {/* <div className='app-land-head-pro-pic-main-cont'>
-                                                       <svg  className='app-land-head-pro-pic-main-cont-pic' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><radialGradient id="S2w73RYcJka7XmMmG50Ola" cx="23.801" cy="27.168" r="23.295" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf54"/><stop offset=".261" stop-color="#fdcb4d"/><stop offset=".639" stop-color="#f7c13a"/><stop offset="1" stop-color="#f0b421"/></radialGradient><path fill="url(#S2w73RYcJka7XmMmG50Ola)" d="M44,23c0,2,0,7-3,7c-1.5,0-2.5-0.5-3-1v15H10V29c-0.5,0.5-1.5,1-3,1c-2.956,0-3-5-3-7	c0-8,7-18,20-18S44,15,44,23z"/><linearGradient id="S2w73RYcJka7XmMmG50Olb" x1="39.5" x2="39.5" y1="28.635" y2="44.054" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c48f0c"/><stop offset="1" stop-color="#cd9713"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olb)" d="M41,30v12c0,1.105-0.895,2-2,2h-1V29C38.5,29.5,39.5,30,41,30z"/><linearGradient id="S2w73RYcJka7XmMmG50Olc" x1="8.5" x2="8.5" y1="29.166" y2="44.279" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c48f0c"/><stop offset="1" stop-color="#cd9713"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olc)" d="M10,29v15H9c-1.105,0-2-0.895-2-2V30C8.5,30,9.5,29.5,10,29z"/><linearGradient id="S2w73RYcJka7XmMmG50Old" x1="23.08" x2="37.248" y1="7.513" y2="22.582" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6d7479"/><stop offset="1" stop-color="#323538"/></linearGradient><circle cx="32" cy="17" r="5" fill="url(#S2w73RYcJka7XmMmG50Old)"/><linearGradient id="S2w73RYcJka7XmMmG50Ole" x1="32.072" x2="35.941" y1="11.611" y2="20.794" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcfcfc"/><stop offset="1" stop-color="#c3c9cd"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Ole)" d="M32,12c-0.688,0-1.342,0.14-1.939,0.391C30.037,12.593,30,12.791,30,13c0,2.761,2.239,5,5,5	c0.688,0,1.342-0.14,1.939-0.391C36.963,17.407,37,17.209,37,17C37,14.239,34.761,12,32,12z"/><linearGradient id="S2w73RYcJka7XmMmG50Olf" x1="7.08" x2="21.248" y1="7.513" y2="22.582" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6d7479"/><stop offset="1" stop-color="#323538"/></linearGradient><circle cx="16" cy="17" r="5" fill="url(#S2w73RYcJka7XmMmG50Olf)"/><linearGradient id="S2w73RYcJka7XmMmG50Olg" x1="16.072" x2="19.941" y1="11.611" y2="20.794" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcfcfc"/><stop offset="1" stop-color="#c3c9cd"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olg)" d="M16,12c-0.688,0-1.342,0.14-1.939,0.391C14.037,12.593,14,12.791,14,13c0,2.761,2.239,5,5,5	c0.688,0,1.342-0.14,1.939-0.391C20.963,17.407,21,17.209,21,17C21,14.239,18.761,12,16,12z"/><path fill="#881421" d="M30,24c0,0-0.72,5.06-4.01,6.57c-0.02,0.01-0.04,0.02-0.06,0.03c-0.03,0.01-0.06,0.03-0.09,0.04	C25.94,30.44,26,30.22,26,30c0-1.1-1.34-2-3-2c-1.24,0-2.3,0.5-2.75,1.21c-0.11-0.11-0.2-0.22-0.29-0.34C18.41,26.81,18,24,18,24	s2.69,2,6,2S30,24,30,24z"/><path fill="#c94f60" d="M26,30c0,0.22-0.06,0.44-0.16,0.64C25.29,30.86,24.68,31,24,31c-1.55,0-2.72-0.67-3.59-1.6	c-0.06-0.06-0.11-0.12-0.16-0.19C20.7,28.5,21.76,28,23,28C24.66,28,26,28.9,26,30z"/><linearGradient id="S2w73RYcJka7XmMmG50Olh" x1="24" x2="24" y1="15.659" y2="33.13" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f19a00"/><stop offset="1" stop-color="#eb8100"/></linearGradient><path fill="url(#S2w73RYcJka7XmMmG50Olh)" d="M24,16.005c-11.46,0.28-10.447,10.07-9.402,12.99c0.637,1.77,1.964,3,3.134,3	c3.134,0,3.677-5.08,4.179-8c0.198-1.23,1.16-1.72,2.089-1.84c0.93,0.12,1.891,0.61,2.089,1.84c0.501,2.92,1.045,8,4.179,8	c1.17,0,2.497-1.23,3.134-3C34.447,26.075,35.46,16.285,24,16.005z"/><linearGradient id="S2w73RYcJka7XmMmG50Oli" x1="24" x2="24" y1="19.783" y2="24.1" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#505559"/><stop offset="1" stop-color="#323538"/></linearGradient><ellipse cx="24" cy="22" fill="url(#S2w73RYcJka7XmMmG50Oli)" rx="4" ry="2"/></svg>
-                                                       </div> */}
-                                                        
+                                         <div className='app-land-link-intro-pro-main-cont'> 
                                                             <div className='app-land-head-pro-pic-main-cont'>
                                                                  <img src={User!.getUserData()?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
                                                             </div>
-                                                       
                                                        {
                                                             User.getUserData()?
                                                                  
@@ -1314,10 +1191,6 @@ class Land extends React.Component<LandProps,any>{
                                                                       });
                                                                  }}>👋</span> 
                                                                  <div className='app-body-topper-bio-cont'>{User.getUserData()?.bio}</div>
-                                                                 {/* <div className='app-body-topper-hey-butt-cont' >
-                                                                      <button className='app-body-topper-hey-butt'>Edit Profile</button>
-                                                            
-                                                                      </div> */}
                                                                  </div>:
                                                             <span/>
                                                        }
@@ -1328,7 +1201,6 @@ class Land extends React.Component<LandProps,any>{
                                                                       <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
                                                                       <path d="M10 23.4625V26.5025C10 26.7825 10.22 27.0025 10.5 27.0025H13.54C13.67 27.0025 13.8 26.9525 13.89 26.8525L24.81 15.9425L21.06 12.1925L10.15 23.1025C10.05 23.2025 10 23.3225 10 23.4625ZM27.71 13.0425C28.1 12.6525 28.1 12.0225 27.71 11.6325L25.37 9.2925C24.98 8.9025 24.35 8.9025 23.96 9.2925L22.13 11.1225L25.88 14.8725L27.71 13.0425V13.0425Z" fill="currentColor"/>
                                                                       </svg>
-                                                                 {/* <svg   className='app-land-pro-edit-butt-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#c94f60" d="M42.583,9.067l-3.651-3.65c-0.555-0.556-1.459-0.556-2.015,0l-1.718,1.72l5.664,5.664l1.72-1.718	C43.139,10.526,43.139,9.625,42.583,9.067"/><path fill="#f0f0f0" d="M6.905,35.43L5,43l7.571-1.906l0.794-6.567L6.905,35.43z"/><path fill="#edbe00" d="M36.032,17.632l-23.46,23.461l-5.665-5.665l23.46-23.461L36.032,17.632z"/><linearGradient id="YoPixpDbHWOyk~b005eF1a" x1="35.612" x2="35.612" y1="7.494" y2="17.921" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#dedede"/><stop offset="1" stop-color="#d6d6d6"/></linearGradient><path fill="url(#YoPixpDbHWOyk~b005eF1a)" d="M30.363,11.968l4.832-4.834l5.668,5.664l-4.832,4.834L30.363,11.968z"/><path fill="#787878" d="M5.965,39.172L5,43l3.827-0.965L5.965,39.172z"/></svg> */}
                                                                  </button>
                                                                  </a>
                                                        </div>
@@ -1336,37 +1208,6 @@ class Land extends React.Component<LandProps,any>{
                                              <WelcomeHead/>
                                            
                                    </div>
-                                
-                                   {/* <div className='app-land-link-cont-holder cluster-holder-cont'>
-                                   <div className='app-land-lab-main-cont'>
-                                             <svg 
-                                             className='app-land-lab-main-cont-ico'
-                                             width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                             <path d="M7.53693 27.6692C7.35423 28.4772 7.86117 29.2804 8.6692 29.4631C9.47723 29.6458 10.2804 29.1388 10.4631 28.3308L7.53693 27.6692ZM17.8372 20.2856L18.4988 18.9394L17.8372 20.2856ZM24.3488 16.1714L25.7594 16.6816L24.3488 16.1714ZM29.8013 11.2681C30.5016 10.8255 30.7106 9.89908 30.2681 9.19875C29.8255 8.49841 28.8991 8.28941 28.1987 8.73193L29.8013 11.2681ZM10.4631 28.3308C10.8785 26.4934 11.9312 24.3034 13.2911 22.8554C14.6505 21.4079 15.9389 21.024 17.1756 21.6318L18.4988 18.9394C15.5495 17.49 12.8844 18.9063 11.1043 20.8017C9.32461 22.6966 8.05173 25.3923 7.53693 27.6692L10.4631 28.3308ZM17.1756 21.6318C18.7042 22.383 20.045 22.7619 21.2289 22.6833C22.5121 22.5981 23.4451 21.9875 24.0794 21.1478C24.657 20.3833 24.9674 19.4554 25.1824 18.7077C25.4305 17.8452 25.5468 17.2694 25.7594 16.6816L22.9383 15.6611C22.6858 16.3591 22.4684 17.2906 22.2993 17.8785C22.0972 18.5812 21.907 19.0465 21.6857 19.3394C21.5213 19.5571 21.3571 19.6681 21.0301 19.6899C20.6039 19.7182 19.8214 19.5894 18.4988 18.9394L17.1756 21.6318ZM25.7594 16.6816C26.2459 15.3368 26.534 14.5035 27.0524 13.7219C27.5422 12.9834 28.2943 12.2203 29.8013 11.2681L28.1987 8.73193C26.4499 9.83698 25.3415 10.8738 24.5523 12.0637C23.7916 13.2106 23.382 14.4344 22.9383 15.6611L25.7594 16.6816Z" 
-                                             fill="currentColor"/>
-                                             </svg>
-                                        Link Activity</div>
-                                   <div className='app-land-visit-card-main-outer-cont'>
-                                             <div className='app-land-visit-card-main-cont'>
-                                                  <div className='app-land-visit-card-left-cont'>
-                                                       <div className='app-land-visit-card-left-lab'>Visitors <br/> Activity </div>
-                                                  </div>
-                                                  <LandVisitChart/>
-                                             </div>
-                                        
-                                             <Accordion>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont land-card-acrd-togg-cont'>
-                                                  Show more
-                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
-                                             </Accordion.Toggle>
-                                             <Accordion.Collapse eventKey="0">
-                                                  <FullVisitChart/>
-                                             </Accordion.Collapse>
-                                             </Accordion>
-                                   </div>
-                               </div> */}
-
                               <div className='app-land-link-cont-holder cluster-holder-cont'>
                               <div className='app-land-lab-main-cont'>                              
                                    <svg 
@@ -1420,7 +1261,6 @@ class Land extends React.Component<LandProps,any>{
                                    <div className='clust-visit-main-cont'>
                                                   <a className='clust-visit-main-cont-lnk' href={_BASE_CLIENT_URL+'src/cluster'}>
                                                   Go to cluster settings
-                                                  {/* <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg> */}
                                                   <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="UoM~0_1BpfEneny~ePS0ba" x1="8.469" x2="42.33" y1="8.469" y2="42.33" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"/><stop offset="1" stop-color="#007ad9"/></linearGradient><path fill="url(#UoM~0_1BpfEneny~ePS0ba)" d="M39,41H9c-1.1,0-2-0.9-2-2V9c0-1.1,0.9-2,2-2h30c1.1,0,2,0.9,2,2v30C41,40.1,40.1,41,39,41z"/><path d="M41,7h-5.528L20.695,21.777c-0.746,0.746-0.746,1.954,0,2.7l2.828,2.828 c0.746,0.746,1.954,0.746,2.7,0L41,12.528V7z" opacity=".018"/><path d="M41,7h-5.4L20.759,21.841c-0.71,0.71-0.71,1.861,0,2.571l2.828,2.828 c0.71,0.71,1.861,0.71,2.571,0L41,12.4V7z" opacity=".036"/><path d="M41,7h-5.271L20.823,21.906c-0.675,0.675-0.675,1.768,0,2.443l2.828,2.828 c0.675,0.675,1.768,0.675,2.443,0L41,12.271V7z" opacity=".054"/><path d="M41,7h-5.143l-14.97,14.97c-0.639,0.639-0.639,1.675,0,2.314l2.828,2.828 c0.639,0.639,1.675,0.639,2.314,0L41,12.143V7z" opacity=".073"/><path d="M41,7h-5.014L20.952,22.034c-0.604,0.604-0.604,1.582,0,2.186l2.828,2.828 c0.604,0.604,1.582,0.604,2.186,0L41,12.014V7z" opacity=".091"/><path d="M41,7h-4.885L21.016,22.098c-0.568,0.568-0.568,1.489,0,2.057l2.828,2.828 c0.568,0.568,1.489,0.568,2.057,0L41,11.885V7z" opacity=".109"/><path d="M41,7h-4.757L21.081,22.163c-0.533,0.533-0.533,1.396,0,1.928l2.828,2.828 c0.533,0.533,1.396,0.533,1.928,0L41,11.757V7z" opacity=".127"/><path d="M41,7h-4.628L21.145,22.227c-0.497,0.497-0.497,1.303,0,1.8l2.828,2.828 c0.497,0.497,1.303,0.497,1.8,0L41,11.628V7z" opacity=".145"/><path d="M41,7h-4.5L21.209,22.291c-0.462,0.462-0.462,1.21,0,1.671l2.828,2.828 c0.462,0.462,1.21,0.462,1.671,0L41,11.5V7z" opacity=".164"/><path d="M41,7h-4.371L21.273,22.355c-0.426,0.426-0.426,1.117,0,1.543l2.828,2.828 c0.426,0.426,1.117,0.426,1.543,0L41,11.371V7z" opacity=".182"/><path d="M41,7h-4.243l-15.42,15.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828 c0.391,0.391,1.024,0.391,1.414,0L41,11.243V7z" opacity=".2"/><path fill="#50e6ff" d="M36.452,1.379l2.963,2.963L21.338,22.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828	c0.391,0.391,1.024,0.391,1.414,0L43.658,8.585l2.963,2.963C47.13,12.057,48,11.697,48,10.977l0-9.361C48,0.723,47.277,0,46.384,0	l-9.361,0C36.303,0,35.943,0.87,36.452,1.379z"/></svg>
                                                   </a>
                                    </div>
@@ -1446,7 +1286,6 @@ class Land extends React.Component<LandProps,any>{
                                         <button className='app-land-crt-lnk-butt'
                                              onClick={()=>{this.setcreateLinkModalVisi(true)}}
                                              > 
-                                             {/* <div className='app-land-crt-lnk-butt-decor'/> */}
                                              <div  className='app-land-crt-lnk-butt-lab'>
                                                   <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
                                                   Create Link </div>
@@ -1500,11 +1339,10 @@ class Land extends React.Component<LandProps,any>{
                          </div>
                          <BottomCont />
                          </div>
-                        <ProfileLogoutModal setShow={this.setlgoutConfirmVisi} show={this.state.lgoutConfirmVisi} router={this.props.router}/>
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
                         {this.renderLinkMoreModal()}
                         {this.renderLinkCreateModal()}
-                        {this.renderFeedbackModal()}
+                        {this.renderDeteleConfirmModal()}
                          <ToastContainer />
             </div>
           )}
@@ -1559,5 +1397,34 @@ export default withRouter(Land)
                                              </Accordion.Collapse>
                                              </Accordion>
                                              </div>
+                                             <div className='app-land-link-cont-holder cluster-holder-cont'>
+                                   <div className='app-land-lab-main-cont'>
+                                             <svg 
+                                             className='app-land-lab-main-cont-ico'
+                                             width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                             <path d="M7.53693 27.6692C7.35423 28.4772 7.86117 29.2804 8.6692 29.4631C9.47723 29.6458 10.2804 29.1388 10.4631 28.3308L7.53693 27.6692ZM17.8372 20.2856L18.4988 18.9394L17.8372 20.2856ZM24.3488 16.1714L25.7594 16.6816L24.3488 16.1714ZM29.8013 11.2681C30.5016 10.8255 30.7106 9.89908 30.2681 9.19875C29.8255 8.49841 28.8991 8.28941 28.1987 8.73193L29.8013 11.2681ZM10.4631 28.3308C10.8785 26.4934 11.9312 24.3034 13.2911 22.8554C14.6505 21.4079 15.9389 21.024 17.1756 21.6318L18.4988 18.9394C15.5495 17.49 12.8844 18.9063 11.1043 20.8017C9.32461 22.6966 8.05173 25.3923 7.53693 27.6692L10.4631 28.3308ZM17.1756 21.6318C18.7042 22.383 20.045 22.7619 21.2289 22.6833C22.5121 22.5981 23.4451 21.9875 24.0794 21.1478C24.657 20.3833 24.9674 19.4554 25.1824 18.7077C25.4305 17.8452 25.5468 17.2694 25.7594 16.6816L22.9383 15.6611C22.6858 16.3591 22.4684 17.2906 22.2993 17.8785C22.0972 18.5812 21.907 19.0465 21.6857 19.3394C21.5213 19.5571 21.3571 19.6681 21.0301 19.6899C20.6039 19.7182 19.8214 19.5894 18.4988 18.9394L17.1756 21.6318ZM25.7594 16.6816C26.2459 15.3368 26.534 14.5035 27.0524 13.7219C27.5422 12.9834 28.2943 12.2203 29.8013 11.2681L28.1987 8.73193C26.4499 9.83698 25.3415 10.8738 24.5523 12.0637C23.7916 13.2106 23.382 14.4344 22.9383 15.6611L25.7594 16.6816Z" 
+                                             fill="currentColor"/>
+                                             </svg>
+                                        Link Activity</div>
+                                   <div className='app-land-visit-card-main-outer-cont'>
+                                             <div className='app-land-visit-card-main-cont'>
+                                                  <div className='app-land-visit-card-left-cont'>
+                                                       <div className='app-land-visit-card-left-lab'>Visitors <br/> Activity </div>
+                                                  </div>
+                                                  <LandVisitChart/>
+                                             </div>
+                                        
+                                             <Accordion>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont land-card-acrd-togg-cont'>
+                                                  Show more
+                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                             </Accordion.Toggle>
+                                             <Accordion.Collapse eventKey="0">
+                                                  <FullVisitChart/>
+                                             </Accordion.Collapse>
+                                             </Accordion>
+                                   </div>
+                               </div> 
 
                      */}

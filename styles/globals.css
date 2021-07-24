@@ -128,6 +128,9 @@ body{
 [data-rsbs-backdrop]{
   z-index:600;
   
+background: rgba(0, 0, 0, 0.45);
+backdrop-filter: blur(17px);
+  
 }
 
 

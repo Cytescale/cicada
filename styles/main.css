@@ -43,7 +43,7 @@
 {
      min-height: 100vh;
      width: 100vw;
-     max-width: 400px;
+     max-width: 500px;
 
      background-color: var(--sec-dark);
      position: relative;

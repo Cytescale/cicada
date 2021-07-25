@@ -1507,6 +1507,8 @@ color: inherit;
      padding: 7px;
      border-top-left-radius: 22px;
      border-top-right-radius: 22px;
+     border-bottom-left-radius: 22px;
+     border-bottom-right-radius: 22px;
      /* border-top: 2px solid var(--borColor); */
      border-bottom: 1px solid var(--borColor);
      padding-top: 22px;
@@ -1675,7 +1677,7 @@ color: inherit;
      
 }
 .app-land-lnks-holder-shw-mr-butt:active{
-     background-color: #e0e0e0;
+     background-color: var(--buttonBackColor-selec);
 }
 
 .app-init-acc-lab-main-cont{

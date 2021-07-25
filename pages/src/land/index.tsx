@@ -14,7 +14,7 @@ import copy from 'copy-to-clipboard';
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import getAuth from '../../../comp/utils/getAuth';
 import { timeDifference } from "../../../comp/utils/utils";
-import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont,LinkAddButt } from "../../../comp/elements";
+import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont } from "../../../comp/elements";
 
 const BackendHelper = new backendHelper();
 const User = new user();
@@ -1383,7 +1383,6 @@ class Land extends React.Component<LandProps,any>{
                         {this.renderLinkCreateModal()}
                         {this.renderDeteleConfirmModal()}
                          <ToastContainer />
-                         <LinkAddButt />
                          <FeedbackCont visi={this.state.feedbackModalVisi}/>
             </div>
           )}

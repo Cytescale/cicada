@@ -889,7 +889,7 @@ font-family: inter;
    }
 
    .app-bottom-sheet-footer-butt:active{
-        background-color: #e0e0e0;
+        background-color:var(--buttonBackColor-selec);
    }
    .app-not-auth-body{
         width: 100vw;
@@ -953,6 +953,10 @@ font-family: inter;
      box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.6);
      border-radius: 100px;
      color: #fff;
+   }
+   .app-crt-float-butt:active
+   {
+      background-color: #11CEBD;
    }
    .app-crt-float-butt-ico{
      width: 42px;

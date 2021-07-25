@@ -113,10 +113,13 @@ import styled ,{ThemeProvider} from "styled-components";
                font-size: 14px;
                font-family: inter;
                color:  ${props => props.textColor};;
+               margin-top:22px;
                padding-bottom: var(--margin);
           }
           .cluster-link-outer-cont{
                padding: 22px;
+               padding-bottom:82px;
+               
           }
 
           .cluster-link-outer-cont-tab{
@@ -128,6 +131,7 @@ import styled ,{ThemeProvider} from "styled-components";
                font-size: 17px;
                font-family: inter;
                font-weight: 700;
+               
                color:  ${props => props.subTextColor};;
           }
 
@@ -396,7 +400,7 @@ class ClusterComp extends React.Component{
                            {
                              this.state.linkConfigData?
                              this.state.linkConfigData.footer_card_bool?
-                             <a href={_BASE_CLIENT_URL}><div className='cluster-made-main-cont'>Made with Project Sakura ❤️</div></a>:
+                             <a href={_BASE_CLIENT_URL}><div className='cluster-made-main-cont'>Made with Cytelink ❤️</div></a>:
                              <span/>:
                              <span/>  
                          }

@@ -1516,7 +1516,8 @@ color: inherit;
 }
 .top-holder-cont{
      padding-top: 42px;
-     
+     background: linear-gradient(180deg, rgba(65, 137, 247, 0.39) 0%, rgba(0, 0, 0, 0) 100%);
+
 }
 
 .cluster-holder-cont{

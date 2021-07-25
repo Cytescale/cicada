@@ -768,7 +768,7 @@ font-family: inter;
    .app-nav-bar-main-link-cont-selec{
         color: var(--NavTextColor-selec);
         font-weight: 600;
-        border-bottom: 3px solid var(--NavTextColor-selec);
+        /* border-bottom: 3px solid var(--NavTextColor-selec); */
    }
 
    .app-nav-lnk-lnk{

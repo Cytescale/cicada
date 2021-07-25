@@ -926,3 +926,26 @@ font-family: inter;
      text-decoration: underline;
      color: var(--textColor);
    }
+
+   .app-feedback-text-area{
+        width: 100%;
+        margin-top: 22px;
+        height: 150px;
+        padding: 4px;
+        background-color: var(--cardSubColor);
+   }
+   .app-crt-float-butt-main-cont{
+     position:fixed;
+     bottom: 0;
+     right: 0;
+     z-index: 600;  
+   }
+   .app-crt-float-butt{
+     width: 52px;
+     height: 52px;
+     background-color: var(--pri-color);
+     border-radius: 100px;
+   }
+   .app-crt-float-butt-ico{
+
+   }

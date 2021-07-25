@@ -14,7 +14,7 @@ import copy from 'copy-to-clipboard';
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import getAuth from '../../../comp/utils/getAuth';
 import { timeDifference } from "../../../comp/utils/utils";
-import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont } from "../../../comp/elements";
+import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont,LinkAddButt } from "../../../comp/elements";
 
 const BackendHelper = new backendHelper();
 const User = new user();
@@ -25,7 +25,7 @@ const WelcomeHead:React.FC<any> = ()=>{
      return(
           show?
           <div className='dash-wel-main-cont'>
-                    Welcome to<br/>Sakura
+                    Welcome to<br/>Cytelink
                     
                     <svg width="31" height="27" viewBox="0 0 31 27" fill="none" className='dash-wel-main-cont-ico' onClick={()=>{
                          setShow(false);
@@ -1213,9 +1213,12 @@ class Land extends React.Component<LandProps,any>{
                                         </div>
                                         <div className='app-head-main-right-cont'>
                                              <button
-                                             className='app-input-class-raised-pressable link-add-butt'
-                                             onClick={()=>{this.setcreateLinkModalVisi(true);}}
-                                             >Create
+                                             className='app-input-class-raised-pressable link-feed-butt'
+                                              onClick={()=>{
+                                                  
+                                                  this.setfeedbackModalVisi(true);
+                                                  }}
+                                             >Feedback
                                              </button>
                                         </div>
                               </div>
@@ -1391,11 +1394,14 @@ class Land extends React.Component<LandProps,any>{
                          </div>
                          <BottomCont />
                          </div>
+                         
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
                         {this.renderLinkMoreModal()}
                         {this.renderLinkCreateModal()}
                         {this.renderDeteleConfirmModal()}
+                         <FeedbackCont visi={this.state.feedbackModalVisi}/>
                          <ToastContainer />
+                         <LinkAddButt />
             </div>
           )}
           else{

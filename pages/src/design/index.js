@@ -185,12 +185,12 @@ const design = (props)=>{
                               </div>
                               <div className='app-head-main-right-cont'>
                                    <button
-                                   className='app-input-class-raised-pressable link-add-butt'
+                                   className='app-input-class-raised-pressable link-feed-butt'
                                    onClick={()=>{
                                         //this.setcreateLinkModalVisi(true);
                                    }}
                                    >
-                                        Create
+                                        Feedback
                                    </button>
                                    {/* <ProfilePopover 
                                     //setlgoutShow={this.setlgoutConfirmVisi} 

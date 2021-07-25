@@ -1194,214 +1194,197 @@ class Land extends React.Component<LandProps,any>{
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
-                    
-                              {/* <BurgerMenu router={this.props.router}/> */}
-                              <div className='app-head-main-cont link-head-body-cont'>
+                         <div className='app-head-main-cont link-head-body-cont'>
                                         <div className='app-head-main-cont-logo link-head-logo'>
-                                             <a href={_BASE_CLIENT_URL+'src/land'}>
-                                                  {/* <svg className='app-head-main-cont-logo-ico' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                  <circle cx="50" cy="50" r="50" fill="url(#paint0_linear)"/>
-                                                  <defs>
-                                                  <linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
-                                                  <stop stop-color="#FEE27F"/>
-                                                  <stop offset="1" stop-color="#F6BC4F"/>
-                                                  </linearGradient>
-                                                  </defs>
-                                                  </svg> */}
-                                                  Cytelink
-                                             </a>
+                                             <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
                                         </div>
                                         <div className='app-head-main-right-cont'>
                                              <button
                                              className='app-input-class-raised-pressable link-feed-butt'
-                                              onClick={()=>{
-                                                  
-                                                  this.setfeedbackModalVisi(true);
-                                                  }}
+                                             onClick={()=>{this.setfeedbackModalVisi(true);}}
                                              >Feedback
                                              </button>
                                         </div>
-                              </div>
+                         </div>
                          <LandNavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
-                         <div className='app-body-main-cont'>
-                              <div className='app-land-link-cont-holder top-holder-cont'>
-                                         <div className='app-land-link-intro-pro-main-cont'> 
-                                                            <div className='app-land-head-pro-pic-main-cont'>
-                                                                 <img src={User!.getUserData()?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
+                              <div className='app-body-main-cont'>
+                                   <div className='app-land-link-cont-holder top-holder-cont'>
+                                             <div className='app-land-link-intro-pro-main-cont'> 
+                                                                 <div className='app-land-head-pro-pic-main-cont'>
+                                                                      <img src={User!.getUserData()?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
+                                                                 </div>
+                                                            {
+                                                                 User.getUserData()?
+                                                                      
+                                                                      <div className='app-body-topper-hey-cont' >                                                               
+                                                                           {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
+                                                                           toast.dark('Hi-Fi ✋', {
+                                                                                position: toast.POSITION.TOP_CENTER,
+                                                                                autoClose: 5000,
+                                                                                hideProgressBar: true,
+                                                                                closeOnClick: true,
+                                                                                pauseOnHover: true,
+                                                                                draggable: true,
+                                                                                progress: undefined,
+                                                                           });
+                                                                      }}>👋</span> 
+                                                                      <div className='app-body-topper-bio-cont'>{User.getUserData()?.bio}</div>
+                                                                      </div>:
+                                                                 <span/>
+                                                            }
+                                                            <div className='app-land-pro-edit-main-cont'>
+                                                                      <a href="/src/setting">
+                                                                      <button className='app-land-pro-edit-butt ' disabled>
+                                                                      <svg className='app-land-pro-edit-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                           <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                                                           <path d="M10 23.4625V26.5025C10 26.7825 10.22 27.0025 10.5 27.0025H13.54C13.67 27.0025 13.8 26.9525 13.89 26.8525L24.81 15.9425L21.06 12.1925L10.15 23.1025C10.05 23.2025 10 23.3225 10 23.4625ZM27.71 13.0425C28.1 12.6525 28.1 12.0225 27.71 11.6325L25.37 9.2925C24.98 8.9025 24.35 8.9025 23.96 9.2925L22.13 11.1225L25.88 14.8725L27.71 13.0425V13.0425Z" fill="currentColor"/>
+                                                                           </svg>
+                                                                      </button>
+                                                                      </a>
                                                             </div>
-                                                       {
-                                                            User.getUserData()?
-                                                                 
-                                                                 <div className='app-body-topper-hey-cont' >                                                               
-                                                                      {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
-                                                                      toast.dark('Hi-Fi ✋', {
-                                                                           position: toast.POSITION.TOP_CENTER,
-                                                                           autoClose: 5000,
-                                                                           hideProgressBar: true,
-                                                                           closeOnClick: true,
-                                                                           pauseOnHover: true,
-                                                                           draggable: true,
-                                                                           progress: undefined,
-                                                                      });
-                                                                 }}>👋</span> 
-                                                                 <div className='app-body-topper-bio-cont'>{User.getUserData()?.bio}</div>
-                                                                 </div>:
-                                                            <span/>
-                                                       }
-                                                       <div className='app-land-pro-edit-main-cont'>
-                                                                 <a href="/src/setting">
-                                                                 <button className='app-land-pro-edit-butt ' disabled>
-                                                                 <svg className='app-land-pro-edit-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                      <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                                                      <path d="M10 23.4625V26.5025C10 26.7825 10.22 27.0025 10.5 27.0025H13.54C13.67 27.0025 13.8 26.9525 13.89 26.8525L24.81 15.9425L21.06 12.1925L10.15 23.1025C10.05 23.2025 10 23.3225 10 23.4625ZM27.71 13.0425C28.1 12.6525 28.1 12.0225 27.71 11.6325L25.37 9.2925C24.98 8.9025 24.35 8.9025 23.96 9.2925L22.13 11.1225L25.88 14.8725L27.71 13.0425V13.0425Z" fill="currentColor"/>
-                                                                      </svg>
-                                                                 </button>
-                                                                 </a>
-                                                       </div>
+                                             </div>
+                                                  <WelcomeHead/>
+                                             
                                         </div>
-                                             <WelcomeHead/>
-                                           
-                                   </div>
-                              <div className='app-land-link-cont-holder cluster-holder-cont'>
-                              <div className='app-land-lab-main-cont'>                              
-                                   <svg 
-                                   className='app-land-lab-main-cont-ico'
-                                   width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                   <rect x="8" y="10" width="21" height="3" rx="1.5" fill="currentColor"/>
-                                   <rect x="8" y="16" width="21" height="5" rx="2" fill="currentColor"/>
-                                   <rect x="8" y="24" width="21" height="3" rx="1.5" fill="currentColor"/>
-                                   </svg>
+                                   <div className='app-land-link-cont-holder cluster-holder-cont'>
+                                   <div className='app-land-lab-main-cont'>                              
+                                        <svg 
+                                        className='app-land-lab-main-cont-ico'
+                                        width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                        <rect x="8" y="10" width="21" height="3" rx="1.5" fill="currentColor"/>
+                                        <rect x="8" y="16" width="21" height="5" rx="2" fill="currentColor"/>
+                                        <rect x="8" y="24" width="21" height="3" rx="1.5" fill="currentColor"/>
+                                        </svg>
 
-                                   Cluster Link</div>
-                              <div className='clust-link-main-cont'> 
-                                   <div className='clust-link-main-inner-cont'>
-                                   <div className='clust-link-main-lock-cont'>
-                                        <svg className='clust-link-main-lock-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
-                                   </div>
-                                   <div className='clust-link-main-link' 
-                                        onClick={
-                                             ()=>{
-                                                  this.openInNewTab(_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname);
+                                        Cluster Link</div>
+                                   <div className='clust-link-main-cont'> 
+                                        <div className='clust-link-main-inner-cont'>
+                                        <div className='clust-link-main-lock-cont'>
+                                             <svg className='clust-link-main-lock-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
+                                        </div>
+                                        <div className='clust-link-main-link' 
+                                             onClick={
+                                                  ()=>{
+                                                       this.openInNewTab(_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname);
+                                                  }
                                              }
-                                        }
-                                   >
-                                       {_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname}
-                                   </div>
-                                   <div className='clust-link-main-right-cont'>
-                                        <button className='clust-link-main-link-copy-butt'
-                                             onClick={()=>{
-                                                  copy(_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname);
-                                                  toast.dark('Link copied', {
-                                                       position: toast.POSITION.TOP_CENTER,
-                                                       autoClose: 5000,
-                                                       hideProgressBar: true,
-                                                       closeOnClick: true,
-                                                       pauseOnHover: true,
-                                                       draggable: true,
-                                                       progress: undefined,
-                                                  });
-                                             }}
                                         >
-                                             <svg   className='lnk-lnk-gen-right-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                   <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
-                                   <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
-                                   <rect x="10" y="9" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-                                   </svg>
-                                        </button>
+                                        {_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname}
                                         </div>
-                                   </div>
-                                   <div className='clust-visit-main-cont'>
-                                                  <a className='clust-visit-main-cont-lnk' href={_BASE_CLIENT_URL+'src/cluster'}>
-                                                  Go to cluster settings
-                                                  <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="UoM~0_1BpfEneny~ePS0ba" x1="8.469" x2="42.33" y1="8.469" y2="42.33" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"/><stop offset="1" stop-color="#007ad9"/></linearGradient><path fill="url(#UoM~0_1BpfEneny~ePS0ba)" d="M39,41H9c-1.1,0-2-0.9-2-2V9c0-1.1,0.9-2,2-2h30c1.1,0,2,0.9,2,2v30C41,40.1,40.1,41,39,41z"/><path d="M41,7h-5.528L20.695,21.777c-0.746,0.746-0.746,1.954,0,2.7l2.828,2.828 c0.746,0.746,1.954,0.746,2.7,0L41,12.528V7z" opacity=".018"/><path d="M41,7h-5.4L20.759,21.841c-0.71,0.71-0.71,1.861,0,2.571l2.828,2.828 c0.71,0.71,1.861,0.71,2.571,0L41,12.4V7z" opacity=".036"/><path d="M41,7h-5.271L20.823,21.906c-0.675,0.675-0.675,1.768,0,2.443l2.828,2.828 c0.675,0.675,1.768,0.675,2.443,0L41,12.271V7z" opacity=".054"/><path d="M41,7h-5.143l-14.97,14.97c-0.639,0.639-0.639,1.675,0,2.314l2.828,2.828 c0.639,0.639,1.675,0.639,2.314,0L41,12.143V7z" opacity=".073"/><path d="M41,7h-5.014L20.952,22.034c-0.604,0.604-0.604,1.582,0,2.186l2.828,2.828 c0.604,0.604,1.582,0.604,2.186,0L41,12.014V7z" opacity=".091"/><path d="M41,7h-4.885L21.016,22.098c-0.568,0.568-0.568,1.489,0,2.057l2.828,2.828 c0.568,0.568,1.489,0.568,2.057,0L41,11.885V7z" opacity=".109"/><path d="M41,7h-4.757L21.081,22.163c-0.533,0.533-0.533,1.396,0,1.928l2.828,2.828 c0.533,0.533,1.396,0.533,1.928,0L41,11.757V7z" opacity=".127"/><path d="M41,7h-4.628L21.145,22.227c-0.497,0.497-0.497,1.303,0,1.8l2.828,2.828 c0.497,0.497,1.303,0.497,1.8,0L41,11.628V7z" opacity=".145"/><path d="M41,7h-4.5L21.209,22.291c-0.462,0.462-0.462,1.21,0,1.671l2.828,2.828 c0.462,0.462,1.21,0.462,1.671,0L41,11.5V7z" opacity=".164"/><path d="M41,7h-4.371L21.273,22.355c-0.426,0.426-0.426,1.117,0,1.543l2.828,2.828 c0.426,0.426,1.117,0.426,1.543,0L41,11.371V7z" opacity=".182"/><path d="M41,7h-4.243l-15.42,15.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828 c0.391,0.391,1.024,0.391,1.414,0L41,11.243V7z" opacity=".2"/><path fill="#50e6ff" d="M36.452,1.379l2.963,2.963L21.338,22.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828	c0.391,0.391,1.024,0.391,1.414,0L43.658,8.585l2.963,2.963C47.13,12.057,48,11.697,48,10.977l0-9.361C48,0.723,47.277,0,46.384,0	l-9.361,0C36.303,0,35.943,0.87,36.452,1.379z"/></svg>
-                                                  </a>
-                                   </div>
-                              </div>
-                                    
-
-                              </div>
-                              <div className='app-land-link-cont-holder lnk-holder-cust'>
-                              
-                              
-                              <div className='app-land-lab-main-cont'>
-                                   <svg 
-                                   className='app-land-lab-main-cont-ico'
-                                   width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                   <path d="M20.5 16.5C19.3 15.3 16 15.0001 15 16.0001L10 21.5C8.5 24 10.4665 27.1611 12.5 27.5C15.5 28 15.5 27 17.5 25.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                   <path d="M16.5 20C17.8057 21.2753 20 22.4999 22 20.9999L24.7049 18.4999L27.4252 15.5149C29.0573 12.8579 26.9176 9.49832 24.7049 9.13815C21.4406 8.60679 21.4406 9.66954 19.2643 11.2637" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                   </svg>
-                                   Links {this.state.linksData.length}</div>
-                              
-                              <div className='app-land-serch-main-cont'>
-                                        <div className='app-land-top-butt-group-cont'>
-                                        <button className='app-land-crt-lnk-butt'
-                                             onClick={()=>{this.setcreateLinkModalVisi(true)}}
-                                             > 
-                                             <div  className='app-land-crt-lnk-butt-lab'>
-                                                  <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
-                                                  Create Link </div>
+                                        <div className='clust-link-main-right-cont'>
+                                             <button className='clust-link-main-link-copy-butt'
+                                                  onClick={()=>{
+                                                       copy(_BASE_CLIENT_URL!+'c/'+User?.getUserData()?.uname);
+                                                       toast.dark('Link copied', {
+                                                            position: toast.POSITION.TOP_CENTER,
+                                                            autoClose: 5000,
+                                                            hideProgressBar: true,
+                                                            closeOnClick: true,
+                                                            pauseOnHover: true,
+                                                            draggable: true,
+                                                            progress: undefined,
+                                                       });
+                                                  }}
+                                             >
+                                                  <svg   className='lnk-lnk-gen-right-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                        <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
+                                        <rect x="15" y="13" width="14" height="16" rx="3" fill="currentColor"/>
+                                        <rect x="10" y="9" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
                                              </button>
-                                        
-                                                  <button className='app-land-det-butt'
-                                                       onClick={()=>{this.setdetailed(!this.state.detailed)}}
-                                                       >
-                                                       {
-                                                       this.state.detailed?
-                                                       <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 0v24H0V0h24z" fill="none" opacity=".87"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>
-                                                       :
-                                                       <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>
-                                                       }
-                                                       
-                                                       
-                                                       </button>
-                                                       <button className='app-land-det-butt'
-                                                       onClick={()=>{this.initLinksDataLoad()}}
-                                                       >
-                                                       <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor" strokeWidth="4"><path d="M0 0h24v24H0V0z" fill="none"/><path  d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
-                                                       </button>
+                                             </div>
                                         </div>
+                                        <div className='clust-visit-main-cont'>
+                                                       <a className='clust-visit-main-cont-lnk' href={_BASE_CLIENT_URL+'src/cluster'}>
+                                                       Go to cluster settings
+                                                       <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="UoM~0_1BpfEneny~ePS0ba" x1="8.469" x2="42.33" y1="8.469" y2="42.33" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"/><stop offset="1" stop-color="#007ad9"/></linearGradient><path fill="url(#UoM~0_1BpfEneny~ePS0ba)" d="M39,41H9c-1.1,0-2-0.9-2-2V9c0-1.1,0.9-2,2-2h30c1.1,0,2,0.9,2,2v30C41,40.1,40.1,41,39,41z"/><path d="M41,7h-5.528L20.695,21.777c-0.746,0.746-0.746,1.954,0,2.7l2.828,2.828 c0.746,0.746,1.954,0.746,2.7,0L41,12.528V7z" opacity=".018"/><path d="M41,7h-5.4L20.759,21.841c-0.71,0.71-0.71,1.861,0,2.571l2.828,2.828 c0.71,0.71,1.861,0.71,2.571,0L41,12.4V7z" opacity=".036"/><path d="M41,7h-5.271L20.823,21.906c-0.675,0.675-0.675,1.768,0,2.443l2.828,2.828 c0.675,0.675,1.768,0.675,2.443,0L41,12.271V7z" opacity=".054"/><path d="M41,7h-5.143l-14.97,14.97c-0.639,0.639-0.639,1.675,0,2.314l2.828,2.828 c0.639,0.639,1.675,0.639,2.314,0L41,12.143V7z" opacity=".073"/><path d="M41,7h-5.014L20.952,22.034c-0.604,0.604-0.604,1.582,0,2.186l2.828,2.828 c0.604,0.604,1.582,0.604,2.186,0L41,12.014V7z" opacity=".091"/><path d="M41,7h-4.885L21.016,22.098c-0.568,0.568-0.568,1.489,0,2.057l2.828,2.828 c0.568,0.568,1.489,0.568,2.057,0L41,11.885V7z" opacity=".109"/><path d="M41,7h-4.757L21.081,22.163c-0.533,0.533-0.533,1.396,0,1.928l2.828,2.828 c0.533,0.533,1.396,0.533,1.928,0L41,11.757V7z" opacity=".127"/><path d="M41,7h-4.628L21.145,22.227c-0.497,0.497-0.497,1.303,0,1.8l2.828,2.828 c0.497,0.497,1.303,0.497,1.8,0L41,11.628V7z" opacity=".145"/><path d="M41,7h-4.5L21.209,22.291c-0.462,0.462-0.462,1.21,0,1.671l2.828,2.828 c0.462,0.462,1.21,0.462,1.671,0L41,11.5V7z" opacity=".164"/><path d="M41,7h-4.371L21.273,22.355c-0.426,0.426-0.426,1.117,0,1.543l2.828,2.828 c0.426,0.426,1.117,0.426,1.543,0L41,11.371V7z" opacity=".182"/><path d="M41,7h-4.243l-15.42,15.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828 c0.391,0.391,1.024,0.391,1.414,0L41,11.243V7z" opacity=".2"/><path fill="#50e6ff" d="M36.452,1.379l2.963,2.963L21.338,22.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828	c0.391,0.391,1.024,0.391,1.414,0L43.658,8.585l2.963,2.963C47.13,12.057,48,11.697,48,10.977l0-9.361C48,0.723,47.277,0,46.384,0	l-9.361,0C36.303,0,35.943,0.87,36.452,1.379z"/></svg>
+                                                       </a>
+                                        </div>
+                                   </div>
+                                        
+
+                                   </div>
+                                   <div className='app-land-link-cont-holder lnk-holder-cust'>
+                                   
+                                   
+                                   <div className='app-land-lab-main-cont'>
+                                        <svg 
+                                        className='app-land-lab-main-cont-ico'
+                                        width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                        <path d="M20.5 16.5C19.3 15.3 16 15.0001 15 16.0001L10 21.5C8.5 24 10.4665 27.1611 12.5 27.5C15.5 28 15.5 27 17.5 25.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M16.5 20C17.8057 21.2753 20 22.4999 22 20.9999L24.7049 18.4999L27.4252 15.5149C29.0573 12.8579 26.9176 9.49832 24.7049 9.13815C21.4406 8.60679 21.4406 9.66954 19.2643 11.2637" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                        </svg>
+                                        Links {this.state.linksData.length}</div>
+                                   
+                                   <div className='app-land-serch-main-cont'>
+                                             <div className='app-land-top-butt-group-cont'>
+                                             <button className='app-land-crt-lnk-butt'
+                                                  onClick={()=>{this.setcreateLinkModalVisi(true)}}
+                                                  > 
+                                                  <div  className='app-land-crt-lnk-butt-lab'>
+                                                       <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
+                                                       Create Link </div>
+                                                  </button>
+                                             
+                                                       <button className='app-land-det-butt'
+                                                            onClick={()=>{this.setdetailed(!this.state.detailed)}}
+                                                            >
+                                                            {
+                                                            this.state.detailed?
+                                                            <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 0v24H0V0h24z" fill="none" opacity=".87"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>
+                                                            :
+                                                            <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>
+                                                            }
+                                                            
+                                                            
+                                                            </button>
+                                                            <button className='app-land-det-butt'
+                                                            onClick={()=>{this.initLinksDataLoad()}}
+                                                            >
+                                                            <svg className='app-land-det-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor" strokeWidth="4"><path d="M0 0h24v24H0V0z" fill="none"/><path  d="M18.65 8.35l-2.79 2.79c-.32.32-.1.86.35.86H18c0 3.31-2.69 6-6 6-.79 0-1.56-.15-2.25-.44-.36-.15-.77-.04-1.04.23-.51.51-.33 1.37.34 1.64.91.37 1.91.57 2.95.57 4.42 0 8-3.58 8-8h1.79c.45 0 .67-.54.35-.85l-2.79-2.79c-.19-.2-.51-.2-.7-.01zM6 12c0-3.31 2.69-6 6-6 .79 0 1.56.15 2.25.44.36.15.77.04 1.04-.23.51-.51.33-1.37-.34-1.64C14.04 4.2 13.04 4 12 4c-4.42 0-8 3.58-8 8H2.21c-.45 0-.67.54-.35.85l2.79 2.79c.2.2.51.2.71 0l2.79-2.79c.31-.31.09-.85-.36-.85H6z"/></svg>
+                                                            </button>
+                                             </div>
+                                   </div>
+                                   {
+                                   this.state.linkDataLoading?
+                                   <div className='app-land-rel-main-cont'>
+                                   <Spinner
+                                   as="span"
+                                   animation="border"
+                                   size="sm"
+                                   role="status"
+                                   aria-hidden="true"
+                                   />
+                                   </div>:
+                                   <span>
+                                   {this.renderLinkTable()}
+                                   </span>
+                                   }
+                                   
+                                   <div className='app-land-lnks-holder-shw-mr-main-cont'>
+                                        <button className='app-land-lnks-holder-shw-mr-butt'
+                                        onClick={()=>{ this.setshowAllLinks(!this.state.showAllLinks)}}
+                                        >{
+                                        this.state.showAllLinks?'Show less':'Show more'
+                                        }</button>
+                                   </div>
+                                   
+                                   </div>
+                                   
                               </div>
-                              {
-                              this.state.linkDataLoading?
-                              <div className='app-land-rel-main-cont'>
-                              <Spinner
-                              as="span"
-                              animation="border"
-                              size="sm"
-                              role="status"
-                              aria-hidden="true"
-                              />
-                              </div>:
-                              <span>
-                              {this.renderLinkTable()}
-                              </span>
-                              }
-                              
-                              <div className='app-land-lnks-holder-shw-mr-main-cont'>
-                                   <button className='app-land-lnks-holder-shw-mr-butt'
-                                   onClick={()=>{ this.setshowAllLinks(!this.state.showAllLinks)}}
-                                   >{
-                                   this.state.showAllLinks?'Show less':'Show more'
-                                   }</button>
-                              </div>
-                              
-                              </div>
-                              
+                              <BottomCont />
                          </div>
-                         <BottomCont />
-                         </div>
-                         
                         <EditLinkModal show={this.state.editLinkModalVisi} setShow={this.seteditLinkModalVisi} uniId={this.state.editLinkUniId} setUniId={this.seteditLinkUniId} reloadData={this.initLinksDataLoad}/>
                         {this.renderLinkMoreModal()}
                         {this.renderLinkCreateModal()}
                         {this.renderDeteleConfirmModal()}
-                         <FeedbackCont visi={this.state.feedbackModalVisi}/>
                          <ToastContainer />
                          <LinkAddButt />
+                         <FeedbackCont visi={this.state.feedbackModalVisi}/>
             </div>
           )}
           else{

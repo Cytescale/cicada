@@ -86,7 +86,6 @@ const design = (props)=>{
                return true;
           }
      }
-     
      const setTempplateId =  async (int)=>{
           BackendHelper._updateClusterConfigData(User.getUserUid(),clusterConfigData._id,{"design_temp_id":int}).then((r)=>{
                if(!r.errBool){
@@ -123,7 +122,6 @@ const design = (props)=>{
                });
           })
      }
-
      useEffect(async ()=>{
           setLoading(true);
           getAuth().then(async(m)=>{

@@ -936,16 +936,25 @@ font-family: inter;
    }
    .app-crt-float-butt-main-cont{
      position:fixed;
-     bottom: 0;
      right: 0;
+     top: 0;
+     
+     margin-top: 82vh;
+     margin-right: 22px;
      z-index: 600;  
    }
    .app-crt-float-butt{
      width: 52px;
      height: 52px;
-     background-color: var(--pri-color);
+     outline: none;
+     border-style: none;
+     background: linear-gradient(180deg, #11E4D1 0%, #06BEAE 100%);
+
+     box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.6);
      border-radius: 100px;
+     color: #fff;
    }
    .app-crt-float-butt-ico{
-
+     width: 42px;
+     height: 42px;
    }

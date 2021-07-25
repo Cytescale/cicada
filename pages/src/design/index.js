@@ -161,7 +161,7 @@ const design = (props)=>{
      return(
           <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
           <Head>
-          <title>Sakura</title>
+          <title>Cytelink</title>
           <meta name="description" content="Cicada Login Activity" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="icon" href="/favicon.ico" />

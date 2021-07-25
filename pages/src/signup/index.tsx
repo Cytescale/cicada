@@ -167,7 +167,7 @@ class SignUpAct extends React.Component<SignUpProps,any>{
                     </Head>
                          <div className='app-head-cont-main-body login-head-body-cont'>
                                    <a href='/' className='app-head-outer-link-main-cont'>
-                                   Sakura
+                                   Cytelink
                                    </a>
                          </div>
                          {/* <form> */}

@@ -15,7 +15,7 @@ const BottomCont =(prop)=>{
                <div className='app-bottom-cont-lnk-cont'>Terms of conditions</div>
                <div className='app-bottom-cont-lnk-cont'>Privacy Policy</div>
                <div className='app-bottom-cont-lnk-cont'>DMCA Policy</div>
-               <div className='app-bottom-cont-main-logo'>Sakura</div>
+               <div className='app-bottom-cont-main-logo'>Cytelink</div>
                <div className='app-bottom-cont-main-sys-stat'>
                     Status:
                     <div className='app-bottom-cont-main-sys-stat-lab'>
@@ -23,7 +23,7 @@ const BottomCont =(prop)=>{
                          All systems normal</div>
                </div>
                <div className='app-bottom-cont-main-copy-cont'>
-                    Copyright &#xA9; 2021 Sakura , All rights reserved.
+                    Copyright &#xA9; 2021 Cytelink, All rights reserved.
                </div>
           </div>
      )

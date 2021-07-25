@@ -146,7 +146,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                     </Head>
                          <div className='app-head-cont-main-body login-head-body-cont'>
                                    <a href='/' className='app-head-outer-link-main-cont'>
-                                   Sakura
+                                   Cytelink
                                    </a>
                          </div>
                          {/* <form> */}

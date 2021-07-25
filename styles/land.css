@@ -1731,3 +1731,22 @@ backdrop-filter: blur(17px);
      outline: none;
      border-style: none;
 }
+
+.app-plat-logo-main-cont{
+     width: 32px;
+     height: 32px;
+     margin-right: 9px;
+     margin-top: 0px;
+     display: flex;
+     background-color: var(--cardSubColor);
+     border-radius: 100px;
+     padding: 6px;
+     justify-content: center;
+
+}
+
+.app-plat-logo-ico{
+     color: var(--textColor);
+     height: 100%;
+     width: 100%;
+}

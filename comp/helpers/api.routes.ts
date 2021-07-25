@@ -5,7 +5,7 @@ if(process.env.NODE_ENV=='development'){
      _BASE_CLIENT_URL = 'http://localhost:3000/'
 }
 if(process.env.NODE_ENV=='production'){
-     _BASE_CLIENT_URL = 'https://cicada-two.vercel.app/'
+     _BASE_CLIENT_URL = 'https://www.cytelink.com/'
      _BASE_API_URL = 'https://9ukpweulq2.execute-api.ap-south-1.amazonaws.com/v2/'
 }
 

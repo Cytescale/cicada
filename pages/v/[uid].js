@@ -8,13 +8,14 @@ import { withRouter, NextRouter } from 'next/router'
 
 const ClusterLinkRedirect=(props)=>{
      const router = useRouter()
-     const {uid} = router.query;
-
-     useEffect(()=>{
-          if (typeof window !== 'undefined') {
+     let {uid} = router.query;
+     if(uid){
+          if (typeof window !== 'undefined') {    
+               console.log(router.query);
                window.location.href = `${URLS.visit}/${uid}`;
-          }
-     },[])
+               console.log('redirect');
+          }  
+     }
      return(
           <div>Loading</div>
      )

@@ -5,7 +5,10 @@
      height: 100%;
 }
 .link-head-logo{
-     
+     color: var(--textColor);
+     font-size: 16px;
+     font-family: inter;
+     font-weight: 700;    
 }
 .link-head-body-cont{
      

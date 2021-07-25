@@ -283,7 +283,7 @@ const Profile = (props)=>{
                     <BurgerMenu router={router} />
                     <div className='app-head-main-cont link-head-body-cont'>
                               <div className='app-head-main-cont-logo link-head-logo'>
-                                   <a href={_BASE_CLIENT_URL+'src/land'}>
+                                   {/* <a href={_BASE_CLIENT_URL+'src/land'}>
                                         <svg className='app-head-main-cont-logo-ico' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="50" cy="50" r="50" fill="url(#paint0_linear)"/>
                                         <defs>
@@ -293,7 +293,8 @@ const Profile = (props)=>{
                                         </linearGradient>
                                         </defs>
                                         </svg>
-                                   </a>
+                                   </a> */}
+                                   Cytelink
                               </div>
                               <div className='app-head-main-right-cont'>
                                    <button

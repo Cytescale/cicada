@@ -24,7 +24,7 @@
      height: 46px;
      background-color: #4189F7;
      /* box-shadow: 0px 4px 8px 1px rgba(58, 132, 244, 0.25); */
-     border-radius: 8px;
+     border-radius: 100px;
      outline: none;
      border-style: none;
      font-family: inter;
@@ -248,7 +248,7 @@ padding-bottom: 12px;
      width: 100%;
      height: 100%;
      border-top: 1px solid var(--borColor);
-     background-color: #fff;
+     background-color:var(--backColor);
      padding: 22px;
      border-bottom: 1px solid var(--borColor);
 }
@@ -256,6 +256,7 @@ padding-bottom: 12px;
      width: 100%;
      height: 100px;
      border: 1px solid var(--borColor);
+     background-color: var(--cardColor);
      border-radius: 6px;
      padding: 16px;
      position: relative;
@@ -265,7 +266,7 @@ padding-bottom: 12px;
 font-size: 16px;
 font-family: inter;
 font-weight: 700;
-color: #000;
+color: var(--textColor);
 }
 
 .app-clust-set-card-main-sub-tit-cont{
@@ -274,7 +275,7 @@ width: 60%;
 font-family: inter;
 font-weight: 500;
 margin-top: 6px;
-color: #656565;
+color: var(--subtextColor);
 }
 .app-clust-set-card-main-rigt-cont{
      position: absolute;

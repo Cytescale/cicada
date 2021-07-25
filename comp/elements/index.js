@@ -9,6 +9,7 @@ const User = new user();
 const FeedbackCont = (props)=>{
      const [visi,setvisi] = useState(props.visi);
      const handleClose = () => setvisi(false);
+     console.log(visi);
      return(
           <Modal 
           show={visi} 

@@ -8,6 +8,7 @@ import firebaseHelper,{getUid,checkToken} from "../../../../comp/helpers/firebas
 import backendHelper from "../../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
+import getAuth from '../../../../comp/utils/getAuth';
 
 
 const User = new user();
@@ -70,8 +71,13 @@ const Settings = (props)=>{
      const [footerCardBool,setfooterCardBool] = useState(false);
 
      useEffect(async ()=>{
-               
+          getAuth().then(async(m)=>{
                await loadUserData(setLoading);
+               }).catch((e)=>{
+                    console.log("User auth failure"+e.message);
+                    router.replace('/src/login');
+          })
+            
              
      },[]);
      useEffect(async ()=>{
@@ -108,39 +114,38 @@ const Settings = (props)=>{
           <link rel="icon" href="/favicon.ico" />
           </Head>
           
-                    <BurgerMenu router={router} />
                     <div className='app-head-main-cont link-head-body-cont'>
                               <div className='app-head-main-cont-logo link-head-logo'>
                                    <a href={_BASE_CLIENT_URL+'src/land'}>
-                                        <svg className='app-head-main-cont-logo-ico' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="50" cy="50" r="50" fill="url(#paint0_linear)"/>
-                                        <defs>
-                                        <linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#FEE27F"/>
-                                        <stop offset="1" stop-color="#F6BC4F"/>
-                                        </linearGradient>
-                                        </defs>
-                                        </svg>
+                                        Cytelink
                                    </a>
                               </div>
                               <div className='app-head-main-right-cont'>
                                    <button
-                                   className='app-input-class-raised-pressable link-add-butt'
+                                   className='app-input-class-raised-pressable link-feed-butt'
                                    onClick={()=>{
                                         //this.setcreateLinkModalVisi(true);
                                    }}
-                                   >
-                                        Create Link
+                                   >Feedback
                                    </button>
-                                   {/* <ProfilePopover 
-                                    //setlgoutShow={this.setlgoutConfirmVisi} 
-                                    /> */}
                               </div>
                     </div>
-                    <NavBarCont router={router}/>
+                    <div className='app-nav-bar-main-cont'>
+                              <div 
+                              className={`app-nav-bar-main-link-cont `}>
+                              <a 
+                                   className='app-nav-lnk-lnk app-nav-bar-back-link'
+                                   href={_BASE_CLIENT_URL+'src/cluster'}>
+                                        <svg 
+                                        className={`app-nav-bar-main-link-ico`}
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+                                        Back
+                              </a>
+                              </div>
+                     </div>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
-                              <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Cluster <br/> Settings</div>
+                              <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Cluster Settings</div>
                               <div className='app-clust-sub-tit-main-cont clust-set-sub-tit-main-cont'>Set your cluster prefrences as per your need.</div>
                               </div>
                               <div className='app-clust-link-overlay-main-cont'

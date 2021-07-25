@@ -369,22 +369,9 @@ const cluster = (props)=>{
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="icon" href="/favicon.ico" />
           </Head>
-          
-                    {/* <BurgerMenu router={router} /> */}
                     <div className='app-head-main-cont link-head-body-cont'>
                               <div className='app-head-main-cont-logo link-head-logo'>
-                                   <a href={_BASE_CLIENT_URL+'src/land'}>
-                                        {/* <svg className='app-head-main-cont-logo-ico' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="50" cy="50" r="50" fill="url(#paint0_linear)"/>
-                                        <defs>
-                                        <linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#FEE27F"/>
-                                        <stop offset="1" stop-color="#F6BC4F"/>
-                                        </linearGradient>
-                                        </defs>
-                                        </svg> */}
-                                        Cytelink
-                                   </a>
+                                   <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
                               </div>
                               <div className='app-head-main-right-cont'>
                                    <button
@@ -392,12 +379,8 @@ const cluster = (props)=>{
                                    onClick={()=>{
                                         //this.setcreateLinkModalVisi(true);
                                    }}
-                                   >
-                                        Feedback
+                                   >Feedback
                                    </button>
-                                   {/* <ProfilePopover 
-                                    //setlgoutShow={this.setlgoutConfirmVisi} 
-                                    /> */}
                               </div>
                     </div>
                     <LandNavBarCont router={router}/>
@@ -408,7 +391,6 @@ const cluster = (props)=>{
                                    {clusterActive?<div className='app-clust-indi-on'/>:<div className='app-clust-indi-off'/>}
                               </div>
                               <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want, or create a new one.</div>
-                              {/* <div className='app-clust-time-tit-main-cont'>Last Updated: {lastUpdate?timeDifference(new Date().getTime(),lastUpdate):null}</div> */}
                               <div className='app-clust-act-lnk-head-main-cont'>
                                    <button className='app-clust-act-crt-lnk-butt'
                                         onClick={()=>{

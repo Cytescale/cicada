@@ -107,14 +107,14 @@ class ForgotPassAct extends React.Component<ForgotPassActProps,any>{
                <>
                     <div className='app-main-cont-main-body login-body-cont'>
                     <Head>
-                    <title>Create account</title>
+                    <title>Forgot Password</title>
                     <meta name="description" content="Cicada Login Activity" />
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
                          <div className='app-head-cont-main-body login-head-body-cont'>
                                    <a href='/' className='app-head-outer-link-main-cont'>
-                                   Sakura
+                                   Cytelink
                                    </a>
                          </div>
                          <div className='app-moto-cont-main-body'>

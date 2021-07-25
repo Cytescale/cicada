@@ -761,6 +761,10 @@ font-family: inter;
         color: var(--textColor);
         font-weight: 400;
    }
+.app-nav-bar-back-link{
+     color: #0070F3;
+}
+
    .app-nav-bar-main-link-cont-selec{
         color: var(--NavTextColor-selec);
         font-weight: 600;
@@ -839,6 +843,7 @@ font-family: inter;
      font-family: inter;
      font-size: 20px;
      font-weight: 700;
+     color: var(--textColor);
    }
 
    .app-bottom-cont-main-sys-stat{

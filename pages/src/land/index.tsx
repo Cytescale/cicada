@@ -5,7 +5,7 @@ import backendHelper from "../../../comp/helpers/backendHelper";
 import { withRouter, NextRouter } from 'next/router'
 import FullHeiLoading from '../fullHeightLoading';
 import Head from "next/head";
-import  {Modal, Spinner}  from "react-bootstrap";
+import  {Modal, Spinner,Accordion,Card}  from "react-bootstrap";
 import { ToastContainer,toast } from "react-toastify";
 import nexusResponse from "../../../comp/helpers/nexusResponse";
 import { linkDataType } from "../../../comp/utils/link";
@@ -15,6 +15,9 @@ import { BottomSheet } from 'react-spring-bottom-sheet'
 import getAuth from '../../../comp/utils/getAuth';
 import { timeDifference } from "../../../comp/utils/utils";
 import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont } from "../../../comp/elements";
+import LandVisitChart from './landChart';
+import {landFullVisitChart as LandFullVisitChart} from './landChart';
+
 
 const BackendHelper = new backendHelper();
 const User = new user();
@@ -1247,6 +1250,36 @@ class Land extends React.Component<LandProps,any>{
                                                   <WelcomeHead/>
                                              
                                         </div>
+                                   
+                                        <div className='app-land-link-cont-holder cluster-holder-cont'>
+                                        <div className='app-land-lab-main-cont'>
+                                             <svg 
+                                             className='app-land-lab-main-cont-ico'
+                                             width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                             <path d="M7.53693 27.6692C7.35423 28.4772 7.86117 29.2804 8.6692 29.4631C9.47723 29.6458 10.2804 29.1388 10.4631 28.3308L7.53693 27.6692ZM17.8372 20.2856L18.4988 18.9394L17.8372 20.2856ZM24.3488 16.1714L25.7594 16.6816L24.3488 16.1714ZM29.8013 11.2681C30.5016 10.8255 30.7106 9.89908 30.2681 9.19875C29.8255 8.49841 28.8991 8.28941 28.1987 8.73193L29.8013 11.2681ZM10.4631 28.3308C10.8785 26.4934 11.9312 24.3034 13.2911 22.8554C14.6505 21.4079 15.9389 21.024 17.1756 21.6318L18.4988 18.9394C15.5495 17.49 12.8844 18.9063 11.1043 20.8017C9.32461 22.6966 8.05173 25.3923 7.53693 27.6692L10.4631 28.3308ZM17.1756 21.6318C18.7042 22.383 20.045 22.7619 21.2289 22.6833C22.5121 22.5981 23.4451 21.9875 24.0794 21.1478C24.657 20.3833 24.9674 19.4554 25.1824 18.7077C25.4305 17.8452 25.5468 17.2694 25.7594 16.6816L22.9383 15.6611C22.6858 16.3591 22.4684 17.2906 22.2993 17.8785C22.0972 18.5812 21.907 19.0465 21.6857 19.3394C21.5213 19.5571 21.3571 19.6681 21.0301 19.6899C20.6039 19.7182 19.8214 19.5894 18.4988 18.9394L17.1756 21.6318ZM25.7594 16.6816C26.2459 15.3368 26.534 14.5035 27.0524 13.7219C27.5422 12.9834 28.2943 12.2203 29.8013 11.2681L28.1987 8.73193C26.4499 9.83698 25.3415 10.8738 24.5523 12.0637C23.7916 13.2106 23.382 14.4344 22.9383 15.6611L25.7594 16.6816Z" 
+                                             fill="currentColor"/>
+                                             </svg>
+                                        Link Activity (Comming Soon)</div>
+                                             <div className='app-land-visit-card-main-outer-cont'>
+                                             <div className='app-land-visit-card-main-cont'>
+                                                  <div className='app-land-visit-card-left-cont'>
+                                                       <div className='app-land-visit-card-left-lab'>Visitors <br/> Activity </div>
+                                                  </div>
+                                                  <LandVisitChart/>
+                                             </div>
+                                        
+                                             <Accordion>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont land-card-acrd-togg-cont'>
+                                                  Show more
+                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                             </Accordion.Toggle>
+                                             <Accordion.Collapse eventKey="0">
+                                                  <LandFullVisitChart/>
+                                             </Accordion.Collapse>
+                                             </Accordion>
+                                   </div>
+                               </div> 
                                    <div className='app-land-link-cont-holder cluster-holder-cont'>
                                    <div className='app-land-lab-main-cont'>                              
                                         <svg 

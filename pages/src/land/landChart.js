@@ -85,7 +85,7 @@ function renderFullVisitGraph(canvasRef){
      const canvas = canvasRef;
      let ctx  = canvas.current.getContext('2d');     
      let gradient_2 = ctx.createLinearGradient(0, 0, 0,300);
-     gradient_2.addColorStop(1, 'rgba(255,255,255,0)');
+     gradient_2.addColorStop(1, 'rgba(0,0,0,0)');
      gradient_2.addColorStop(0, '#55A3FF');
      let gradient = ctx.createLinearGradient(150, 0, 150,150);
      gradient.addColorStop(0, '#11E4D1');
@@ -122,23 +122,23 @@ function renderFullVisitGraph(canvasRef){
                     y: {
                     display:true,
                     grid:{
-                         color:'#e0e0e0'
+                         color:'#656565'
                     },
                     ticks: {
                          display:true,
-                         color:'#bdbdbd',
-                         font:'poppins'
+                         color:'#858585',
+                         font:'inter'
                     }
                 },
                 x:{
                     display:true,
                     grid:{
                          display:false,
-                         color:'#bdbdbd'
+                         color:'#656565'
                     },
                     ticks: {
-                         color:'#bdbdbd',
-                         font:'poppins'
+                         color:'#858585',
+                         font:'inter'
                     }
                 }
               }

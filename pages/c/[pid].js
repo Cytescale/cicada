@@ -7,7 +7,9 @@ import URLS,{_BASE_CLIENT_URL} from "../../comp/helpers/api.routes";
 import { withRouter, NextRouter } from 'next/router'
 import styled ,{ThemeProvider} from "styled-components";
  import GlobalStyles from './clusterGlobalStyle.js';
+import publicIp from 'public-ip';
 
+ 
  const RenderPlatformLogo=(props)=>{
      switch(props.id){
           case 1:{
@@ -232,19 +234,6 @@ import styled ,{ThemeProvider} from "styled-components";
 
 `
 
-
-/*
-     --textColor
-     --subTextColor
-     --backColor
-     --profileCardColor
-     --cardColor
-     --cardShadow
-     --borderColor
-     --border
-*/
-
-
 let StyledOuterCont = styled(StyledClusterMainCont).attrs({
      
 })`
@@ -314,11 +303,18 @@ class ClusterComp extends React.Component{
      }
      
      async initLoadLinkConfig(){
+          const ip_adr= await publicIp.v4();
           await BackendHelper._getClusterConfigByUid(this.state.userData.uid).then(res=>{
                if(!res.errBool){
                     console.log(res.responseData);
                     this.setlinkConfigData(res.responseData);
                     this.setStyledComponent(res.responseData.design_temp_id);
+                    
+                    BackendHelper._makeAnalyticsData(
+                         ip_adr,
+                         res.responseData._id,
+                         res.responseData.creator_id
+                    );
                     this.getLinksData();
                }
                else{throw new Error(res.errMess)}

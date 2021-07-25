@@ -327,7 +327,31 @@ export default class BackendHelper{
                     });
           })
      }
-
+     async _makeAnalyticsData(ip:string,link_id:string,creator_id:string):Promise<nexusResponse>{
+          var data = JSON.stringify({
+               "ip": ip,
+               "link_id":link_id,
+               "creator_id":creator_id,
+          });             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.makeAnalyticsData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
    
 
      _initLogout(){

@@ -93,7 +93,6 @@ import styled ,{ThemeProvider} from "styled-components";
                background-color: #fff;
                display:flex;
                justify-content:center;
-               align-items:center;
                position: relative;
           }        
           .cluster-page-inner-main-cont{

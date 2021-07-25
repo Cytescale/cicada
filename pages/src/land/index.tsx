@@ -1195,7 +1195,7 @@ class Land extends React.Component<LandProps,any>{
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
                     
-                              <BurgerMenu router={this.props.router}/>
+                              {/* <BurgerMenu router={this.props.router}/> */}
                               <div className='app-head-main-cont link-head-body-cont'>
                                         <div className='app-head-main-cont-logo link-head-logo'>
                                              <a href={_BASE_CLIENT_URL+'src/land'}>

@@ -280,7 +280,7 @@ const Profile = (props)=>{
           <link rel="icon" href="/favicon.ico" />
           </Head>
           
-                    <BurgerMenu router={router} />
+                    {/* <BurgerMenu router={router} /> */}
                     <div className='app-head-main-cont link-head-body-cont'>
                               <div className='app-head-main-cont-logo link-head-logo'>
                                    {/* <a href={_BASE_CLIENT_URL+'src/land'}>

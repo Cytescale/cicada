@@ -373,9 +373,13 @@ class ClusterComp extends React.Component{
                                    <div className='cluster-profile-pro-name'>
                                    {this.state.userData?this.state.userData.dname:<span/>}          
                                    </div>
+                                   {
+                                   this.state.userData?this.state.userData.bio?
                                    <div className='cluster-profile-bio'>
                                    {this.state.userData?this.state.userData.bio:<span/>}          
-                                   </div>
+                                   </div>:null:null
+                                   }
+                                   
                               </div>:<span/>:<span/>
 
                         }     

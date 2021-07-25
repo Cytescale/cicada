@@ -219,7 +219,7 @@ font-family: inter;
      z-index:  100;
      right: 0;
      align-items: center;
-     justify-content: center;
+     padding-left: 22px;
      background-color: var(--headColor);
      position: fixed;
      top: 0;

@@ -541,7 +541,7 @@ class Land extends React.Component<LandProps,any>{
                detailed:false,
                searchQuery:null,
                showAllLinks:false,               
-               darkMode:false,
+               darkMode:true,
           }
 
           this.initDataLoad = this.initDataLoad.bind(this);
@@ -1343,7 +1343,7 @@ class Land extends React.Component<LandProps,any>{
           }    
 
      }
-     renderLinkTable(){
+     renderLinkTable(){       
           let res:any = [];
           if(this.state.linksData.length > 0){
                let sortedLinkData = this.state.linksData.sort((x:any, y:any)=>{
@@ -1389,7 +1389,10 @@ class Land extends React.Component<LandProps,any>{
           if(!this.state.isLoading){
           return(
                <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
-                    <GlobalStyles light={!this.state.darkMode}/>
+                    {
+                          // @ts-ignore: Unreachable code error
+                          <GlobalStyles light={this.state.darkMode}/>
+                    }
                     <Head>
                     <title>Cytelink</title>
                     <meta name="description" content="Cicada Login Activity" />
@@ -1401,8 +1404,14 @@ class Land extends React.Component<LandProps,any>{
                                              <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
                                         </div>
                                         <div className='app-head-main-right-cont'>
-                                             <button onClick={()=>{this.setdarkMode(!this.state.darkMode)}} >
-                                                  mode
+                                             <button 
+                                             className='app-dark-mode-butt'
+                                             onClick={()=>{this.setdarkMode(!this.state.darkMode)}} >
+                                                  {
+                                                       this.state.darkMode?
+                                                       <svg className='app-dark-mode-butt-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M11.1,12.08c-2-3.88-0.92-7.36,0.07-9.27c0.19-0.36-0.12-0.77-0.53-0.72C5.62,2.77,1.78,7.16,1.99,12.41 c0.01,0,0.01,0,0.01,0.01C2.62,12.15,3.29,12,4,12c1.66,0,3.18,0.83,4.1,2.15C9.77,14.63,11,16.17,11,18 c0,1.52-0.87,2.83-2.12,3.51c0.98,0.32,2.03,0.5,3.11,0.5c3.13,0,5.92-1.44,7.76-3.69c0.26-0.32,0.04-0.79-0.37-0.82 C16.89,17.37,13.1,15.97,11.1,12.08z"/></g><path d="M7,16l-0.18,0C6.4,14.84,5.3,14,4,14c-1.66,0-3,1.34-3,3s1.34,3,3,3c0.62,0,2.49,0,3,0c1.1,0,2-0.9,2-2 C9,16.9,8.1,16,7,16z"/></g></g></svg>:
+                                                       <svg className='app-dark-mode-butt-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><rect fill="none" height="24" width="24"/><path d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0 c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2 c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1 C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06 c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41 l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41 c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36 c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg>
+                                                  }
                                              </button>
                                              <button
                                              className='app-input-class-raised-pressable link-feed-butt'

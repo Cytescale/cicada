@@ -19,6 +19,8 @@ import LandVisitChart from './landChart';
 import {landFullVisitChart as LandFullVisitChart} from './landChart';
 import styled ,{ThemeProvider} from "styled-components";
 import GlobalStyles from "./globalStyle";
+var QRCode = require('qrcode.react');
+
 
 const BackendHelper = new backendHelper();
 const User = new user();
@@ -482,6 +484,14 @@ const LinkCard:React.FC<any>=(props:any)=>{
                                    <svg className='lnk-lnk-bott-tab-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V2c0-.55-.45-1-1-1s-1 .45-1 1v1H7V2c0-.55-.45-1-1-1s-1 .45-1 1v1H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 18H5c-.55 0-1-.45-1-1V8h16v12c0 .55-.45 1-1 1z"/></svg>
                                    {smalltimeDifference(new Date().getTime(),props.d.creation_timestamp)}
                          </div>
+                         <div className='lnk-lnk-bott-tab'
+                              onClick={()=>{
+                                   props.setlinkQrCodeModalVisi(true);
+                                   props.setselectLinkDest(props.d.link_dest)
+                              }}
+                         >
+                                   <svg className='lnk-lnk-bott-tab-qr-cod-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M3,11h8V3H3V11z M5,5h4v4H5V5z"/><path d="M3,21h8v-8H3V21z M5,15h4v4H5V15z"/><path d="M13,3v8h8V3H13z M19,9h-4V5h4V9z"/><rect height="2" width="2" x="19" y="19"/><rect height="2" width="2" x="13" y="13"/><rect height="2" width="2" x="15" y="15"/><rect height="2" width="2" x="13" y="17"/><rect height="2" width="2" x="15" y="19"/><rect height="2" width="2" x="17" y="17"/><rect height="2" width="2" x="17" y="13"/><rect height="2" width="2" x="19" y="15"/></g></g></svg>
+                         </div>
           </div>
      </div>
      )
@@ -502,14 +512,15 @@ interface LandProps extends WithRouterProps {
 
 
 class Land extends React.Component<LandProps,any>{
-     constructor(props:LandProps){
+          constructor(props:LandProps){
           super(props);
           this.state = {
                feedbackModalVisi:false,
                editLinkModalVisi:false,
                linkMoreModalVisi:false,
                deleteConfirmLoading:false,
-               
+               linkQrCodeModalVisi:false,
+
                linkAdderVisi:false,
                linkAdderAnimStart:false,
                linkAdderAnimExist:false,
@@ -520,6 +531,7 @@ class Land extends React.Component<LandProps,any>{
                deleteConfirmModalVisi:false,
                seleteLinkMoreId:null,
                selectLinkMoreUniId:null,
+               selectLinkDest:null,
                editLinkUniId:null,
                createLinkModalVisi:false,
                isLoading:false,
@@ -576,8 +588,14 @@ class Land extends React.Component<LandProps,any>{
           this.setlinkAdderPlatId =this.setlinkAdderPlatId.bind(this);
           this.submitMakeLinkSecond = this.submitMakeLinkSecond.bind(this);
           this.setdarkMode = this.setdarkMode.bind(this);
-     }
+          this.setlinkQrCodeModalVisi = this.setlinkQrCodeModalVisi.bind(this);
+          this.setselectLinkDest = this.setselectLinkDest.bind(this);
 
+     
+
+     }
+     setselectLinkDest(s:string){this.setState({selectLinkDest:s})}
+     setlinkQrCodeModalVisi(b:boolean){this.setState({linkQrCodeModalVisi:b})}
      setdarkMode(b:boolean){this.setState({darkMode:b})}
      setlinkAdderPlatId(n:number){this.setState({linkAdderPlatId:n})}
      setlinkAdderDest(s:string){this.setState({linkAdderDest:s})}
@@ -721,6 +739,43 @@ class Land extends React.Component<LandProps,any>{
                }
           }
 
+     }
+
+     renderLinkQRModal(){
+          let qr_code_ref = React.createRef();
+          return(
+               <Modal 
+               size="lg"
+               className='app-land-act-delete-cnfm-main-cont'
+               aria-labelledby="contained-modal-title-vcenter"
+               centered         
+               show={this.state.linkQrCodeModalVisi} 
+               onHide={()=>{this.setlinkQrCodeModalVisi(false)}}>
+               <div className='app-land-act-delete-bdy-cont'>
+                         <div className='app-land-qr-code-main-lab'
+                         >Link QR Code</div>
+                         <div className='app-land-qr-code-main-cont'>
+                         {this.state.selectLinkDest?
+                         <QRCode
+                         ref={qr_code_ref}
+                         fgColor='#4189F7'
+                         value={this.state.selectLinkDest}/>:<span>No Destination Link</span>}
+                         
+                         </div>
+                         <div className='app-land-qr-code-main-lab'>
+                         {/* <button className='app-land-qr-code-down-butt'
+                         onClick={()=>{
+                              let nd = qr_code_ref.current;
+                              console.log(nd);    
+                         }}
+                         >
+                              Download
+                         </button> */}
+                         </div>
+                         
+               </div>
+             </Modal>
+          )
      }
 
      renderLinkAdder(){
@@ -975,7 +1030,7 @@ class Land extends React.Component<LandProps,any>{
                size="lg"
                className='app-land-act-delete-cnfm-main-cont'
                aria-labelledby="contained-modal-title-vcenter"
-               centered         
+               centered
                show={this.state.deleteConfirmModalVisi} 
                onHide={()=>{this.setdeleteConfirmModalVisi(false)}}>
                <div className='app-land-act-delete-bdy-cont'>
@@ -1361,6 +1416,8 @@ class Land extends React.Component<LandProps,any>{
                          setlinkMoreModalVisi={this.setlinkMoreModalVisi}
                          seteditLinkUniId={this.seteditLinkUniId}
                          setseleteLinkMoreId={this.setseleteLinkMoreId}
+                         setlinkQrCodeModalVisi={this.setlinkQrCodeModalVisi}
+                         setselectLinkDest={this.setselectLinkDest}
                          />
                          
                          )
@@ -1645,6 +1702,7 @@ class Land extends React.Component<LandProps,any>{
                         {this.renderLinkMoreModal()}
                         {this.renderLinkCreateModal()}
                         {this.renderDeteleConfirmModal()}
+                        {this.renderLinkQRModal()}
                          <ToastContainer />
                          <FeedbackCont visi={this.state.feedbackModalVisi}/>
             </div>

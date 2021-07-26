@@ -507,6 +507,14 @@ background-color: rgba(0, 0, 0, 0)
      animation: lnk-trans 0.6s forwards;
 }
 
+.lnk-lnk-main-inactive{
+background: rgba(232, 144, 136, 0.45);
+}
+
+.lnk-lnk-gen-link-inactive{
+     background: rgba(232, 144, 136, 0.75);
+}
+
 @keyframes lnk-trans {
 	0% {
           /* transform: translateX(-100%); */
@@ -1402,7 +1410,7 @@ background-color: rgba(0, 0, 0, 0)
      align-items: center;
      outline: none;
      border-style: none;
-     color: #fff;
+     color: var(--pri-color);
 }
 .app-land-det-butt:active{
      background-color: #e0e0e0;
@@ -1563,7 +1571,7 @@ color: inherit;
 }
 .top-holder-cont{
      padding-top: 42px;
-     background: linear-gradient(180deg, rgba(65, 137, 247, 0.39) 0%, rgba(0, 0, 0, 0) 100%);
+     /* background: linear-gradient(180deg, rgba(65, 137, 247, 0.39) 0%, rgba(0, 0, 0, 0) 100%); */
 
 }
 
@@ -1924,16 +1932,17 @@ backdrop-filter: blur(17px);
      font-size: 14px;
      color: var(--textColor);
      background-color: var(--cardSubColor);
-     height: 32px;
+     
+     height: 42px;
      display: flex;
      align-items: center;
      padding-left: 12px;
      padding-right: 12px;
-     border-radius: 100px;
+     border-radius: 4px;
      outline: none;
      width: 100%;
-     border-style: none;
-     box-shadow: var(--boxShad);
+     border-style: none; 
+     /* box-shadow: var(--boxShad); */
 }
 .lnk-lnk-crt-lnk-crt-cont{
      display: inline-flex;

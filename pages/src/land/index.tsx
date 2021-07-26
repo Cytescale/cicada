@@ -339,7 +339,7 @@ const LinkCard:React.FC<any>=(props:any)=>{
      const [active , setactive] = useState<boolean>(props.d.active_bool);
      const [activeLoading,setactiveLoading] = useState<boolean>(false);
      return(
-          <div className={`lnk-lnk-main-cont ${props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?'':''}`}>
+          <div className={`lnk-lnk-main-cont ${!active?'lnk-lnk-main-inactive':null}`}>
           <div className='lnk-lnk-head-main-cont'>
                          {
                               props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?
@@ -415,7 +415,7 @@ const LinkCard:React.FC<any>=(props:any)=>{
                          {props.d.link_dest.slice(0,30) + (props.d.link_dest.length >30 ? "..." : "")}
                     </div>
                     <div className='lnk-lnk-mid-body-right-cont'>
-                              <div className='lnk-lnk-gen-right-butt' onClick={()=>{
+                              <div className={`lnk-lnk-gen-right-butt`} onClick={()=>{
                                         props.seteditLinkModalVisi(true);
                                         props.seteditLinkUniId(props.d.unique_identifier);
                                    }}>
@@ -439,7 +439,7 @@ const LinkCard:React.FC<any>=(props:any)=>{
                </div>:
                <span/>}
           <div className='lnk-lnk-gen-cont'>
-               <div className='lnk-lnk-gen-link' onClick={()=>{
+               <div className={`lnk-lnk-gen-link ${!active?'lnk-lnk-gen-link-inactive':null}`} onClick={()=>{
                     props.openInNewTab(`${URLS.visit}/${props.d.unique_identifier}`);
                }}>
                     {`${_BASE_CLIENT_URL}v/${props.d.unique_identifier}`}

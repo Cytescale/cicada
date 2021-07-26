@@ -759,7 +759,7 @@ font-family: inter;
         padding-right: 8px;
         margin-right: 12px;
         font-family: inter;
-        color: var(--textColor);
+        color: var(--headerTextColor);
         font-weight: 400;
    }
 .app-nav-bar-back-link{

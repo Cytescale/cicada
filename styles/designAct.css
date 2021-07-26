@@ -31,7 +31,7 @@
      background-color: #fff;
      border-radius: 32px;
      padding: 12px;
-     
+     box-shadow: var(--boxShad);
      position: relative;
 }
 

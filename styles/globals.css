@@ -20,7 +20,7 @@ body {
   
 
   --pri-color:#4189F7;
-  --dark-pri-color:#f6f6f6;
+  --dark-pri-color:#f3f3f3;
   --dark-sec-color:#f5f5f5;
   --welcomeCardHeight:120px;
 
@@ -31,10 +31,10 @@ body {
 
   --textBoxBackColor:#fff;
   --buttonBackColor:#e0e0e0;
-  --buttonBackColor-selec:#363636;
+  --buttonBackColor-selec:#bdbdbd;
 
   --welcomeMotoText:#fff;
-  --textColor:#000;
+  --textColor:#212121;
   --subtextColor:#353535;
   --subHeadingTextColor:#555555;
   --backColor:var(--dark-pri-color);
@@ -49,12 +49,13 @@ body {
   --cardTextColor:#000;
   --cardButtBackColor:#e0e0e0;
 
-  --headerPriColor:#000;
+  --headerPriColor:rgb(132, 126, 126);
   --headerSecColor:#000;
+  --headerTextColor:#858585;
   --headColor:#fff;
   
 
-  --subHeaderBackColor:#151515;
+  --subHeaderBackColor:#f1f1f1  ;
 
   --NavheadColor:#fff;
   --NavTextColor:#959595;

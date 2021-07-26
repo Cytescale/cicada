@@ -22,7 +22,7 @@ import { createGlobalStyle} from "styled-components"
                --dark-sec-color:#e0e0e0;
                --welcomeCardHeight:120px;
 
-               --margin-top:22px;
+               --margin-top:27px;
                --margin-bottom:22px;
 
                --bor-rad:10px;

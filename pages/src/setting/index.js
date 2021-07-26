@@ -28,7 +28,7 @@ const Profile = (props)=>{
      const router = useRouter()
      const [loading,setLoading] = useState(true);
      const [overlayVisi,setoverlayVisi] =  useState(false);
-     const [darkMode ,setdarkMode]=useState(false);
+     const [darkMode ,setdarkMode]=useState(true);
      const [proPic,setProPic] = useState({ preview: "", raw: "" });
      const [picChange,setpicChange] = useState(false);
      const [uname,setuname] = useState(null);

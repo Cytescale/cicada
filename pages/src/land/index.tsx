@@ -30,10 +30,8 @@ const WelcomeHead:React.FC<any> = ()=>{
           show?
           <div className={`dash-wel-main-cont ${exitAnim?'dash-wel-main-cont-start-exit-anim':null}`}
           onAnimationStart={()=>{
-               console.log('anim start');
           }}
           onAnimationEnd={()=>{
-               console.log('anim end');
                if(exitAnim){setShow(false)}
           }}
           >
@@ -1162,9 +1160,12 @@ class Land extends React.Component<LandProps,any>{
      renderLinkTable(){
           let res:any = [];
           if(this.state.linksData.length > 0){
-               for(let l in this.state.linksData){
+               let sortedLinkData = this.state.linksData.sort((x:any, y:any)=>{
+                    return y.creation_timestamp - x.creation_timestamp;
+                });
+               for(let l in sortedLinkData){
                     if(parseInt(l) > 2 && !this.state.showAllLinks){continue;}
-                    let d = this.state.linksData[l];
+                    let d = sortedLinkData[l];
                     res.push(
                          <LinkCard 
                          key={parseInt(l)}

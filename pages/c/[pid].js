@@ -101,6 +101,7 @@ import publicIp from 'public-ip';
                position: relative;
                height:100%;
                width:100%;
+               min-height: 100vh;
                max-width:500px;
                background-color: ${props => props.backColor}; 
           } 

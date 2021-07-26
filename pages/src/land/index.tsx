@@ -1231,7 +1231,7 @@ class Land extends React.Component<LandProps,any>{
                     draggable: true,
                     progress: undefined,
                });
-               
+               this.setmakeLinkLoading(false);
           }
      }
 
@@ -1550,7 +1550,6 @@ class Land extends React.Component<LandProps,any>{
                                              <div className='app-land-top-butt-group-cont'>
                                              <button className='app-land-crt-lnk-butt'
                                                   onClick={()=>{
-                                                       // this.setcreateLinkModalVisi(true)
                                                        if(this.state.linkAdderVisi){
                                                             this.setlinkAdderAnimExist(true);
                                                        }
@@ -1581,13 +1580,6 @@ class Land extends React.Component<LandProps,any>{
                                                             </button>
                                              </div>
                                    </div>
-                                   {/* <button onClick={()=>{
-                                        if(this.state.linkAdderVisi){
-                                             this.setlinkAdderAnimExist(true);
-                                        }
-                                        else{this.setlinkAdderAnimStart(true)}
-
-                                   }}>start</button> */}
                                    {
                                    this.state.linkDataLoading?
                                    <div className='app-land-rel-main-cont'>

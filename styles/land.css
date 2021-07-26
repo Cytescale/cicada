@@ -1445,6 +1445,11 @@ color: inherit;
 
 }
 
+.app-land-crt-lnk-butt:active{
+     background-color: #2667C9;
+     box-shadow: none;
+}
+
 .app-land-crt-lnk-butt-decor{
      position: absolute;
      background-color: #328DF8;
@@ -1469,9 +1474,7 @@ color: inherit;
      color: #fff;
 }
 
-.app-land-crt-lnk-butt:active{
-     background-color: #4189F7;
-}
+
 .clust-link-main-inner-cont{
      display: flex;
      position: relative;

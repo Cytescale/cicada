@@ -80,6 +80,13 @@ async function processActiveLinkData(lData:linkDataType,bool:boolean){
      let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,lData._id,updateDat);
      return resp;
 }
+async function processBookmarkLinkData(id:string,bool:boolean){
+     let updateDat:any ={
+          "bookmark_bool": bool,
+     }
+     let resp = await BackendHelper._updateLinkData(User?.getUserUid()!,id,updateDat);
+     return resp;
+}
 const EditLinkModal:React.FC<any>=(props:any)=>{
      const [loading,setLoading] = useState<boolean>();
      const [dataLoading,setdataLoading] = useState<boolean>();
@@ -340,7 +347,10 @@ const RenderPlatformLogo:React.FC<any>=(props:any)=>{
 
 const LinkCard:React.FC<any>=(props:any)=>{
      const [active , setactive] = useState<boolean>(props.d.active_bool);
+     const [bookmark_exit,setbookmark_exit] = useState<boolean>(false);
+     const [bookmark,setbookmark] = useState<boolean>(props.d.bookmark_bool?true:false);
      const [activeLoading,setactiveLoading] = useState<boolean>(false);
+
      const [clicks,setClicks] = useState(0);
 
      useEffect(()=>{
@@ -358,7 +368,18 @@ const LinkCard:React.FC<any>=(props:any)=>{
                               props.d.deeplink_bool !== 'undefined' && props.d.deeplink_bool !== false?
                               <RenderPlatformLogo id={props.d.platform_id} />:<span/>
                          }
-                         
+                    {bookmark?<div className='lnk-lnk-book-main-cont'>
+                    <svg className={`lnk-lnk-book-main-cont-ico ${bookmark_exit?'lnk-lnk-bott-tab-qr-cod-ico-exit':null}`}
+                    onAnimationEnd={()=>{
+                         if(bookmark_exit){
+                              setbookmark_exit(false);
+                              setbookmark(false);
+                         }
+                    }}
+                    xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#eb6773" d="M37,6c0-1.105-0.895-2-2-2H13c-1.105,0-2,0.895-2,2v4h26V6z"/><path fill="#b31523" d="M11,41.72c0,0.996,1.092,1.606,1.94,1.084L24,35.998l11.06,6.806C35.908,43.326,37,42.716,37,41.72	V30H11V41.72z"/><rect width="26" height="12" x="11" y="18" fill="#cf1928"/><rect width="26" height="8" x="11" y="10" fill="#d9414f"/></svg>
+                    </div>:null
+                    }
+                    
                     <div className='lnk-lnk-head-main-cont-name-cont'>
                           <span style={{
                               textDecoration:active?'none':'line-through'
@@ -491,6 +512,23 @@ const LinkCard:React.FC<any>=(props:any)=>{
                               }}
                          >
                                    <svg className='lnk-lnk-bott-tab-qr-cod-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M3,11h8V3H3V11z M5,5h4v4H5V5z"/><path d="M3,21h8v-8H3V21z M5,15h4v4H5V15z"/><path d="M13,3v8h8V3H13z M19,9h-4V5h4V9z"/><rect height="2" width="2" x="19" y="19"/><rect height="2" width="2" x="13" y="13"/><rect height="2" width="2" x="15" y="15"/><rect height="2" width="2" x="13" y="17"/><rect height="2" width="2" x="15" y="19"/><rect height="2" width="2" x="17" y="17"/><rect height="2" width="2" x="17" y="13"/><rect height="2" width="2" x="19" y="15"/></g></g></svg>
+                         </div>
+                         <div className='lnk-lnk-bott-tab'
+                              onClick={()=>{
+                                   processBookmarkLinkData(props.d._id,!bookmark);
+                                   if(!bookmark){
+                                        setbookmark(true);
+                                        
+                                   }else{
+                                        setbookmark_exit(true);
+                                   }
+                              }}
+                         >
+                              {!bookmark?
+                              <svg className={`lnk-lnk-bott-tab-qr-cod-ico`}  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z"/></svg>
+                              :
+                              <svg className={`lnk-lnk-bott-tab-qr-cod-ico`} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+                              }                              
                          </div>
           </div>
      </div>

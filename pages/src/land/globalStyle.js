@@ -28,7 +28,7 @@ import { createGlobalStyle} from "styled-components"
                --bor-rad:10px;
 
                --textBoxBackColor:#fff;
-               --buttonBackColor:#e0e0e0;
+               --buttonBackColor:#e9e9e9;
                --buttonBackColor-selec:#bdbdbd;
 
                --welcomeMotoText:#fff;

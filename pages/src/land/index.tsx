@@ -13,7 +13,7 @@ import URLS,{_BASE_CLIENT_URL} from "../../../comp/helpers/api.routes";
 import copy from 'copy-to-clipboard';
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import getAuth from '../../../comp/utils/getAuth';
-import { timeDifference } from "../../../comp/utils/utils";
+import { timeDifference,smalltimeDifference } from "../../../comp/utils/utils";
 import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont } from "../../../comp/elements";
 import LandVisitChart from './landChart';
 import {landFullVisitChart as LandFullVisitChart} from './landChart';
@@ -339,6 +339,16 @@ const RenderPlatformLogo:React.FC<any>=(props:any)=>{
 const LinkCard:React.FC<any>=(props:any)=>{
      const [active , setactive] = useState<boolean>(props.d.active_bool);
      const [activeLoading,setactiveLoading] = useState<boolean>(false);
+     const [clicks,setClicks] = useState(0);
+
+     useEffect(()=>{
+          BackendHelper._getLinkCountbyId(User?.getUserUid()!,props.d._id).then((r)=>{
+               if(!r.errBool){
+                    setClicks(r.responseData.count)
+               }
+          })
+     },[props.d._id])
+
      return(
           <div className={`lnk-lnk-main-cont ${!active?'lnk-lnk-main-inactive':null}`}>
           <div className='lnk-lnk-head-main-cont'>
@@ -447,31 +457,6 @@ const LinkCard:React.FC<any>=(props:any)=>{
                     <svg className='lnk-lnk-gen-link-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.11 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1zM14 4c0 .55.45 1 1 1h2.59l-9.13 9.13c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L19 6.41V9c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1z"/></svg>
                </div>
                <div className='lnk-lnk-gen-right-cont'>      
-                         {/* <div className='lnk-lnk-gen-right-butt'  onClick={()=>{
-                         copy(`${URLS.visit}/${props.d.unique_identifier}`);
-                         toast.dark('Link Copied', {
-                                   position: toast.POSITION.TOP_CENTER,
-                                   autoClose: 2500,
-                                   hideProgressBar: true,
-                                   closeOnClick: true,
-                                   pauseOnHover: true,
-                                   draggable: true,
-                                   progress: undefined,
-                         });
-
-                    }} >
-                         <svg width="21" height="20"  className='lnk-lnk-gen-right-butt-ico' viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path  d="M16.1155 5H7.4436C6.21391 5 5.21704 5.99687 5.21704 7.22656V15.8984C5.21704 17.1281 6.21391 18.125 7.4436 18.125H16.1155C17.3452 18.125 18.342 17.1281 18.342 15.8984V7.22656C18.342 5.99687 17.3452 5 16.1155 5Z" stroke="currentColor" stroke-linejoin="round"/>
-                         <path d="M15.1975 5L15.217 4.0625C15.2154 3.48285 14.9844 2.9274 14.5745 2.51753C14.1646 2.10765 13.6092 1.87665 13.0295 1.875H4.59204C3.9296 1.87696 3.29485 2.14098 2.82644 2.6094C2.35802 3.07781 2.094 3.71256 2.09204 4.375V12.8125C2.09369 13.3922 2.32469 13.9476 2.73457 14.3575C3.14445 14.7674 3.69989 14.9984 4.27954 15H5.21704" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
-                         </svg>                         
-
-                         </div>
-                         <div className='lnk-lnk-gen-right-butt' onClick={()=>{
-                              props.seteditLinkModalVisi(true);
-                              props.seteditLinkUniId(props.d.unique_identifier);
-                         }}>
-                              <svg className='lnk-lnk-gen-right-butt-ico' enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,17.46l0,3.04C3,20.78,3.22,21,3.5,21h3.04c0.13,0,0.26-0.05,0.35-0.15L17.81,9.94l-3.75-3.75L3.15,17.1 C3.05,17.2,3,17.32,3,17.46z"/></g><g><path d="M20.71,5.63l-2.34-2.34c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83C21.1,6.65,21.1,6.02,20.71,5.63z"/></g></g></g></svg>
-                    </div> */}
                     <div className='lnk-lnk-gen-right-butt' onClick={()=>{
                               props.setlinkMoreModalVisi(true);
                               props.setselectLinkMoreUniId(props.d.unique_identifier);
@@ -487,6 +472,16 @@ const LinkCard:React.FC<any>=(props:any)=>{
                     
                     </div>
                </div>          
+          </div>
+          <div className='lnk-lnk-bott-main-cont'>
+                         <div className='lnk-lnk-bott-tab'>
+                                   <svg className='lnk-lnk-bott-tab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><rect fill="none" height="24" width="24"/><path d="M11.71,17.99C8.53,17.84,6,15.22,6,12c0-3.31,2.69-6,6-6c3.22,0,5.84,2.53,5.99,5.71l-2.1-0.63C15.48,9.31,13.89,8,12,8 c-2.21,0-4,1.79-4,4c0,1.89,1.31,3.48,3.08,3.89L11.71,17.99z M22,12c0,0.3-0.01,0.6-0.04,0.9l-1.97-0.59C20,12.21,20,12.1,20,12 c0-4.42-3.58-8-8-8s-8,3.58-8,8s3.58,8,8,8c0.1,0,0.21,0,0.31-0.01l0.59,1.97C12.6,21.99,12.3,22,12,22C6.48,22,2,17.52,2,12 C2,6.48,6.48,2,12,2S22,6.48,22,12z M18.23,16.26l2.27-0.76c0.46-0.15,0.45-0.81-0.01-0.95l-7.6-2.28 c-0.38-0.11-0.74,0.24-0.62,0.62l2.28,7.6c0.14,0.47,0.8,0.48,0.95,0.01l0.76-2.27l3.91,3.91c0.2,0.2,0.51,0.2,0.71,0l1.27-1.27 c0.2-0.2,0.2-0.51,0-0.71L18.23,16.26z"/></svg>
+                                   {clicks}
+                         </div>
+                         <div className='lnk-lnk-bott-tab'>
+                                   <svg className='lnk-lnk-bott-tab-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V2c0-.55-.45-1-1-1s-1 .45-1 1v1H7V2c0-.55-.45-1-1-1s-1 .45-1 1v1H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 18H5c-.55 0-1-.45-1-1V8h16v12c0 .55-.45 1-1 1z"/></svg>
+                                   {smalltimeDifference(new Date().getTime(),props.d.creation_timestamp)}
+                         </div>
           </div>
      </div>
      )

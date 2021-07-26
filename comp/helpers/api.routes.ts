@@ -26,8 +26,10 @@ export declare type URLinter = {
      updateClusterConfigData:string
      buildClusterLinkArray:string
      makeAnalyticsData:string
+     getLinkCountData:string
 }
 const URLS:URLinter = {
+     getLinkCountData:_BASE_API_URL+'getLinkCountData',
      makeAnalyticsData:_BASE_API_URL+'makeAnalyticsData',
      buildClusterLinkArray:_BASE_API_URL+'buildClusterLinkArray',
      updateClusterConfigData:_BASE_API_URL+'updateClusterConfigData',

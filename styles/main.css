@@ -973,10 +973,11 @@ font-family: inter;
      height: 32px;
      min-width: 32px;
      min-height: 32px;
+     overflow: visible;
      background-color: rgba(0, 0, 0, 0);
      border-style: none;
      outline: none;
-     margin-right: 12px;
+     margin-right: 22px;
      color: #F6BC4F;
    }
    .app-dark-mode-butt-ico{

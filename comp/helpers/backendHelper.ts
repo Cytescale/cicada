@@ -281,6 +281,27 @@ export default class BackendHelper{
                     });
           })
      }
+     async _getLinkCountbyId(uid:string,link_id:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid,"link_id":link_id});             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.getLinkCountData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
      async _buildClusterLinkArray(uid:string,cluster_id?:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid,"cluster_id":cluster_id?cluster_id:null});             
           return new Promise((resolve, reject) => {

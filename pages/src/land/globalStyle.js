@@ -33,7 +33,7 @@ import { createGlobalStyle} from "styled-components"
 
                --welcomeMotoText:#fff;
                --textColor:#212121;
-               --subtextColor:#353535;
+               --subtextColor:#757575;
                --subHeadingTextColor:#555555;
                --backColor:var(--dark-pri-color);
                --borColor:#e0e0e0;

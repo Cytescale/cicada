@@ -568,8 +568,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      display: inline-flex;
      height: 100%;
      width: 100%;
-     padding:16px;
-     
+     padding:10px;
      position: relative;
      
      border-bottom: 1px solid var(--borColor);
@@ -748,14 +747,14 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      padding: var(--margin);
      padding-left: 8px;
      padding-top: 25px;
-     height: 52px;
+     height: 62px;
      position: relative;
      display: inline-flex;
      align-items: center;
 }
 .lnk-lnk-bott-main-cont{
      width: 100%;
-     height: 36px;
+     height: 42px;
      display: flex;
      align-items: center;
      padding-left: 12px;

@@ -21,7 +21,7 @@ body {
 
   --pri-color:#4189F7;
   --dark-pri-color:#f3f3f3;
-  --dark-sec-color:#f5f5f5;
+  --dark-sec-color:#e0e0e0;
   --welcomeCardHeight:120px;
 
   --margin-top:22px;
@@ -39,7 +39,7 @@ body {
   --subHeadingTextColor:#555555;
   --backColor:var(--dark-pri-color);
   --borColor:#e0e0e0;
-  --boxShad:0 3px 14px 0px rgba(0,0,0,0.15);
+  --boxShad:0 3px 14px 0px rgba(0,0,0,0.09);
   
   --linkHolderColor:var(--dark-pri-color);
   /* --linkHolderColor:#171717; */
@@ -55,7 +55,7 @@ body {
   --headColor:#fff;
   
 
-  --subHeaderBackColor:#f1f1f1  ;
+  --subHeaderBackColor:#f1f1f1;
 
   --NavheadColor:#fff;
   --NavTextColor:#959595;
@@ -67,7 +67,7 @@ body {
 
   
   --smallCardColor:#f5f5f5;
-  --box-shad: 0 3px 10px 2px rgba(0,0,0,0.2);
+  --box-shad: 0 3px 10px 2px rgba(0,0,0,0.1);
   
 /* 
 

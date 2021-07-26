@@ -17,7 +17,8 @@ import { timeDifference } from "../../../comp/utils/utils";
 import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont } from "../../../comp/elements";
 import LandVisitChart from './landChart';
 import {landFullVisitChart as LandFullVisitChart} from './landChart';
-
+import styled ,{ThemeProvider} from "styled-components";
+import GlobalStyles from "./globalStyle";
 
 const BackendHelper = new backendHelper();
 const User = new user();
@@ -540,6 +541,7 @@ class Land extends React.Component<LandProps,any>{
                detailed:false,
                searchQuery:null,
                showAllLinks:false,               
+               darkMode:false,
           }
 
           this.initDataLoad = this.initDataLoad.bind(this);
@@ -578,7 +580,10 @@ class Land extends React.Component<LandProps,any>{
           this.setlinkAdderDest = this.setlinkAdderDest.bind(this);
           this.setlinkAdderPlatId =this.setlinkAdderPlatId.bind(this);
           this.submitMakeLinkSecond = this.submitMakeLinkSecond.bind(this);
+          this.setdarkMode = this.setdarkMode.bind(this);
      }
+
+     setdarkMode(b:boolean){this.setState({darkMode:b})}
      setlinkAdderPlatId(n:number){this.setState({linkAdderPlatId:n})}
      setlinkAdderDest(s:string){this.setState({linkAdderDest:s})}
      setlinkAdderLinkName(s:string){this.setState({linkAdderLinkName:s})}
@@ -1384,6 +1389,7 @@ class Land extends React.Component<LandProps,any>{
           if(!this.state.isLoading){
           return(
                <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
+                    <GlobalStyles light={!this.state.darkMode}/>
                     <Head>
                     <title>Cytelink</title>
                     <meta name="description" content="Cicada Login Activity" />
@@ -1395,6 +1401,9 @@ class Land extends React.Component<LandProps,any>{
                                              <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
                                         </div>
                                         <div className='app-head-main-right-cont'>
+                                             <button onClick={()=>{this.setdarkMode(!this.state.darkMode)}} >
+                                                  mode
+                                             </button>
                                              <button
                                              className='app-input-class-raised-pressable link-feed-butt'
                                              onClick={()=>{this.setfeedbackModalVisi(true);}}

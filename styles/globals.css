@@ -19,11 +19,61 @@ body {
   --margin:20px;
   
 
+  --pri-color:#4189F7;
+  --dark-pri-color:#f6f6f6;
+  --dark-sec-color:#f5f5f5;
+  --welcomeCardHeight:120px;
+
+  --margin-top:22px;
+  --margin-bottom:22px;
+
+  --bor-rad:10px;
+
+  --textBoxBackColor:#fff;
+  --buttonBackColor:#e0e0e0;
+  --buttonBackColor-selec:#363636;
+
+  --welcomeMotoText:#fff;
+  --textColor:#000;
+  --subtextColor:#353535;
+  --subHeadingTextColor:#555555;
+  --backColor:var(--dark-pri-color);
+  --borColor:#e0e0e0;
+  --boxShad:0 3px 14px 0px rgba(0,0,0,0.15);
+  
+  --linkHolderColor:var(--dark-pri-color);
+  /* --linkHolderColor:#171717; */
+
+  --cardColor:#f7f7f7;
+  --cardSubColor:#f3f3f3;
+  --cardTextColor:#000;
+  --cardButtBackColor:#e0e0e0;
+
+  --headerPriColor:#000;
+  --headerSecColor:#000;
+  --headColor:#fff;
+  
+
+  --subHeaderBackColor:#151515;
+
+  --NavheadColor:#fff;
+  --NavTextColor:#959595;
+  --NavTextColor-selec:#4189F7;
+  
+  --BugerCrossColor:#959595;
+  --BurgerMenuColor:#181818;
+
+
+  
+  --smallCardColor:#f5f5f5;
+  --box-shad: 0 3px 10px 2px rgba(0,0,0,0.2);
+  
+/* 
+
 
   --pri-color:#4189F7;
   --dark-pri-color:#101010;
   --dark-sec-color:#3a3b3c;
-
   --welcomeCardHeight:120px;
 
   --margin-top:22px;
@@ -47,7 +97,7 @@ body {
   --boxShad:0 3px 14px 0px rgba(0,0,0,0.3);
   
   --linkHolderColor:var(--dark-pri-color);
-  /* --linkHolderColor:#171717; */
+  --linkHolderColor:#171717;
 
   --cardColor:#191919;
   --cardSubColor:#282828;
@@ -73,39 +123,7 @@ body {
   --smallCardColor:#f5f5f5;
   --box-shad: 0 3px 10px 2px rgba(0,0,0,0.2);
   
-/* 
-
-
-  --welcomeMotoText:#fff;
-  --textColor:#000;
-  --subtextColor:#000;
-  --backColor:#F2EFE4;
-  --borColor:#EAE5D2;
-  --boxShad:0 3px 14px 0px rgba(0,0,0,0.1);
-  --linkHolderColor:#F2EFE4;
-  
-  --headerPriColor:#000;
-  --headerSecColor:#000;
-  --headColor:#F2EFE4;
-  
-  --NavheadColor:#F2EFE4;
-  
-  --buttonBackColor:#fff;
-  
-  --BugerCrossColor:#bdc3c7;
-  --BurgerMenuColor:#2D2E34;
-  
-
-  --cardColor:#fff;
-  --smallCardColor:#f5f5f5;
-  --box-shad: 0 3px 10px 0px rgba(0,0,0,0.1);
-
-
-border-bottom: 1px solid #C6DDF0;
-border:1px solid #CAD0D4
-background-color: #fefefe;
-box-shadow: 0px 4px 9px #DAE5EE;
-border-radius: 7px; */
+*/
 -webkit-appearance: none;
 
 }

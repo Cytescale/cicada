@@ -42,7 +42,7 @@ margin-right: 4px;
      width: 92%;
      margin-left: 4%;
      margin-right: 4%;
-     height: auto;
+     height: 120px;
      font-family: inter;
      position: relative;
      border-radius: 10px;
@@ -57,7 +57,36 @@ margin-right: 4px;
      background-size: 400% 400%;
      overflow: hidden;
      animation: gradient 15s ease infinite;
+     animation: trans 0.5s ease forwards;
+}
 
+.dash-wel-main-cont-start-exit-anim{
+     animation: exit-trans 0.5s ease forwards;    
+}
+
+
+@keyframes exit-trans {
+	0% {
+          transform: translateX(0%);
+          opacity: 1;
+	}
+	100% {
+          transform: translateX(100%);
+          opacity: 0;
+          margin-bottom: -142px;
+	}
+}
+
+
+@keyframes trans {
+	0% {
+          transform: translateX(-100%);
+          opacity: 0;
+	}
+	100% {
+          transform: translateX(0%);
+          opacity: 1;
+	}
 }
 
 
@@ -70,6 +99,7 @@ margin-right: 4px;
 	}
 	100% {
 		background-position: 0% 50%;
+          
 	}
 }
 
@@ -472,6 +502,18 @@ background-color: rgba(0, 0, 0, 0)
      /* border: 1px solid var(--borColor); */
      box-shadow: var(--boxShad);
      border-radius: 7px;
+     animation: trans 0.4s forwards;
+}
+
+@keyframes trans {
+	0% {
+          transform: translateX(-100%);
+          opacity: 0;
+	}
+	100% {
+          transform: translateX(0%);
+          opacity: 1;
+	}
 }
 
 .lnk-lnk-enal-cont{
@@ -1093,7 +1135,7 @@ background-color: rgba(0, 0, 0, 0)
      font-family: inter;
      font-size: 15px;
      font-weight: 700;
-     color:var(--subtextColor);
+     color:var(--subHeadingTextColor);
      width: 92%;
      margin-left: 4%;
      margin-right: 4%;
@@ -1578,6 +1620,8 @@ color: inherit;
 .app-land-head-pro-pic-main-cont{
      width: 70px;
      height: 70px;
+     min-width: 70px;
+     min-height: 70px;
      background-color: var(--cardSubColor);
      /* background: linear-gradient(180deg, #FEE27F 0%, #F6BC4F 100%); */
      border-radius: 100px;
@@ -1641,6 +1685,7 @@ color: inherit;
      margin-top: 3px;
      margin-bottom: 3px;
      color: var(--textColor);
+     white-space: pre-line;
 
      border-radius: 9px;
 }

@@ -195,6 +195,20 @@ const NavBarCont = (props)=>{
                          Home
                        </a>
                     </div>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-cont-selec':null}`}>
+                         <a 
+                         className='app-nav-lnk-lnk'
+                         href={_BASE_CLIENT_URL+'src/design'}>     
+                         <svg 
+                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-ico-selec':null}`}
+                         width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M7 27H5V31H7V27ZM27 31C28.1046 31 29 30.1046 29 29C29 27.8954 28.1046 27 27 27V31ZM7 31H27V27H7V31Z" fill="currentColor"/>
+                         <path d="M6 24V20.5714L16.973 9.5062C17.7833 8.68907 19.1144 8.72265 19.8825 9.57961L21.1806 11.0279C21.9118 11.8437 21.8506 13.0959 21.0434 13.8365L9.96667 24H6Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                         <path d="M24.8182 10L21 6.18182L21.2727 5.90909C22.3271 4.85473 24.0365 4.85473 25.0909 5.90909C26.1453 6.96345 26.1453 8.67291 25.0909 9.72727L24.8182 10Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                         </svg>
+                         Design
+                         </a>
+                    </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
@@ -208,20 +222,6 @@ const NavBarCont = (props)=>{
                          </svg>
 
                          Cluster
-                         </a>
-                    </div>
-                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-cont-selec':null}`}>
-                         <a 
-                         className='app-nav-lnk-lnk'
-                         href={_BASE_CLIENT_URL+'src/design'}>     
-                         <svg 
-                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-ico-selec':null}`}
-                         width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M7 27H5V31H7V27ZM27 31C28.1046 31 29 30.1046 29 29C29 27.8954 28.1046 27 27 27V31ZM7 31H27V27H7V31Z" fill="currentColor"/>
-                         <path d="M6 24V20.5714L16.973 9.5062C17.7833 8.68907 19.1144 8.72265 19.8825 9.57961L21.1806 11.0279C21.9118 11.8437 21.8506 13.0959 21.0434 13.8365L9.96667 24H6Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                         <path d="M24.8182 10L21 6.18182L21.2727 5.90909C22.3271 4.85473 24.0365 4.85473 25.0909 5.90909C26.1453 6.96345 26.1453 8.67291 25.0909 9.72727L24.8182 10Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
-                         </svg>
-                         Design
                          </a>
                     </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/setting'?'app-nav-bar-main-link-cont-selec':null}`}>

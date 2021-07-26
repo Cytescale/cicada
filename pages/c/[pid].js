@@ -113,6 +113,8 @@ import publicIp from 'public-ip';
           .cluster-profile-pro-pic-main-cont{
                width: 90px;
                height: 90px;
+               min-width:90px;
+               min-height:90px;
                border-radius: 100px;
 
           }
@@ -155,6 +157,7 @@ import publicIp from 'public-ip';
                padding-bottom:22px;
                border-radius: 8px;
                justify-content: center;
+               white-space: pre-line;
                margin-top: 12px;
                font-size: 15px;
                background: ${props => props.bioCardColor};

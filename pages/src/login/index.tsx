@@ -97,7 +97,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                                    break;
                               }
                               case "auth/wrong-password":{
-                                   toast.error("Incorrent password", {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
+                                   toast.error("Incorrect password", {position: toast.POSITION.TOP_CENTER,autoClose: 5000,hideProgressBar: true,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,});
                                    break;
                               }
                               default:{

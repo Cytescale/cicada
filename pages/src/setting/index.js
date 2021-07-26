@@ -325,7 +325,7 @@ const Profile = (props)=>{
                                    style=
                                    {{display:overlayVisi?'block':'none'}}
                               />
-                                             <Accordion className='app-sett-acrd-main-cont'>
+                                             <Accordion className='app-sett-acrd-main-cont' defaultActiveKey="0">
                                              <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
                                                   <svg 
                                                   className='app-land-visit-card-acrd-togg-butt-ico'

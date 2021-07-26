@@ -42,7 +42,7 @@ margin-right: 4px;
      width: 92%;
      margin-left: 4%;
      margin-right: 4%;
-     height: 120px;
+     height: var(--welcomeCardHeight);
      font-family: inter;
      position: relative;
      border-radius: 10px;
@@ -56,12 +56,14 @@ margin-right: 4px;
      background: linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC); 
      background-size: 400% 400%;
      overflow: hidden;
+     
      animation: gradient 15s ease infinite;
-     animation: trans 0.5s ease forwards;
+     transform: translateX(-120%);
+     animation: trans 0.8s ease forwards 0.7s;
 }
 
 .dash-wel-main-cont-start-exit-anim{
-     animation: exit-trans 0.5s ease forwards;    
+     animation: exit-trans 0.7s ease forwards;    
 }
 
 
@@ -73,7 +75,7 @@ margin-right: 4px;
 	100% {
           transform: translateX(100%);
           opacity: 0;
-          margin-bottom: -142px;
+          margin-bottom: calc(-1 *(var(--welcomeCardHeight) + 22px));
 	}
 }
 
@@ -502,7 +504,7 @@ background-color: rgba(0, 0, 0, 0)
      /* border: 1px solid var(--borColor); */
      box-shadow: var(--boxShad);
      border-radius: 7px;
-     animation: trans 0.4s forwards;
+     animation: trans 0.6s forwards;
 }
 
 @keyframes trans {

@@ -513,6 +513,11 @@ class Land extends React.Component<LandProps,any>{
                editLinkModalVisi:false,
                linkMoreModalVisi:false,
                deleteConfirmLoading:false,
+               
+               linkAdderVisi:false,
+               linkAdderAnimStart:false,
+               linkAdderAnimExist:false,
+
                deleteConfirmModalVisi:false,
                seleteLinkMoreId:null,
                selectLinkMoreUniId:null,
@@ -565,7 +570,11 @@ class Land extends React.Component<LandProps,any>{
           this.setdeleteConfirmModalVisi= this.setdeleteConfirmModalVisi.bind(this);
           this.setseleteLinkMoreId  =this.setseleteLinkMoreId.bind(this);
           this.setdeleteConfirmLoading = this.setdeleteConfirmLoading.bind(this);
+          this.setlinkAdderVisi = this.setlinkAdderVisi.bind(this);
      }
+     setlinkAdderVisi(b:boolean){this.setState({linkAdderVisi:b})}
+     setlinkAdderAnimStart(b:boolean){this.setState({linkAdderAnimStart:b})}
+     setlinkAdderAnimExist(b:boolean){this.setState({linkAdderAnimExist:b})}
      setdeleteConfirmLoading(b:boolean){this.setState({deleteConfirmLoading:b})}
      setseleteLinkMoreId(s:string|null){this.setState({seleteLinkMoreId:s})}
      setdeleteConfirmModalVisi(b:boolean){this.setState({deleteConfirmModalVisi:b})}
@@ -703,7 +712,47 @@ class Land extends React.Component<LandProps,any>{
           }
 
      }
-     
+
+     renderLinkAdder(){
+          if(this.state.linkAdderVisi){
+               return(
+                    <div className={`
+                    lnk-lnk-main-cont lnk-crt-main-cont
+                    ${this.state.linkAdderAnimExist?'lnk-crt-main-cont-start-exit-anim':null}
+                    `}
+                    onAnimationEnd={()=>{
+                         if(this.state.linkAdderAnimExist){
+                              this.setlinkAdderVisi(false);
+                              this.setlinkAdderAnimExist(false)
+                         }
+                    }}
+                    >
+                              <div className='lnk-lnk-head-main-cont'>
+                                   {/* <RenderPlatformLogo id={1}/> */}
+                                   <div className='lnk-lnk-head-main-cont-name-cont'>
+                                        <span>Sample Name</span>
+                                   </div>
+                                   <div  className='lnk-lnk-head-right-butt-cont'>
+                                   <label className="switch">
+                                        <input type="checkbox" 
+                                        disabled={true}
+                                        defaultChecked={true}
+                                        />
+                                        <span className="slider round"></span>
+                                   </label>
+                                   </div>
+                    </div>
+          <div className='lnk-lnk-gen-cont'>
+               <div className='lnk-lnk-gen-link' onClick={()=>{
+               }}>
+
+               </div>
+          </div>
+     </div>    
+               )
+          }
+     }
+
      renderLinkCreateModal(){
           return(
                <BottomSheet 
@@ -1394,6 +1443,13 @@ class Land extends React.Component<LandProps,any>{
                                                             </button>
                                              </div>
                                    </div>
+                                   <button onClick={()=>{
+                                        if(this.state.linkAdderVisi){
+                                             this.setlinkAdderAnimExist(true);
+                                        }
+                                        else{this.setlinkAdderAnimStart(true)}
+
+                                   }}>start</button>
                                    {
                                    this.state.linkDataLoading?
                                    <div className='app-land-rel-main-cont'>
@@ -1405,9 +1461,29 @@ class Land extends React.Component<LandProps,any>{
                                    aria-hidden="true"
                                    />
                                    </div>:
-                                   <span>
+                                   <div 
+                                   className={
+                                        `app-land-lnk-holder-main-outer-cont 
+                                        ${this.state.linkAdderAnimStart?' app-land-lnk-holder-main-outer-cont-start-anim ':null}
+                                        ${this.state.setlinkAdderAnimExist?'app-land-lnk-holder-main-outer-cont-exit-anim ':null}
+                                        `}
+                                        onAnimationEnd={()=>{
+                                             if(this.state.linkAdderAnimStart){
+                                                  this.setlinkAdderVisi(true);
+                                                  console.log('visi true');
+                                                  this.setlinkAdderAnimStart(false)
+                                             }
+                                             if(this.state.linkAdderAnimExist){
+                                                  console.log('visi false');
+                                                  
+                                                  this.setlinkAdderAnimExist(false)
+                                             }
+                                        }}
+                                   
+                                   >
+                                   {this.renderLinkAdder()}
                                    {this.renderLinkTable()}
-                                   </span>
+                                   </div>
                                    }
                                    
                                    <div className='app-land-lnks-holder-shw-mr-main-cont'>

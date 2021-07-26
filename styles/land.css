@@ -1649,7 +1649,7 @@ color: inherit;
 
 .app-land-pro-edit-main-cont{
      width: auto;
-     margin-left: 12     px;
+     margin-left: 12px;
      height: 70px;
 
      position: absolute;
@@ -1834,4 +1834,73 @@ backdrop-filter: blur(17px);
      border-radius: 7px;
      outline: none;
      border-style: none;
+}
+
+
+.app-land-lnk-holder-main-outer-cont{
+
+}
+
+.app-land-lnk-holder-main-outer-cont-start-anim{
+     animation: lnk-crt-start 0.4s ease forwards;         
+}
+.app-land-lnk-holder-main-outer-cont-exit-anim{
+     animation: lnk-crt-exit 0.4s ease;         
+}
+
+.lnk-crt-main-cont{
+     animation: lnk-crt-trans 0.4s ease forwards ;         
+}
+
+.lnk-crt-main-cont-start-exit-anim{
+     animation: lnk-exit-trans 0.4s ease forwards;    
+}
+
+
+
+@keyframes lnk-crt-start {
+	0% {
+          padding-top: 0;
+	}
+	100% {
+          padding-top: 140px;
+	}
+}
+
+
+@keyframes lnk-crt-exit {
+	0% {
+          padding-top: -140px;
+	}
+	100% {
+          padding-top: 0px;
+	}
+}
+
+
+
+
+
+@keyframes lnk-exit-trans {
+	0% {
+          transform: translateX(0%);
+          opacity: 1;
+	}
+	100% {
+          transform: translateX(100%);
+          opacity: 0;
+          margin-bottom: calc(-1 *(var(--welcomeCardHeight) + 22px));
+	}
+}
+
+
+@keyframes lnk-crt-trans {
+	0% {
+          transform: translateX(-100%);
+          opacity: 0;
+	}
+	100% {
+          transform: translateX(0%);
+          opacity: 1;
+	}
 }

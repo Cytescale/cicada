@@ -519,6 +519,7 @@ class Land extends React.Component<LandProps,any>{
                linkAdderAnimExist:false,
                linkAdderLinkName:'Sample Name',
                linkAdderDest:null,
+               linkAdderPlatId:0,
 
                deleteConfirmModalVisi:false,
                seleteLinkMoreId:null,
@@ -575,7 +576,10 @@ class Land extends React.Component<LandProps,any>{
           this.setlinkAdderVisi = this.setlinkAdderVisi.bind(this);
           this.setlinkAdderLinkName = this.setlinkAdderLinkName.bind(this);
           this.setlinkAdderDest = this.setlinkAdderDest.bind(this);
+          this.setlinkAdderPlatId =this.setlinkAdderPlatId.bind(this);
+          this.submitMakeLinkSecond = this.submitMakeLinkSecond.bind(this);
      }
+     setlinkAdderPlatId(n:number){this.setState({linkAdderPlatId:n})}
      setlinkAdderDest(s:string){this.setState({linkAdderDest:s})}
      setlinkAdderLinkName(s:string){this.setState({linkAdderLinkName:s})}
      setlinkAdderVisi(b:boolean){this.setState({linkAdderVisi:b})}
@@ -605,7 +609,7 @@ class Land extends React.Component<LandProps,any>{
      setPlatformId(n:number){this.setState({platform_id:n});}
      setcreateLinkModalVisi(b:boolean){this.setState({createLinkModalVisi:b})}
      setLoading(b:boolean){this.setState({isLoading:b})}
-     setmakeLinkLoading(b:boolean){this.setState({makeLinkLoading:b})}
+     async setmakeLinkLoading(b:boolean){this.setState({makeLinkLoading:b})}
      setAuth(b:boolean){this.setState({isAuth:b});}
 
      async initDataLoad(){
@@ -734,11 +738,12 @@ class Land extends React.Component<LandProps,any>{
                     }}
                     >
                               <div className='lnk-lnk-head-main-cont'>
-                                   {/* <RenderPlatformLogo id={1}/> */}
+                                   <RenderPlatformLogo id={this.state.linkAdderPlatId}/>
                                    <div className='lnk-lnk-head-main-cont-name-cont'>
                                         <span>
                                         <input 
                                         type='text'
+                                        disabled={this.state.makeLinkLoading}
                                         value={this.state.linkAdderLinkName}
                                         className='lnk-lnk-crt-lnk-crt-name-fld'
                                         placeholder='Enter link name'
@@ -760,17 +765,37 @@ class Land extends React.Component<LandProps,any>{
                <input 
                type='text'
                className='lnk-lnk-crt-lnk-crt-fld'
+               disabled={this.state.makeLinkLoading}
                value={this.state.linkAdderDest}
-               onChange={(e)=>{this.setlinkAdderDest(e.target.value)}}
+               onChange={(e)=>{
+                    this.setlinkAdderDest(e.target.value)
+                    this.validateOnChange(e.target.value);
+               }}
                placeholder='Enter destination url'
                />
 
                <button
                className='lnk-lnk-crt-lnk-crt-butt'
+               disabled={this.state.makeLinkLoading}
+               onClick={()=>{
+                    this.setmakeLinkLoading(true).then(()=>{
+                         this.forceUpdate();
+                         this.submitMakeLinkSecond().then(()=>{
+                              // this.setmakeLinkLoading(false).then(()=>{
+                              //      this.forceUpdate();
+                              // })
+                         
+                         });
+                    });
+
+               }}
                >
+                    {this.state.makeLinkLoading?
+                    <Spinner animation="border" role="status" variant="light"/>:
                     <svg
                     className='lnk-lnk-crt-lnk-crt-butt-ico'
                     xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39 1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3 7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z"/></svg>
+                    }
                </button>
 
           </div>
@@ -1097,6 +1122,9 @@ class Land extends React.Component<LandProps,any>{
                                    if(res.responseData.valid_url && res.responseData.parse_validity && res.responseData.identified_platform_id){
                                         this.setvalidated(true);
                                         this.setPlatformId(res.responseData.identified_platform_id);
+                                        this.setlinkAdderPlatId(res.responseData.identified_platform_id);
+                                   }else{
+                                        this.setlinkAdderPlatId(0);
                                    }
                               }
                               else{
@@ -1129,6 +1157,84 @@ class Land extends React.Component<LandProps,any>{
                }
      }
      }
+
+     async submitMakeLinkSecond(){
+          if(this.state.linkAdderLinkName && this.state.linkAdderDest){
+                    if(backendHelper){
+                         const link_data={
+                              "uid":User.getUserUid(),
+                              "link_data":{
+                                  "name":this.state.linkAdderLinkName,
+                                  "link_dest":this.state.linkAdderDest,
+                                  "creator_id":User.getUserUid(),
+                                  "platform_id":this.state.linkAdderPlatId,
+                                  "active_bool":true,
+                                  "deleted_bool":false,
+                                  "ban_bool":false,
+                                  "deeplink_bool":this.state.linkAdderPlatId==0?false:true
+                              }
+                          }
+                         BackendHelper._createLink(link_data).then((res:nexusResponse)=>{
+                              if(res){
+                                   if(!res.errBool){
+                                         this.initLinksDataLoad();
+                                         if(res.responseData.linkCreated){
+                                             toast.success('Link Created', {
+                                                  position: toast.POSITION.TOP_CENTER,
+                                                  autoClose: 5000,
+                                                  hideProgressBar: true,
+                                                  closeOnClick: true,
+                                                  pauseOnHover: true,
+                                                  draggable: true,
+                                                  progress: undefined,
+                                             });
+                                             this.setlinkAdderVisi(false);
+                                             this.setlinkAdderLinkName('Sample Name');
+                                             this.setlinkAdderDest('');
+                                             this.setlinkAdderPlatId(0);
+                                             this.setmakeLinkLoading(false);
+                                        }
+                                   }
+                                   else{
+                                        toast.error(res.errMess, {
+                                             position: toast.POSITION.TOP_CENTER,
+                                             autoClose: 5000,
+                                             hideProgressBar: true,
+                                             closeOnClick: true,
+                                             pauseOnHover: true,
+                                             draggable: true,
+                                             progress: undefined,
+                                        });
+                                        this.setmakeLinkLoading(false);
+                                   }
+                         }
+                         }).catch(e=>{
+                              toast.error(e, {
+                                   position: toast.POSITION.TOP_CENTER,
+                                   autoClose: 5000,
+                                   hideProgressBar: true,
+                                   closeOnClick: true,
+                                   pauseOnHover: true,
+                                   draggable: true,
+                                   progress: undefined,
+                              });
+                              this.setmakeLinkLoading(false);
+                         });
+                    }
+          }else{
+               toast.error("Fill all details please", {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 7000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+               });
+               
+          }
+     }
+
      async submitMakeLink(){
           this.setmakeLinkLoading(true);
           if(this.state.validated || !this.state.isdeeplink){
@@ -1443,7 +1549,13 @@ class Land extends React.Component<LandProps,any>{
                                    <div className='app-land-serch-main-cont'>
                                              <div className='app-land-top-butt-group-cont'>
                                              <button className='app-land-crt-lnk-butt'
-                                                  onClick={()=>{this.setcreateLinkModalVisi(true)}}
+                                                  onClick={()=>{
+                                                       // this.setcreateLinkModalVisi(true)
+                                                       if(this.state.linkAdderVisi){
+                                                            this.setlinkAdderAnimExist(true);
+                                                       }
+                                                       else{this.setlinkAdderAnimStart(true)}
+                                                  }}
                                                   > 
                                                   <div  className='app-land-crt-lnk-butt-lab'>
                                                        <svg className='app-land-crt-lnk-butt-lab-ico' xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><path d="M9,11h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1H9c-0.55,0-1-0.45-1-1v0C8,11.45,8.45,11,9,11z M20.93,12L20.93,12 c0.62,0,1.07-0.59,0.93-1.19C21.32,8.62,19.35,7,17,7h-3.05C13.43,7,13,7.43,13,7.95v0c0,0.52,0.43,0.95,0.95,0.95H17 c1.45,0,2.67,1,3.01,2.34C20.12,11.68,20.48,12,20.93,12z M3.96,11.38C4.24,9.91,5.62,8.9,7.12,8.9l2.93,0 C10.57,8.9,11,8.47,11,7.95v0C11,7.43,10.57,7,10.05,7L7.22,7c-2.61,0-4.94,1.91-5.19,4.51C1.74,14.49,4.08,17,7,17h3.05 c0.52,0,0.95-0.43,0.95-0.95v0c0-0.52-0.43-0.95-0.95-0.95H7C5.09,15.1,3.58,13.36,3.96,11.38z M18,12L18,12c-0.55,0-1,0.45-1,1v2 h-2c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h2v2c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2h2c0.55,0,1-0.45,1-1v0 c0-0.55-0.45-1-1-1h-2v-2C19,12.45,18.55,12,18,12z"/></g></svg>
@@ -1469,13 +1581,13 @@ class Land extends React.Component<LandProps,any>{
                                                             </button>
                                              </div>
                                    </div>
-                                   <button onClick={()=>{
+                                   {/* <button onClick={()=>{
                                         if(this.state.linkAdderVisi){
                                              this.setlinkAdderAnimExist(true);
                                         }
                                         else{this.setlinkAdderAnimStart(true)}
 
-                                   }}>start</button>
+                                   }}>start</button> */}
                                    {
                                    this.state.linkDataLoading?
                                    <div className='app-land-rel-main-cont'>

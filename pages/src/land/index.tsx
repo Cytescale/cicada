@@ -517,6 +517,8 @@ class Land extends React.Component<LandProps,any>{
                linkAdderVisi:false,
                linkAdderAnimStart:false,
                linkAdderAnimExist:false,
+               linkAdderLinkName:'Sample Name',
+               linkAdderDest:null,
 
                deleteConfirmModalVisi:false,
                seleteLinkMoreId:null,
@@ -571,7 +573,11 @@ class Land extends React.Component<LandProps,any>{
           this.setseleteLinkMoreId  =this.setseleteLinkMoreId.bind(this);
           this.setdeleteConfirmLoading = this.setdeleteConfirmLoading.bind(this);
           this.setlinkAdderVisi = this.setlinkAdderVisi.bind(this);
+          this.setlinkAdderLinkName = this.setlinkAdderLinkName.bind(this);
+          this.setlinkAdderDest = this.setlinkAdderDest.bind(this);
      }
+     setlinkAdderDest(s:string){this.setState({linkAdderDest:s})}
+     setlinkAdderLinkName(s:string){this.setState({linkAdderLinkName:s})}
      setlinkAdderVisi(b:boolean){this.setState({linkAdderVisi:b})}
      setlinkAdderAnimStart(b:boolean){this.setState({linkAdderAnimStart:b})}
      setlinkAdderAnimExist(b:boolean){this.setState({linkAdderAnimExist:b})}
@@ -730,10 +736,18 @@ class Land extends React.Component<LandProps,any>{
                               <div className='lnk-lnk-head-main-cont'>
                                    {/* <RenderPlatformLogo id={1}/> */}
                                    <div className='lnk-lnk-head-main-cont-name-cont'>
-                                        <span>Sample Name</span>
+                                        <span>
+                                        <input 
+                                        type='text'
+                                        value={this.state.linkAdderLinkName}
+                                        className='lnk-lnk-crt-lnk-crt-name-fld'
+                                        placeholder='Enter link name'
+                                        onChange={(e)=>{this.setlinkAdderLinkName(e.target.value)}}
+                                        />
+                                        </span>
                                    </div>
                                    <div  className='lnk-lnk-head-right-butt-cont'>
-                                   <label className="switch">
+                                   <label className="switch lnk-lnk-crt-lnk-crt-lab">
                                         <input type="checkbox" 
                                         disabled={true}
                                         defaultChecked={true}
@@ -742,11 +756,23 @@ class Land extends React.Component<LandProps,any>{
                                    </label>
                                    </div>
                     </div>
-          <div className='lnk-lnk-gen-cont'>
-               <div className='lnk-lnk-gen-link' onClick={()=>{
-               }}>
+          <div className='lnk-lnk-gen-cont lnk-lnk-crt-lnk-crt-cont'>
+               <input 
+               type='text'
+               className='lnk-lnk-crt-lnk-crt-fld'
+               value={this.state.linkAdderDest}
+               onChange={(e)=>{this.setlinkAdderDest(e.target.value)}}
+               placeholder='Enter destination url'
+               />
 
-               </div>
+               <button
+               className='lnk-lnk-crt-lnk-crt-butt'
+               >
+                    <svg
+                    className='lnk-lnk-crt-lnk-crt-butt-ico'
+                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39 1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3 7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z"/></svg>
+               </button>
+
           </div>
      </div>    
                )
@@ -1470,12 +1496,9 @@ class Land extends React.Component<LandProps,any>{
                                         onAnimationEnd={()=>{
                                              if(this.state.linkAdderAnimStart){
                                                   this.setlinkAdderVisi(true);
-                                                  console.log('visi true');
                                                   this.setlinkAdderAnimStart(false)
                                              }
                                              if(this.state.linkAdderAnimExist){
-                                                  console.log('visi false');
-                                                  
                                                   this.setlinkAdderAnimExist(false)
                                              }
                                         }}

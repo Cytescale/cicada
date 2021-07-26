@@ -1904,3 +1904,58 @@ backdrop-filter: blur(17px);
           opacity: 1;
 	}
 }
+
+
+.lnk-lnk-crt-lnk-crt-name-fld{
+     background-color: rgba(0, 0, 0, 0);
+     color: var(--textColor);
+     outline: none;
+     border-style: none;
+     font-size: 15px;
+     font-weight: 700;
+     font-family: inter;
+
+}
+
+.lnk-lnk-crt-lnk-crt-fld{
+     font-size: 14px;
+     color: var(--textColor);
+     background-color: var(--cardSubColor);
+     height: 32px;
+     display: flex;
+     align-items: center;
+     padding-left: 12px;
+     padding-right: 12px;
+     border-radius: 100px;
+     outline: none;
+     width: 100%;
+     border-style: none;
+     box-shadow: var(--boxShad);
+}
+.lnk-lnk-crt-lnk-crt-cont{
+     display: inline-flex;
+     width: 100%;
+}
+.lnk-lnk-crt-lnk-crt-butt{
+     margin-left: 12px;
+     width: 36px;
+     height: 36px;
+     min-height: 36px;
+     min-width: 36px;
+     border-radius: 100px;
+     outline: none;
+     border-style: none;
+     background-color: var(--pri-color);
+     padding: 4px;
+     color: #fff;
+     box-shadow: var(--boxShad);
+}
+.lnk-lnk-crt-lnk-crt-butt-ico{
+     width: 100%;
+     height: 100%;
+     color:inherit;
+}
+
+.lnk-lnk-crt-lnk-crt-lab{
+     opacity: 0.5;
+}

@@ -16,6 +16,8 @@ const User = new user();
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 
+
+
 function timeDifference(current, previous) {
 
      var msPerMinute = 60 * 1000;
@@ -298,7 +300,10 @@ const cluster = (props)=>{
      const [lastUpdate,setlastUpdate] = useState(null);
      const [darkMode ,setdarkMode]=useState(true);
 
-
+     const openInNewTab = (url)=>{
+          const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+          if (newWindow) newWindow.opener = null
+     }
      const loadUserData = async ()=> {
           if(!User.getUserData()){
                if(backendHelper){
@@ -378,7 +383,7 @@ const cluster = (props)=>{
                           // @ts-ignore: Unreachable code error
                           <GlobalStyles light={darkMode}/>
                     }
-                    <LandNavBarCont router={router}/>
+                    <NavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
                               <div className='app-clust-tit-main-cont'>
@@ -388,7 +393,14 @@ const cluster = (props)=>{
                               <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want, or create a new one.</div>
                               <div className='app-clust-act-lnk-head-main-cont'>
                                    <button className='app-clust-act-crt-lnk-butt'
-                                        onClick={()=>{
+                                     onClick={()=>{
+                                        openInNewTab(_BASE_CLIENT_URL+'c/'+User?.getUserData()?.uname);
+                                     }} 
+                                   > 
+                                         {_BASE_CLIENT_URL+'c/'+User?.getUserData()?.uname}
+                                   </button>
+                                        <div className='app-clust-act-set-butt'
+                                          onClick={()=>{
                                              copy(_BASE_CLIENT_URL+'c/'+User?.getUserData()?.uname);
                                              toast.dark('Link Copied', {
                                                        position: toast.POSITION.TOP_CENTER,
@@ -401,14 +413,9 @@ const cluster = (props)=>{
                                              });
 
                                         }} 
-                                   > 
-                                         {_BASE_CLIENT_URL+'c/'+User?.getUserData()?.uname}
-                                   </button>
-                                   <a href='/src/cluster/settings'>
-                                        <div className='app-clust-act-set-butt'>
-                                             <svg className='app-clust-act-set-butt-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="L4rKfs~Qrm~k0Pk8MRsoza" x1="32.012" x2="15.881" y1="32.012" y2="15.881" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".242" stop-color="#f2f2f2"/><stop offset="1" stop-color="#ccc"/></linearGradient><circle cx="24" cy="24" r="11.5" fill="url(#L4rKfs~Qrm~k0Pk8MRsoza)"/><linearGradient id="L4rKfs~Qrm~k0Pk8MRsozb" x1="17.45" x2="28.94" y1="17.45" y2="28.94" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0d61a9"/><stop offset=".363" stop-color="#0e5fa4"/><stop offset=".78" stop-color="#135796"/><stop offset="1" stop-color="#16528c"/></linearGradient><circle cx="24" cy="24" r="7" fill="url(#L4rKfs~Qrm~k0Pk8MRsozb)"/><linearGradient id="L4rKfs~Qrm~k0Pk8MRsozc" x1="5.326" x2="38.082" y1="5.344" y2="38.099" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#889097"/><stop offset=".331" stop-color="#848c94"/><stop offset=".669" stop-color="#78828b"/><stop offset="1" stop-color="#64717c"/></linearGradient><path fill="url(#L4rKfs~Qrm~k0Pk8MRsozc)" d="M43.407,19.243c-2.389-0.029-4.702-1.274-5.983-3.493c-1.233-2.136-1.208-4.649-0.162-6.693 c-2.125-1.887-4.642-3.339-7.43-4.188C28.577,6.756,26.435,8,24,8s-4.577-1.244-5.831-3.131c-2.788,0.849-5.305,2.301-7.43,4.188 c1.046,2.044,1.071,4.557-0.162,6.693c-1.281,2.219-3.594,3.464-5.983,3.493C4.22,20.77,4,22.358,4,24 c0,1.284,0.133,2.535,0.364,3.752c2.469-0.051,4.891,1.208,6.213,3.498c1.368,2.37,1.187,5.204-0.22,7.345 c2.082,1.947,4.573,3.456,7.34,4.375C18.827,40.624,21.221,39,24,39s5.173,1.624,6.303,3.971c2.767-0.919,5.258-2.428,7.34-4.375 c-1.407-2.141-1.588-4.975-0.22-7.345c1.322-2.29,3.743-3.549,6.213-3.498C43.867,26.535,44,25.284,44,24 C44,22.358,43.78,20.77,43.407,19.243z M24,34.5c-5.799,0-10.5-4.701-10.5-10.5c0-5.799,4.701-10.5,10.5-10.5S34.5,18.201,34.5,24 C34.5,29.799,29.799,34.5,24,34.5z"/></svg>
+                                        >                                             
+                                             <svg className='app-clust-act-set-butt-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 2h-4.18C14.4.84 13.3 0 12 0S9.6.84 9.18 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
                                         </div>
-                                   </a>
                               </div>
                             
                               </div>

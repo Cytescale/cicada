@@ -13,7 +13,7 @@ const ClusterLinkRedirect=(props)=>{
           if (typeof window !== 'undefined') {    
                console.log(router.query);
                window.location.href = `${URLS.visit}/${uid}`;
-               console.log('redirect');
+               console.log('redirect '+uid);
           }  
      }
      return(

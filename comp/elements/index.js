@@ -183,6 +183,18 @@ const HeaderCont = (props)=>{
 const NavBarCont = (props)=>{  
      return(
           <div className='app-nav-bar-main-cont'>
+                       <div 
+                              className={`app-nav-bar-main-link-cont `}>
+                              <a 
+                                   className='app-nav-lnk-lnk app-nav-bar-back-link'
+                                   href='/src/land'>
+                                        <svg 
+                                        className={`app-nav-bar-main-link-ico`}
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+                              </a>
+                              </div>
+
+          
                     <div 
                     className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-cont-selec':null}`}>
                        <a 
@@ -193,6 +205,20 @@ const NavBarCont = (props)=>{
                          xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><rect fill="none" height="24" width="24"/><path d="M4,14h2c0.55,0,1-0.45,1-1v-2c0-0.55-0.45-1-1-1H4c-0.55,0-1,0.45-1,1v2C3,13.55,3.45,14,4,14z M4,19h2c0.55,0,1-0.45,1-1 v-2c0-0.55-0.45-1-1-1H4c-0.55,0-1,0.45-1,1v2C3,18.55,3.45,19,4,19z M4,9h2c0.55,0,1-0.45,1-1V6c0-0.55-0.45-1-1-1H4 C3.45,5,3,5.45,3,6v2C3,8.55,3.45,9,4,9z M9,14h11c0.55,0,1-0.45,1-1v-2c0-0.55-0.45-1-1-1H9c-0.55,0-1,0.45-1,1v2 C8,13.55,8.45,14,9,14z M9,19h11c0.55,0,1-0.45,1-1v-2c0-0.55-0.45-1-1-1H9c-0.55,0-1,0.45-1,1v2C8,18.55,8.45,19,9,19z M8,6v2 c0,0.55,0.45,1,1,1h11c0.55,0,1-0.45,1-1V6c0-0.55-0.45-1-1-1H9C8.45,5,8,5.45,8,6z"/></svg>
                          Links
                        </a>
+                    </div>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-cont-selec':null}`}>
+                         <a 
+                         className='app-nav-lnk-lnk'
+                         href={_BASE_CLIENT_URL+'src/design'}>     
+                         <svg 
+                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-ico-selec':null}`}
+                         width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M7 27H5V31H7V27ZM27 31C28.1046 31 29 30.1046 29 29C29 27.8954 28.1046 27 27 27V31ZM7 31H27V27H7V31Z" fill="currentColor"/>
+                         <path d="M6 24V20.5714L16.973 9.5062C17.7833 8.68907 19.1144 8.72265 19.8825 9.57961L21.1806 11.0279C21.9118 11.8437 21.8506 13.0959 21.0434 13.8365L9.96667 24H6Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                         <path d="M24.8182 10L21 6.18182L21.2727 5.90909C22.3271 4.85473 24.0365 4.85473 25.0909 5.90909C26.1453 6.96345 26.1453 8.67291 25.0909 9.72727L24.8182 10Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                         </svg>
+                         Design
+                         </a>
                     </div>
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster/settings'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a
@@ -223,20 +249,7 @@ const NavBarCont = (props)=>{
                          Home
                        </a>
                     </div>
-                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-cont-selec':null}`}>
-                         <a 
-                         className='app-nav-lnk-lnk'
-                         href={_BASE_CLIENT_URL+'src/design'}>     
-                         <svg 
-                         className={`app-nav-bar-main-link-ico ${props.router.pathname=='/src/design'?'app-nav-bar-main-link-ico-selec':null}`}
-                         width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M7 27H5V31H7V27ZM27 31C28.1046 31 29 30.1046 29 29C29 27.8954 28.1046 27 27 27V31ZM7 31H27V27H7V31Z" fill="currentColor"/>
-                         <path d="M6 24V20.5714L16.973 9.5062C17.7833 8.68907 19.1144 8.72265 19.8825 9.57961L21.1806 11.0279C21.9118 11.8437 21.8506 13.0959 21.0434 13.8365L9.96667 24H6Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                         <path d="M24.8182 10L21 6.18182L21.2727 5.90909C22.3271 4.85473 24.0365 4.85473 25.0909 5.90909C26.1453 6.96345 26.1453 8.67291 25.0909 9.72727L24.8182 10Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
-                         </svg>
-                         Design
-                         </a>
-                    </div>
+                         
                     <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'

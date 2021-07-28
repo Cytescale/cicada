@@ -2,14 +2,14 @@ import React,{useEffect, useRef, useState} from "react";
 import Head from "next/head";
 import { withRouter, NextRouter,useRouter } from 'next/router'
 import user from "../../../../comp/utils/user";
-import { BurgerMenu,ProfilePopover,NavBarCont,BottomCont } from "../../../../comp/elements";
+import { BurgerMenu,ProfilePopover,NavBarCont,BottomCont,HeaderCont } from "../../../../comp/elements";
 import { _BASE_CLIENT_URL } from "../../../../comp/helpers/api.routes";
 import firebaseHelper,{getUid,checkToken} from "../../../../comp/helpers/firebaseHelper";
 import backendHelper from "../../../../comp/helpers/backendHelper";
 import FullHeiLoading from '../../fullHeightLoading';
 import { ToastContainer,toast } from "react-toastify";
 import getAuth from '../../../../comp/utils/getAuth';
-
+import GlobalStyles from "../../land/globalStyle";
 
 const User = new user();
 const FirebaseHelper = new firebaseHelper();
@@ -69,6 +69,7 @@ const Settings = (props)=>{
      const [clusterStatus,setClusterStatus] = useState(false);
      const [profileCardBool,setprofileCardBool] = useState(false);
      const [footerCardBool,setfooterCardBool] = useState(false);
+     const [darkMode ,setdarkMode]=useState(true);
 
      useEffect(async ()=>{
           getAuth().then(async(m)=>{
@@ -114,23 +115,13 @@ const Settings = (props)=>{
           <link rel="icon" href="/favicon.ico" />
           </Head>
           
-                    <div className='app-head-main-cont link-head-body-cont'>
-                              <div className='app-head-main-cont-logo link-head-logo'>
-                                   <a href={_BASE_CLIENT_URL+'src/land'}>
-                                        Cytelink
-                                   </a>
-                              </div>
-                              <div className='app-head-main-right-cont'>
-                                   <button
-                                   className='app-input-class-raised-pressable link-feed-butt'
-                                   onClick={()=>{
-                                        //this.setcreateLinkModalVisi(true);
-                                   }}
-                                   >Feedback
-                                   </button>
-                              </div>
-                    </div>
-                    <div className='app-nav-bar-main-cont'>
+                    <HeaderCont  setdarkMode={setdarkMode} darkMode={darkMode} />
+                    {
+                          // @ts-ignore: Unreachable code error
+                          <GlobalStyles light={darkMode}/>
+                    }
+                    <NavBarCont router={router}/>
+                    {/* <div className='app-nav-bar-main-cont'>
                               <div 
                               className={`app-nav-bar-main-link-cont `}>
                               <a 
@@ -142,7 +133,7 @@ const Settings = (props)=>{
                                         Back
                               </a>
                               </div>
-                     </div>
+                     </div> */}
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
                               <div className='app-clust-tit-main-cont clust-set-tit-main-cont'>Cluster Settings</div>

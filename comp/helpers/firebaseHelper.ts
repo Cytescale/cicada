@@ -60,6 +60,19 @@ const setToken = async (token:string) => {
       })
 };
 
+const setWelToken = async (bool:string) => {
+     let r = await getWel();
+     if(r!='false'){
+          await cookie.save('welBool', bool, { path: '/'})
+     }
+
+};
+const getWel = async () => {
+     const  value  = cookie.load('welBool');
+     return value;
+};
+
+
 const setUid = async (uid:string) => {
      await cookie.save('uid', uid, { 
      path: '/',
@@ -82,7 +95,7 @@ const unsetUid = async ()=>{
 }
 
 
-export {checkToken,setToken,getUid,setUid,unseUserToken,unsetUid}
+export {checkToken,setToken,getUid,setUid,unseUserToken,unsetUid,setWelToken,getWel}
 
 const  user = new User();
 

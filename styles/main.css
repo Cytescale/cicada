@@ -741,7 +741,7 @@ font-family: inter;
         color: #000;
         margin-top: 62px;  
         display: inline-flex;
-        padding-left: 22px;
+        padding-left: 12px;
         padding-right: 22px;
         align-items: center;
         z-index: 100;
@@ -753,15 +753,16 @@ font-family: inter;
         
    }
    .app-nav-bar-main-link-cont{
-
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
+        flex: 1;
         font-size: 13px;
         padding-left: 8px;
         padding-right: 8px;
-        margin-right: 12px;
+        margin-left: 6px;
+        margin-right: 6px;
         font-family: inter;
         color: var(--headerTextColor);
         font-weight: 400;

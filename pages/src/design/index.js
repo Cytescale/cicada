@@ -171,7 +171,7 @@ const design = (props)=>{
                           // @ts-ignore: Unreachable code error
                           <GlobalStyles light={darkMode}/>
                     }
-                    <LandNavBarCont router={router}/>
+                    <NavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>
                               <div className='app-clust-tit-main-cont'>

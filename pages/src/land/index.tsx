@@ -1,6 +1,6 @@
 import React,{useEffect, useRef, useState} from "react";
 import user from "../../../comp/utils/user";
-import firebaseHelper,{getUid,checkToken} from "../../../comp/helpers/firebaseHelper";
+import firebaseHelper,{getUid,checkToken,setWelToken,getWel} from "../../../comp/helpers/firebaseHelper";
 import backendHelper from "../../../comp/helpers/backendHelper";
 import { withRouter, NextRouter } from 'next/router'
 import FullHeiLoading from '../fullHeightLoading';
@@ -27,15 +27,31 @@ const User = new user();
 
 
 const WelcomeHead:React.FC<any> = ()=>{
-     const [show,setShow] = useState<boolean>(true);
+     const [show,setShow] = useState<boolean|null>(null);
      const [exitAnim,setexitAnim] = useState<boolean>(false);
+     useEffect(()=>{
+           getWel().then((r)=>{
+               if(r=='true'){
+                    setShow(true);
+                    console.log('in');
+               } 
+               else{
+                    console.log('out');
+                    setShow(false);
+               }
+               
+          });
+     },[])
      return(
           show?
           <div className={`dash-wel-main-cont ${exitAnim?'dash-wel-main-cont-start-exit-anim':null}`}
           onAnimationStart={()=>{
           }}
           onAnimationEnd={()=>{
-               if(exitAnim){setShow(false)}
+               if(exitAnim){
+                    setShow(false)
+                    setWelToken('false')
+               }
           }}
           >
                     Welcome to<br/>Cytelink
@@ -760,10 +776,10 @@ class Land extends React.Component<LandProps,any>{
                }
           }
      }
-     openInNewTab(url:string){
-          const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-          if (newWindow) newWindow.opener = null
-     }
+          openInNewTab(url:string){
+               const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+               if (newWindow) newWindow.opener = null
+          }
      renderLinkLogo(platform_id:number){
           switch(platform_id)
           {
@@ -888,9 +904,9 @@ class Land extends React.Component<LandProps,any>{
                     <Spinner
                     className='lnk-lnk-crt-lnk-crt-butt-ico'
                     animation="border" role="status" variant="light"/>:
-                    <svg
+                    <svg 
                     className='lnk-lnk-crt-lnk-crt-butt-ico'
-                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39 1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3 7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z"/></svg>
+                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                     }
                </button>
 

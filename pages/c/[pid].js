@@ -125,6 +125,7 @@ import publicIp from 'public-ip';
                padding-bottom: 22px;
                background-color:  ${props => props.profileCardColor};;
                border-bottom:  ${props => props.border};;
+               family-font:poppins;
           }
 
           .cluster-profile-pro{
@@ -164,6 +165,7 @@ import publicIp from 'public-ip';
                background: ${props => props.bioCardColor};
                color: ${props => props.textColor};
                box-shadow:${props => props.bioCardShad};
+               family-font:poppins;
           }
 
           .cluster-hr-cont{

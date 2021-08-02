@@ -4,7 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: poppins , inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: poppins , poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   
   /*neuro design*/
@@ -45,6 +45,7 @@ body {
   /* --linkHolderColor:#171717; */
 
   --cardColor:#f7f7f7;
+  --cardColor-disabled:#e0e0e0;
   --cardSubColor:#f3f3f3;
   --cardTextColor:#000;
   --cardButtBackColor:#e0e0e0;
@@ -205,7 +206,7 @@ a {
 
 .Toastify__toast-container {
   height: 12px;
-  font-family: inter;
+  font-family: poppins;
   font-size: 14px;
   font-weight: 700;
 

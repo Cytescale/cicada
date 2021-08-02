@@ -7,7 +7,7 @@
 .link-head-logo{
      color: var(--textColor);
      font-size: 16px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;    
 }
 .link-head-body-cont{
@@ -25,7 +25,7 @@
  border-radius: 100px;
  padding-left: 17px;
  padding-right: 17px;
- font-family: inter;
+ font-family: poppins;
  font-weight: 700;
  font-size: 13px;
  display: flex;
@@ -43,7 +43,7 @@ margin-right: 4px;
      margin-left: 4%;
      margin-right: 4%;
      height: var(--welcomeCardHeight);
-     font-family: inter;
+     font-family: poppins;
      position: relative;
      border-radius: 10px;
      font-size: 26px;
@@ -210,7 +210,7 @@ margin-right: 4px;
 
 }
 .dash-links-cont-link-cont-lab{
-     font-family: inter;
+     font-family: poppins;
      font-style: normal;
      font-weight: bold;
      font-size: 10px;
@@ -261,7 +261,7 @@ margin-right: 4px;
 .dash-links-cont-link-botom-crt-butt{
 flex: 1;
 margin: 10px;
-font-family: inter;
+font-family: poppins;
 border-radius: 100px;
 height: 36px;
 background: #11E4D1;
@@ -275,7 +275,7 @@ margin-bottom: 0px;
 }
 .dash-links-cont-link-botom-show-butt{
      flex: 1;
-     font-family: inter;
+     font-family: poppins;
      font-size: 12px;
      border-radius: 100px;
      height: 36px;
@@ -314,7 +314,7 @@ margin-bottom: 0px;
      border-style: none;
      outline: none;
      color: var(--textColor);
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
      background-color: rgba(0, 0, 0, 0);
 
@@ -333,7 +333,7 @@ margin-bottom: 0px;
      padding-bottom: 7px;
      font-weight: 500; 
      font-size: 14px;
-     font-family: inter;
+     font-family: poppins;
 }
 
 .link-feed-butt{
@@ -349,7 +349,7 @@ margin-bottom: 0px;
      padding-right: 10px;
      font-weight: 500; 
      font-size: 10px;
-     font-family: inter;
+     font-family: poppins;
 }
 
 .link-feed-butt:active{
@@ -401,7 +401,7 @@ margin-bottom: 0px;
 
 .pop-name-cont{
      font-size: 16px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 400;
      color: var(--textColor);
      display: inline-flex;
@@ -409,7 +409,7 @@ margin-bottom: 0px;
 }
 .pop-acc-sett-cont{
      font-size: 16px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 400;
      margin-top: 12px;
      color: #4189F7;
@@ -418,7 +418,7 @@ margin-bottom: 0px;
 }
 .pop-link-cont{
      font-size: 16px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 400;
      margin-top: 8px;
      color: var(--textColor);
@@ -426,7 +426,7 @@ margin-bottom: 0px;
      align-items: center;
 }
 .pop-eml-cont{
-     font-family: inter;
+     font-family: poppins;
      color: #4189F7;
      font-size: 16px;  
      padding-top: 4px;  
@@ -450,7 +450,7 @@ padding: 0;
 width: 36px;
 height: 36px;
 border-radius: 100px;
-font-family: inter;
+font-family: poppins;
 font-weight: 700;
 font-size: 17px;
 color: var(--textColor);
@@ -508,9 +508,9 @@ background-color: rgba(0, 0, 0, 0)
 }
 
 .lnk-lnk-main-inactive{
-/* background: rgba(232, 144, 136, 0.45); */
-border: 1px solid var(--warning);
-box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
+background-color: var(--cardColor-disabled);
+     /* border: 1px solid var(--warning); */
+/* box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25); */
 
 }
 
@@ -530,7 +530,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
 
 .lnk-lnk-gen-link-inactive{
      /* background: rgba(232, 144, 136, 0.45); */
-
+     background-color:var(--cardColor-disabled);
 }
 
 @keyframes lnk-trans {
@@ -660,7 +660,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      height: 100%;
      margin-top: 3px;
      font-weight: 700;
-     font-family: inter;
+     font-family: poppins;
      color: var(--textColor);
      display:block;
      align-items: center;
@@ -669,7 +669,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
 .lnk-lnk-head-main-cont-crt-cont{
      font-size: 12px;
      color: var(--subtextColor);
-     font-family: inter;
+     font-family: poppins;
      font-weight: 400;
 }
 
@@ -766,7 +766,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      display: flex;
      align-items: center;
      font-size: 13px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
      margin-right: 12px;
      
@@ -835,7 +835,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      height: 52px;
      background-color: var(--buttonBackColor);
      color: var(--textColor);
-     font-family: inter;
+     font-family: poppins;
      font-size: 14px;
      font-weight: 600;
      position: relative;
@@ -906,7 +906,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      margin-top: var(--margin);
      background-color: var(--warning);
      font-weight: 700;
-     font-family: inter;
+     font-family: poppins;
      vertical-align: middle;
 }
 .app-anal-time-selc-butt{
@@ -916,7 +916,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      font-weight: 700;
      color: var(--textColor);
      margin-top: 12px;
-     font-family: inter;
+     font-family: poppins;
      vertical-align: middle;
 }
 .app-anal-lnk-selc-butt-ico{
@@ -949,7 +949,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
 }
 .app-anal-header-data-body-data-tit-cont{
      color: var(--textColor);
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
      font-size: 21px;
      display: inline-flex;
@@ -1042,7 +1042,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      padding-right: 16px;
      color: #B4C7D8;
      font-size: 13px;
-     font-family: inter;
+     font-family: poppins;
      border-bottom: 1px solid var(--bor-color);
      position: relative;
          
@@ -1181,7 +1181,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      height: 32px;
      background-color: #EE6A5E;
      color: var(--textColor);
-     font-family: inter;
+     font-family: poppins;
      font-size: 13px;
      border-radius: 4px;
      font-weight: 600;
@@ -1196,7 +1196,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      height: 32px;
      background-color:#A0E8C3;
      color:var(--succ);
-     font-family: inter;
+     font-family: poppins;
      font-size: 13px;
      border-radius: 4px;
      font-weight: 600;
@@ -1221,7 +1221,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      width: 100%;
      height: 32px;
      font-size: 15px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
      vertical-align: middle;
      color: var(--textColor);
@@ -1242,7 +1242,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      outline: none;
      background-color: var(--cardSubColor);
      color: #55A3FF;
-     font-family: inter;
+     font-family: poppins;
      font-size: 13px;
      
 }
@@ -1266,7 +1266,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
 }
 
 .app-land-lab-main-cont{
-     font-family: inter;
+     font-family: poppins;
      font-size: 15px;
      font-weight: 700;
      color:var(--subHeadingTextColor);
@@ -1328,7 +1328,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      background-color: var(--textBoxBackColor);
      border-style: none;
      outline: none;
-     font-family: inter;
+     font-family: poppins;
      font-size: 15px;
 }
 
@@ -1365,7 +1365,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      color: #bdbdbd;
      font-weight: 700;
      margin-top: 4px;
-     font-family: inter;
+     font-family: poppins;
      
 }
 
@@ -1373,7 +1373,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      font-size: 28px;
      margin-top: -4px;
      color:var(--textColor);
-     font-family: inter;
+     font-family: poppins;
      font-weight: 800;
      
 }
@@ -1395,7 +1395,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      display: flex;
      justify-content: flex-start;
      align-items: center;
-     font-family: inter;
+     font-family: poppins;
      font-size: 15px;
      color: var(--textColor);
      padding-top: 22px;
@@ -1463,7 +1463,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      justify-content: center;
      align-items: center;
      font-size: 11px;
-     font-family: inter;
+     font-family: poppins;
      color: #555555;
      padding-bottom: var(--margin);
 }
@@ -1478,7 +1478,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      padding-left: 16px;
      font-size: 22px;
      color: var(--textColor);;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;    
 }
 .app-body-topper-hey-butt
@@ -1500,7 +1500,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      width: 100%;
      height: 100px;
      padding: 7px;
-     font-family: inter;
+     font-family: poppins;
      font-size: 15px;
 }
 
@@ -1508,7 +1508,7 @@ box-shadow: 0px 1px 6px 2px rgba(255, 116, 116, 0.25);
      font-size: 12px;
      color: var(--textColor);
      font-weight: 400;
-     font-family: inter;    
+     font-family: poppins;    
      margin-top:6px;
      margin-bottom: 6px;
 }
@@ -1568,7 +1568,7 @@ color: inherit;
      color: #fff;
      border-style: none;
      outline: none;
-     font-family: inter;
+     font-family: poppins;
      font-size: 15px;
      font-weight: 400;
      overflow: hidden;
@@ -1595,7 +1595,7 @@ color: inherit;
 }
 .app-land-crt-lnk-butt-lab{
      font-size: 14px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 500;
      z-index: 10;
 }
@@ -1817,7 +1817,7 @@ color: inherit;
 
 .app-body-topper-bio-cont{
      font-size: 14px;
-     font-family: 'inter';
+     font-family: 'poppins';
      font-weight: 500;
      margin-top: 3px;
      margin-bottom: 3px;
@@ -1849,7 +1849,7 @@ color: inherit;
      justify-content: center;
      align-items: center;
      color: var(--pri-color);
-     font-family: inter;
+     font-family: poppins;
      font-size: 15px;
      outline: none;
      border-style: none;
@@ -1866,7 +1866,7 @@ color: inherit;
 .app-init-acc-lab-main-cont{
      color: var(--textColor);
      font-size: 28px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
      width: 100%;
      padding: 22px;
@@ -1898,14 +1898,14 @@ color: inherit;
 .app-land-act-delete-tab{
      color: var(--textColor);
      font-size: 18px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
 }
 .app-land-act-delete-sub-tab{
      color: var(--subtextColor);
      width: 100%;
      font-size: 15px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 500;
 }
 
@@ -2048,7 +2048,7 @@ color: inherit;
      border-style: none;
      font-size: 15px;
      font-weight: 700;
-     font-family: inter;
+     font-family: poppins;
 
 }
 
@@ -2117,7 +2117,7 @@ color: inherit;
      display: flex;
      justify-content: center;
      font-size: 18px;
-     font-family: inter;
+     font-family: poppins;
      font-weight: 700;
 }
 
@@ -2127,7 +2127,7 @@ color: inherit;
      border-radius: 7px;
      background-color: var(--pri-color);
      color: #fff;
-     font-family: inter;
+     font-family: poppins;
      font-size: 18px;
      padding-left: 22px;
      padding-right: 22px;

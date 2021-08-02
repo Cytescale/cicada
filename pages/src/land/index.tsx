@@ -240,9 +240,9 @@ const EditLinkModal:React.FC<any>=(props:any)=>{
                                disabled={loading}
                               onClick={async ()=>{
                                              if(!uniid){setuniid(lData?.unique_identifier);}
-                                             if(dname!.length>10){seterrBool(true);seterrMess('Link name too long');return; }
+                                             if(dname!.length>25){seterrBool(true);seterrMess('Link name too long');return; }
                                              if(dname!.length==0){seterrBool(true);seterrMess('Enter some name');return; }
-                                             if(uniid!.length>10){seterrBool(true);seterrMess('Unique Identifier too long');return; }
+                                             if(uniid!.length>25){seterrBool(true);seterrMess('Unique Identifier too long');return; }
                                              if(uniid!.length==0){seterrBool(true);seterrMess('Enter a unique identifier');return; }
                                              await setLoading(true);
                                              await processEditLinkData(lData!,dname!,uniid!).then(async (res:nexusResponse)=>{
@@ -357,9 +357,6 @@ const RenderPlatformLogo:React.FC<any>=(props:any)=>{
           <div>null</div>
      )
 }
-
-
-
 
 const LinkCard:React.FC<any>=(props:any)=>{
      const [active , setactive] = useState<boolean>(props.d.active_bool);
@@ -553,8 +550,6 @@ const LinkCard:React.FC<any>=(props:any)=>{
 }
 
 
-
-
 interface WithRouterProps {
      router: NextRouter
    }
@@ -691,7 +686,7 @@ class Land extends React.Component<LandProps,any>{
                     User.setUserUid(await getUid());
                      this.initLinksDataLoad();
                     this.setAuth(true);
-                    if(backendHelper && !User.getUserData()){
+                    if(backendHelper){
                          BackendHelper._getUserInfo(User.getUserUid(),true).then((res:nexusResponse)=>{
                               if(res){
                                    if(res.responseData.deleted_bool){
@@ -749,15 +744,15 @@ class Land extends React.Component<LandProps,any>{
                                     this.setLinksData(res.responseData);
                               }
                               else{
-                                   toast.error(res.errMess, {
-                                        position: toast.POSITION.TOP_CENTER,
-                                        autoClose: 5000,
-                                        hideProgressBar: true,
-                                        closeOnClick: true,
-                                        pauseOnHover: true,
-                                        draggable: true,
-                                        progress: undefined,
-                                   });
+                                   // toast.error(res.errMess, {
+                                   //      position: toast.POSITION.TOP_CENTER,
+                                   //      autoClose: 5000,
+                                   //      hideProgressBar: true,
+                                   //      closeOnClick: true,
+                                   //      pauseOnHover: true,
+                                   //      draggable: true,
+                                   //      progress: undefined,
+                                   // });
                               }
                     }
                     this.setlinkDataLoading(false);

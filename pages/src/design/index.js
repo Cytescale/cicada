@@ -232,7 +232,7 @@ const design = (props)=>{
                                                                  
                                                        </div>
                                                        <div className={`app-design-card-main-cont-tab ${selecDeginTmpId=='1'?'app-design-card-main-cont-selectab':null}`}>
-                                                       Neumorphism
+                                                       Modern
                                                             {
                                                             selecDeginTmpId=='1'?
                                                             <svg 

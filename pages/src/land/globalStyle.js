@@ -41,6 +41,7 @@ import { createGlobalStyle} from "styled-components"
                
                --linkHolderColor:var(--dark-pri-color);
                --cardColor:#f7f7f7;
+               --cardColor-disabled:#e0e0e0;
                --cardSubColor:#f3f3f3;
                --cardTextColor:#000;
                --cardButtBackColor:#e0e0e0;
@@ -97,6 +98,7 @@ import { createGlobalStyle} from "styled-components"
           --linkHolderColor:#171717;
      
           --cardColor:#191919;
+          --cardColor-disabled:#252525;
           --cardSubColor:#282828;
           --cardTextColor:#bdbdbd;
           --cardButtBackColor:#303030;

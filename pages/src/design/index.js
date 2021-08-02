@@ -45,6 +45,17 @@ const design = (props)=>{
                                         this.props.router.replace('/src/login');
                                         return;
                                     }
+                                    if(!res.responseData.acc_verified){
+                                        console.log('User is not verified');
+                                        this.props.router.replace('/src/unverified');
+                                        BackendHelper._initLogout();
+                                        return;
+                                    }
+                                    if(!res.responseData.acc_verified){
+                                        console.log('User is not initiated');
+                                        this.props.router.replace('/src/unverified');
+                                        return;
+                                    }
                                     if(!res.responseData.init_bool){
                                         console.log('User is not initiated');
                                         this.props.router.replace('/src/initAccount');

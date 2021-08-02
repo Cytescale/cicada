@@ -315,6 +315,12 @@ const cluster = (props)=>{
                                         router.replace('/src/login');
                                         return;
                                     }
+                                    if(!res.responseData.acc_verified){
+                                        console.log('User is not verified');
+                                        router.replace('/src/unverified');
+                                        BackendHelper._initLogout();
+                                        return;
+                                    }
                                     if(!res.responseData.init_bool){
                                         console.log('User is not initiated');
                                         router.replace('/src/initAccount');

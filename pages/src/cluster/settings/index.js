@@ -15,14 +15,44 @@ const User = new user();
 const FirebaseHelper = new firebaseHelper();
 const BackendHelper = new backendHelper();
 
-async function loadUserData(setLoading){
+
+const Settings = (props)=>{
+     const router = useRouter()
+     const [loading,setLoading] = useState(true);
+     const [overlayVisi,setoverlayVisi] = useState(false)
+     const [clusterConfigData ,setclusterConfigData] = useState(null);
+     const [clusterStatus,setClusterStatus] = useState(false);
+     const [profileCardBool,setprofileCardBool] = useState(false);
+     const [footerCardBool,setfooterCardBool] = useState(false);
+     const [darkMode ,setdarkMode]=useState(true);
+
+
+     
+  const loadUserData = async()=>{
      if(!User.getUserData()){
           if(backendHelper){
                await BackendHelper._getUserInfo(await getUid(),true).then((res)=>{
                     if(res){
                          if(!res.errBool){
+                              if(res.responseData.deleted_bool){
+                                   console.log('User is deleted');
+                                   router.replace('/src/login');
+                                   return;
+                               }
+                               if(!res.responseData.acc_verified){
+                                   console.log('User is not verified');
+                                   router.replace('/src/unverified');
+                                   BackendHelper._initLogout();
+                                   return;
+                               }
+                               if(!res.responseData.init_bool){
+                                   console.log('User is not initiated');
+                                   router.replace('/src/initAccount');
+                                   return;
+                               }
                                User.setUserData(res.responseData);
                                User.setUserUid(res.responseData.uid);
+                               if(res.responseData.theme_mode){if(res.responseData.theme_mode=="DARK"){setdarkMode(false)}}
                                console.log(res.responseData);
                          }
                          else{
@@ -61,20 +91,10 @@ async function loadUserData(setLoading){
 }
 
 
-const Settings = (props)=>{
-     const router = useRouter()
-     const [loading,setLoading] = useState(true);
-     const [overlayVisi,setoverlayVisi] = useState(false)
-     const [clusterConfigData ,setclusterConfigData] = useState(null);
-     const [clusterStatus,setClusterStatus] = useState(false);
-     const [profileCardBool,setprofileCardBool] = useState(false);
-     const [footerCardBool,setfooterCardBool] = useState(false);
-     const [darkMode ,setdarkMode]=useState(true);
-
      useEffect(async ()=>{
           getAuth().then(async(m)=>{
                await loadUserData(setLoading);
-               if(User.getUserData().theme_mode){if(User.getUserData().theme_mode=="DARK"){setdarkMode(false)}}
+          
                }).catch((e)=>{
                     console.log("User auth failure"+e.message);
                     router.replace('/src/login');

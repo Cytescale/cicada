@@ -14,6 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/src/land/index.tsx", "pages/c/[pid].js", "pages/src/cluster/index.js", "comp/elements/index.js", "pages/src/setting/index.js", "pages/src/land/globalStyle.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/src/land/index.tsx", "pages/c/[pid].js", "pages/src/cluster/index.js", "comp/elements/index.js", "pages/src/setting/index.js", "pages/src/land/globalStyle.js", "pages/src/unverified/index.js"],
   "exclude": ["node_modules"]
 }

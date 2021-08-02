@@ -17,6 +17,7 @@ declare type userData = {
      joining_id:number,
      api_key:number,
      theme_mode:string,
+     acc_verified:boolean
 }
 export type{userData}
 

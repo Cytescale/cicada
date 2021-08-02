@@ -19,9 +19,24 @@
 .app-moto-cont-tit-1{
      color: var(--subtextColor);
 }
+
+
 .app-moto-cont-tit-2{
      color: var(--textColor);
 }
+.unveri-tit-2{
+     text-align: left;
+     padding: 22px;
+     color: var(--textColor);
+}
+     
+
+.app-moto-cont-tit-3{
+     padding: 22px;
+     padding-top: 22px;
+     text-align: left;
+}
+
 .app-login-inpt-main-cont-lab{
      color: var(--textColor);
 }

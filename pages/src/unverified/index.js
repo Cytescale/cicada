@@ -61,9 +61,8 @@ class ForgotPassAct extends React.Component{
                                         <br/>
                                         As we are currently working on furnishing your experience with the product, we are slowly letting people in to make sure everything is working sound.
                                         <br/><br/>
-                                        And don't worry, we have your username reserved for you ✅
-                                        <br/><br/>
                                         We are so grateful to have you and can't wait to let you join the ride!
+                                        <br/>
                                         We will get back to you :)
                                         <br/><br/>
                                         Watch out for our mail. See you soon 😉

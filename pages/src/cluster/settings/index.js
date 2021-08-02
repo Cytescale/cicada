@@ -74,6 +74,7 @@ const Settings = (props)=>{
      useEffect(async ()=>{
           getAuth().then(async(m)=>{
                await loadUserData(setLoading);
+               if(User.getUserData().theme_mode){if(User.getUserData().theme_mode=="DARK"){setdarkMode(false)}}
                }).catch((e)=>{
                     console.log("User auth failure"+e.message);
                     router.replace('/src/login');

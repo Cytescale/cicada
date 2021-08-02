@@ -1,6 +1,6 @@
 .app-full-loading-main-cont{
      background-color: var(--backColor);
-     font-family: poppins;
+     font-family: inter;
      font-size: 20px;
      display: flex;
      height: 100vh;
@@ -90,7 +90,7 @@
      position: relative;
      list-style: none;
      padding: 6px 12px;
-     cursor: popoppins;
+     cursor: pointer;
      color: var(--text-s1);
 }
 .react-tabs__tab{
@@ -114,13 +114,13 @@
      color: var(--text-s2);
      font-size: 19px;
      font-weight: 500;
-     font-family: poppins;
+     font-family: inter;
 }
 .app-moto-cont-tit-2{
      color: var(--text-s1);
      font-size: 28px;
      font-weight: 800;
-     font-family: poppins;
+     font-family: inter;
 }
 
 .app-login-main-cont-body{
@@ -141,7 +141,7 @@ color: var(--text-s1);
 padding-bottom: 5px;
 padding-left: 3px;
 font-weight: 700;
-font-family: poppins;
+font-family: inter;
 }
 .app-login-sub-main-cont{
 
@@ -237,7 +237,7 @@ font-family: poppins;
      margin-left: 5%;
      
      color: #000;
-     font-family: poppins;
+     font-family: inter;
      font-size: 26px;    
      display: flex;
      align-items: center;
@@ -251,7 +251,7 @@ font-family: poppins;
      margin-left: 5%;
      margin-bottom: 12px;
      color: #656565;
-     font-family: poppins;
+     font-family: inter;
      font-size: 14px;
      
 }
@@ -261,7 +261,7 @@ font-family: poppins;
 }
 .app-body-main-cont-lab{
  font-size: 26px;    
- font-family: poppins;
+ font-family: inter;
  width: 100%;
  height: auto;
  font-weight: 700;
@@ -277,7 +277,7 @@ padding-bottom: 0px;
 
 .app-head-main-cont-logo{
      color: var(--text-s1);
-     font-family: poppins;
+     font-family: inter;
      font-weight: 00;
      font-size: 19px;
 }
@@ -290,7 +290,7 @@ padding-bottom: 0px;
 .app-tit-main-cont{
      padding-left: var(--margin);
      margin-top: var(--margin-top);     
-     font-family: poppins;
+     font-family: inter;
      font-style: normal;
      font-weight: bold;
      font-size: 13px;
@@ -300,7 +300,7 @@ padding-bottom: 0px;
      font-size: 12px;
      height: 42px;
      letter-spacing: 1px;
-     font-family: poppins;
+     font-family: inter;
      color: #656565;
      display: flex; 
      justify-content: center;
@@ -327,7 +327,7 @@ padding-bottom: 0px;
      bottom: 0;
      left: 0;
      right: 0;
-     popoppins-events: none;
+     pointer-events: none;
      margin-bottom: 62px;
      z-index: 9999;
      background: linear-gradient(180deg, rgba(39, 45, 52, 0) 0%, #272D33 100%);
@@ -358,7 +358,7 @@ padding-bottom: 0px;
      justify-content: center;
      align-items: center;
      font-size: 32px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--text-s1);
      font-weight: 800;
 }
@@ -367,7 +367,7 @@ padding-bottom: 0px;
 padding: 18px;
 }
 .app-create-link-modal-main-cont-tit{
-font-family: poppins;
+font-family: inter;
 font-weight: 600;
 color: var(--textColor);
 margin-bottom: 12px;
@@ -413,7 +413,7 @@ margin-bottom: 12px;
      border-style: none;
      border-radius: 7px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--danger);
      margin-top: 12px;
 }
@@ -430,13 +430,13 @@ margin-bottom: 12px;
 font-size: 12px;
 color: var(--subtextColor);
 font-weight: 700;
-font-family: poppins;
+font-family: inter;
 }
 
 
 .app-create-link-modal-main-cont-des{
      color: var(--textColor);
-     font-family: poppins;
+     font-family: inter;
      font-size: 13px;
      margin-bottom: 22px;
 }
@@ -446,7 +446,7 @@ font-family: poppins;
      height: 42px;
      border-radius: 4px;
      background-color: #e0e0e0;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 500;
      margin-top: 12px;
 }
@@ -457,7 +457,7 @@ font-family: poppins;
      border-radius: 4px;
      color: #fff;
      font-weight: 500;
-     font-family: poppins;
+     font-family: inter;
      outline: none;
      border-style: none;
      
@@ -472,7 +472,7 @@ font-family: poppins;
      color: #fff;
      font-size: 14px;
      font-weight: 500;
-     font-family: poppins;
+     font-family: inter;
      outline: none;
      border-style: none;
 }
@@ -490,7 +490,7 @@ font-family: poppins;
      width: 100%;
      height: 52px;
      margin-top: 12px;
-     font-family: poppins;
+     font-family: inter;
      font-size: 15px;
      font-weight: 600;
      color: #bdbdbd;
@@ -521,7 +521,7 @@ font-family: poppins;
    /* The slider */
    .slider {
      position: absolute;
-     cursor: popoppins;
+     cursor: pointer;
      top: 0;
      left: 0;
      right: 0;
@@ -595,7 +595,7 @@ font-family: poppins;
      margin-top: 6px;
      padding: 12px;
      padding-left: 22px;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 600;
      font-size: 17px;
 }
@@ -635,7 +635,7 @@ font-family: poppins;
      outline: none;
      border-radius: 7px;
      padding-left: 12px;
-     font-family: poppins;
+     font-family: inter;
      background: #f1f1f1;
      color: var(--danger);
      font-size: 15px;
@@ -654,7 +654,7 @@ font-family: poppins;
      outline: none;
      border-radius: 4px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      color: #000;
      flex: 1;
      margin-right: 6px;
@@ -667,7 +667,7 @@ font-family: poppins;
      outline: none;
      border-radius: 4px;
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--danger);
      flex: 1;
      margin-left: 6px;
@@ -763,7 +763,7 @@ font-family: poppins;
         padding-right: 8px;
         margin-left: 6px;
         margin-right: 6px;
-        font-family: poppins;
+        font-family: inter;
         color: var(--headerTextColor);
         font-weight: 400;
    }
@@ -846,7 +846,7 @@ font-family: poppins;
      display: flex;
      justify-content: center;
      align-items: center;
-     font-family: poppins;
+     font-family: inter;
      font-size: 20px;
      font-weight: 700;
      color: var(--textColor);
@@ -893,7 +893,7 @@ font-family: poppins;
         align-items: center;
         color: var(--textColor);
         outline: none;
-        font-family: poppins;
+        font-family: inter;
         background-color: var(--buttonBackColor);
         border: 1px solid var(--borColor);
         height: 42px;
@@ -907,7 +907,7 @@ font-family: poppins;
         height: 100vh;
         color: var(--textColor);
         font-size: 22px;
-        font-family: poppins;
+        font-family: inter;
         display: flex;
         justify-content: center;
         align-items: center;

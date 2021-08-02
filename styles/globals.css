@@ -4,7 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: poppins , poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: inter , inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   
   /*neuro design*/
@@ -206,7 +206,7 @@ a {
 
 .Toastify__toast-container {
   height: 12px;
-  font-family: poppins;
+  font-family: inter;
   font-size: 14px;
   font-weight: 700;
 

@@ -27,7 +27,7 @@
      border-radius: 100px;
      outline: none;
      border-style: none;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 700;
      font-size: 14px;
      display: flex;
@@ -66,7 +66,7 @@
      display: inline-flex;
      padding-top: 22px;
      padding-left: 22px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--textColor);
      font-weight: 800;
      font-size: 26px;
@@ -85,7 +85,7 @@
      width: 100%;
      font-size: 12px;
      color: #959595;
-     font-family: poppins;
+     font-family: inter;
      font-weight: 500;
      display: flex;
      justify-content: center;
@@ -115,7 +115,7 @@
      font-size: 12px;
      margin-top: 7px;
      color: var(--subtextColor);
-     font-family: poppins;
+     font-family: inter;
      display: flex;
      text-align: center;
      justify-content: center;
@@ -197,7 +197,7 @@
      color: var(--textColor);
      background-color: var(--buttonBackColor);
      border-radius: 7px;
-     font-family: poppins;
+     font-family: inter;
      font-size: 14px;
      border:none;
      margin-bottom: 7px;
@@ -269,7 +269,7 @@ padding-bottom: 12px;
 }
 .app-clust-set-card-main-tit-cont{
 font-size: 16px;
-font-family: poppins;
+font-family: inter;
 font-weight: 700;
 color: var(--textColor);
 }
@@ -277,7 +277,7 @@ color: var(--textColor);
 .app-clust-set-card-main-sub-tit-cont{
 font-size: 12px;
 width: 60%;
-font-family: poppins;
+font-family: inter;
 font-weight: 500;
 margin-top: 6px;
 color: var(--subtextColor);

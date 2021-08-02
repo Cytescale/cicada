@@ -701,6 +701,7 @@ class Land extends React.Component<LandProps,any>{
                                     }
                                    if(!res.errBool){
                                          User.setUserData(res.responseData);
+                                         if(res.responseData.theme_mode){if(res.responseData.theme_mode=="DARK"){this.setdarkMode(false)}}
                                          console.log(res.responseData);
                                    }
                                    else{

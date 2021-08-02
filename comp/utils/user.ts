@@ -16,6 +16,7 @@ declare type userData = {
      admin_bool:boolean,
      joining_id:number,
      api_key:number,
+     theme_mode:string,
 }
 export type{userData}
 

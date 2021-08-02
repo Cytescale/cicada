@@ -52,6 +52,7 @@ const design = (props)=>{
                                     }
                                    User.setUserUid(res.responseData.uid);
                                    User.setUserData(res.responseData);
+                                   if(res.responseData.theme_mode){if(res.responseData.theme_mode=="DARK"){setdarkMode(false)}}
                                     console.log(res.responseData);
                               }
                               else{

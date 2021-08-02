@@ -63,6 +63,7 @@ const Profile = (props)=>{
                           OldUserData = res.responseData;
                           User.setUserData(res.responseData);
                           User.setUserUid(res.responseData.uid);
+                          if(res.responseData.theme_mode){if(res.responseData.theme_mode=="DARK"){setdarkMode(false)}}
                           console.log(res.responseData);
                     }
                     else{

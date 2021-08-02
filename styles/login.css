@@ -9,7 +9,7 @@
      display: flex;
      align-items: center;
      padding-left: 22px;
-     font-family: poppins;
+     font-family: inter;
      font-size: 16px;
      font-weight: 700;    
      background: var(--headColor);
@@ -29,7 +29,7 @@
      box-shadow: none;
      background-color: var(--backColor);
      font-weight: 500;
-     font-family: poppins;
+     font-family: inter;
      font-size: 18px;
      padding-left: 0px;
      border-bottom: 1px solid var(--borColor);
@@ -43,7 +43,7 @@
      /* box-shadow: 0px 4px 8px #0070F3; */
      color: #fff;
      font-weight: 700;
-     font-family: poppins;
+     font-family: inter;
      font: 20px;
 }
 
@@ -79,13 +79,13 @@ color: var(--subtextColor);
 }
 .forgot-pass-lab{
      font-size: 21px;
-     font-family: poppins;
+     font-family: inter;
      color: var(--textColor);
 }
 
 .forgot-pass-sub-lab{
      font-size: 15px;
-     font-family: poppins;
+     font-family: inter;
      margin-top: 6px;
      font-weight: 500;
 }

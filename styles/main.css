@@ -754,7 +754,8 @@ font-family: inter;
           box-shadow: 0px -6px 10px rgba(0, 0, 0, 0.06);
           position: fixed;
           bottom: 0;
-          height: 62px;
+          height: 68px;
+          background-color: var(--cardColor);
    }
 
    .cluster-nav-bar-cont{
@@ -762,7 +763,7 @@ font-family: inter;
         top: 0;
         left: 0;
         right: 0;
-        
+
    }
 
    .app-nav-bar-main-link-cont{
@@ -785,13 +786,29 @@ font-family: inter;
 }
 
    .app-nav-bar-main-link-cont-selec{
-        color: var(--NavTextColor-selec);
+        color: #06BEAE;
         font-weight: 600;
         /* border-bottom: 3px solid var(--NavTextColor-selec); */
    }
 
+   .link-cont-selec-home{
+        color: #0070F3;
+   }
+
+   .link-cont-selec-cluster{
+        color: #06BEAE;
+   }
+   .link-cont-selec-profile{
+        color: #BB86FC;
+   }
+
    .app-nav-lnk-lnk{
+
         display: inline-flex;
+   }
+   .app-nav-lnk-lnk:active{
+        color: var(--textColor);
+        text-decoration: none;
    }
 
 .app-nav-bar-main-link-ico{

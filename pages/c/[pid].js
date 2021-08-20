@@ -208,11 +208,11 @@ import publicIp from 'public-ip';
                height: 32px;
                display: flex;
                align-items: center;
-               justify-content: center;
-               font-size: 17px;
-               font-family: inter;
+               font-size: 22px;
+               font-family: poppins;
                font-weight: 700;
-               
+               padding-top:22px;
+               padding-bottom:22px;
                color:  ${props => props.subTextColor};;
           }
 
@@ -461,7 +461,7 @@ class ClusterComp extends React.Component{
 
                         }     
                         <div className='cluster-link-outer-cont'>
-                         {/* <div className='cluster-link-outer-cont-tab'>My links</div> */}
+                         <div className='cluster-link-outer-cont-tab'>My links:</div>
                          {this.state.linkData?this.state.linkData.map((e,ind)=>{
                               if(e.active_bool){
                                    return (

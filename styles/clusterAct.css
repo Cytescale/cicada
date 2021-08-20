@@ -27,7 +27,7 @@
      flex: 1;
      width: auto;
      height: 46px;
-     background-color: #4189F7;
+     background-color: #03DAC6;
      /* box-shadow: 0px 4px 8px 1px rgba(58, 132, 244, 0.25); */
      border-radius: 100px;
      outline: none;
@@ -38,7 +38,7 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     color: #fff;
+     color: #000;
 
 }
 .app-clust-act-set-butt{

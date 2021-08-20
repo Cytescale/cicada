@@ -246,7 +246,7 @@ const NavBarCont = (props)=>{
      return(
           <div className='app-nav-bar-main-cont land-nav-bar-cont'>
                     <div 
-                    className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-cont-selec':null}`}>
+                    className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/land'?'app-nav-bar-main-link-cont-selec link-cont-selec-home':null}`}>
                        <a 
                        className='app-nav-lnk-lnk'
                        href={_BASE_CLIENT_URL+'src/land'}>                         
@@ -259,7 +259,7 @@ const NavBarCont = (props)=>{
                        </a>
                     </div>
                          
-                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design' || props.router.pathname=='/src/cluster/settings' || props.router.pathname=='/src/cluster' ?'app-nav-bar-main-link-cont-selec':null}`}>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design' || props.router.pathname=='/src/cluster/settings' || props.router.pathname=='/src/cluster' ?'app-nav-bar-main-link-cont-selec link-cont-selec-cluster ':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
                          href={_BASE_CLIENT_URL+'src/cluster'}>                           
@@ -274,7 +274,7 @@ const NavBarCont = (props)=>{
                          Cluster
                          </a>
                     </div>
-                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/setting'?'app-nav-bar-main-link-cont-selec':null}`}>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/setting'?'app-nav-bar-main-link-cont-selec link-cont-selec-profile ':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
                          href={_BASE_CLIENT_URL+'src/setting'}>     

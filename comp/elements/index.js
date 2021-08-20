@@ -46,23 +46,24 @@ const FeedbackCont = (props)=>{
 
 const BottomCont =(prop)=>{
      return(
-          <div className='app-bottom-cont-main-cont'>
-               <div className='app-bottom-cont-lnk-cont'>Home</div>
-               <div className='app-bottom-cont-lnk-cont'>About Us</div>
-               <div className='app-bottom-cont-lnk-cont'>Terms of conditions</div>
-               <div className='app-bottom-cont-lnk-cont'>Privacy Policy</div>
-               <div className='app-bottom-cont-lnk-cont'>DMCA Policy</div>
-               <div className='app-bottom-cont-main-logo'>Cytelink</div>
-               <div className='app-bottom-cont-main-sys-stat'>
-                    Status:
-                    <div className='app-bottom-cont-main-sys-stat-lab'>
-                         <div className='app-bottom-cont-main-sys-stat-lab-cir'/>
-                         All systems normal</div>
-               </div>
-               <div className='app-bottom-cont-main-copy-cont'>
-                    Copyright &#xA9; 2021 Cytelink, All rights reserved.
-               </div>
-          </div>
+          <span/>
+          // <div className='app-bottom-cont-main-cont'>
+          //      <div className='app-bottom-cont-lnk-cont'>Home</div>
+          //      <div className='app-bottom-cont-lnk-cont'>About Us</div>
+          //      <div className='app-bottom-cont-lnk-cont'>Terms of conditions</div>
+          //      <div className='app-bottom-cont-lnk-cont'>Privacy Policy</div>
+          //      <div className='app-bottom-cont-lnk-cont'>DMCA Policy</div>
+          //      <div className='app-bottom-cont-main-logo'>Cytelink</div>
+          //      <div className='app-bottom-cont-main-sys-stat'>
+          //           Status:
+          //           <div className='app-bottom-cont-main-sys-stat-lab'>
+          //                <div className='app-bottom-cont-main-sys-stat-lab-cir'/>
+          //                All systems normal</div>
+          //      </div>
+          //      <div className='app-bottom-cont-main-copy-cont'>
+          //           Copyright &#xA9; 2021 Cytelink, All rights reserved.
+          //      </div>
+          // </div>
      )
 }
 
@@ -190,8 +191,8 @@ const HeaderCont = (props)=>{
 
 const NavBarCont = (props)=>{  
      return(
-          <div className='app-nav-bar-main-cont'>
-                       <div 
+          <div className='app-nav-bar-main-cont cluster-nav-bar-cont'>
+                       {/* <div 
                               className={`app-nav-bar-main-link-cont `}>
                               <a 
                                    className='app-nav-lnk-lnk app-nav-bar-back-link'
@@ -200,7 +201,7 @@ const NavBarCont = (props)=>{
                                         className={`app-nav-bar-main-link-ico`}
                                         xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
                               </a>
-                              </div>
+                              </div> */}
 
           
                     <div 
@@ -258,7 +259,7 @@ const NavBarCont = (props)=>{
                        </a>
                     </div>
                          
-                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/cluster'?'app-nav-bar-main-link-cont-selec':null}`}>
+                    <div className={`app-nav-bar-main-link-cont ${props.router.pathname=='/src/design' || props.router.pathname=='/src/cluster/settings' || props.router.pathname=='/src/cluster' ?'app-nav-bar-main-link-cont-selec':null}`}>
                          <a 
                          className='app-nav-lnk-lnk'
                          href={_BASE_CLIENT_URL+'src/cluster'}>                           

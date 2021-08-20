@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-spring-bottom-sheet/dist/style.css'
 import '../styles/globals.css'
 import '../styles/main.css';
+import '../styles/main-respo.css';
 import '../styles/land.css';
 import '../styles/login.css';
 import '../styles/link.css';

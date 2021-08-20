@@ -4,6 +4,11 @@
      border-bottom: 1px solid var(--borColor);
 
 }
+
+.cluster-land-body-cont{
+     padding-top: 92px;
+}
+
 .app-clust-act-topper-main-cont{
      padding-bottom: 32px;
      

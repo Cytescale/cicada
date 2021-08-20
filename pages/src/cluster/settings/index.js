@@ -2,7 +2,7 @@ import React,{useEffect, useRef, useState} from "react";
 import Head from "next/head";
 import { withRouter, NextRouter,useRouter } from 'next/router'
 import user from "../../../../comp/utils/user";
-import { BurgerMenu,ProfilePopover,NavBarCont,BottomCont,HeaderCont } from "../../../../comp/elements";
+import { BurgerMenu,LandNavBarCont,NavBarCont,BottomCont,HeaderCont } from "../../../../comp/elements";
 import { _BASE_CLIENT_URL } from "../../../../comp/helpers/api.routes";
 import firebaseHelper,{getUid,checkToken} from "../../../../comp/helpers/firebaseHelper";
 import backendHelper from "../../../../comp/helpers/backendHelper";
@@ -128,7 +128,7 @@ const Settings = (props)=>{
 
      if(!loading){
      return(
-          <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
+          <div className='app-main-cont-main-body land-body-cont cluster-land-body-cont'   id='lnk-lnk-main-cont-id'>
           <Head>
           <title>Sakura</title>
           <meta name="description" content="Cicada Login Activity" />
@@ -142,6 +142,7 @@ const Settings = (props)=>{
                           <GlobalStyles light={darkMode}/>
                     }
                     <NavBarCont router={router}/>
+                    <LandNavBarCont router={router}/>
                     {/* <div className='app-nav-bar-main-cont'>
                               <div 
                               className={`app-nav-bar-main-link-cont `}>

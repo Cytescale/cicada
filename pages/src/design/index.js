@@ -171,7 +171,7 @@ const design = (props)=>{
 
      if(!loading){
      return(
-          <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
+          <div className='app-main-cont-main-body land-body-cont cluster-land-body-cont'   id='lnk-lnk-main-cont-id'>
           <Head>
           <title>Cytelink</title>
           <meta name="description" content="Cicada Login Activity" />
@@ -183,6 +183,7 @@ const design = (props)=>{
                           // @ts-ignore: Unreachable code error
                           <GlobalStyles light={darkMode}/>
                     }
+                    <LandNavBarCont router={router}/>
                     <NavBarCont router={router}/>
                     <div className='app-clust-act-main-cont'>
                               <div className='app-clust-act-topper-main-cont'>

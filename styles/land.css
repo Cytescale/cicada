@@ -1689,9 +1689,9 @@ color: inherit;
      border-bottom-left-radius: 22px;
      border-bottom-right-radius: 22px;
      /* border-top: 2px solid var(--borColor); */
-     border-bottom: 1px solid var(--borColor);
+     /* border-bottom: 1px solid var(--borColor); */
      padding-top: 22px;
-     background-color: var(--linkHolderColor);
+     /* background-color: var(--linkHolderColor); */
 }
 .top-holder-cont{
      padding-top: 42px;
@@ -1778,7 +1778,8 @@ color: inherit;
      width: 92%;
      margin-left: 4%;
      padding: 12px;
-     display: inline-flex;
+     display: flex;
+     justify-content: center;
      position: relative;
 }
 
@@ -1988,6 +1989,7 @@ color: inherit;
 }
 
 .lnk-crt-main-cont-start-exit-anim{
+     
      animation: lnk-exit-trans 0.4s ease forwards;    
 }
 
@@ -2082,7 +2084,8 @@ color: inherit;
      outline: none;
      border-style: none;
      background-color: var(--pri-color);
-     
+     padding: 0;
+     overflow: visible;
      color: #fff;
      box-shadow: var(--boxShad);
 }
@@ -2095,6 +2098,7 @@ color: inherit;
      width: 100%;
      height: 100%;
      color:inherit;
+
 }
 
 .lnk-lnk-crt-lnk-crt-lab{

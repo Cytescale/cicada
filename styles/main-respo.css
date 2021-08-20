@@ -1,0 +1,13 @@
+@media only screen and (max-width: 600px) {
+     body {
+       
+     }
+
+     .app-main-cont-main-body
+     {
+          left: 0;
+     }
+     .app-head-main-cont{
+          left:0;
+     }
+   }

@@ -778,10 +778,10 @@ class Land extends React.Component<LandProps,any>{
                }
           }
      }
-          openInNewTab(url:string){
+     openInNewTab(url:string){
                const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
                if (newWindow) newWindow.opener = null
-          }
+     }
      renderLinkLogo(platform_id:number){
           switch(platform_id)
           {
@@ -1538,7 +1538,7 @@ class Land extends React.Component<LandProps,any>{
                                                                       </div>:
                                                                  <span/>
                                                             }
-                                                            <div className='app-land-pro-edit-main-cont'>
+                                                            {/* <div className='app-land-pro-edit-main-cont'>
                                                                       <a href="/src/setting">
                                                                       <button className='app-land-pro-edit-butt ' disabled>
                                                                       <svg className='app-land-pro-edit-butt-ico'  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1547,7 +1547,7 @@ class Land extends React.Component<LandProps,any>{
                                                                            </svg>
                                                                       </button>
                                                                       </a>
-                                                            </div>
+                                                            </div> */}
                                              </div>
                                                   <WelcomeHead/>
                                              

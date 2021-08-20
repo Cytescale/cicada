@@ -166,6 +166,7 @@ import publicIp from 'public-ip';
                color: ${props => props.textColor};
                box-shadow:${props => props.bioCardShad};
                family-font:poppins;
+               font-weight:600;
           }
 
           .cluster-hr-cont{

@@ -72,7 +72,8 @@ class LoginAct extends React.Component<LoginProps,any>{
           User.purgeData();
      }
      
-     async handleLoginSub(){
+     async handleLoginSub(event:any){
+          event.preventDefault();
           if(this.state.emlFldData.length && this.state.pssFldData.length){
                this.setLoading(true);
                FirebaseHelper.initEmailAuth(this.state.emlFldData,this.state.pssFldData).then((res:any)=>{
@@ -149,7 +150,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                                    Cytelink
                                    </a>
                          </div>
-                         {/* <form> */}
+                         <form  onSubmit={this.handleLoginSub} method='none'>
                          <div className='app-moto-cont-main-body'>
                                    <div className='app-moto-cont-main-sub-body'>
                                         <div className='app-moto-cont-tit-1'>
@@ -193,10 +194,8 @@ class LoginAct extends React.Component<LoginProps,any>{
                               <div className='app-login-sub-main-cont'>
                                         <button className='app-login-sub-butt' 
                                              disabled={this.state.loading}
-                                             onClick={()=>{
-                                             this.handleLoginSub();
-                                                  //this.props.router.push('/src/land');
-                                        }}>
+                                             type='submit'
+                                        >
                                              {!this.state.loading?'Login':'Just a sec'}
                                         </button>
                               </div>
@@ -224,7 +223,7 @@ class LoginAct extends React.Component<LoginProps,any>{
                               </div>
                               </a>
                          </div>
-                         {/* </form> */}
+                         </form>
                </div>
                <ToastContainer />
                <BottomCont/>

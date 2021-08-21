@@ -1,11 +1,38 @@
 import Chart from 'chart.js/auto';
-import { useEffect,useRef } from 'react';
+import { useEffect,useRef, useState } from 'react';
+import backendHelper from "../../../comp/helpers/backendHelper";
+const BackendHelper = new backendHelper();
+import {Spinner} from 'react-bootstrap';
 
-   function renderVisitGraph(canvasRef){
+
+const DAYS_LIMIT = 15;
+
+function renderVisitGraph(canvasRef,darkMode,chartData){
+     if(!chartData){return null;}
+          let countData = [];
+          let currDate = new Date();
+          for(let z = 0 ; z < DAYS_LIMIT ; z++){countData[z]=0;}
+          for(let j =  0 ; j < DAYS_LIMIT;j++){
+               let yesterday = new Date(currDate)
+               yesterday.setDate(yesterday.getDate() - j);
+               for(let i  = 0;i<chartData.length;i++){
+                    let tdt = new Date(chartData[i].creation_timestamp);
+                    if(yesterday.getDate() == tdt.getDate()){
+                         countData[j] = countData[j]+1; 
+                    }
+               }
+          }
+          console.log(countData);
+          
           const canvas = canvasRef;
           let ctx  = canvas.current.getContext('2d');     
           let gradient_2 = ctx.createLinearGradient(0, 0, 0,70);
-          gradient_2.addColorStop(1, 'rgba(0,0,0,0)');
+          if(!darkMode){
+               gradient_2.addColorStop(1, 'rgba(0,0,0,0)');
+          }else{
+               gradient_2.addColorStop(1, 'rgba(255,255,255,0)');
+          }
+          
           gradient_2.addColorStop(0, '#55A3FF');
           let gradient = ctx.createLinearGradient(100, 0, 100,100);
           gradient.addColorStop(0, '#11E4D1');
@@ -16,7 +43,7 @@ import { useEffect,useRef } from 'react';
                     labels: ['a','b','c','d','e','a','b','c','d','e','a','b','c','d','e'],
                     datasets: [{
                          fill:true,   
-                        data:[100,100,200,400,250,500,200,270,350,210,240,160,70,103,120],
+                        data:countData.reverse(),
                         backgroundColor:gradient_2,
                         borderColor: '#55A3FF',
                         borderWidth: 4,
@@ -60,20 +87,56 @@ import { useEffect,useRef } from 'react';
                    }
                   }
            });
+               
                 ctx.clearRect(0, 0, 200, 300);
                 ctx.restore();
+                return myChart;    
      }
-var landVisitChart = ()=>{
-
+var landVisitChart = (props)=>{
      const canvasRef = useRef(null);
-  
+     const [chart,setChart] = useState(null);
+     const [loading,setLoading] = useState(true);
+     const [chartData,setchartData] = useState(null);
      useEffect(() => {
-          renderVisitGraph(canvasRef);
-     }, []);
+          if(chart){chart.destroy();}     
+          if(!chartData){
+               BackendHelper._getClusterAnalyticsData(props.uid).then((r)=>{
+                    if(!r.errBool){
+                         let da  = r.responseData.clusterAnalyticsData
+                         setLoading(false);
+                         setchartData(da); 
+                         console.log(da);
+                         setChart(renderVisitGraph(canvasRef,props.darkMode,da));
+                         
+                    }else{
+                         throw new Error(r.errMess);
+                    }
+     
+               }).catch(e=>{
+                    console.log('Cluster analytics fetching error '+e);     
+               }) 
+          }
+          else{
+               setChart(renderVisitGraph(canvasRef,props.darkMode,chartData));
+          }
+          setLoading(false);
+          
+     }, [props.darkMode,props.uid]);
 
      return(
           <div className='app-land-vist-grph-canva'>
-               <canvas ref={canvasRef} height='130' className='app_land_grh_viw'/>
+               {
+               !loading?
+               chartData?
+               <canvas ref={canvasRef} height='130' className='app_land_grh_viw'/>:
+               <div
+               className='app_land_grh_viw-err'
+               >No Data Yet :(</div>:
+               <div className='app_land_grh_viw-err'>
+                    <Spinner animation="border" role="status" variant={!props.darkMode?'dark':'light'}/>
+               </div>
+               }
+               
           </div>
      )
 

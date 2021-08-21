@@ -260,6 +260,27 @@ export default class BackendHelper{
                     });
           })
      }
+     async _getClusterAnalyticsData(uid:string):Promise<nexusResponse>{
+          var data = JSON.stringify({"uid": uid});             
+          return new Promise((resolve, reject) => {
+                axios({
+                         method: 'post',
+                         url:URLS.getClusterAnalyticsData,
+                         headers: { 'Content-Type': 'application/json'},
+                         data : data,
+                         timeout: BackendHelper.REQUEST_TIMEOUT,
+                    })
+                    .then((response)=>{
+                         let rd:nexusResponse = response.data;
+                         resolve(rd);
+                    })
+                    .catch((error)=>{
+                    console.log(error);
+                    let sr:nexusResponse ={errBool:true,errMess:error,responseData:null,}
+                    reject(sr);
+                    });
+          })
+     }
      async _getClusterConfigByUid(uid:string):Promise<nexusResponse>{
           var data = JSON.stringify({"uid": uid});             
           return new Promise((resolve, reject) => {

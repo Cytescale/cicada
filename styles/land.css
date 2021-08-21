@@ -1350,6 +1350,16 @@ background-color: var(--cardColor-disabled);
 .app_land_grh_viw{
 
 }
+.app_land_grh_viw-err{
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     font-family: inter;
+     font-size: 16px;
+     font-weight: 600;
+     color: var(--danger);
+
+}
 
 .app-land-visit-card-main-cont{
      display: inline-flex;
@@ -1363,7 +1373,7 @@ background-color: var(--cardColor-disabled);
 }
 
 .app-land-visit-card-left-lab{
-     font-size: 19px;
+     font-size: 15px;
      display: inline-flex;
      font-family: inter;
      font-weight: 700;
@@ -1371,7 +1381,7 @@ background-color: var(--cardColor-disabled);
 }
 .app-land-visit-card-left-time{
      font-size: 12px;
-     color: #bdbdbd;
+     color: var(--subHeadingTextColor);
      font-weight: 700;
      margin-top: 4px;
      font-family: inter;

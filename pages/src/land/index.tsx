@@ -585,7 +585,8 @@ class Land extends React.Component<LandProps,any>{
           this.setlinkQrCodeModalVisi = this.setlinkQrCodeModalVisi.bind(this);
           this.setselectLinkDest = this.setselectLinkDest.bind(this);
 
-     
+          
+
 
      }
      setselectLinkDest(s:string){this.setState({selectLinkDest:s})}
@@ -1426,6 +1427,13 @@ class Land extends React.Component<LandProps,any>{
           }
           return res;
      }
+     handleScroll(){
+          
+     }
+
+     componentWillUnmount(){
+       
+     }
      
      componentDidMount(){
           console.log('component mount');
@@ -1443,7 +1451,10 @@ class Land extends React.Component<LandProps,any>{
      render(){
           if(!this.state.isLoading){
           return(
-               <div className='app-main-cont-main-body land-body-cont'   id='lnk-lnk-main-cont-id'>
+               <div 
+               className='app-main-cont-main-body land-body-cont' 
+               id='lnk-lnk-main-cont-id'
+               >
                     {
                           // @ts-ignore: Unreachable code error
                           <GlobalStyles light={this.state.darkMode}/>

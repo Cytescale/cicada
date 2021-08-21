@@ -65,7 +65,7 @@ font-weight: 600;
      flex-direction: column;
      width: 100%;
      height: 100%;
-     background-color: var(--backColor);
+     background-color: var(--cardColor);
      padding: 22px;
      padding-top: 0;
 }
@@ -158,7 +158,13 @@ font-weight: 600;
 .app-sett-acrd-main-cont{
      width: 100%;
      border-style: none;
+     background-color: var(--cardColor);
 }
+
+.sett-card-cont{
+     background-color: var(--cardColor);
+}
+
 .app-set-err-main-cont{
      width: 100%;
      height: 42px;

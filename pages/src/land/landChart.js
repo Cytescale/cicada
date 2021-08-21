@@ -22,8 +22,6 @@ function renderVisitGraph(canvasRef,darkMode,chartData){
                     }
                }
           }
-          console.log(countData);
-          
           const canvas = canvasRef;
           let ctx  = canvas.current.getContext('2d');     
           let gradient_2 = ctx.createLinearGradient(0, 0, 0,70);

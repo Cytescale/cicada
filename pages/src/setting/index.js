@@ -308,8 +308,8 @@ const Profile = (props)=>{
                                    style=
                                    {{display:overlayVisi?'block':'none'}}
                               />
-                                             <Accordion className='app-sett-acrd-main-cont' defaultActiveKey="0">
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                             <Accordion className='app-sett-acrd-main-cont' defaultActiveKey="0" >
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont sett-card-cont'>
                                                   <svg 
                                                   className='app-land-visit-card-acrd-togg-butt-ico'
                                                   width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -378,7 +378,7 @@ const Profile = (props)=>{
                                              </Accordion.Collapse>
                                              </Accordion>
                                              <Accordion className='app-sett-acrd-main-cont'>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont sett-card-cont'>
                                                  
                                              <svg 
                                           className='app-land-visit-card-acrd-togg-butt-ico'   
@@ -407,7 +407,7 @@ const Profile = (props)=>{
                                              </Accordion.Collapse>
                                              </Accordion>               
                                              <Accordion className='app-sett-acrd-main-cont'>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont sett-card-cont'>
                                                  
                                                   <svg 
                                                   className='app-land-visit-card-acrd-togg-butt-ico'   
@@ -429,7 +429,7 @@ const Profile = (props)=>{
                                              </Accordion.Collapse>
                                              </Accordion>                 
                                              <Accordion className='app-sett-acrd-main-cont'>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont sett-card-cont' >
                                                   <svg 
                                                   className='app-land-visit-card-acrd-togg-butt-ico'   
                                                   width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -447,7 +447,7 @@ const Profile = (props)=>{
                                              </Accordion.Collapse>
                                              </Accordion>
                                              <Accordion className='app-sett-acrd-main-cont'>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont'>
+                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont sett-card-cont'>
                                                   <svg 
                                                   className='app-land-visit-card-acrd-togg-butt-ico'   
                                                   width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -39,14 +39,14 @@
 margin-right: 4px;
 }
 .dash-wel-main-cont{
-     width: 92%;
-     margin-left: 4%;
-     margin-right: 4%;
+     width: 88%;
+     margin-left: 6%;
+     margin-right: 6%;
      height: var(--welcomeCardHeight);
-     font-family: inter;
+     font-family: poppins;
      position: relative;
      border-radius: 10px;
-     font-size: 26px;
+     font-size: 25px;
      padding: 22px;
      color: #fff;
      font-weight: 700;

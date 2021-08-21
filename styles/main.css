@@ -786,7 +786,7 @@ font-family: inter;
 }
 
    .app-nav-bar-main-link-cont-selec{
-        color: #06BEAE;
+        color: #FFD643;
         font-weight: 600;
         /* border-bottom: 3px solid var(--NavTextColor-selec); */
    }
@@ -796,7 +796,7 @@ font-family: inter;
    }
 
    .link-cont-selec-cluster{
-        color: #06BEAE;
+        color: #FFD643;
    }
    .link-cont-selec-profile{
         color: #BB86FC;

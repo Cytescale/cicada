@@ -343,6 +343,10 @@ margin-bottom: 0px;
      padding: 0px;
      color: var(--textColor);
      border:2px solid var(--textColor);
+     display: flex;
+     justify-content: center;
+     align-content: center;
+     vertical-align: middle;
      padding-top: 5px;
      padding-bottom: 5px;
      padding-left: 10px;
@@ -350,12 +354,17 @@ margin-bottom: 0px;
      font-weight: 500; 
      font-size: 10px;
      font-family: inter;
+     text-decoration: none;
+
 }
 
 .link-feed-butt:active{
      background-color: var(--textColor);
      color: var(--backColor);
+     text-decoration: none;
 }
+
+
 
 .app-land-prof-pic-butt-ico{
      width: 24px;

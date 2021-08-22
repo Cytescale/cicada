@@ -1287,7 +1287,7 @@ background-color: var(--cardColor-disabled);
      z-index: 20;
      word-wrap: normal;
      align-items: center;
-     display: inline-flex;
+     display: block;
      background-color: var(--backColor);
      /* position: -webkit-sticky; */
      position: -webkit-sticky;

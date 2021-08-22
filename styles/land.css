@@ -1298,10 +1298,6 @@ background-color: var(--cardColor-disabled);
      top: 62px;
 }
 
-.app-land-lab-main-cont:stuck
-{
-     color: red;
-}
 .app-land-lab-main-cont-ico{
      margin-right: 7px;
      width: 17px;

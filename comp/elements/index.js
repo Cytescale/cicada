@@ -362,5 +362,37 @@ const NavBarCont = (props)=>{
      )
 }
 
+const RenderAccordion = (props)=>{
 
-export {BurgerMenu,ProfilePopover,NavBarCont,BottomCont,LandNavBarCont,FeedbackCont,HeaderCont,RenderPlatformLogo}
+     const [expanded,setexpanded] = useState(props.default?props.default:false);
+
+     return(
+          <div className={`app-accord-main-outer-body ${props.prefiix?props.prefiix:null}`}>
+                <div className={`app-accord-main-title-outer-body`} 
+                    onClick={()=>{setexpanded(!expanded)}}
+                >
+                    {props.titleBar(expanded)}
+                </div>
+                <div className={`app-accord-main-expand-body`}
+                style={{
+                     display:`${expanded?'block':'none'}`
+                }}
+                >
+                {props.children}
+                </div>
+                
+          </div>
+     )
+}
+
+
+export {
+     BurgerMenu,
+     ProfilePopover,
+     NavBarCont,
+     BottomCont,
+     LandNavBarCont,
+     FeedbackCont,
+     HeaderCont,
+     RenderPlatformLogo,
+     RenderAccordion}

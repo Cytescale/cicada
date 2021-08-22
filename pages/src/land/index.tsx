@@ -14,7 +14,7 @@ import copy from 'copy-to-clipboard';
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import getAuth from '../../../comp/utils/getAuth';
 import { timeDifference,smalltimeDifference } from "../../../comp/utils/utils";
-import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont,HeaderCont,RenderPlatformLogo} from "../../../comp/elements";
+import { BurgerMenu,ProfilePopover,LandNavBarCont,BottomCont,FeedbackCont,HeaderCont,RenderPlatformLogo,RenderAccordion} from "../../../comp/elements";
 import LandVisitChart from './landChart';
 import {landFullVisitChart as LandFullVisitChart} from './landChart';
 import styled ,{ThemeProvider} from "styled-components";
@@ -1516,17 +1516,33 @@ class Land extends React.Component<LandProps,any>{
                                              
                                         </div>
                                    
-                                        <div className='app-land-link-cont-holder cluster-holder-cont' style={{display:'block'}}> 
-                                        <div className='app-land-lab-main-cont'>
-                                             <svg 
-                                             className='app-land-lab-main-cont-ico'
-                                             width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                             <path d="M7.53693 27.6692C7.35423 28.4772 7.86117 29.2804 8.6692 29.4631C9.47723 29.6458 10.2804 29.1388 10.4631 28.3308L7.53693 27.6692ZM17.8372 20.2856L18.4988 18.9394L17.8372 20.2856ZM24.3488 16.1714L25.7594 16.6816L24.3488 16.1714ZM29.8013 11.2681C30.5016 10.8255 30.7106 9.89908 30.2681 9.19875C29.8255 8.49841 28.8991 8.28941 28.1987 8.73193L29.8013 11.2681ZM10.4631 28.3308C10.8785 26.4934 11.9312 24.3034 13.2911 22.8554C14.6505 21.4079 15.9389 21.024 17.1756 21.6318L18.4988 18.9394C15.5495 17.49 12.8844 18.9063 11.1043 20.8017C9.32461 22.6966 8.05173 25.3923 7.53693 27.6692L10.4631 28.3308ZM17.1756 21.6318C18.7042 22.383 20.045 22.7619 21.2289 22.6833C22.5121 22.5981 23.4451 21.9875 24.0794 21.1478C24.657 20.3833 24.9674 19.4554 25.1824 18.7077C25.4305 17.8452 25.5468 17.2694 25.7594 16.6816L22.9383 15.6611C22.6858 16.3591 22.4684 17.2906 22.2993 17.8785C22.0972 18.5812 21.907 19.0465 21.6857 19.3394C21.5213 19.5571 21.3571 19.6681 21.0301 19.6899C20.6039 19.7182 19.8214 19.5894 18.4988 18.9394L17.1756 21.6318ZM25.7594 16.6816C26.2459 15.3368 26.534 14.5035 27.0524 13.7219C27.5422 12.9834 28.2943 12.2203 29.8013 11.2681L28.1987 8.73193C26.4499 9.83698 25.3415 10.8738 24.5523 12.0637C23.7916 13.2106 23.382 14.4344 22.9383 15.6611L25.7594 16.6816Z" 
-                                             fill="currentColor"/>
-                                             </svg>
-                                              Activity</div>
-                                             <div className='app-land-visit-card-main-outer-cont'>
+                                        <div className='app-land-link-cont-holder cluster-holder-cont'> 
+                                        <RenderAccordion
+                                        default={false} 
+                                        titleBar={(expanded:any)=>{
+                                             return(
+                                                  <div className={`app-land-lab-main-cont ${expanded?'app-land-lab-expnded':null}`}>
+                                                  <svg 
+                                                  className='app-land-lab-main-cont-ico'
+                                                  width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                                  <path d="M7.53693 27.6692C7.35423 28.4772 7.86117 29.2804 8.6692 29.4631C9.47723 29.6458 10.2804 29.1388 10.4631 28.3308L7.53693 27.6692ZM17.8372 20.2856L18.4988 18.9394L17.8372 20.2856ZM24.3488 16.1714L25.7594 16.6816L24.3488 16.1714ZM29.8013 11.2681C30.5016 10.8255 30.7106 9.89908 30.2681 9.19875C29.8255 8.49841 28.8991 8.28941 28.1987 8.73193L29.8013 11.2681ZM10.4631 28.3308C10.8785 26.4934 11.9312 24.3034 13.2911 22.8554C14.6505 21.4079 15.9389 21.024 17.1756 21.6318L18.4988 18.9394C15.5495 17.49 12.8844 18.9063 11.1043 20.8017C9.32461 22.6966 8.05173 25.3923 7.53693 27.6692L10.4631 28.3308ZM17.1756 21.6318C18.7042 22.383 20.045 22.7619 21.2289 22.6833C22.5121 22.5981 23.4451 21.9875 24.0794 21.1478C24.657 20.3833 24.9674 19.4554 25.1824 18.7077C25.4305 17.8452 25.5468 17.2694 25.7594 16.6816L22.9383 15.6611C22.6858 16.3591 22.4684 17.2906 22.2993 17.8785C22.0972 18.5812 21.907 19.0465 21.6857 19.3394C21.5213 19.5571 21.3571 19.6681 21.0301 19.6899C20.6039 19.7182 19.8214 19.5894 18.4988 18.9394L17.1756 21.6318ZM25.7594 16.6816C26.2459 15.3368 26.534 14.5035 27.0524 13.7219C27.5422 12.9834 28.2943 12.2203 29.8013 11.2681L28.1987 8.73193C26.4499 9.83698 25.3415 10.8738 24.5523 12.0637C23.7916 13.2106 23.382 14.4344 22.9383 15.6611L25.7594 16.6816Z" 
+                                                  fill="currentColor"/>
+                                                  </svg>
+                                                   Activity
+                                                   <div className='app-accord-drop-ico-main-cont'>
+                                                        {
+                                                             expanded?
+                                                             <svg className='app-accord-drop-ico-main-ico'height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/></svg>:
+                                                             <svg  className='app-accord-drop-ico-main-ico' height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                                        }
+                                                   </div>
+                                                   </div>
+                                                  
+                                             )
+                                        }}
+                                        >
+                                        <div className='app-land-visit-card-main-outer-cont'>
                                              <div className='app-land-visit-card-main-cont'>
                                                   <div className='app-land-visit-card-left-cont'>
                                                        <div className='app-land-visit-card-left-lab'>Clustor Visitors </div>
@@ -1534,31 +1550,38 @@ class Land extends React.Component<LandProps,any>{
                                                   </div>
                                                   <LandVisitChart darkMode={this.state.darkMode} uid={User?.getUserUid()!} toast={toast}/>
                                              </div>
-{/*                                         
-                                             <Accordion>
-                                             <Accordion.Toggle as={Card.Header} eventKey="0" className='app-land-visit-card-acrd-togg-cont land-card-acrd-togg-cont'>
-                                                  Show more
-                                                  <svg className='app-land-visit-card-acrd-togg-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
-                                             </Accordion.Toggle>
-                                             <Accordion.Collapse eventKey="0">
-                                                  <LandFullVisitChart/>
-                                             </Accordion.Collapse>
-                                             </Accordion> */}
-                                   </div>
-                               </div> 
+                                             </div>
+                                        </RenderAccordion>
+                                        </div> 
                                    <div className='app-land-link-cont-holder cluster-holder-cont'>
-                                   <div className='app-land-lab-main-cont'>                              
-                                        <svg 
-                                        className='app-land-lab-main-cont-ico'
-                                        width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                        <rect x="8" y="10" width="21" height="3" rx="1.5" fill="currentColor"/>
-                                        <rect x="8" y="16" width="21" height="5" rx="2" fill="currentColor"/>
-                                        <rect x="8" y="24" width="21" height="3" rx="1.5" fill="currentColor"/>
-                                        </svg>
+                                   <RenderAccordion
+                                        default={false} 
+                                        titleBar={(expanded:any)=>{
+                                             return(
+                                                  <div className={`app-land-lab-main-cont ${expanded?'app-land-lab-expnded':null}`}>
+                                                   <svg 
+                                                       className='app-land-lab-main-cont-ico'
+                                                       width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                       <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                                       <rect x="8" y="10" width="21" height="3" rx="1.5" fill="currentColor"/>
+                                                       <rect x="8" y="16" width="21" height="5" rx="2" fill="currentColor"/>
+                                                       <rect x="8" y="24" width="21" height="3" rx="1.5" fill="currentColor"/>
+                                                       </svg>
 
-                                        Cluster Link</div>
-                                   <div className='clust-link-main-cont'> 
+                                                       Cluster Link
+                                                   <div className='app-accord-drop-ico-main-cont'>
+                                                        {
+                                                             expanded?
+                                                             <svg className='app-accord-drop-ico-main-ico'height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/></svg>:
+                                                             <svg  className='app-accord-drop-ico-main-ico' height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                                        }
+                                                   </div>
+                                                   </div>
+                                                  
+                                             )
+                                        }}
+                                        >
+                                         <div className='clust-link-main-cont'> 
                                         <div className='clust-link-main-inner-cont'>
                                         <div className='clust-link-main-lock-cont'>
                                              <svg className='clust-link-main-lock-ico' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
@@ -1594,26 +1617,41 @@ class Land extends React.Component<LandProps,any>{
                                         <div className='clust-visit-main-cont'>
                                                        <a className='clust-visit-main-cont-lnk' href={_BASE_CLIENT_URL+'src/cluster'}>
                                                        Go to cluster settings
-                                                       {/* <svg className='clust-visit-main-cont-ico' xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><linearGradient id="UoM~0_1BpfEneny~ePS0ba" x1="8.469" x2="42.33" y1="8.469" y2="42.33" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"/><stop offset="1" stop-color="#007ad9"/></linearGradient><path fill="url(#UoM~0_1BpfEneny~ePS0ba)" d="M39,41H9c-1.1,0-2-0.9-2-2V9c0-1.1,0.9-2,2-2h30c1.1,0,2,0.9,2,2v30C41,40.1,40.1,41,39,41z"/><path d="M41,7h-5.528L20.695,21.777c-0.746,0.746-0.746,1.954,0,2.7l2.828,2.828 c0.746,0.746,1.954,0.746,2.7,0L41,12.528V7z" opacity=".018"/><path d="M41,7h-5.4L20.759,21.841c-0.71,0.71-0.71,1.861,0,2.571l2.828,2.828 c0.71,0.71,1.861,0.71,2.571,0L41,12.4V7z" opacity=".036"/><path d="M41,7h-5.271L20.823,21.906c-0.675,0.675-0.675,1.768,0,2.443l2.828,2.828 c0.675,0.675,1.768,0.675,2.443,0L41,12.271V7z" opacity=".054"/><path d="M41,7h-5.143l-14.97,14.97c-0.639,0.639-0.639,1.675,0,2.314l2.828,2.828 c0.639,0.639,1.675,0.639,2.314,0L41,12.143V7z" opacity=".073"/><path d="M41,7h-5.014L20.952,22.034c-0.604,0.604-0.604,1.582,0,2.186l2.828,2.828 c0.604,0.604,1.582,0.604,2.186,0L41,12.014V7z" opacity=".091"/><path d="M41,7h-4.885L21.016,22.098c-0.568,0.568-0.568,1.489,0,2.057l2.828,2.828 c0.568,0.568,1.489,0.568,2.057,0L41,11.885V7z" opacity=".109"/><path d="M41,7h-4.757L21.081,22.163c-0.533,0.533-0.533,1.396,0,1.928l2.828,2.828 c0.533,0.533,1.396,0.533,1.928,0L41,11.757V7z" opacity=".127"/><path d="M41,7h-4.628L21.145,22.227c-0.497,0.497-0.497,1.303,0,1.8l2.828,2.828 c0.497,0.497,1.303,0.497,1.8,0L41,11.628V7z" opacity=".145"/><path d="M41,7h-4.5L21.209,22.291c-0.462,0.462-0.462,1.21,0,1.671l2.828,2.828 c0.462,0.462,1.21,0.462,1.671,0L41,11.5V7z" opacity=".164"/><path d="M41,7h-4.371L21.273,22.355c-0.426,0.426-0.426,1.117,0,1.543l2.828,2.828 c0.426,0.426,1.117,0.426,1.543,0L41,11.371V7z" opacity=".182"/><path d="M41,7h-4.243l-15.42,15.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828 c0.391,0.391,1.024,0.391,1.414,0L41,11.243V7z" opacity=".2"/><path fill="#50e6ff" d="M36.452,1.379l2.963,2.963L21.338,22.42c-0.391,0.391-0.391,1.024,0,1.414l2.828,2.828	c0.391,0.391,1.024,0.391,1.414,0L43.658,8.585l2.963,2.963C47.13,12.057,48,11.697,48,10.977l0-9.361C48,0.723,47.277,0,46.384,0	l-9.361,0C36.303,0,35.943,0.87,36.452,1.379z"/></svg> */}
                                                        </a>
                                         </div>
                                    </div>
+                                        </RenderAccordion>
+                                
                                         
 
                                    </div>
                                    <div className='app-land-link-cont-holder lnk-holder-cust'>
-                                   
-                                   
-                                   <div className='app-land-lab-main-cont'>
-                                        <svg 
-                                        className='app-land-lab-main-cont-ico'
-                                        width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
-                                        <path d="M20.5 16.5C19.3 15.3 16 15.0001 15 16.0001L10 21.5C8.5 24 10.4665 27.1611 12.5 27.5C15.5 28 15.5 27 17.5 25.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <path d="M16.5 20C17.8057 21.2753 20 22.4999 22 20.9999L24.7049 18.4999L27.4252 15.5149C29.0573 12.8579 26.9176 9.49832 24.7049 9.13815C21.4406 8.60679 21.4406 9.66954 19.2643 11.2637" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        </svg>
-                                        Links {this.state.linksData.length}</div>
-                                   
+                                   <RenderAccordion
+                                        default={true} 
+                                        titleBar={(expanded:any)=>{
+                                             return(
+                                                  <div className={`app-land-lab-main-cont ${expanded?'app-land-lab-expnded':null}`}>
+                                                  <svg 
+                                                       className='app-land-lab-main-cont-ico'
+                                                       width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                       <rect x="1.5" y="1.5" width="34" height="34" rx="11.5" stroke="currentColor" stroke-width="3"/>
+                                                       <path d="M20.5 16.5C19.3 15.3 16 15.0001 15 16.0001L10 21.5C8.5 24 10.4665 27.1611 12.5 27.5C15.5 28 15.5 27 17.5 25.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                                       <path d="M16.5 20C17.8057 21.2753 20 22.4999 22 20.9999L24.7049 18.4999L27.4252 15.5149C29.0573 12.8579 26.9176 9.49832 24.7049 9.13815C21.4406 8.60679 21.4406 9.66954 19.2643 11.2637" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                                       </svg>
+                                                       Links {this.state.linksData.length}
+                                                   <div className='app-accord-drop-ico-main-cont'>
+                                                        {
+                                                             expanded?
+                                                             <svg className='app-accord-drop-ico-main-ico'height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/></svg>:
+                                                             <svg  className='app-accord-drop-ico-main-ico' height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
+                                                        }
+                                                   </div>
+                                                   </div>
+                                                  
+                                             )
+                                        }}
+                                        >
+                                      
                                    <div className='app-land-serch-main-cont'>
                                              <div className='app-land-top-butt-group-cont'>
                                              <button className='app-land-crt-lnk-butt'
@@ -1651,13 +1689,7 @@ class Land extends React.Component<LandProps,any>{
                                    {
                                    this.state.linkDataLoading?
                                    <div className='app-land-rel-main-cont'>
-                                   <Spinner
-                                   as="span"
-                                   animation="border"
-                                   size="sm"
-                                   role="status"
-                                   aria-hidden="true"
-                                   />
+                                   <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true"/>
                                    </div>:
                                    <div 
                                    className={
@@ -1676,19 +1708,20 @@ class Land extends React.Component<LandProps,any>{
                                         }}
                                    
                                    >
-                                   {this.renderLinkAdder()}
-                                   {this.renderLinkTable()}
-                                   </div>
-                                   }
-                                   
-                                   <div className='app-land-lnks-holder-shw-mr-main-cont'>
-                                        <button className='app-land-lnks-holder-shw-mr-butt'
-                                        onClick={()=>{ this.setshowAllLinks(!this.state.showAllLinks)}}
-                                        >{
-                                        this.state.showAllLinks?'Show less':'Show more'
-                                        }</button>
-                                   </div>
-                                   
+                                        {this.renderLinkAdder()}
+                                        {this.renderLinkTable()}
+                                        </div>
+                                        }
+                                        
+                                        <div className='app-land-lnks-holder-shw-mr-main-cont'>
+                                             <button className='app-land-lnks-holder-shw-mr-butt'
+                                             onClick={()=>{ this.setshowAllLinks(!this.state.showAllLinks)}}
+                                             >{
+                                             this.state.showAllLinks?'Show less':'Show more'
+                                             }</button>
+                                        </div>
+                                        </RenderAccordion>
+                               
                                    </div>
                                    
                               </div>

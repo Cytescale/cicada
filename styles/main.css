@@ -1061,3 +1061,36 @@ font-family: inter;
    .app-dark-mode-butt-ico{
      color: inherit;
    }
+
+   .app-accord-main-outer-body{
+
+   }
+
+   .app-accord-main-expand-body{
+
+   }
+   .app-accord-main-title-outer-body{
+    z-index: 30;
+     display: block;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
+    position: sticky;
+    top: 62px;    
+   }
+
+   .app-accord-drop-ico-main-cont{
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     margin-right: 4%;
+     display: flex;
+     align-items: center;
+     width: fit-content;
+     color: var(--pri-color);
+   }
+   .app-accord-drop-ico-main-ico{
+        color: inherit;
+   }

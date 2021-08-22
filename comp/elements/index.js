@@ -160,7 +160,12 @@ const BurgerMenu = (props)=>{
 
 const HeaderCont = (props)=>{  
      return(
-          <div className='app-head-main-cont link-head-body-cont'>
+          <div className={
+               `app-head-main-cont link-head-body-cont 
+               ${props.transiBool?null:'app-head-main-cont-filled'} 
+               ${props.transiBool?props.scrollY>92?'app-head-main-cont-transi':'app-head-main-cont-anit-transi':null}
+               
+               `}>
           <div className='app-head-main-cont-logo link-head-logo'>
                <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
           </div>

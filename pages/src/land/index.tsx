@@ -543,6 +543,7 @@ class Land extends React.Component<LandProps,any>{
                searchQuery:null,
                showAllLinks:false,               
                darkMode:true,
+               windowScrollY:0,
           }
 
           this.initDataLoad = this.initDataLoad.bind(this);
@@ -584,11 +585,10 @@ class Land extends React.Component<LandProps,any>{
           this.setdarkMode = this.setdarkMode.bind(this);
           this.setlinkQrCodeModalVisi = this.setlinkQrCodeModalVisi.bind(this);
           this.setselectLinkDest = this.setselectLinkDest.bind(this);
-
+          this.setwindowScrollY  = this.setwindowScrollY.bind(this);
           
-
-
      }
+     setwindowScrollY(n:number){this.setState({windowScrollY:n})}
      setselectLinkDest(s:string){this.setState({selectLinkDest:s})}
      setlinkQrCodeModalVisi(b:boolean){this.setState({linkQrCodeModalVisi:b})}
      setdarkMode(b:boolean){this.setState({darkMode:b})}
@@ -1432,11 +1432,12 @@ class Land extends React.Component<LandProps,any>{
      }
 
      componentWillUnmount(){
-       
+          window.removeEventListener('scroll', event => {this.setwindowScrollY(window.scrollY)})  
      }
      
      componentDidMount(){
           console.log('component mount');
+          window.addEventListener('scroll', event => {this.setwindowScrollY(window.scrollY)})
           this.setLoading(true);
           getAuth().then((m)=>{
                console.log("User auth success"+m);
@@ -1466,7 +1467,7 @@ class Land extends React.Component<LandProps,any>{
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />
                     </Head>
-                         <HeaderCont setdarkMode={this.setdarkMode} darkMode={this.state.darkMode} />
+                         <HeaderCont setdarkMode={this.setdarkMode} darkMode={this.state.darkMode} transiBool={true} scrollY={this.state.windowScrollY} />
                          <LandNavBarCont router={this.props.router}/>
                          <div id='app-main-cont-body-id'>
                               <div className='app-body-main-cont'>

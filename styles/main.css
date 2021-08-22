@@ -226,12 +226,51 @@ font-family: inter;
      z-index:  100;
      align-items: center;
      padding-left: 22px;
-     background-color: var(--headColor);
+     
      position: fixed;
      top: 0;
      left: calc(50% - 250px);
      right: 0;
 }
+
+
+.app-head-main-cont-filled{
+     background-color: var(--headColor);         
+}
+
+@keyframes head-bar-anim{
+     from{     
+          backdrop-filter: blur(0px);
+     }
+     to {
+          background-color: var(--headColor);
+          backdrop-filter: blur(32px);
+     }
+   }
+
+   @keyframes head-bar-anti-anim{
+     from{     
+          
+     }
+     to {
+          background-color: rgba(0, 0, 0, 0);
+     }
+   }
+
+.app-head-main-cont-anit-transi{
+     animation-name: head-bar-anti-anim;
+     animation-duration: 0.6s;
+     animation-fill-mode: forwards;
+     animation-timing-function: ease-in;
+}
+
+.app-head-main-cont-transi{
+     animation-name: head-bar-anim;
+     animation-duration: 0.2s;
+     animation-fill-mode: forwards;
+     animation-timing-function: ease-in;
+}
+
 
 .app-sub-head-main-cont{
      width: 95%;

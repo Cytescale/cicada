@@ -1290,6 +1290,10 @@ background-color: var(--cardColor-disabled);
      display: inline-flex;
      background-color: var(--backColor);
      /* position: -webkit-sticky; */
+     position: -webkit-sticky;
+     position: -moz-sticky;
+     position: -o-sticky;
+     position: -ms-sticky;
      position: sticky;
      top: 62px;
 }
@@ -1519,8 +1523,6 @@ background-color: var(--cardColor-disabled);
 }
 
 .app-body-topper-hey-inner-cont-name{
-     position: sticky;
-     top: 62px;
      width: 100%;
      padding-top: 6px;
      padding-bottom: 6px;
@@ -1723,7 +1725,7 @@ color: inherit;
      padding-right: 8px;
 }
 .app-land-link-cont-holder{
-     padding-bottom: var(--margin-bottom);
+     /* padding-bottom: var(--margin-bottom); */
      margin-bottom:var(--margin-bottom);
   
      
@@ -1740,7 +1742,7 @@ color: inherit;
      /* background-color: var(--linkHolderColor); */
 }
 .top-holder-cont{
-     padding-top: 42px;
+     padding-top: 32px;
      /* background: linear-gradient(180deg, rgba(65, 137, 247, 0.39) 0%, rgba(0, 0, 0, 0) 100%); */
 
 }

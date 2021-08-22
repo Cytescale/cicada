@@ -1422,7 +1422,7 @@ background-color: var(--cardColor-disabled);
      width: 92%;
      margin-right: 4%;
      margin-left: 4%;
-     margin-top: 0px;
+     margin-bottom: 12px;
      background-color: var(--cardColor);
      border-radius: 7px;
      box-shadow: var(--boxShad);

@@ -1,6 +1,6 @@
 .land-body-cont{
      background-color: var(--backColor);
-     border-bottom: 8px solid var(--pri-color);
+     /* border-bottom: 8px solid var(--pri-color); */
      color: var(--textColor);
      height: 100%;
 }
@@ -1282,13 +1282,22 @@ background-color: var(--cardColor-disabled);
      width: 92%;
      margin-left: 4%;
      margin-right: 4%;
+     padding-top: 12px;
+     padding-bottom: 12px;
+     z-index: 20;
      word-wrap: normal;
-     display: flex;
      align-items: center;
-     
      display: inline-flex;
+     background-color: var(--backColor);
+     position: -webkit-sticky;
+     position: sticky;
+     top: 62px;
 }
 
+.app-land-lab-main-cont:stuck
+{
+     color: red;
+}
 .app-land-lab-main-cont-ico{
      margin-right: 7px;
      width: 17px;
@@ -1300,7 +1309,7 @@ background-color: var(--cardColor-disabled);
      margin-left: 4%;
      margin-right: 4%;
      height: 52px;
-     margin-top: 12px;
+     margin-top: 0px;
 }
 .app-land-serch-cont{
      width: auto;
@@ -1401,7 +1410,7 @@ background-color: var(--cardColor-disabled);
      width: 92%;
      margin-right: 4%;
      margin-left: 4%;
-     margin-top: 12px;
+     margin-top: 0px;
      background-color: var(--cardColor);
      border-radius: 7px;
      box-shadow: var(--boxShad);
@@ -1491,13 +1500,31 @@ background-color: var(--cardColor-disabled);
      margin-bottom: var(--margin-bottom);
 }
 .app-body-topper-hey-cont{
-     width: fit-content;
-     
-     padding-left: 16px;
+     width: 100%;
+     /* background-color: rebeccapurple; */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding-top: 12px;
+     /* padding-left: 16px; */
      font-size: 22px;
      color: var(--textColor);;
      font-family: inter;
      font-weight: 700;    
+}
+
+.app-body-topper-hey-inner-cont{
+     
+     text-align: center;
+}
+
+.app-body-topper-hey-inner-cont-name{
+     position: sticky;
+     top: 62px;
+     width: 100%;
+     padding-top: 6px;
+     padding-bottom: 6px;
+     background-color: var(--backColor);
 }
 .app-body-topper-hey-butt
 {
@@ -1643,7 +1670,7 @@ color: inherit;
      margin-right: 4%;
      background-color: var(--cardColor);
      border-radius: 7px;
-     margin-top: 12px;
+     margin-top: 0px;
      box-shadow: var(--boxShad);
      /* border: 1px solid var(--borColor); */
      padding: 7px;
@@ -1698,6 +1725,7 @@ color: inherit;
 .app-land-link-cont-holder{
      padding-bottom: var(--margin-bottom);
      margin-bottom:var(--margin-bottom);
+  
      
 }
 .lnk-holder-cust{
@@ -1719,27 +1747,44 @@ color: inherit;
 
 .cluster-holder-cont{
      padding: 7px;
+     
 }
 
 @keyframes wave-animation {
-     0% { transform: rotate( 0.0deg) }
+     0% { 
+          transform: rotate( 0.0deg);
+          opacity: 0;
+      }
     10% { transform: rotate(24.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
     20% { transform: rotate(-16.0deg) }
     30% { transform: rotate(24.0deg) }
     40% { transform: rotate(-8.0deg) }
-    50% { transform: rotate(20.0deg) }
+    50% { transform: rotate(20.0deg) ;
+     opacity: 1;
+}
     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
-   100% { transform: rotate( 0.0deg) }
+   100% { transform: rotate( 0.0deg);
+     opacity: 0;
+}
  }
  
 
 .app-body-topper-hey-cont-hand{
+     opacity: 0;
      animation-name: wave-animation; 
+     animation-delay: 0.5s;
      animation-duration: 2.5s;      
      transform-origin: 70% 70%;    
      animation-timing-function: ease-out;
-     display: inline-block;
-
+     animation-fill-mode: forwards;
+     position: absolute;
+     display: block;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     font-size: 24px;
+     align-items: center;
+     justify-content: center;
 }
 
 .lnk-lnk-head-link-ico-cont{
@@ -1784,19 +1829,28 @@ color: inherit;
      align-items: center;
      justify-content: center;
      position: relative;
-     
+
+}
+.app-land-head-pro-pic-main-outer-cont{
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center; 
 }
 
 
 .app-land-head-pro-pic-main-cont-pic{
      width: 100%;
      height: 100%;
+
 }
 .app-land-link-intro-pro-main-cont{
      width: 92%;
      margin-left: 4%;
-     padding: 12px;
-     display: flex;
+     /* padding: 12px; */
+     /* background-color: red; */
+     /* display: flex; */
+     align-items: center;
      justify-content: center;
      position: relative;
 }
@@ -1838,7 +1892,7 @@ color: inherit;
      font-size: 14px;
      font-family: 'inter';
      font-weight: 500;
-     margin-top: 3px;
+     /* margin-top: 3px; */
      margin-bottom: 3px;
      color: var(--textColor);
      white-space: pre-line;

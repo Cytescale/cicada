@@ -1456,6 +1456,7 @@ class Land extends React.Component<LandProps,any>{
                id='lnk-lnk-main-cont-id'
                >
                     {
+                         
                           // @ts-ignore: Unreachable code error
                           <GlobalStyles light={this.state.darkMode}/>
                     }
@@ -1471,14 +1472,10 @@ class Land extends React.Component<LandProps,any>{
                               <div className='app-body-main-cont'>
                                    <div className='app-land-link-cont-holder top-holder-cont'>
                                              <div className='app-land-link-intro-pro-main-cont'> 
+                                                                 <div className='app-land-head-pro-pic-main-outer-cont'>
                                                                  <div className='app-land-head-pro-pic-main-cont'>
                                                                       <img src={User!.getUserData()?User!.getUserData()!.pro_photo_url:'https://ik.imagekit.io/cyte/sakura/Men-Profile-Image_8c3Wj4y8S.png?updatedAt=1626883535964'} className='app-land-head-pro-pic-main-cont-pic' />
-                                                                 </div>
-                                                            {
-                                                                 User.getUserData()?
-                                                                      
-                                                                      <div className='app-body-topper-hey-cont' >                                                               
-                                                                           {User.getUserData()?.dname} <span className='app-body-topper-hey-cont-hand' onClick={()=>{
+                                                                      <div className='app-body-topper-hey-cont-hand' onClick={()=>{
                                                                            toast.dark('Hi-Fi ✋', {
                                                                                 position: toast.POSITION.TOP_CENTER,
                                                                                 autoClose: 5000,
@@ -1488,8 +1485,18 @@ class Land extends React.Component<LandProps,any>{
                                                                                 draggable: true,
                                                                                 progress: undefined,
                                                                            });
-                                                                      }}>👋</span> 
+                                                                      }}>👋</div>
+                                                                 </div>
+                                                                 </div>
+                                                            {
+                                                                 User.getUserData()?
+                                                                      
+                                                                      <div className='app-body-topper-hey-cont' >                                                               
+                                                                      <div className='app-body-topper-hey-inner-cont' >
+                                                                           <div className='app-body-topper-hey-inner-cont-name' >
+                                                                           {User.getUserData()?.dname}</div>  
                                                                       <div className='app-body-topper-bio-cont'>{User.getUserData()?.bio}</div>
+                                                                      </div>
                                                                       </div>:
                                                                  <span/>
                                                             }

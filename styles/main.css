@@ -250,23 +250,25 @@ font-family: inter;
 
    @keyframes head-bar-anti-anim{
      from{     
-          
+          background-color: var(--headColor);
+          backdrop-filter: blur(32px);
      }
      to {
           background-color: rgba(0, 0, 0, 0);
+          backdrop-filter: blur(0px);
      }
    }
 
 .app-head-main-cont-anit-transi{
      animation-name: head-bar-anti-anim;
-     animation-duration: 0.6s;
+     animation-duration: 0.4s;
      animation-fill-mode: forwards;
      animation-timing-function: ease-in;
 }
 
 .app-head-main-cont-transi{
      animation-name: head-bar-anim;
-     animation-duration: 0.2s;
+     animation-duration: 0.3s;
      animation-fill-mode: forwards;
      animation-timing-function: ease-in;
 }
@@ -790,15 +792,13 @@ font-family: inter;
         
    }
    .land-nav-bar-cont{
-          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.06);
+          box-shadow: 0px -6px 10px rgba(0, 0, 0, 0.09);
           position: fixed;
           bottom: 0;
-          height: 62px;
-          background-color: var(--cardColor);
-          width: 92%;
-          margin-left: 4%;
-          margin-bottom: 2%;
-          border-radius: 32px;
+          margin-bottom: 0;
+          height: 68px;
+          background-color: var(--NavBottomColor);
+          width: 100%;
    }
 
    .cluster-nav-bar-cont{
@@ -1066,9 +1066,52 @@ font-family: inter;
 
    }
 
-   .app-accord-main-expand-body{
 
+   @keyframes app-accord-main-expand-strt-anim{
+     0%{     
+          height: 0%;    
+     }
+     100% {
+          height: 100%;    
+     }
    }
+
+
+   @keyframes app-accord-main-expand-exit-anim{
+     0%{     
+
+     }
+     100% {
+
+     }
+   }
+
+   .app-accord-main-expand-body{
+     position: relative;
+     display: block;
+     overflow: hidden;
+     
+   }
+   .app-accord-main-expand-false{
+     height: 0px;
+   }
+   .app-accord-main-expand-true{
+     height: 100%;
+   }
+   .app-accord-main-expand-strt{
+     animation-name: app-accord-main-expand-strt-anim;
+     animation-duration: 0.4s;
+     animation-timing-function: ease-in;
+   }
+   .app-accord-main-expand-exit{
+     animation-name:app-accord-main-expand-exit-anim;
+     animation-duration: 0.4s;
+     animation-timing-function: ease-in;
+   }
+
+
+
+   
    .app-accord-main-title-outer-body{
     z-index: 30;
      display: block;

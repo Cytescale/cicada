@@ -36,6 +36,7 @@ import { createGlobalStyle} from "styled-components"
                --subtextColor:#757575;
                --subHeadingTextColor:#555555;
                --backColor:var(--dark-pri-color);
+               --trans-backColor:rgba(243, 243, 243, 0.5);
                --borColor:#e0e0e0;
                --boxShad:0 3px 14px 0px rgba(0,0,0,0.09);
                
@@ -58,6 +59,8 @@ import { createGlobalStyle} from "styled-components"
                --NavTextColor:#959595;
                --NavTextColor-selec:#4189F7;
                
+               --NavBottomColor:#fff;
+
                --BugerCrossColor:#959595;
                --BurgerMenuColor:#181818;
 
@@ -91,6 +94,7 @@ import { createGlobalStyle} from "styled-components"
           --subtextColor:#656565;
           --subHeadingTextColor:#909090;
           --backColor:var(--dark-pri-color);
+          --trans-backColor:rgba(16, 16, 16, 0.5);
           --borColor:#202020;
           --boxShad:0 3px 14px 0px rgba(0,0,0,0.3);
           
@@ -114,6 +118,8 @@ import { createGlobalStyle} from "styled-components"
           --NavTextColor:#959595;
           --NavTextColor-selec:#4189F7;
           
+          --NavBottomColor:#232323;
+
           --BugerCrossColor:#959595;
           --BurgerMenuColor:#181818;
      

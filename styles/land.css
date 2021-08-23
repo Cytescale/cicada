@@ -49,14 +49,14 @@ margin-right: 4px;
      font-size: 25px;
      padding: 22px;
      color: #fff;
-     font-weight: 700;
+     font-weight: 600;
      margin-top:22px;
-     background: #36D1DC;
-     background: -webkit-linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC);
-     background: linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC); 
+     /* background: -webkit-linear-gradient(45deg, #5B86E5, #36D1DC,#5B86E5,#36D1DC); */
+     background: var(--pri-color); 
+     box-shadow: 0px 5px 18px var(--pri-color);
      background-size: 400% 400%;
      overflow: hidden;
-     
+
      animation: gradient 15s ease infinite;
      transform: translateX(-120%);
      animation: trans 0.8s ease forwards 0.4s;
@@ -1289,7 +1289,8 @@ background-color: var(--cardColor-disabled);
      word-wrap: normal;
      align-items: center;
      display: block;
-     background-color: var(--backColor);
+     background-color: var(--trans-backColor);
+     backdrop-filter: blur(12px);
 }
 
 
@@ -1420,6 +1421,7 @@ background-color: var(--cardColor-disabled);
 
 .app-land-visit-card-main-outer-cont{
      width: 92%;
+     height: 100px;
      margin-right: 4%;
      margin-left: 4%;
      margin-bottom: 12px;

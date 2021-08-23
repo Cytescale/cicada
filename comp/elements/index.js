@@ -159,13 +159,45 @@ const BurgerMenu = (props)=>{
 
 
 const HeaderCont = (props)=>{  
+     
+     const [bgEnal,setbgEnal]=useState(false);
+     const [strtBgAnim,setstrtBgAnim]=useState(false);
+     const [endBgAnim,setendBgAnim] = useState(false);
+
+
+     useEffect(()=>{
+          if(props.transiBool  && props.scrollY){
+               if(props.scrollY>92){
+                    setstrtBgAnim(true);
+                    setendBgAnim(false);
+               }
+               else{
+                    setstrtBgAnim(false);
+                    setendBgAnim(true);
+               }
+          }
+     },[props.scrollY,props.transiBool]);
+
      return(
           <div className={
                `app-head-main-cont link-head-body-cont 
-               ${props.transiBool?null:'app-head-main-cont-filled'} 
-               ${props.transiBool?props.scrollY>92?'app-head-main-cont-transi':'app-head-main-cont-anit-transi':null}
+               ${props.transiBool?bgEnal?'app-head-main-cont-filled':null:'app-head-main-cont-filled'} 
+               ${strtBgAnim?'app-head-main-cont-transi':null}
+               ${endBgAnim?'app-head-main-cont-anit-transi':null}
+               `}
                
-               `}>
+               onAnimationEnd={()=>{
+                    if(strtBgAnim){
+                         setbgEnal(true);
+                         setstrtBgAnim(false);
+                    }
+                    if(endBgAnim){
+                         setendBgAnim(false);
+                         setbgEnal(false);
+                    }
+               }}
+               
+               >
           <div className='app-head-main-cont-logo link-head-logo'>
                <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
           </div>
@@ -366,17 +398,32 @@ const RenderAccordion = (props)=>{
 
      const [expanded,setexpanded] = useState(props.default?props.default:false);
 
+
      return(
           <div className={`app-accord-main-outer-body ${props.prefiix?props.prefiix:null}`}>
                 <div className={`app-accord-main-title-outer-body`} 
-                    onClick={()=>{setexpanded(!expanded)}}
+                         onClick={()=>{
+                              setexpanded(!expanded);
+                         }
+                    }
                 >
                     {props.titleBar(expanded)}
                 </div>
-                <div className={`app-accord-main-expand-body`}
-                style={{
-                     display:`${expanded?'block':'none'}`
-                }}
+                <div className={
+                     `
+                     app-accord-main-expand-body                     
+                     `}
+                    onAnimationEnd={()=>{
+                    // if(expandanimStart){
+                    //      setexpandanimStart(false);
+                    //      setexpanded(true)
+                    // }
+                    // if(expandanimExit){
+                    //      setexpandanimExit(false);
+                    //      setexpanded(false)
+                    // }
+               }}
+                style={{display:`${expanded?'block':'none'}`}}
                 >
                 {props.children}
                 </div>

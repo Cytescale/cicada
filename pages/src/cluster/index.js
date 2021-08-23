@@ -343,7 +343,7 @@ const cluster = (props)=>{
                                    Cluster Links 
                                    {clusterActive?<div className='app-clust-indi-on'/>:<div className='app-clust-indi-off'/>}
                               </div>
-                              <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want, or create a new one.</div>
+                              <div className='app-clust-sub-tit-main-cont'>Reorder and arrange your links as you want.</div>
                               <div className='app-clust-act-lnk-head-main-cont'>
                                    <button className='app-clust-act-crt-lnk-butt'
                                      onClick={()=>{

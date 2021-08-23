@@ -198,7 +198,9 @@ const HeaderCont = (props)=>{
                
                >
           <div className='app-head-main-cont-logo link-head-logo'>
-               <a href={_BASE_CLIENT_URL+'src/land'}>Cytelink</a>
+               <a href={_BASE_CLIENT_URL+'src/land'}>
+                    Cytelink
+                    </a>
           </div>
           <div className='app-head-main-right-cont'>
                <button 

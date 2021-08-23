@@ -1502,7 +1502,7 @@ class Land extends React.Component<LandProps,any>{
                                                                  <span/>
                                                             }
                                              </div>
-                                                  <WelcomeHead/>
+                                                  {/* <WelcomeHead/> */}
                                              
                                         </div>
                                    <div className='app-land-link-cont-holder cluster-holder-cont'>

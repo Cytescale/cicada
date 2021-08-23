@@ -164,7 +164,6 @@ const HeaderCont = (props)=>{
      const [strtBgAnim,setstrtBgAnim]=useState(false);
      const [endBgAnim,setendBgAnim] = useState(false);
 
-
      useEffect(()=>{
           if(props.transiBool  && props.scrollY){
                if(props.scrollY>92){

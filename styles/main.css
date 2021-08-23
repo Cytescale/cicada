@@ -802,11 +802,11 @@ font-family: inter;
    }
 
    .cluster-nav-bar-cont{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-
+     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.09);
+     height: 62px;   
+     z-index: 200;
+     position: sticky;
+     top: 0;
    }
 
    .app-nav-bar-main-link-cont{
@@ -829,7 +829,7 @@ font-family: inter;
 }
 
    .app-nav-bar-main-link-cont-selec{
-        color: #FFD643;
+        color: var(--pri-dark);
         font-weight: 600;
         /* border-bottom: 3px solid var(--NavTextColor-selec); */
    }
@@ -839,7 +839,7 @@ font-family: inter;
    }
 
    .link-cont-selec-cluster{
-        color: #FFD643;
+        color: var(--pri-dark);
    }
    .link-cont-selec-profile{
         color: #BB86FC;

@@ -475,7 +475,7 @@ const Profile = (props)=>{
                                                   </Accordion.Collapse>
                                              </Accordion>
                                              
-                                             <div className="menu-item-bottom-v">v 0.1.5</div>
+                                             <div className="menu-item-bottom-v">v 0.1.5.3</div>
                               
                               {/* <div className='app-clust-set-holder-main-cont'>
                                         <div className='app-clust-set-card-main-cont'>

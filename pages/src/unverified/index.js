@@ -41,7 +41,7 @@ class ForgotPassAct extends React.Component{
                <>
                     <div className='app-main-cont-main-body login-body-cont'>
                     <Head>
-                    <title>Forgot Password</title>
+                    <title>Cytelink</title>
                     <meta name="description" content="Cicada Login Activity" />
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="icon" href="/favicon.ico" />

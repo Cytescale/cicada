@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import "firebase/analytics";
 import cookie from 'react-cookies'
 
 import axios from 'axios';
@@ -108,13 +109,11 @@ export default class firebaseHelper implements firebaseHelperInter{
           this.initFirebaseApp();
      }
      
-
-  
-
      initFirebaseApp(callback?:any): boolean | null {
           try{
                if(firebase.apps.length<1){
                     firebaseHelper._FIREBASE_APP = firebase.initializeApp(FIREBASE_CONFIG_VAR);
+                    const analytics = firebase.analytics();
                     firebaseHelper._FIREBASE_PROVIDE = new firebase.auth.GoogleAuthProvider(); 
                     console.log('firebasehelper | new app initialised');
                     
